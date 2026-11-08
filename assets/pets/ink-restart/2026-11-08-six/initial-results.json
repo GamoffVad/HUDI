@@ -1,0 +1,60 @@
+{
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "c744a42d-a8c3-4d9f-af5a-079a80870e72",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174734_c744a42d-a8c3-4d9f-af5a-079a80870e72.mp4"
+    },
+    {
+      "index": 1,
+      "job_id": "185ff312-3b6d-4212-9943-6b1fae124b9c",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_185ff312-3b6d-4212-9943-6b1fae124b9c.mp4"
+    },
+    {
+      "index": 2,
+      "job_id": "4ebad29e-4a1d-4e08-90af-e262ac0b2a20",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_4ebad29e-4a1d-4e08-90af-e262ac0b2a20.mp4"
+    },
+    {
+      "index": 3,
+      "job_id": "4466c476-17e4-4f56-8ba0-8b93a9528b56",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_4466c476-17e4-4f56-8ba0-8b93a9528b56.mp4"
+    },
+    {
+      "index": 4,
+      "job_id": "8fc9c419-dc20-4607-9259-28ab5df0013d",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_8fc9c419-dc20-4607-9259-28ab5df0013d.mp4"
+    },
+    {
+      "index": 5,
+      "job_id": "e1e20f3b-1238-404e-8c44-0cc330ca2358",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_e1e20f3b-1238-404e-8c44-0cc330ca2358.mp4"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "completed": 6,
+    "failed": 0,
+    "active": 0,
+    "errors": 0
+  },
+  "all_terminal": true
+}

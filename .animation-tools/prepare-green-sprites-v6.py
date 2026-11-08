@@ -21,7 +21,7 @@ SOURCES = {
     'combat': '09_combat_guard', 'dance': '10_dance_two_eyes',
 }
 
-def key_frame(bgr):
+def key_frame(bgr, plate_override=None):
     rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB).astype(np.float32)
     r, g, b = cv2.split(rgb)
     excess = g - np.maximum(r, b)
@@ -30,6 +30,8 @@ def key_frame(bgr):
     samples = np.concatenate([rgb[:, :35], rgb[:, -35:]], axis=1)
     plate = np.median(samples, axis=1)
     plate = cv2.GaussianBlur(plate[:, None, :], (1, 31), 0)
+    if plate_override is not None:
+        plate = np.asarray(plate_override,dtype=np.float32)
     plate_g = np.maximum(plate[:, :, 1], 180)
     plate_excess = np.maximum(plate_g - np.maximum(plate[:, :, 0], plate[:, :, 2]), 30)
     green = (excess > g * (plate_excess / plate_g) * .65) & (g > 15)

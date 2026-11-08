@@ -55,9 +55,105 @@ internal static class InteractionUiVerification
             foreach(var nested in Children<T>(child))yield return nested;
         }
     }
+    private static void VerifyPointerGestures(string directory,Dictionary<string,bool> checks)
+    {
+        string root=Path.Combine(directory,"pointer-gestures",Guid.NewGuid().ToString("N"));
+        var bindings=new ClickBindingsStore(root);
+        bindings.Save(new(Single:PetClickAction.Notes,Double:PetClickAction.Chat,Triple:PetClickAction.FavoriteSites));
+        var pet=new PetWindow(false,true,new PetCatalog(Path.Combine(root,"pets")),new FavoriteSitesStore(root),bindings)
+            {Opacity=0,ShowInTaskbar=false};
+        var trace=new List<object>();var tracedPanels=new HashSet<Window>();
+        void Record(string stage)
+        {
+            var panels=pet.OwnedWindows.Cast<Window>().ToArray();
+            foreach(var panel in panels.Where(tracedPanels.Add))
+            {
+                string title=panel.Title;
+                panel.Closed+=(_,_)=>trace.Add(new{stage="panel_closed",title,time=DateTimeOffset.UtcNow});
+            }
+            trace.Add(new{stage,time=DateTimeOffset.UtcNow,state=pet.PointerGestureDiagnostics,pet.IsActive,
+                captureType=Mouse.Captured?.GetType().Name,controlDoubleBinding=pet.ClickBindings.Get(2,true).ToString(),
+                panels=panels.Select(p=>new{type=p.GetType().Name,p.Title,p.IsVisible,p.IsActive,isClosing=p is GlassWindow g&&g.IsClosing}).ToArray()});
+        }
+        pet.GotMouseCapture+=(_,_)=>Record("got_capture");pet.LostMouseCapture+=(_,_)=>Record("lost_capture");
+        try
+        {
+            pet.Show();pet.UpdateLayout();
+            var screen=new Rect(SystemParameters.VirtualScreenLeft,SystemParameters.VirtualScreenTop,
+                SystemParameters.VirtualScreenWidth,SystemParameters.VirtualScreenHeight);
+            double tolerance=2/VisualTreeHelper.GetDpi(pet).DpiScaleX;
+            var grab=new Point(pet.Width/2,pet.Height/2);
+            void SetCenter(){pet.Left=screen.Left+(screen.Width-pet.Width)/2;pet.Top=screen.Top+(screen.Height-pet.Height)/2;pet.UpdateLayout();}
+            void WaitForClick()=>UiVerification.Advance((int)pet.ClickSequenceDelay.TotalMilliseconds+40);
+            bool HasPanel<T>() where T:Window=>pet.OwnedWindows.OfType<T>().Any(w=>w.IsVisible);
+            bool HasAnyPanel()=>pet.OwnedWindows.Cast<Window>().Any(w=>w.IsVisible);
+            void ClosePanels()
+            {
+                foreach(var panel in pet.OwnedWindows.Cast<Window>().ToArray())panel.Close();
+                // Closing is synchronous, but WPF's queued focus/capture work
+                // must settle before synthesizing the next press immediately.
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke(()=>{},System.Windows.Threading.DispatcherPriority.ApplicationIdle);
+                Record("panels_closed_and_dispatcher_idle");
+            }
+            SetCenter();
+            // Drive the same gesture methods as WPF mouse handlers on a live
+            // HWND with real mouse capture; never move the user's OS cursor.
+            foreach(int count in new[]{1,2,3})
+            {
+                pet.BeginPointerGesture(grab,count,false);
+                Record($"click_{count}_begun");
+                bool captured=ReferenceEquals(Mouse.Captured,pet.Content);
+                pet.MovePointerGesture(grab+new Vector(1,1),true);pet.EndPointerGesture();Record($"click_{count}_released");WaitForClick();Record($"click_{count}_settled");
+                bool expected=count switch{1=>HasPanel<NotesWindow>(),2=>HasPanel<ChatWindow>(),_=>HasPanel<FavoriteSitesWindow>()};
+                checks[$"pointer_{count}_click_preserves_binding_after_capture_release"]=captured&&expected&&!ReferenceEquals(Mouse.Captured,pet.Content);
+                ClosePanels();
+            }
+            pet.BeginPointerGesture(grab,2,true);Record("control_double_begun");
+            bool controlCaptured=ReferenceEquals(Mouse.Captured,pet.Content);
+            pet.EndPointerGesture();Record("control_double_released");
+            bool controlOpenedImmediately=HasPanel<NotesWindow>();WaitForClick();Record("control_double_settled");
+            checks["pointer_control_press_obtains_capture"]=controlCaptured;
+            checks["pointer_control_binding_commits_immediately"]=controlOpenedImmediately;
+            checks["pointer_control_modifier_survives_release"]=controlCaptured&&controlOpenedImmediately&&HasPanel<NotesWindow>();ClosePanels();
+
+            pet.BeginPointerGesture(grab,1,false);pet.EndPointerGesture();
+            pet.BeginPointerGesture(grab,2,false);pet.MovePointerGesture(grab+new Vector(18,12),true);pet.EndPointerGesture();WaitForClick();
+            checks["pointer_drag_cancels_pending_click_and_does_not_open_panel"]=!HasAnyPanel()&&!ReferenceEquals(Mouse.Captured,pet.Content);
+
+            foreach(bool moved in new[]{false,true})
+            {
+                SetCenter();pet.BeginPointerGesture(grab,3,false);
+                if(moved)pet.MovePointerGesture(grab+new Vector(14,8),true);
+                Mouse.Capture(null);UiVerification.Advance(1);
+                var position=new Point(pet.Left,pet.Top);
+                bool handled=pet.MovePointerGesture(grab+new Vector(40,40),true);
+                pet.EndPointerGesture();WaitForClick();
+                checks[$"pointer_capture_loss_{(moved?"during_drag":"before_drag")}_clears_gesture"]=!handled&&!HasAnyPanel()&&
+                    Math.Abs(pet.Left-position.X)<tolerance&&Math.Abs(pet.Top-position.Y)<tolerance&&!ReferenceEquals(Mouse.Captured,pet.Content);
+            }
+            foreach(string edge in new[]{"left","right","top","bottom"})
+            {
+                SetCenter();double width=pet.Width,height=pet.Height;
+                pet.BeginPointerGesture(grab,1,false);
+                var delta=edge switch{"left"=>new Vector(-100000,0),"right"=>new Vector(100000,0),"top"=>new Vector(0,-100000),_=>new Vector(0,100000)};
+                pet.MovePointerGesture(grab+delta,true);pet.EndPointerGesture();pet.UpdateLayout();
+                var body=pet.DisplayedBounds;
+                bool flush=edge switch{"left"=>Math.Abs(body.Left-screen.Left)<tolerance,"right"=>Math.Abs(body.Right-screen.Right)<tolerance,
+                    "top"=>Math.Abs(body.Top-screen.Top)<tolerance,_=>Math.Abs(body.Bottom-screen.Bottom)<tolerance};
+                bool outside=edge switch{"left"=>pet.Left<screen.Left,"right"=>pet.Left+pet.Width>screen.Right,"top"=>pet.Top<screen.Top,_=>pet.Top+pet.Height>screen.Bottom};
+                checks[$"live_pointer_{edge}_allows_padding_offscreen"]=flush&&outside&&Math.Abs(pet.Width-width)<tolerance&&Math.Abs(pet.Height-height)<tolerance&&!HasAnyPanel();
+            }
+        }
+        finally
+        {
+            Mouse.Capture(null);Record("before_pointer_pet_close");pet.Close();
+            File.WriteAllText(Path.Combine(directory,"pointer-gesture-trace.json"),JsonSerializer.Serialize(trace,new JsonSerializerOptions{WriteIndented=true}));
+        }
+    }
     internal static void Run(PetWindow pet,IModelClient client,string directory)
     {
         var checks=new Dictionary<string,bool>();var sent=new List<string>();
+        VerifyPointerGestures(directory,checks);
         using var session=new ChatSession(client);
         var chat=new ChatWindow(pet,session,sent.Add,()=>{});
         double Render(string name)
@@ -110,9 +206,9 @@ internal static class InteractionUiVerification
         live=pet.OwnedWindows.OfType<ChatWindow>().Single();checks["closing_and_reopening_keeps_draft"]=live.Draft=="Сохранить после Escape";live.Close();
 
         var firstAction=pet.TriggerRandomClickAction();var secondAction=pet.TriggerRandomClickAction();
-        checks["single_click_changes_action_without_opening_chat"]=firstAction is not null&&secondAction is not null&&firstAction!=secondAction&&!pet.OwnedWindows.OfType<ChatWindow>().Any(w=>w.IsVisible);
+        checks["manual_random_action_remains_available_without_opening_chat"]=firstAction is not null&&secondAction is not null&&firstAction!=secondAction&&!pet.OwnedWindows.OfType<ChatWindow>().Any(w=>w.IsVisible);
         pet.QueuePetClick(1);pet.QueuePetClick(2);
-        checks["double_click_waits_for_possible_third_click"]=!pet.OwnedWindows.OfType<NotesWindow>().Any(w=>w.IsVisible)&&!pet.OwnedWindows.OfType<ChatWindow>().Any(w=>w.IsVisible);
+        checks["double_click_waits_for_possible_third_click"]=pet.SitesOrbit is null&&!pet.OwnedWindows.OfType<NotesWindow>().Any(w=>w.IsVisible)&&!pet.OwnedWindows.OfType<ChatWindow>().Any(w=>w.IsVisible);
         pet.QueuePetClick(3);live=pet.OwnedWindows.OfType<ChatWindow>().Single();
         checks["triple_click_starts_opening_animation"]=!SystemParameters.ClientAreaAnimation||live.OpeningAnimationRunning;
         var firstClip=((FrameworkElement)live.Content).Clip.Bounds;
@@ -189,11 +285,14 @@ internal static class InteractionUiVerification
 
         var menu=new GlassWindow(pet,"Размер и движение",320);SettingsAppearance.Apply(menu);menu.Body.Children.Add(pet.CreateSizeControl(menu));
         VisualPreview.Save(menu,Path.Combine(directory,"size-slider.png"));var slider=Children<Slider>(menu.Body).Single();
-        var area=ScreenPlacement.WorkArea(pet);pet.Left=area.Left+300;pet.Top=area.Top+100;pet.ResizePet(360);
-        double bottom=pet.Top+pet.Height,center=pet.Left+pet.Width/2;
-        slider.Value=240;checks["slider_resizes_immediately"]=Math.Abs(pet.Height-240)<.1;
-        checks["resize_preserves_feet_and_center"]=Math.Abs(pet.Top+pet.Height-bottom)<.1&&Math.Abs(pet.Left+pet.Width/2-center)<.1;
-        slider.Value=360;checks["slider_can_resize_back"]=Math.Abs(pet.Height-360)<.1;
+        var area=ScreenPlacement.WorkArea(pet);pet.Left=area.Left+300;pet.Top=area.Top+100;pet.ResizePet(360*pet.Height/pet.DisplayHeight);
+        var originalDisplay=pet.DisplayedBounds;
+        double bottom=originalDisplay.Bottom,center=originalDisplay.Left+originalDisplay.Width/2;
+        double pixelTolerance=2/VisualTreeHelper.GetDpi(pet).DpiScaleY;
+        slider.Value=240;double actualSmallHeight=pet.DisplayHeight;checks["slider_resizes_immediately"]=Math.Abs(actualSmallHeight-240)<=pixelTolerance;
+        var resizedDisplay=pet.DisplayedBounds;
+        checks["resize_preserves_feet_and_center"]=Math.Abs(resizedDisplay.Bottom-bottom)<=pixelTolerance&&Math.Abs(resizedDisplay.Left+resizedDisplay.Width/2-center)<=pixelTolerance;
+        slider.Value=360;double actualLargeHeight=pet.DisplayHeight;checks["slider_can_resize_back"]=Math.Abs(actualLargeHeight-360)<=pixelTolerance;
         slider.RaiseEvent(new DragStartedEventArgs(0,0){RoutedEvent=Thumb.DragStartedEvent});checks["slider_drag_keeps_panel_still"]=!menu.FollowAnchor;
         slider.RaiseEvent(new DragCompletedEventArgs(0,0,false){RoutedEvent=Thumb.DragCompletedEvent});checks["slider_release_restores_anchoring"]=menu.FollowAnchor;
         checks["glass_tint_is_translucent"]=((GradientBrush)menu.Surface.Background).GradientStops.All(s=>s.Color.A<=120);
@@ -234,7 +333,8 @@ internal static class InteractionUiVerification
         menu.Close();
         pet.OpenMenu();var mainMenu=pet.OwnedWindows.OfType<GlassWindow>().Single(w=>w.IsVisible);mainMenu.UpdateLayout();
         checks["pause_removed_from_menu"]=!Children<Button>(mainMenu.Body).Any(b=>System.Windows.Automation.AutomationProperties.GetName(b) is "Пауза" or "Продолжить");mainMenu.Close();
-        File.WriteAllText(Path.Combine(directory,"interaction-controls.json"),JsonSerializer.Serialize(new{success=checks.Values.All(v=>v),singleLineHeight=single,wrappedHeight=wrapped,cappedHeight=capped,checks},new JsonSerializerOptions{WriteIndented=true}));
+        File.WriteAllText(Path.Combine(directory,"interaction-controls.json"),JsonSerializer.Serialize(new{success=checks.Values.All(v=>v),singleLineHeight=single,wrappedHeight=wrapped,cappedHeight=capped,
+            sliderGeometry=new{actualSmallHeight,actualLargeHeight,pixelTolerance,before=originalDisplay,after=resizedDisplay},checks},new JsonSerializerOptions{WriteIndented=true}));
         if(checks.Values.Any(v=>!v))throw new InvalidOperationException("Interaction UI verification failed; see interaction-controls.json");
     }
 }

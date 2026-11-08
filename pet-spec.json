@@ -1,0 +1,85 @@
+{
+  "id": "hudi",
+  "platform": "windows",
+  "referenceImages": [
+    "output/hudi-pet-v6.3/frames/neutral.png"
+  ],
+  "identity": {
+    "description": "Grey hooded robot desktop companion",
+    "anatomy": "Humanoid robot",
+    "immutableFeatures": [
+      "grey fabric hoodie",
+      "black screen face",
+      "two cyan eyes",
+      "original hands",
+      "pale blue shoes and drawstrings"
+    ],
+    "faceRules": "No mouth; render original complete frames without reconstructing eyes",
+    "allowedVisualChanges": []
+  },
+  "display": {
+    "targetHeightPx": 360,
+    "shadow": "original sprite alpha",
+    "mirror": true
+  },
+  "generation": {
+    "provider": "Higgsfield, approved source videos plus two added performances",
+    "latestBatchActualCredits": 73.5,
+    "latestBatchSource": "assets/higgsfield/2026-11-08-hood-juggle",
+    "balanceAfterLatestBatch": 140,
+    "latestBatchStatus": "hoodtighten and juggle rejected by user, excluded from runtime"
+  },
+  "behavior": {
+    "actionsSource": "output/hudi-pet-v7.3/sprites.zip:manifest.json",
+    "additionalActions": [
+      "salute",
+      "march",
+      "notebook",
+      "fire",
+      "firecalm"
+    ],
+    "frameSize": [
+      640,
+      640
+    ],
+    "displayBounds": [
+      128,
+      80,
+      384,
+      500
+    ],
+    "onClick": "none",
+    "onDoubleClick": "toggle favorite sites after system multi-click arbitration",
+    "onControlDoubleClick": "notes",
+    "clickSettings": "context menu: Управление; six configurable gestures, saved immediately; arbitrate only assigned longer sequences",
+    "onTripleClick": "model dialog",
+    "onDrag": "cancel clicks, close sites and move pet",
+    "onHover": "none",
+    "cursorGaze": false,
+    "desktopEvents": []
+  },
+  "favoriteSites": {
+    "settings": "context menu: Любимые сайты…",
+    "fields": [
+      "http/https URL",
+      "custom image or sphere text",
+      "maximum sphere size"
+    ],
+    "layout": "adaptive semicircle above/left/right/below pet according to free work-area space; keep pet clearance and room for animated contours; shrink only when necessary",
+    "layer": "behind intact character sprite",
+    "animation": "staggered emergence and retraction; independent press spring; gentle oval contour breathing at individual rhythms, static icons/text",
+    "livingSphereReference": "pic/a7ce4524a4aaa4934e9289dba304499e.mp4",
+    "mockup": "assets/concepts/hudi-favorite-sites-motion.html"
+  },
+  "chat": {
+    "enabled": true,
+    "style": "square corners, uniform borders, matte transparency and pale blue text",
+    "credentialStorage": "Windows user DPAPI"
+  },
+  "distribution": {
+    "singleFile": true,
+    "licenseRequired": false,
+    "productId": "hudi",
+    "autostartDefault": false
+  }
+}

@@ -49,10 +49,11 @@ internal static class InstallEngine
                 if(desktop)CreateShortcut(DesktopShortcut);
                 if(startup)CreateShortcut(StartupShortcut);
                 using var key=Registry.CurrentUser.CreateSubKey(UninstallKey);
-                key.SetValue("DisplayName","HUDI — питомец рабочего стола");key.SetValue("DisplayVersion","7.1.14");key.SetValue("Publisher","HUDI");
+                string version=Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)??"7.2.0";
+                key.SetValue("DisplayName","HUDI — питомец рабочего стола");key.SetValue("DisplayVersion",version);key.SetValue("Publisher","HUDI");
                 key.SetValue("InstallLocation",root);key.SetValue("DisplayIcon",target);key.SetValue("UninstallString","\""+Path.Combine(root,"HUDI.Uninstall.exe")+"\"");
                 key.SetValue("NoModify",1);key.SetValue("NoRepair",1);key.SetValue("EstimatedSize",(int)(new FileInfo(target).Length/1024),RegistryValueKind.DWord);
-                File.WriteAllText(Path.Combine(root,"installation.json"),JsonSerializer.Serialize(new{version="7.1.14",desktop,startup,installed=DateTimeOffset.UtcNow}));
+                File.WriteAllText(Path.Combine(root,"installation.json"),JsonSerializer.Serialize(new{version,desktop,startup,installed=DateTimeOffset.UtcNow}));
             }
             progress?.Report(1);
         }

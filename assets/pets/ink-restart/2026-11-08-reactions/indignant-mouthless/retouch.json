@@ -1,0 +1,1155 @@
+{
+  "frames": 145,
+  "source": "indignant-v2.mp4",
+  "method": "Small tracked lower-face mask with spatial inpainting, no regeneration",
+  "edits": [
+    {
+      "frame": 39,
+      "centre": [
+        468,
+        443
+      ],
+      "changed_pixels": 909,
+      "bounds": [
+        433,
+        428,
+        502,
+        458
+      ]
+    },
+    {
+      "frame": 40,
+      "centre": [
+        471,
+        444
+      ],
+      "changed_pixels": 959,
+      "bounds": [
+        438,
+        429,
+        505,
+        458
+      ]
+    },
+    {
+      "frame": 41,
+      "centre": [
+        474,
+        445
+      ],
+      "changed_pixels": 1009,
+      "bounds": [
+        440,
+        428,
+        508,
+        462
+      ]
+    },
+    {
+      "frame": 42,
+      "centre": [
+        477,
+        446
+      ],
+      "changed_pixels": 1017,
+      "bounds": [
+        443,
+        429,
+        511,
+        463
+      ]
+    },
+    {
+      "frame": 43,
+      "centre": [
+        483,
+        445
+      ],
+      "changed_pixels": 1031,
+      "bounds": [
+        449,
+        428,
+        517,
+        462
+      ]
+    },
+    {
+      "frame": 44,
+      "centre": [
+        489,
+        445
+      ],
+      "changed_pixels": 1106,
+      "bounds": [
+        455,
+        428,
+        523,
+        462
+      ]
+    },
+    {
+      "frame": 45,
+      "centre": [
+        495,
+        444
+      ],
+      "changed_pixels": 1138,
+      "bounds": [
+        461,
+        427,
+        529,
+        461
+      ]
+    },
+    {
+      "frame": 46,
+      "centre": [
+        498,
+        446
+      ],
+      "changed_pixels": 1110,
+      "bounds": [
+        464,
+        429,
+        532,
+        463
+      ]
+    },
+    {
+      "frame": 47,
+      "centre": [
+        500,
+        448
+      ],
+      "changed_pixels": 1065,
+      "bounds": [
+        466,
+        431,
+        534,
+        465
+      ]
+    },
+    {
+      "frame": 48,
+      "centre": [
+        503,
+        450
+      ],
+      "changed_pixels": 1105,
+      "bounds": [
+        469,
+        433,
+        537,
+        467
+      ]
+    },
+    {
+      "frame": 49,
+      "centre": [
+        504,
+        450
+      ],
+      "changed_pixels": 1147,
+      "bounds": [
+        470,
+        433,
+        538,
+        467
+      ]
+    },
+    {
+      "frame": 50,
+      "centre": [
+        505,
+        449
+      ],
+      "changed_pixels": 1082,
+      "bounds": [
+        471,
+        432,
+        539,
+        466
+      ]
+    },
+    {
+      "frame": 51,
+      "centre": [
+        500,
+        451
+      ],
+      "changed_pixels": 1142,
+      "bounds": [
+        466,
+        434,
+        534,
+        468
+      ]
+    },
+    {
+      "frame": 52,
+      "centre": [
+        495,
+        453
+      ],
+      "changed_pixels": 1115,
+      "bounds": [
+        461,
+        436,
+        529,
+        470
+      ]
+    },
+    {
+      "frame": 53,
+      "centre": [
+        490,
+        455
+      ],
+      "changed_pixels": 1075,
+      "bounds": [
+        456,
+        438,
+        524,
+        472
+      ]
+    },
+    {
+      "frame": 54,
+      "centre": [
+        485,
+        458
+      ],
+      "changed_pixels": 1037,
+      "bounds": [
+        451,
+        441,
+        519,
+        475
+      ]
+    },
+    {
+      "frame": 55,
+      "centre": [
+        480,
+        460
+      ],
+      "changed_pixels": 1005,
+      "bounds": [
+        446,
+        443,
+        514,
+        477
+      ]
+    },
+    {
+      "frame": 56,
+      "centre": [
+        488,
+        458
+      ],
+      "changed_pixels": 1044,
+      "bounds": [
+        454,
+        441,
+        522,
+        475
+      ]
+    },
+    {
+      "frame": 57,
+      "centre": [
+        495,
+        457
+      ],
+      "changed_pixels": 1063,
+      "bounds": [
+        461,
+        440,
+        529,
+        474
+      ]
+    },
+    {
+      "frame": 58,
+      "centre": [
+        500,
+        456
+      ],
+      "changed_pixels": 1120,
+      "bounds": [
+        466,
+        439,
+        534,
+        473
+      ]
+    },
+    {
+      "frame": 59,
+      "centre": [
+        506,
+        456
+      ],
+      "changed_pixels": 1104,
+      "bounds": [
+        472,
+        439,
+        540,
+        473
+      ]
+    },
+    {
+      "frame": 60,
+      "centre": [
+        511,
+        455
+      ],
+      "changed_pixels": 1097,
+      "bounds": [
+        477,
+        438,
+        545,
+        472
+      ]
+    },
+    {
+      "frame": 61,
+      "centre": [
+        507,
+        455
+      ],
+      "changed_pixels": 1092,
+      "bounds": [
+        473,
+        438,
+        541,
+        472
+      ]
+    },
+    {
+      "frame": 62,
+      "centre": [
+        504,
+        454
+      ],
+      "changed_pixels": 1084,
+      "bounds": [
+        470,
+        437,
+        538,
+        471
+      ]
+    },
+    {
+      "frame": 63,
+      "centre": [
+        500,
+        454
+      ],
+      "changed_pixels": 1098,
+      "bounds": [
+        466,
+        437,
+        534,
+        471
+      ]
+    },
+    {
+      "frame": 64,
+      "centre": [
+        496,
+        455
+      ],
+      "changed_pixels": 1038,
+      "bounds": [
+        462,
+        438,
+        530,
+        472
+      ]
+    },
+    {
+      "frame": 65,
+      "centre": [
+        491,
+        456
+      ],
+      "changed_pixels": 1043,
+      "bounds": [
+        457,
+        439,
+        525,
+        473
+      ]
+    },
+    {
+      "frame": 66,
+      "centre": [
+        491,
+        456
+      ],
+      "changed_pixels": 1088,
+      "bounds": [
+        457,
+        439,
+        525,
+        473
+      ]
+    },
+    {
+      "frame": 67,
+      "centre": [
+        492,
+        457
+      ],
+      "changed_pixels": 1103,
+      "bounds": [
+        458,
+        440,
+        526,
+        474
+      ]
+    },
+    {
+      "frame": 68,
+      "centre": [
+        492,
+        457
+      ],
+      "changed_pixels": 1075,
+      "bounds": [
+        458,
+        440,
+        526,
+        474
+      ]
+    },
+    {
+      "frame": 69,
+      "centre": [
+        492,
+        457
+      ],
+      "changed_pixels": 1085,
+      "bounds": [
+        458,
+        440,
+        526,
+        474
+      ]
+    },
+    {
+      "frame": 70,
+      "centre": [
+        492,
+        457
+      ],
+      "changed_pixels": 1091,
+      "bounds": [
+        458,
+        440,
+        526,
+        474
+      ]
+    },
+    {
+      "frame": 71,
+      "centre": [
+        495,
+        456
+      ],
+      "changed_pixels": 1068,
+      "bounds": [
+        461,
+        439,
+        529,
+        473
+      ]
+    },
+    {
+      "frame": 72,
+      "centre": [
+        497,
+        456
+      ],
+      "changed_pixels": 1056,
+      "bounds": [
+        463,
+        439,
+        531,
+        473
+      ]
+    },
+    {
+      "frame": 73,
+      "centre": [
+        500,
+        455
+      ],
+      "changed_pixels": 1057,
+      "bounds": [
+        466,
+        438,
+        534,
+        472
+      ]
+    },
+    {
+      "frame": 74,
+      "centre": [
+        501,
+        455
+      ],
+      "changed_pixels": 1044,
+      "bounds": [
+        467,
+        438,
+        535,
+        472
+      ]
+    },
+    {
+      "frame": 75,
+      "centre": [
+        502,
+        455
+      ],
+      "changed_pixels": 1059,
+      "bounds": [
+        468,
+        438,
+        536,
+        472
+      ]
+    },
+    {
+      "frame": 76,
+      "centre": [
+        503,
+        455
+      ],
+      "changed_pixels": 1012,
+      "bounds": [
+        469,
+        438,
+        537,
+        472
+      ]
+    },
+    {
+      "frame": 77,
+      "centre": [
+        502,
+        455
+      ],
+      "changed_pixels": 992,
+      "bounds": [
+        468,
+        438,
+        536,
+        472
+      ]
+    },
+    {
+      "frame": 78,
+      "centre": [
+        502,
+        455
+      ],
+      "changed_pixels": 971,
+      "bounds": [
+        468,
+        438,
+        536,
+        472
+      ]
+    },
+    {
+      "frame": 79,
+      "centre": [
+        501,
+        455
+      ],
+      "changed_pixels": 978,
+      "bounds": [
+        467,
+        438,
+        535,
+        472
+      ]
+    },
+    {
+      "frame": 80,
+      "centre": [
+        500,
+        455
+      ],
+      "changed_pixels": 1003,
+      "bounds": [
+        466,
+        438,
+        534,
+        472
+      ]
+    },
+    {
+      "frame": 81,
+      "centre": [
+        497,
+        455
+      ],
+      "changed_pixels": 954,
+      "bounds": [
+        463,
+        438,
+        531,
+        472
+      ]
+    },
+    {
+      "frame": 82,
+      "centre": [
+        494,
+        455
+      ],
+      "changed_pixels": 955,
+      "bounds": [
+        460,
+        438,
+        528,
+        472
+      ]
+    },
+    {
+      "frame": 83,
+      "centre": [
+        491,
+        455
+      ],
+      "changed_pixels": 1025,
+      "bounds": [
+        457,
+        438,
+        525,
+        472
+      ]
+    },
+    {
+      "frame": 84,
+      "centre": [
+        486,
+        455
+      ],
+      "changed_pixels": 1046,
+      "bounds": [
+        452,
+        438,
+        520,
+        472
+      ]
+    },
+    {
+      "frame": 85,
+      "centre": [
+        482,
+        454
+      ],
+      "changed_pixels": 1050,
+      "bounds": [
+        447,
+        439,
+        517,
+        469
+      ]
+    },
+    {
+      "frame": 86,
+      "centre": [
+        477,
+        454
+      ],
+      "changed_pixels": 1096,
+      "bounds": [
+        442,
+        439,
+        512,
+        469
+      ]
+    },
+    {
+      "frame": 87,
+      "centre": [
+        470,
+        453
+      ],
+      "changed_pixels": 1033,
+      "bounds": [
+        435,
+        438,
+        505,
+        468
+      ]
+    },
+    {
+      "frame": 88,
+      "centre": [
+        463,
+        451
+      ],
+      "changed_pixels": 1028,
+      "bounds": [
+        428,
+        436,
+        498,
+        466
+      ]
+    },
+    {
+      "frame": 89,
+      "centre": [
+        456,
+        450
+      ],
+      "changed_pixels": 1060,
+      "bounds": [
+        421,
+        435,
+        491,
+        465
+      ]
+    },
+    {
+      "frame": 90,
+      "centre": [
+        447,
+        449
+      ],
+      "changed_pixels": 1120,
+      "bounds": [
+        412,
+        434,
+        482,
+        464
+      ]
+    },
+    {
+      "frame": 91,
+      "centre": [
+        446,
+        450
+      ],
+      "changed_pixels": 1094,
+      "bounds": [
+        411,
+        435,
+        481,
+        465
+      ]
+    },
+    {
+      "frame": 92,
+      "centre": [
+        445,
+        452
+      ],
+      "changed_pixels": 1095,
+      "bounds": [
+        410,
+        437,
+        480,
+        467
+      ]
+    },
+    {
+      "frame": 93,
+      "centre": [
+        444,
+        453
+      ],
+      "changed_pixels": 1051,
+      "bounds": [
+        409,
+        438,
+        479,
+        468
+      ]
+    },
+    {
+      "frame": 94,
+      "centre": [
+        442,
+        454
+      ],
+      "changed_pixels": 1112,
+      "bounds": [
+        407,
+        439,
+        477,
+        469
+      ]
+    },
+    {
+      "frame": 95,
+      "centre": [
+        440,
+        455
+      ],
+      "changed_pixels": 1072,
+      "bounds": [
+        405,
+        440,
+        475,
+        470
+      ]
+    },
+    {
+      "frame": 96,
+      "centre": [
+        440,
+        455
+      ],
+      "changed_pixels": 1100,
+      "bounds": [
+        405,
+        440,
+        475,
+        470
+      ]
+    },
+    {
+      "frame": 97,
+      "centre": [
+        440,
+        455
+      ],
+      "changed_pixels": 1171,
+      "bounds": [
+        406,
+        440,
+        475,
+        470
+      ]
+    },
+    {
+      "frame": 98,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1136,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 99,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1129,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 100,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1128,
+      "bounds": [
+        406,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 101,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1097,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 102,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1160,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 103,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1109,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 104,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1142,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 105,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1087,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 106,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1104,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 107,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1111,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 108,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1086,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 109,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1087,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 110,
+      "centre": [
+        440,
+        456
+      ],
+      "changed_pixels": 1063,
+      "bounds": [
+        405,
+        441,
+        475,
+        471
+      ]
+    },
+    {
+      "frame": 111,
+      "centre": [
+        441,
+        456
+      ],
+      "changed_pixels": 1080,
+      "bounds": [
+        406,
+        441,
+        476,
+        471
+      ]
+    },
+    {
+      "frame": 112,
+      "centre": [
+        442,
+        455
+      ],
+      "changed_pixels": 1120,
+      "bounds": [
+        407,
+        440,
+        477,
+        470
+      ]
+    },
+    {
+      "frame": 113,
+      "centre": [
+        442,
+        455
+      ],
+      "changed_pixels": 1094,
+      "bounds": [
+        407,
+        440,
+        477,
+        470
+      ]
+    },
+    {
+      "frame": 114,
+      "centre": [
+        443,
+        454
+      ],
+      "changed_pixels": 1080,
+      "bounds": [
+        408,
+        439,
+        478,
+        469
+      ]
+    },
+    {
+      "frame": 115,
+      "centre": [
+        444,
+        454
+      ],
+      "changed_pixels": 1078,
+      "bounds": [
+        409,
+        439,
+        479,
+        469
+      ]
+    },
+    {
+      "frame": 116,
+      "centre": [
+        445,
+        453
+      ],
+      "changed_pixels": 1095,
+      "bounds": [
+        410,
+        438,
+        480,
+        468
+      ]
+    },
+    {
+      "frame": 117,
+      "centre": [
+        446,
+        452
+      ],
+      "changed_pixels": 1128,
+      "bounds": [
+        411,
+        437,
+        481,
+        467
+      ]
+    },
+    {
+      "frame": 118,
+      "centre": [
+        448,
+        451
+      ],
+      "changed_pixels": 1003,
+      "bounds": [
+        413,
+        436,
+        483,
+        466
+      ]
+    },
+    {
+      "frame": 119,
+      "centre": [
+        449,
+        450
+      ],
+      "changed_pixels": 889,
+      "bounds": [
+        415,
+        435,
+        483,
+        465
+      ]
+    },
+    {
+      "frame": 120,
+      "centre": [
+        450,
+        449
+      ],
+      "changed_pixels": 829,
+      "bounds": [
+        415,
+        434,
+        485,
+        464
+      ]
+    }
+  ]
+}

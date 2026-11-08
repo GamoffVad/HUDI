@@ -59,6 +59,9 @@ internal static class PetCatalogVerification
             checks["imported_pixels_preserved"]=pixels.SequenceEqual(library.Pixels(library.NeutralFrame));
             checks["no_hudi_hold_indices"]=library.Holds.Count==0;
             checks["no_unrequested_body_stretch"]=library.BreathAmplitude==0;
+            checks["imported_pet_does_not_inherit_hudi_or_ink_emotions"]=!engine.Supports(PetAction.Salute)&&!engine.Supports(PetAction.Temple)&&!engine.Supports(PetAction.Shrug);
+            var hudi=new PetBehavior(3,SpriteLibrary.Shared.Value);
+            checks["hudi_does_not_inherit_ink_emotions"]=!hudi.Supports(PetAction.Temple)&&!hudi.Supports(PetAction.Skeptical)&&!hudi.Supports(PetAction.Shrug);
         }
         foreach(var(name,neutral,width,missing,badHold) in new[]{("missing","neutral",4,true,false),("traversal","../escape",4,false,false),("oversize","neutral",999999,false,false),("hold","neutral",4,false,true)})
         {
@@ -73,7 +76,7 @@ internal static class PetCatalogVerification
         try
         {
             await window.SelectPetAsync(pet);checks["live_selection_changes_renderer"]=window.PetName==pet.Name&&Math.Abs(window.Width-window.Height)<.01;
-            await window.SelectPetAsync(PetCatalog.Hudi);checks["built_in_can_be_restored"]=window.PetName=="HUDI"&&Math.Abs(window.Width/window.Height-384d/500)<.01;
+            await window.SelectPetAsync(PetCatalog.Hudi);checks["built_in_can_be_restored"]=window.PetName=="HUDI"&&Math.Abs(window.Width/window.Height-SpriteLibrary.Shared.Value.Width/(double)SpriteLibrary.Shared.Value.Height)<.01;
             await window.SelectPetAsync(pet);
         }
         finally{window.Close();}

@@ -1,0 +1,84 @@
+{
+  "balance_before": 32,
+  "quoted_credits": 31.5,
+  "requests": [
+    {
+      "name": "indignant",
+      "title": "Возмущается",
+      "duration": 6,
+      "action": "A six-second indignant reaction. From neutral he straightens sharply, puts one gloved hand on his hip and gestures emphatically outward with the other palm as if objecting 'hey, that's unfair!'. Give a short incredulous head shake, lift both elbows in a compact exasperated beat, then calm down and return to the exact neutral reference pose. Express indignation through shoulders, head and hands, not speaking. No red eyes, props or effects.",
+      "index": 0,
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 6,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "A six-second indignant reaction. From neutral he straightens sharply, puts one gloved hand on his hip and gestures emphatically outward with the other palm as if objecting 'hey, that's unfair!'. Give a short incredulous head shake, lift both elbows in a compact exasperated beat, then calm down and return to the exact neutral reference pose. Express indignation through shoulders, head and hands, not speaking. No red eyes, props or effects.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves, black boots, chibi proportions and smooth black shadow face. The face has ONLY two solid ivory painted eye shapes with tiny paint drips. No mouth, lips, teeth, nose, pupils or iris; the area below the eyes remains featureless black in every frame. Retain original clothes, materials and anatomy. Use purposeful gestures with anticipation, brief pauses, weight and natural fabric follow-through.\n\nSolid uniform chroma green #00FF00 digital background and invisible floor, including all actual gaps; no scenery, horizon, gradient, background shadows or background transformation. Neutral white light on the character, no green bounce, green fringe or green rim lighting. Opaque clothes and eyes stay opaque. Keep the entire character sharply focused in EVERY frame, also during quick gestures: crisp naturally antialiased edges, no motion blur, soft-focus edges or artificial feathering. Locked full-body camera, scale, exposure and white balance. Preserve the spacious reference framing. ENTIRE character, every finger, both boots and all effects must remain fully inside EVERY frame with generous clear margins. No zoom, camera movement, approach toward camera, scene change, cut or dissolve. Start and finish in the exact supplied neutral pose, original position, scale and ivory eye colour, returning through genuine physical movement. Smooth settling at the loop seam. Silent video.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    },
+    {
+      "name": "angry-red-eyes",
+      "title": "Злится — красные глаза",
+      "duration": 6,
+      "action": "A six-second angry reaction. He notices something, lowers his head slightly, tightens both gloved fists at his sides, raises his shoulders and leans forward only slightly without moving closer to the camera. The TWO existing solid painted eye shapes turn saturated crimson RED, maintaining their shapes and paint drips, with no pupils or external glow. Hold an intense angry stare with one short tense shoulder movement. Then visibly relax, unclench the hands, let the eyes return from red to their original ivory colour, and settle into the exact neutral reference pose. No mouth, teeth, flames, lightning or graphic symbols.",
+      "index": 1,
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 6,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "A six-second angry reaction. He notices something, lowers his head slightly, tightens both gloved fists at his sides, raises his shoulders and leans forward only slightly without moving closer to the camera. The TWO existing solid painted eye shapes turn saturated crimson RED, maintaining their shapes and paint drips, with no pupils or external glow. Hold an intense angry stare with one short tense shoulder movement. Then visibly relax, unclench the hands, let the eyes return from red to their original ivory colour, and settle into the exact neutral reference pose. No mouth, teeth, flames, lightning or graphic symbols.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves, black boots, chibi proportions and smooth black shadow face. The face has ONLY two solid ivory painted eye shapes with tiny paint drips. No mouth, lips, teeth, nose, pupils or iris; the area below the eyes remains featureless black in every frame. Retain original clothes, materials and anatomy. Use purposeful gestures with anticipation, brief pauses, weight and natural fabric follow-through.\n\nSolid uniform chroma green #00FF00 digital background and invisible floor, including all actual gaps; no scenery, horizon, gradient, background shadows or background transformation. Neutral white light on the character, no green bounce, green fringe or green rim lighting. Opaque clothes and eyes stay opaque. Keep the entire character sharply focused in EVERY frame, also during quick gestures: crisp naturally antialiased edges, no motion blur, soft-focus edges or artificial feathering. Locked full-body camera, scale, exposure and white balance. Preserve the spacious reference framing. ENTIRE character, every finger, both boots and all effects must remain fully inside EVERY frame with generous clear margins. No zoom, camera movement, approach toward camera, scene change, cut or dissolve. Start and finish in the exact supplied neutral pose, original position, scale and ivory eye colour, returning through genuine physical movement. Smooth settling at the loop seam. Silent video.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    },
+    {
+      "name": "snap-fire",
+      "title": "Щелчок, огонь и невинный вид",
+      "duration": 9,
+      "action": "One continuous nine-second comic action, in this causal order. Start standing calmly. Raise the right gloved hand and visibly SNAP thumb against middle finger once. Only AFTER the snap, a small orange-red magical flame ignites on the ground just in front of and to the viewer's left of his boots, no higher than his lower shin. He notices it, looks alarmed through head/body posture, then deliberately lifts a boot and stamps directly onto the flame twice until it is COMPLETELY extinguished. Only after the fire is gone, plant both feet, put both hands behind his back, look UP innocently and hold a guilty 'nothing happened' pose for a clear beat. Finally look back and bring arms to the exact neutral reference pose for looping. No lighter or other prop. Do not stomp before the ignition, do not skip the snap, do not restart the fire after extinguishing. Keep the flame compact and fully inside the central 75% of the frame, with no flying embers, no smoke cloud and no widespread glow. The fire is a foreground effect; the green background remains flat and unchanged. Only the character and specified small flame move.",
+      "index": 2,
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 9,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "One continuous nine-second comic action, in this causal order. Start standing calmly. Raise the right gloved hand and visibly SNAP thumb against middle finger once. Only AFTER the snap, a small orange-red magical flame ignites on the ground just in front of and to the viewer's left of his boots, no higher than his lower shin. He notices it, looks alarmed through head/body posture, then deliberately lifts a boot and stamps directly onto the flame twice until it is COMPLETELY extinguished. Only after the fire is gone, plant both feet, put both hands behind his back, look UP innocently and hold a guilty 'nothing happened' pose for a clear beat. Finally look back and bring arms to the exact neutral reference pose for looping. No lighter or other prop. Do not stomp before the ignition, do not skip the snap, do not restart the fire after extinguishing. Keep the flame compact and fully inside the central 75% of the frame, with no flying embers, no smoke cloud and no widespread glow. The fire is a foreground effect; the green background remains flat and unchanged. Only the character and specified small flame move.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves, black boots, chibi proportions and smooth black shadow face. The face has ONLY two solid ivory painted eye shapes with tiny paint drips. No mouth, lips, teeth, nose, pupils or iris; the area below the eyes remains featureless black in every frame. Retain original clothes, materials and anatomy. Use purposeful gestures with anticipation, brief pauses, weight and natural fabric follow-through.\n\nSolid uniform chroma green #00FF00 digital background and invisible floor, including all actual gaps; no scenery, horizon, gradient, background shadows or background transformation. Neutral white light on the character, no green bounce, green fringe or green rim lighting. Opaque clothes and eyes stay opaque. Keep the entire character sharply focused in EVERY frame, also during quick gestures: crisp naturally antialiased edges, no motion blur, soft-focus edges or artificial feathering. Locked full-body camera, scale, exposure and white balance. Preserve the spacious reference framing. ENTIRE character, every finger, both boots and all effects must remain fully inside EVERY frame with generous clear margins. No zoom, camera movement, approach toward camera, scene change, cut or dissolve. Start and finish in the exact supplied neutral pose, original position, scale and ivory eye colour, returning through genuine physical movement. Smooth settling at the loop seam. Silent video.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "id": "a8a493b8-2387-4797-8224-644d45a4943a",
+      "type": "video",
+      "status": "pending",
+      "model": "kling3_0",
+      "params": {
+        "prompt": "Animate the EXACT reference Ink character, a small charcoal-clothed chibi with a fabric hood, black gloves and boots. His face is a single seamless rigid black mask with ONLY two solid ivory painted eye shapes and tiny drips. It has NO MOUTH whatsoever, no mouth slit, lips, teeth, nostrils or moving jaw. Keep the entire lower mask smooth, blank and motionless in every frame. Eyes remain solid ivory WITHOUT pupils. Emotion comes from head angle, shoulders and gestures only.\n\nOne continuous ten-second pantomime: 0-2s standing still he raises his right gloved hand and snaps his fingers once. 2-4s a SMALL orange flame appears directly BETWEEN his boots, slightly in front, only ankle high. He looks down, surprised, with a brief shoulder recoil and a perfectly blank lower mask. 4-6s he stamps onto the flame twice with his right boot; the flame disappears completely. Keep each stomp compact, under his body, without side kicks. A tiny pale-grey puff stays right around the boots and fades completely without traveling sideways. 6-9s with both feet planted he puts both hands behind his back, tilts his head UP and holds an innocent pose as if nothing happened. 9-10s lower the chin and return physically to the exact starting pose. Silent, no whistling or talking.\n\nUse the WIDE padded framing of the reference, with the character only about HALF the frame height. Camera, character scale and position locked, NO zoom or approach. The entire character AND all flame, smoke, glow and sparks must remain inside the central 60% of the canvas in EVERY frame. Especially maintain at least 20% empty green margin on the LEFT throughout extinguishing; no effects touching any frame edge. All smoke fades locally rather than drifting out. Preserve the generous empty space, do not auto-crop or fill the screen with the figure. Full hood, fingers and soles always visible.\n\nPerfectly uniform digital chroma green #00FF00 background and invisible floor throughout; no horizon, texture, background shadows or gradient. Neutral white subject lighting; no green bounce or colored rim. Opaque clothes and eyes stay opaque. Keep silhouette sharply focused with natural antialiasing, no motion blur or feathering. No scene cuts or dissolves. No additional objects, liquids, broad glow or scenery. Begin and end at the supplied reference pose, identical position and scale, with natural settling.",
+        "aspect_ratio": "1:1",
+        "duration": 10,
+        "reference_images": [
+          "66ff70cf-78ca-4884-9b9c-b1f1658f2fd4",
+          "66ff70cf-78ca-4884-9b9c-b1f1658f2fd4"
+        ],
+        "mode": "std",
+        "sound": "off"
+      }
+    }
+  ]
+}

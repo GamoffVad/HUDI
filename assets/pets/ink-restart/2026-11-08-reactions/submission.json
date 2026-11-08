@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "578356a4-0b13-4f13-89fe-a5a63206c7a3",
+      "status": "pending"
+    },
+    {
+      "index": 1,
+      "job_id": "7314ec0f-d42b-4094-a80f-2eeb6f9a830b",
+      "status": "pending"
+    },
+    {
+      "index": 2,
+      "job_id": "652a6957-5f58-41bc-88bd-98e522f23110",
+      "status": "pending"
+    }
+  ],
+  "submitted_count": 3,
+  "failed_count": 0
+}

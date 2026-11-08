@@ -1,0 +1,47 @@
+{
+  "spent_credits": 31.5,
+  "balance_after": 0.5,
+  "installed": false,
+  "items": [
+    {
+      "index": 0,
+      "job_id": "578356a4-0b13-4f13-89fe-a5a63206c7a3",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_184006_578356a4-0b13-4f13-89fe-a5a63206c7a3.mp4",
+      "name": "indignant",
+      "status_review": "draft_identity_error",
+      "note": "Model added an unrequested mouth despite explicit prompt prohibition; do not install as approved."
+    },
+    {
+      "index": 1,
+      "job_id": "7314ec0f-d42b-4094-a80f-2eeb6f9a830b",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_184006_7314ec0f-d42b-4094-a80f-2eeb6f9a830b.mp4",
+      "name": "angry-red-eyes",
+      "status_review": "reviewed",
+      "note": "Red eyes present mid-clip, ivory at end; no extra mouth observed."
+    },
+    {
+      "index": 2,
+      "job_id": "652a6957-5f58-41bc-88bd-98e522f23110",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_184008_652a6957-5f58-41bc-88bd-98e522f23110.mp4",
+      "name": "snap-fire",
+      "status_review": "draft_identity_error",
+      "note": "Model added an unrequested mouth despite explicit prompt prohibition; do not install as approved."
+    }
+  ],
+  "retry_quote": {
+    "indignant": 9,
+    "snap_fire": 13.5,
+    "total": 22.5,
+    "shortfall": 22
+  },
+  "qa": "All 507 source frames decoded and bounded. No silhouette/effect cropping detected; 16 keyed poses per clip reviewed. Original 960x960 videos retained."
+}

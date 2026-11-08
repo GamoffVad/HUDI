@@ -1,0 +1,96 @@
+{
+  "balance_before": 128,
+  "spent_credits": 96,
+  "balance_after": 32,
+  "installed": false,
+  "selected": [
+    {
+      "index": 0,
+      "job_id": "c744a42d-a8c3-4d9f-af5a-079a80870e72",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174734_c744a42d-a8c3-4d9f-af5a-079a80870e72.mp4",
+      "name": "look-around",
+      "title": "Осматривается",
+      "file": "look-around.mp4",
+      "review_status": "reviewed",
+      "note": "All 193 frames checked for bounds; 16 freshly keyed poses inspected; starts and ends near same neutral pose."
+    },
+    {
+      "index": 1,
+      "job_id": "60fccd9f-7f1b-43ca-be66-ca597ea19b20",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_175209_60fccd9f-7f1b-43ca-be66-ca597ea19b20.mp4",
+      "name": "surprise",
+      "title": "Удивляется",
+      "file": "surprise-v2.mp4",
+      "review_status": "reviewed",
+      "note": "All 193 frames checked for bounds; 16 freshly keyed poses inspected; starts and ends near same neutral pose."
+    },
+    {
+      "index": 2,
+      "job_id": "37232f57-4216-451d-892c-451b22131217",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_175301_37232f57-4216-451d-892c-451b22131217.mp4",
+      "name": "temple",
+      "title": "Крутит пальцем у виска",
+      "file": "temple-v2.mp4",
+      "review_status": "draft_has_unwanted_drawn_circle",
+      "note": "Two attempts retained a drawn circle near temple. Do not install or claim clean. No further paid retries."
+    },
+    {
+      "index": 3,
+      "job_id": "4466c476-17e4-4f56-8ba0-8b93a9528b56",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_4466c476-17e4-4f56-8ba0-8b93a9528b56.mp4",
+      "name": "skeptical",
+      "title": "Недоверчиво скрещивает руки",
+      "file": "skeptical.mp4",
+      "review_status": "reviewed",
+      "note": "All 193 frames checked for bounds; 16 freshly keyed poses inspected; starts and ends near same neutral pose."
+    },
+    {
+      "index": 4,
+      "job_id": "8fc9c419-dc20-4607-9259-28ab5df0013d",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_8fc9c419-dc20-4607-9259-28ab5df0013d.mp4",
+      "name": "shrug",
+      "title": "Пожимает плечами",
+      "file": "shrug.mp4",
+      "review_status": "reviewed",
+      "note": "All 193 frames checked for bounds; 16 freshly keyed poses inspected; starts and ends near same neutral pose."
+    },
+    {
+      "index": 5,
+      "job_id": "e1e20f3b-1238-404e-8c44-0cc330ca2358",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_174733_e1e20f3b-1238-404e-8c44-0cc330ca2358.mp4",
+      "name": "dance",
+      "title": "Пританцовывает",
+      "file": "dance.mp4",
+      "review_status": "reviewed",
+      "note": "All 193 frames checked for bounds; 16 freshly keyed poses inspected; starts and ends near same neutral pose."
+    }
+  ],
+  "rejected": [
+    {
+      "file": "surprise.mp4",
+      "reason": "Unrequested mouth and pupils"
+    },
+    {
+      "file": "temple.mp4",
+      "reason": "Drawn circle and modified lower face"
+    }
+  ]
+}

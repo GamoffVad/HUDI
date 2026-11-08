@@ -13,7 +13,20 @@ internal static class PetVerification
         (PetAction.Wink, "Подмигнуть"), (PetAction.Sad, "Загрустить"),
         (PetAction.Surprise, "Удивиться"), (PetAction.LookAround, "Осмотреться"),
         (PetAction.Dance, "Потанцевать"), (PetAction.Hood, "Поправить капюшон"),
-        (PetAction.Pockets, "Руки в карманы"), (PetAction.Combat, "Боевая стойка")
+        (PetAction.Pockets, "Руки в карманы"), (PetAction.Combat, "Боевая стойка"),
+        (PetAction.Salute, "Воинское приветствие"), (PetAction.March, "Строевой шаг"),
+        (PetAction.Notebook, "Записать в блокнот"), (PetAction.Fire, "Огонь · первая сцена"),
+        (PetAction.FireCalm, "Огонь · спокойное начало"),
+        (PetAction.Dash, "Чернильный рывок"), (PetAction.Jump, "Прыжок"),
+        (PetAction.PaintMagic, "Стрит-арт магия"), (PetAction.ShadowMerge, "Слияние с тенью"),
+        (PetAction.SideStep, "Шаг в сторону"), (PetAction.CutThroat, "Жест по горлу"),
+        (PetAction.LookDown, "Смотреть вниз"), (PetAction.LookLeft, "Смотреть влево"),
+        (PetAction.LookRight, "Смотреть вправо"), (PetAction.LookUp, "Смотреть вверх"),
+        (PetAction.Temple, "Крутить у виска"), (PetAction.Skeptical, "Скрестить руки"),
+        (PetAction.Shrug, "Пожать плечами"),
+        (PetAction.Indignation, "Возмутиться · покрутить у виска"),
+        (PetAction.FireTrick, "Щёлкнуть · затушить огонь"),
+        (PetAction.Impatient, "Нетерпеливо ждать")
     ];
     private static byte[] Pixels(BitmapSource image)
     {
@@ -28,6 +41,10 @@ internal static class PetVerification
         var failures = new List<string>();
         var randomClickChecks=RandomActionVerification.Run(library);
         foreach(var check in randomClickChecks.Where(c=>!c.Value))failures.Add("Random click: "+check.Key);
+        var emotionChecks=EmotionVerification.Run(library,Path.Combine(output,"emotions"));
+        foreach(var check in emotionChecks.Where(c=>!c.Value))failures.Add("New emotions: "+check.Key);
+        var geometryChecks=GeometryVerification.Run();
+        foreach(var check in geometryChecks.Where(c=>!c.Value))failures.Add("Window geometry: "+check.Key);
         int maxSourceDifference = 0;
         var samples = new[] { "neutral", "think-040", "squatstretch-050", "combat-038", "angry-040", "hood-040", "pockets-040" }
             .Concat(library.FrameIds.Where(id => id.StartsWith("return-") && id.EndsWith("-036")));
@@ -37,7 +54,7 @@ internal static class PetVerification
             var actual = Pixels(visual.Snapshot(library.Width, library.Height));
             var expected = library.Pixels(id);
             for (int p = 0; p < actual.Length; p++) maxSourceDifference = Math.Max(maxSourceDifference, Math.Abs(actual[p] - expected[p]));
-            var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(visual.Snapshot()));
+            var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(visual.Snapshot(library.Width,library.Height)));
             using var file = File.Create(Path.Combine(output, id + ".png")); encoder.Save(file);
         }
         if (maxSourceDifference > 1) failures.Add("Renderer changed source pixels, including the face");
@@ -46,7 +63,9 @@ internal static class PetVerification
         int preservedEndPoses = 0, seamlessStarts = 0;
         foreach (var action in Enum.GetValues<PetAction>())
         {
-            var engine = new PetBehavior(5); engine.Trigger(action);
+            var engine = new PetBehavior(5);
+            if(!engine.Supports(action))continue;
+            engine.Trigger(action);
             var visited = new HashSet<string>(); bool ended = false;
             for (int i = 0; i < 4800; i++)
             {
@@ -104,8 +123,11 @@ internal static class PetVerification
         }
         if (longPocketVariants == 0 || shortPocketVariants == 0) failures.Add("Pocket duration is not varied");
         var automatic = new PetBehavior(17);
-        for (int i = 0; i < 300 * 60; i++) automatic.Update(1d / 60);
-        if (PetBehavior.AutomaticActions.Any(a => !automatic.SeenActions.Contains(a))) failures.Add("Missing automatic gesture");
+        double automaticBudget=PetBehavior.AutomaticActions.Where(automatic.Supports).Sum(action=>
+            library.Clips[PetBehavior.ClipName(action)].Sum(step=>step.Seconds)+6+
+            (library.Holds.TryGetValue(PetBehavior.ClipName(action),out var hold)?hold.Seconds*4:0))+10;
+        for (int i = 0; i < Math.Ceiling(automaticBudget*60); i++) automatic.Update(1d / 60);
+        if (PetBehavior.AutomaticActions.Where(automatic.Supports).Any(a => !automatic.SeenActions.Contains(a))) failures.Add("Missing automatic gesture");
         var clicked = new PetBehavior(7); clicked.Trigger(PetAction.Crouch);
         for (int i = 0; i < 120; i++) clicked.Update(1d / 60, false);
         clicked.Trigger(PetAction.Combat); clicked.Update(1d / 60, false);
@@ -113,7 +135,7 @@ internal static class PetVerification
         bool success = failures.Count == 0;
         File.WriteAllText(Path.Combine(output, "results.json"), JsonSerializer.Serialize(new
         {
-            success, failures, randomClickChecks, frames = library.FrameIds.Length, maxSourceDifference,
+            success, failures, randomClickChecks, emotionChecks, geometryChecks, frames = library.FrameIds.Length, maxSourceDifference,
             cursorTracking = false, hoverReaction = false, eyeReconstruction = false,
             preservedEndPoses, seamlessStarts, longPocketVariants, shortPocketVariants,
             minPocketHoldSeconds = minPocketHold, maxPocketHoldSeconds = maxPocketHold,
@@ -126,6 +148,7 @@ internal static class PetVerification
     {
         string output = Path.Combine(PetWindow.SettingsDirectory, "verification-v6.3", "motion-preview");
         Directory.CreateDirectory(output);
+        var library = SpriteLibrary.Shared.Value;
         var engine = new PetBehavior(1);
         var visual = new PetVisual();
         var queue = new Queue<PetAction>([PetAction.Pockets, PetAction.Think, PetAction.Crouch, PetAction.Hood]);
@@ -136,7 +159,7 @@ internal static class PetVerification
         {
             var pose = engine.Update(1d / 24, false);
             visual.Apply(pose);
-            var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(visual.Snapshot()));
+            var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(visual.Snapshot(library.Width,library.Height)));
             using (var file = File.Create(Path.Combine(output, $"{frame++:D5}.png"))) encoder.Save(file);
             if (!engine.IsPlaying)
             {

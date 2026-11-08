@@ -1,0 +1,14 @@
+Animate the EXACT small 3D grey-hooded robot in the supplied start and end image. Keep its original grey hoodie, hood, black display face, exactly two cyan LED eyes, mechanical hands, dark trousers, pale blue shoes and drawstrings. The character has no mouth, nose or eyebrows; communicate suspicion only with a slight narrowing of its two LED eyes, head angle and timing. Preserve the original number and anatomy of fingers. No human skin or costume change.
+
+One continuous 15-second full-body performance with readable, natural transitions:
+0.0-0.7 s: stand in the exact reference neutral pose, both hands empty, feet planted.
+0.7-2.8 s: reach with the character's ANATOMICAL LEFT hand into the LEFT REAR pocket, visibly pull out one small plain notebook and hold/open it in the left hand just below chest level. Do not swap hands or materialize the notebook.
+2.8-4.2 s: reach with the ANATOMICAL RIGHT hand into the RIGHT side pocket, visibly take out one pen. The notebook stays in the left hand.
+4.2-8.5 s: suspiciously look directly at the viewer with a small head tilt and slightly narrowed cyan LED eyes, then glance down and write a few short strokes in the notebook using the right-hand pen. Alternate the suspicious glance at the viewer with the act of writing once more. Keep gestures clear and playful, not aggressive. No readable text is necessary.
+8.5-10.2 s: put the pen naturally back into the right pocket; left hand continues holding the notebook.
+10.2-12.0 s: face the viewer, raise the now empty right hand and admonishingly wag ONLY the right index finger from side to side twice, a small 'no-no' gesture. Other fingers stay naturally curled. Do not point with the middle finger or make another hand sign.
+12.0-15.0 s: lower the right hand, close the notebook, put it visibly back into the left rear pocket with the left hand, then let both arms return to the supplied neutral pose and relax the eyes to their original shape. End exactly in the reference stance without teleporting the props, cutting or dissolving.
+
+Left/right refer to the robot's own anatomy, not screen coordinates. Keep feet planted; allow only a modest torso turn to reach a pocket. The original pockets need not be enlarged or redesigned. Preserve natural arm, fabric and prop contact throughout. No duplicated notebooks, pens, arms or fingers. No random walking, spinning or jumping.
+
+Locked camera, scale, framing, lighting and exposure; full body and all props always inside generous margins. Background AND floor are perfectly flat chroma green #00FF00 through the entire video, including all gaps between hands, notebook and torso and between the legs. No room, horizon, gradient, background shadow, motion blur, subtitles, watermark, extra characters or scenery. Silent video. Smooth motion into and out of the exact supplied start/end pose for a desktop character animation.

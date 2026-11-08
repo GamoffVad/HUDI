@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $releaseRoot = Join-Path $projectRoot 'output/hudi-pet-v7'
 Set-Location -LiteralPath $projectRoot
-if (-not (Test-Path -LiteralPath 'output/hudi-pet-v6.3/sprites.zip')) { throw 'Missing approved v6.3 animation pack.' }
+if (-not (Test-Path -LiteralPath 'output/hudi-pet-v7.3/sprites.zip')) { throw 'Missing approved v7.3 animation pack. Run tools/prepare-hudi-emotions.py first.' }
 New-Item -ItemType Directory -Force $releaseRoot | Out-Null
 function Run-Dotnet([string[]]$Arguments) { & dotnet @Arguments; if ($LASTEXITCODE -ne 0) { throw ('dotnet failed: '+($Arguments -join ' ')) } }
 function Run-Check([string]$Exe,[string[]]$Arguments) {
@@ -20,6 +20,7 @@ Run-Dotnet @('publish','src/HudiPet/HudiPet.csproj','-c','Release',"-p:OutputPat
 Run-Check "$releaseRoot/windows/HUDI.exe" @('--verify')
 Run-Check "$releaseRoot/windows/HUDI.exe" @('--verify-chat')
 Run-Check "$releaseRoot/windows/HUDI.exe" @('--verify-pets',"$releaseRoot/qa/pets")
+Run-Check "$releaseRoot/windows/HUDI.exe" @('--verify-sites',"$releaseRoot/qa/favorite-sites")
 if (-not $SkipUiChecks) { Run-Check "$releaseRoot/windows/HUDI.exe" @('--render-ui',"$releaseRoot/qa/chat") }
 Run-Dotnet @('publish','src/Uninstaller/Uninstaller.csproj','-c','Release','-o',"$releaseRoot/uninstaller")
 (Get-FileHash "$releaseRoot/windows/HUDI.exe" -Algorithm SHA256).Hash | Set-Content -LiteralPath "$releaseRoot/payload.sha256" -NoNewline
@@ -40,6 +41,7 @@ New-Item -ItemType Directory -Force "$releaseRoot/docs" | Out-Null
 Copy-Item -LiteralPath docs/pet-package-format.md -Destination "$releaseRoot/docs/pet-package-format.md" -Force
 Copy-Item -LiteralPath docs/model-providers.md -Destination "$releaseRoot/docs/model-providers.md" -Force
 Copy-Item -LiteralPath docs/window-transparency.md -Destination "$releaseRoot/docs/window-transparency.md" -Force
+Copy-Item -LiteralPath docs/favorite-sites.md -Destination "$releaseRoot/docs/favorite-sites.md" -Force
 $artifacts=@("$releaseRoot/distribution/HUDI.Setup.exe")
 if (-not $SkipPublisher) { $artifacts+="$releaseRoot/publisher/PetKeys.exe" }
 Get-FileHash -LiteralPath $artifacts -Algorithm SHA256 | Select-Object Path,Hash | ConvertTo-Json | Set-Content -LiteralPath "$releaseRoot/checksums.json"

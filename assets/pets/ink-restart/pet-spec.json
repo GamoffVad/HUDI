@@ -1,0 +1,24 @@
+{
+  "name": "Инк",
+  "package": "output/ink-pet-v2.5/Ink.pet",
+  "reference": "assets/pets/ink/reference-green.png",
+  "identity": "Small shadow creature in charcoal hood, layered dark jacket, black gloves and boots; two warm ivory painted eyes, no mouth.",
+  "clips": [
+    "hood",
+    "lookaround",
+    "surprise",
+    "temple",
+    "skeptical",
+    "shrug",
+    "dance",
+    "indignation",
+    "firetrick",
+    "impatient"
+  ],
+  "sourceSet": "First approved loop plus all six selected scenes from 2026-11-08-six/selected.json; indignation and impatient from 2026-11-08-extra-reactions/review.json; firetrick replaced by 2026-11-08-fire-wide/fire-wide.mp4",
+  "knownSourceArtifact": "The temple gesture retains a small drawn circle. Disclosed before the user requested integration.",
+  "playback": "Whole-frame 24 fps; shuffled ten-action set; complete each action and natural exit.",
+  "geometry": "960-square common canvas; unchanged displayBounds preserve current visible size and position. Fire uses a single uniform transform measured from neutral standing height and boot baseline; start/end registration is checked within 2 px. No per-frame auto-sizing.",
+  "matting": "Fresh source-video matte, opaque interior recovery, centered alpha-edge refinement. Wide fire reference uses one fixed premultiplied transform back to the common anchor. Warm glow solve applies only to valid warm light, never neutral garment edges; remove green interpolation overshoot without changing alpha. Audit all frames for green AND magenta spill and effect clipping.",
+  "collection": "Separate pet package. Do not change HUDI assets, clicks, notes, favorites or model settings. Preserve selected pet after installation."
+}

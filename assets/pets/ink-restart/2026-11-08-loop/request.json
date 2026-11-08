@@ -1,0 +1,24 @@
+{
+  "status": "prepared",
+  "quoted_credits": 12,
+  "balance_before": 140,
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "duration": 8,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+      },
+      {
+        "role": "end_image",
+        "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+      }
+    ],
+    "prompt": "Animate the exact supplied Ink shadow creature in ONE seamless 8-second idle loop. You are the animation director: choose the most characterful coherent idea, timing and small gestures. Suggested alternatives, not a checklist: guarded standing with hands slipping into jacket pockets; a quick suspicious glance followed by a relaxed settle; a small hood adjustment; a confident weight shift with gentle jacket and hood inertia. Choose one idea or a restrained natural combination, not a montage. Personality: secretive, alert, slightly cheeky; crisp purposeful gestures with smooth anticipation and settling. Remain in place. Preserve the oversized charcoal fabric hood, layered dark jacket, gloves, black boots, chibi proportions, smooth black shadow face and exactly two warm ivory slanted painted eyes with tiny white paint drips. No mouth or robot features. No liquid transformations, splashes, smoke or added props.\nOnly the character moves. The perfectly uniform solid chroma green #00FF00 digital background and invisible floor remain unchanged, including all actual gaps. Neutral white subject lighting independent of the green plate; no green reflections, fringe, rim light, glow, background gradients or cast shadows. All clothes and eyes remain opaque, with crisp antialiased edges and no motion blur.\nLocked full-body camera, fixed scale, exposure and white balance. Keep the ENTIRE character including hood, hands, fingers and boots fully inside EVERY frame with generous empty margins. No cropping, zoom, camera movement, approach toward camera or scene changes.\nBegin and end in the exact supplied neutral reference pose at the same position, scale, expression and lighting. Return through real physical motion; match movement velocity at the loop boundary so repetition has no jump. No dissolves, cuts or reversed playback. Silent video.",
+    "sound": "off"
+  }
+}

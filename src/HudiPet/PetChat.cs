@@ -68,6 +68,7 @@ internal sealed partial class PetWindow
     }
     internal void OpenChat(bool question)
     {
+        CloseFavoriteSites();
         menuWindow?.Close();menuWindow=null;
         if(chat.Busy){ShowThinking();return;}
         EnsureChat(true,window=>
@@ -78,6 +79,7 @@ internal sealed partial class PetWindow
     }
     internal void OpenSettings()
     {
+        CloseFavoriteSites();
         menuWindow?.Close();menuWindow=null;
         if(settingsWindow is { IsClosing:false }) { settingsWindow.Show();settingsWindow.Activate();return; }
         settingsWindow = new SettingsWindow(this,modelSettings,apiKey,modelClient,(value,key)=>
@@ -89,6 +91,7 @@ internal sealed partial class PetWindow
     }
     internal void OpenMenu()
     {
+        CloseFavoriteSites();
         if(menuWindow is { IsClosing:false })menuWindow.Close();
         var menu=new GlassWindow(this,PetName,270);menuWindow=menu;
         SettingsAppearance.Apply(menu);
@@ -101,20 +104,33 @@ internal sealed partial class PetWindow
         void Main()
         {
             menu.Heading.Text=PetName;menu.Body.Children.Clear();
-            menu.Body.Children.Add(Row("\uE8BD","Открыть чат",()=>OpenChat(true),"3 клика"));
+            menu.Body.Children.Add(Row("\uE8BD","Открыть чат",()=>OpenChat(true),ClickBindings.HintFor(PetClickAction.Chat)));
             if(!string.IsNullOrEmpty(chat.Answer))menu.Body.Children.Add(Row("\uE8A5","Последний ответ",()=>OpenChat(false)));
-            menu.Body.Children.Add(Row("\uE70B","Заметки",OpenNotes,"2 клика"));
+            menu.Body.Children.Add(Row("\uE70B","Заметки",OpenNotes,ClickBindings.HintFor(PetClickAction.Notes)));
+            menu.Body.Children.Add(Row("\uE71B","Сайты и программы…",OpenFavoriteSitesSettings));
             if(chat.Busy)menu.Body.Children.Add(Row("\uE711","Отменить запрос",()=>{chat.Cancel();menu.Close();}));
             menu.Body.Children.Add(Row("\uE768","Движения",()=>Page("Движения",body=>
             {
+                // Keep Back and the header visible when the growing action list scrolls.
+                var movements=new StackPanel();
+                var scroll=new ScrollViewer
+                {
+                    Content=movements,VerticalScrollBarVisibility=ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility=ScrollBarVisibility.Disabled,
+                    MaxHeight=Math.Max(80,Math.Min(440,ScreenPlacement.WorkArea(this).Height-100)),
+                    Padding=new Thickness(0),CanContentScroll=false
+                };
+                System.Windows.Automation.AutomationProperties.SetName(scroll,"Движения питомца");
                 foreach(var(action,label) in PetVerification.ActionLabels)
                 {
                     if(!behavior.Supports(action))continue;
                     var row=Row("\uE734",label,()=> { paused=false;behavior.Trigger(action);menu.Close(); });
-                    row.IsEnabled=!chat.Busy;body.Children.Add(row);
+                    row.IsEnabled=!chat.Busy;movements.Children.Add(row);
                 }
+                body.Children.Add(scroll);
             }),"›"));
             menu.Body.Children.Add(Row("\uE713","Модель и API",OpenSettings));
+            menu.Body.Children.Add(Row("\uE713","Управление",OpenClickSettings));
             menu.Body.Children.Add(Row("\uE77B","Питомцы",OpenPetSettings));
             menu.Body.Children.Add(Row("\uE740","Внешний вид",()=>Page("Внешний вид",body=>
             {
@@ -132,6 +148,7 @@ internal sealed partial class PetWindow
     }
     internal void OpenNotes()
     {
+        CloseFavoriteSites();
         menuWindow?.Close();menuWindow=null;
         if(notesWindow is {IsClosing:false}){notesWindow.Activate();return;}
         notesWindow=new NotesWindow(this,new NotesStore(uiTest?System.IO.Path.Combine(SettingsDirectory,"ui-test"):null));notesWindow.Show();
@@ -140,10 +157,10 @@ internal sealed partial class PetWindow
     {
         var panel=new StackPanel {Margin=new Thickness(2,12,2,4)};
         var caption=new DockPanel();var value=Ui.Text("",12,Ui.Accent);DockPanel.SetDock(value,Dock.Right);caption.Children.Add(value);caption.Children.Add(Ui.Text("Размер питомца",13));panel.Children.Add(caption);
-        var slider=new Slider {Minimum=180,Maximum=Math.Max(180,Math.Min(720,ScreenPlacement.WorkArea(this).Height)),Value=Height,SmallChange=5,LargeChange=30,IsMoveToPointEnabled=true,Margin=new Thickness(0,10,0,2),Style=(Style)menu.FindResource("PetSizeSlider")};
+        var slider=new Slider {Minimum=180,Maximum=Math.Max(180,Math.Min(720,ScreenPlacement.WorkArea(this).Height*library.DisplayBounds.Height/library.Height)),Value=DisplayHeight,SmallChange=5,LargeChange=30,IsMoveToPointEnabled=true,Margin=new Thickness(0,10,0,2),Style=(Style)menu.FindResource("PetSizeSlider")};
         System.Windows.Automation.AutomationProperties.SetName(slider,"Размер питомца");
-        void Label()=>value.Text=Math.Round(Height/360*100)+" %";
-        slider.ValueChanged+=(_,_)=>{ResizePet(slider.Value);Label();};
+        void Label()=>value.Text=Math.Round(DisplayHeight/360*100)+" %";
+        slider.ValueChanged+=(_,_)=>{ResizePet(slider.Value*library.Height/library.DisplayBounds.Height);Label();};
         // Keep the track under the pointer while the pet changes height below it.
         slider.AddHandler(Thumb.DragStartedEvent,new DragStartedEventHandler((_,_)=>menu.FollowAnchor=false));
         slider.AddHandler(Thumb.DragCompletedEvent,new DragCompletedEventHandler((_,_)=>{menu.FollowAnchor=true;menu.Place();}));

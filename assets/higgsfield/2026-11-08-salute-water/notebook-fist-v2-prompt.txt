@@ -1,0 +1,20 @@
+Animate the EXACT small grey-hooded 3D robot in the supplied start and end reference. Preserve its proportions, grey fabric hoodie and raised hood, black display with exactly two cyan LED eyes, original mechanical hands, dark trousers, pale blue sneakers and drawstrings. No mouth, nose, eyebrows, human skin or costume change.
+
+The clear story is: a suspicious little inspector takes notes about the viewer, then sternly SHAKES A CLOSED FIST at the viewer. This is a readable cartoon warning gesture, with no attack or contact.
+
+One continuous 15-second full-body performance:
+0.0-0.6: reference neutral pose, empty hands.
+0.6-2.4: the robot's anatomical LEFT hand reaches into its LEFT REAR pocket, retrieves one small plain notebook and opens it in the left hand.
+2.4-3.5: the anatomical RIGHT hand retrieves one pen from the RIGHT pocket.
+3.5-6.8: write short strokes with the right hand in the left-held notebook. Alternate a glance at the notes with a suspicious, narrowed-eye look directly at the viewer.
+6.8-7.7: put the pen back into the right pocket. Keep the notebook in the left hand.
+7.7-8.6: stop writing, look directly at the viewer with a stern lowered-head stare. Deliberately curl ALL right fingers tightly into a CLOSED FIST with thumb resting across the curled fingers. Raise this closed fist beside the shoulder, clearly separated from the face silhouette.
+8.6-11.4: HOLD THE FIST CLOSED THROUGHOUT. Lean slightly toward the viewer and shake the raised fist twice with two compact, emphatic forward-and-back warning motions from the bent elbow. The fist travels only about one fist-width and returns beside the shoulder between pulses. Show the knuckles to the viewer. A firm little head nod reinforces the warning. Keep the left hand and notebook lowered and still. The gesture must clearly read as 'I'll get you!' / 'You'd better behave!' from a stern cartoon character. No smiling or greeting.
+11.4-12.2: hold the clenched fist still for a beat and maintain eye contact, then naturally lower the arm and relax the fingers.
+12.2-15.0: close and put the notebook back in the left rear pocket, return both empty hands and eyes to the exact reference neutral stance.
+
+CRITICAL HAND ACTING: the warning hand is a compact CLOSED FIST, all fingers folded together, no extended index finger, no pointing, no finger wag, no open palm, no waving hello or goodbye, no flapping wrist, no punching, no hitting. The two small fist shakes are deliberate and stern, not a broad swinging arm. Preserve natural hand anatomy and original finger count. Props remain physically held until returned to their pockets; no disappearing or duplicated props.
+
+Keep feet planted, entire body and all gestures within generous green margins. Fixed camera, framing, scale, focus, exposure and character lighting; no camera motion or cuts. Smooth continuous body mechanics, sharp clean frames without motion blur. Return physically to the exact supplied ending pose.
+
+BACKGROUND IS A FLAT DIGITAL CHROMA MATTE: solid uniform pure #00FF00 across the entire image, floor and all gaps between arms, props and body. No studio floor, horizon, lighting falloff, vignette, gradient, glow, background shadows, texture or green spill. The background remains exactly the same uniform green throughout. Silent video; no text or watermark.

@@ -1,0 +1,35 @@
+{
+  "account": "gamx81@proton.me",
+  "balance_before": 494.05,
+  "balance_after": 455.05,
+  "credits_spent": 39,
+  "installed": false,
+  "clips": [
+    {
+      "name": "indignant-temple",
+      "file": "indignant-temple.mp4",
+      "job_id": "31515a6e-c14e-4292-88b3-8cc0dae3552f",
+      "duration": 8,
+      "frames": 193,
+      "review": "No mouth seen in all frame face sheets; compact repeated index-finger motion at temple; whole character stays inside frame."
+    },
+    {
+      "name": "snap-fire-innocent",
+      "file": "snap-fire-innocent-fixed.mp4",
+      "original": "snap-fire-innocent.mp4",
+      "job_id": "589b120a-f600-49f3-b29a-6c34355d64d7",
+      "duration": 10,
+      "frames": 241,
+      "review": "Original had mouth and pupils during upward glance. Local lower-face video retouch removes mouth and fills eye holes. Corrected facial transition sheets inspected. Snap precedes fire; boot extinguishes fire; hands behind back and skyward glance follow. No clipping.",
+      "notes": "Generated flame casts broad local warm light; effects need separate matte treatment during future sprite integration."
+    },
+    {
+      "name": "impatient",
+      "file": "impatient.mp4",
+      "job_id": "e563a1a9-8585-4944-8610-95f46dc059ff",
+      "duration": 8,
+      "frames": 193,
+      "review": "Crossed arms, repeated boot tap, upward head/eye gesture, neutral return. No mouth seen in all frame face sheets. Whole silhouette inside all frames."
+    }
+  ]
+}

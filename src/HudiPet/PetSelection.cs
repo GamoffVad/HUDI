@@ -21,6 +21,7 @@ internal sealed partial class PetWindow
     }
     internal void OpenPetSettings()
     {
+        CloseFavoriteSites();
         menuWindow?.Close();menuWindow=null;
         if(petSettings is {IsClosing:false}){petSettings.Activate();return;}
         bool restore=settingsWindow is {IsVisible:true};if(restore)settingsWindow!.Hide();
@@ -39,10 +40,11 @@ internal sealed partial class PetWindow
             var visual=new PetVisual(next);var controller=new PetBehavior(sprites:next);
             Pets.Select(pet);
             var previous=library;bool dispose=!selectedPet.BuiltIn;
-            double center=Left+Width/2,bottom=Top+Height;
+            var displayed=DisplayedBounds;
             CancelPetClicks();character.ReleaseMouseCapture();dragOrigin=null;dragging=false;
+            CloseFavoriteSites();
             library=next;selectedPet=pet;character=visual;behavior=controller;Content=character;
-            Width=Height*library.Width/library.Height;Left=center-Width/2;Top=bottom-Height;
+            SetWindowBounds(WindowForDisplay(displayed,new(library.Width,library.Height),library.DisplayBounds));
             Title=PetName+" — живой питомец";chatWindow?.Close();chatWindow=null;chatDraft="";chat.ClearHistory();paused=false;previousTime=clock.Elapsed.TotalSeconds;
             ClampToScreen();SaveSettings();if(dispose)previous.Dispose();
         }

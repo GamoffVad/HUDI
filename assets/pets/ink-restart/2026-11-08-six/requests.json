@@ -1,0 +1,150 @@
+{
+  "balance_before": 128,
+  "quoted_total": 72,
+  "requests": [
+    {
+      "index": 0,
+      "name": "look-around",
+      "title": "Осматривается",
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 8,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate this ONE distinct action: Look around with lively curiosity: a quick glance to screen left, briefly down near the boots, then up to screen right, followed by a small alert look over the opposite shoulder. Vary the timing with short curious pauses; head leads and shoulders subtly follow. Keep both boots planted. Finish by looking back at the viewer in the original pose. This is only a scanning-around gesture, no hood adjustment.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves and boots, chibi proportions, smooth black shadow face, two warm ivory slanted painted eyes with small white paint drips. Eyes can blink, widen and narrow expressively while preserving their identity; no mouth, nose or robot features. Personality: secretive, curious, cheeky and very alive. Use clear anticipation, brief asymmetric pauses, expressive head and shoulder motion and natural clothing follow-through, with smooth settling after crisp gestures. No new props, ink effects, smoke or liquid transformations.\nOnly the character moves. Perfectly uniform solid chroma green #00FF00 digital background and invisible floor remain unchanged, including actual gaps between limbs. Neutral white subject lighting independent of the plate, no green reflections, fringe, rim light, glow, gradients or cast background shadows. Opaque clothes and eyes remain opaque; crisp antialiased silhouette without motion blur.\nLocked full-body camera, scale, exposure and white balance. Keep the ENTIRE character, all fingers, boots and the complete movement envelope fully inside EVERY frame with generous empty margins. No zoom, camera movement, approach toward camera, cropping or scene changes.\nOne seamless eight-second loop. Start and finish in the exact supplied neutral pose, original position, scale, eye shape and lighting. Return through real physical motion and smoothly settle to matching velocity at the seam; no cuts, dissolve or reverse playback. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "name": "surprise",
+      "title": "Удивляется",
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 8,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate this ONE distinct action: React to an imaginary surprise just above the viewer: notice it, eyes widen, head and shoulders pull back, gloved hands lift slightly with palms open, knees soften in a small recoil. Hold a short surprised beat, blink twice, relax with a relieved shoulder drop and return to the original neutral pose. No jumps or travel.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves and boots, chibi proportions, smooth black shadow face, two warm ivory slanted painted eyes with small white paint drips. Eyes can blink, widen and narrow expressively while preserving their identity; no mouth, nose or robot features. Personality: secretive, curious, cheeky and very alive. Use clear anticipation, brief asymmetric pauses, expressive head and shoulder motion and natural clothing follow-through, with smooth settling after crisp gestures. No new props, ink effects, smoke or liquid transformations.\nOnly the character moves. Perfectly uniform solid chroma green #00FF00 digital background and invisible floor remain unchanged, including actual gaps between limbs. Neutral white subject lighting independent of the plate, no green reflections, fringe, rim light, glow, gradients or cast background shadows. Opaque clothes and eyes remain opaque; crisp antialiased silhouette without motion blur.\nLocked full-body camera, scale, exposure and white balance. Keep the ENTIRE character, all fingers, boots and the complete movement envelope fully inside EVERY frame with generous empty margins. No zoom, camera movement, approach toward camera, cropping or scene changes.\nOne seamless eight-second loop. Start and finish in the exact supplied neutral pose, original position, scale, eye shape and lighting. Return through real physical motion and smoothly settle to matching velocity at the seam; no cuts, dissolve or reverse playback. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "name": "temple",
+      "title": "Крутит пальцем у виска",
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 8,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate this ONE distinct action: Give the viewer a cheeky 'are you crazy?' gesture: tilt the head, raise the right hand beside the hood at the temple, clearly extend ONLY the index finger while the other fingers curl. Trace TWO small readable circles with the fingertip next to the temple, without touching or penetrating the hood. A skeptical eye squint and small head shake support the gesture. Lower the hand naturally and return to neutral. Keep this precise finger-circling gesture distinct from waving, pointing or wagging.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves and boots, chibi proportions, smooth black shadow face, two warm ivory slanted painted eyes with small white paint drips. Eyes can blink, widen and narrow expressively while preserving their identity; no mouth, nose or robot features. Personality: secretive, curious, cheeky and very alive. Use clear anticipation, brief asymmetric pauses, expressive head and shoulder motion and natural clothing follow-through, with smooth settling after crisp gestures. No new props, ink effects, smoke or liquid transformations.\nOnly the character moves. Perfectly uniform solid chroma green #00FF00 digital background and invisible floor remain unchanged, including actual gaps between limbs. Neutral white subject lighting independent of the plate, no green reflections, fringe, rim light, glow, gradients or cast background shadows. Opaque clothes and eyes remain opaque; crisp antialiased silhouette without motion blur.\nLocked full-body camera, scale, exposure and white balance. Keep the ENTIRE character, all fingers, boots and the complete movement envelope fully inside EVERY frame with generous empty margins. No zoom, camera movement, approach toward camera, cropping or scene changes.\nOne seamless eight-second loop. Start and finish in the exact supplied neutral pose, original position, scale, eye shape and lighting. Return through real physical motion and smoothly settle to matching velocity at the seam; no cuts, dissolve or reverse playback. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "name": "skeptical",
+      "title": "Недоверчиво скрещивает руки",
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 8,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate this ONE distinct action: Show suspicious disbelief: glance sideways, slowly cross both arms over the chest, shift weight onto one planted boot, tilt the head slightly and narrow the eyes toward the viewer. Hold briefly, give one small doubtful head shake, then uncross the arms and return naturally to the original neutral pose. All movement remains in place.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves and boots, chibi proportions, smooth black shadow face, two warm ivory slanted painted eyes with small white paint drips. Eyes can blink, widen and narrow expressively while preserving their identity; no mouth, nose or robot features. Personality: secretive, curious, cheeky and very alive. Use clear anticipation, brief asymmetric pauses, expressive head and shoulder motion and natural clothing follow-through, with smooth settling after crisp gestures. No new props, ink effects, smoke or liquid transformations.\nOnly the character moves. Perfectly uniform solid chroma green #00FF00 digital background and invisible floor remain unchanged, including actual gaps between limbs. Neutral white subject lighting independent of the plate, no green reflections, fringe, rim light, glow, gradients or cast background shadows. Opaque clothes and eyes remain opaque; crisp antialiased silhouette without motion blur.\nLocked full-body camera, scale, exposure and white balance. Keep the ENTIRE character, all fingers, boots and the complete movement envelope fully inside EVERY frame with generous empty margins. No zoom, camera movement, approach toward camera, cropping or scene changes.\nOne seamless eight-second loop. Start and finish in the exact supplied neutral pose, original position, scale, eye shape and lighting. Return through real physical motion and smoothly settle to matching velocity at the seam; no cuts, dissolve or reverse playback. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "name": "shrug",
+      "title": "Пожимает плечами",
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 8,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate this ONE distinct action: Give an expressive puzzled shrug: look briefly down and back at the viewer, raise both shoulders and bring bent forearms outward with palms up, tilt the head with an asymmetric questioning eye expression. Pause for a beat, give a small second shoulder lift, then let arms and shoulders relax and return to the original pose. A clear compact 'I have no idea' gesture.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves and boots, chibi proportions, smooth black shadow face, two warm ivory slanted painted eyes with small white paint drips. Eyes can blink, widen and narrow expressively while preserving their identity; no mouth, nose or robot features. Personality: secretive, curious, cheeky and very alive. Use clear anticipation, brief asymmetric pauses, expressive head and shoulder motion and natural clothing follow-through, with smooth settling after crisp gestures. No new props, ink effects, smoke or liquid transformations.\nOnly the character moves. Perfectly uniform solid chroma green #00FF00 digital background and invisible floor remain unchanged, including actual gaps between limbs. Neutral white subject lighting independent of the plate, no green reflections, fringe, rim light, glow, gradients or cast background shadows. Opaque clothes and eyes remain opaque; crisp antialiased silhouette without motion blur.\nLocked full-body camera, scale, exposure and white balance. Keep the ENTIRE character, all fingers, boots and the complete movement envelope fully inside EVERY frame with generous empty margins. No zoom, camera movement, approach toward camera, cropping or scene changes.\nOne seamless eight-second loop. Start and finish in the exact supplied neutral pose, original position, scale, eye shape and lighting. Return through real physical motion and smoothly settle to matching velocity at the seam; no cuts, dissolve or reverse playback. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "name": "dance",
+      "title": "Пританцовывает",
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 8,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate this ONE distinct action: Perform a short playful street groove: two small rhythmic weight shifts with knee bounces and alternating shoulder dips, followed by a compact side-step and matching step back with a relaxed small arm swing. Feet clearly lift and plant with weight, jacket follows with slight inertia. Confident cheeky rhythm, not robotic shaking. Stay within half a body width of the original position; finish exactly in the original neutral pose.\n\nPreserve the exact supplied Ink shadow creature: oversized charcoal fabric hood, layered dark jacket, black gloves and boots, chibi proportions, smooth black shadow face, two warm ivory slanted painted eyes with small white paint drips. Eyes can blink, widen and narrow expressively while preserving their identity; no mouth, nose or robot features. Personality: secretive, curious, cheeky and very alive. Use clear anticipation, brief asymmetric pauses, expressive head and shoulder motion and natural clothing follow-through, with smooth settling after crisp gestures. No new props, ink effects, smoke or liquid transformations.\nOnly the character moves. Perfectly uniform solid chroma green #00FF00 digital background and invisible floor remain unchanged, including actual gaps between limbs. Neutral white subject lighting independent of the plate, no green reflections, fringe, rim light, glow, gradients or cast background shadows. Opaque clothes and eyes remain opaque; crisp antialiased silhouette without motion blur.\nLocked full-body camera, scale, exposure and white balance. Keep the ENTIRE character, all fingers, boots and the complete movement envelope fully inside EVERY frame with generous empty margins. No zoom, camera movement, approach toward camera, cropping or scene changes.\nOne seamless eight-second loop. Start and finish in the exact supplied neutral pose, original position, scale, eye shape and lighting. Return through real physical motion and smoothly settle to matching velocity at the seam; no cuts, dissolve or reverse playback. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          },
+          {
+            "role": "end_image",
+            "value": "dbc0ec9c-0a1b-4899-a171-bb6672968d2b"
+          }
+        ]
+      }
+    }
+  ]
+}

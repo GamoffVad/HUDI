@@ -1,0 +1,9 @@
+Animate the exact translucent BLUE liquid-water sphere in the supplied image as a smooth seamless 5-second looping desktop UI material. Keep the pale sky-blue colour matched to the robot's blue sneakers, delicate blue-white reflections and transparent center. No teal or green material tint. No icons, letters, symbols or character inside the sphere.
+
+The sphere remains almost perfectly round, fixed at the exact same center and average diameter. Allow only a gentle approximately 1% oval deformation of the outline, with preserved volume and slow continuously changing orientation. No large wobble, lumpy shape, breathing size changes, drifting or bouncing.
+
+Inside the sphere, two or three soft water caustic bands and reflections continuously flow and curl. Their movement should be clearly visible at small UI size, restrained but not almost static. Smooth, calm liquid motion with consistent speed and no jitter, flickering, popping, fast oscillation or abrupt keyframe changes. The main lighting stays consistent. The interior must transmit the green background strongly, preserving the clear watery appearance rather than turning into an opaque pearl, metal ball or thick hollow ring. No splashes or detached droplets.
+
+Make a true forward-playing seamless cycle: the final silhouette, internal water phase, lighting and motion velocity meet the first frame naturally. No pause at the seam, no fade, no dissolve, no reversed playback. The start and end image are the same visual reference.
+
+Camera, scale, focus, lighting and exposure are fully locked. Background stays perfectly uniform chroma green #00FF00 everywhere outside the sphere and visible through the transparent center. No floor, horizon, background gradient, drop shadow, noise, text or watermark. Leave the same generous green margin around the whole sphere in every frame. Silent video.

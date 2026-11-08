@@ -1,0 +1,535 @@
+{
+  "source": "snap-fire-innocent.mp4",
+  "output": "snap-fire-innocent-fixed.mp4",
+  "frames": 241,
+  "edits": [
+    {
+      "frame": 158,
+      "mouth_centre": [
+        452,
+        445
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 159,
+      "mouth_centre": [
+        452,
+        445
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 160,
+      "mouth_centre": [
+        452,
+        445
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 161,
+      "mouth_centre": [
+        452,
+        445
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 162,
+      "mouth_centre": [
+        450,
+        442
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 163,
+      "mouth_centre": [
+        449,
+        438
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 164,
+      "mouth_centre": [
+        448,
+        430
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 165,
+      "mouth_centre": [
+        448,
+        425
+      ],
+      "pupil_pixels": 9
+    },
+    {
+      "frame": 166,
+      "mouth_centre": [
+        446,
+        418
+      ],
+      "pupil_pixels": 2
+    },
+    {
+      "frame": 167,
+      "mouth_centre": [
+        448,
+        414
+      ],
+      "pupil_pixels": 99
+    },
+    {
+      "frame": 168,
+      "mouth_centre": [
+        448,
+        410
+      ],
+      "pupil_pixels": 213
+    },
+    {
+      "frame": 169,
+      "mouth_centre": [
+        449,
+        406
+      ],
+      "pupil_pixels": 225
+    },
+    {
+      "frame": 170,
+      "mouth_centre": [
+        450,
+        403
+      ],
+      "pupil_pixels": 232
+    },
+    {
+      "frame": 171,
+      "mouth_centre": [
+        450,
+        402
+      ],
+      "pupil_pixels": 247
+    },
+    {
+      "frame": 172,
+      "mouth_centre": [
+        450,
+        399
+      ],
+      "pupil_pixels": 226
+    },
+    {
+      "frame": 173,
+      "mouth_centre": [
+        450,
+        397
+      ],
+      "pupil_pixels": 235
+    },
+    {
+      "frame": 174,
+      "mouth_centre": [
+        450,
+        396
+      ],
+      "pupil_pixels": 225
+    },
+    {
+      "frame": 175,
+      "mouth_centre": [
+        450,
+        395
+      ],
+      "pupil_pixels": 216
+    },
+    {
+      "frame": 176,
+      "mouth_centre": [
+        450,
+        394
+      ],
+      "pupil_pixels": 216
+    },
+    {
+      "frame": 177,
+      "mouth_centre": [
+        450,
+        393
+      ],
+      "pupil_pixels": 206
+    },
+    {
+      "frame": 178,
+      "mouth_centre": [
+        450,
+        393
+      ],
+      "pupil_pixels": 205
+    },
+    {
+      "frame": 179,
+      "mouth_centre": [
+        450,
+        392
+      ],
+      "pupil_pixels": 218
+    },
+    {
+      "frame": 180,
+      "mouth_centre": [
+        450,
+        392
+      ],
+      "pupil_pixels": 196
+    },
+    {
+      "frame": 181,
+      "mouth_centre": [
+        450,
+        392
+      ],
+      "pupil_pixels": 199
+    },
+    {
+      "frame": 182,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 203
+    },
+    {
+      "frame": 183,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 197
+    },
+    {
+      "frame": 184,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 237
+    },
+    {
+      "frame": 185,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 241
+    },
+    {
+      "frame": 186,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 239
+    },
+    {
+      "frame": 187,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 234
+    },
+    {
+      "frame": 188,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 219
+    },
+    {
+      "frame": 189,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 225
+    },
+    {
+      "frame": 190,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 227
+    },
+    {
+      "frame": 191,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 243
+    },
+    {
+      "frame": 192,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 218
+    },
+    {
+      "frame": 193,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 225
+    },
+    {
+      "frame": 194,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 233
+    },
+    {
+      "frame": 195,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 237
+    },
+    {
+      "frame": 196,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 232
+    },
+    {
+      "frame": 197,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 251
+    },
+    {
+      "frame": 198,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 280
+    },
+    {
+      "frame": 199,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 270
+    },
+    {
+      "frame": 200,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 256
+    },
+    {
+      "frame": 201,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 257
+    },
+    {
+      "frame": 202,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 205
+    },
+    {
+      "frame": 203,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 247
+    },
+    {
+      "frame": 204,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 249
+    },
+    {
+      "frame": 205,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 241
+    },
+    {
+      "frame": 206,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 246
+    },
+    {
+      "frame": 207,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 253
+    },
+    {
+      "frame": 208,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 247
+    },
+    {
+      "frame": 209,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 262
+    },
+    {
+      "frame": 210,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 253
+    },
+    {
+      "frame": 211,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 228
+    },
+    {
+      "frame": 212,
+      "mouth_centre": [
+        450,
+        391
+      ],
+      "pupil_pixels": 211
+    },
+    {
+      "frame": 213,
+      "mouth_centre": [
+        450,
+        393
+      ],
+      "pupil_pixels": 197
+    },
+    {
+      "frame": 214,
+      "mouth_centre": [
+        450,
+        396
+      ],
+      "pupil_pixels": 187
+    },
+    {
+      "frame": 215,
+      "mouth_centre": [
+        450,
+        400
+      ],
+      "pupil_pixels": 240
+    },
+    {
+      "frame": 216,
+      "mouth_centre": [
+        450,
+        403
+      ],
+      "pupil_pixels": 254
+    },
+    {
+      "frame": 217,
+      "mouth_centre": [
+        450,
+        408
+      ],
+      "pupil_pixels": 175
+    },
+    {
+      "frame": 218,
+      "mouth_centre": [
+        448,
+        412
+      ],
+      "pupil_pixels": 5
+    },
+    {
+      "frame": 219,
+      "mouth_centre": [
+        450,
+        416
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 220,
+      "mouth_centre": [
+        450,
+        416
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 221,
+      "mouth_centre": [
+        450,
+        416
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 222,
+      "mouth_centre": [
+        450,
+        416
+      ],
+      "pupil_pixels": 0
+    },
+    {
+      "frame": 223,
+      "mouth_centre": [
+        450,
+        416
+      ],
+      "pupil_pixels": 0
+    }
+  ]
+}

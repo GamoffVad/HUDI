@@ -1,0 +1,17 @@
+{
+  "frames": 120,
+  "fps": 24,
+  "size": 192,
+  "source": "assets/higgsfield/2026-11-08-salute-water/blue-water-sphere-loop.mp4",
+  "job_id": "8ad53a24-06e0-490c-80ee-bdc729b0310f",
+  "fixed_crop": [
+    112.0,
+    112.0,
+    732,
+    732
+  ],
+  "tint": "source colours; chroma despill only",
+  "seam_mean_premult_delta_before": 0.006735743954777718,
+  "seam_mean_premult_delta_after": 0.00039081944851204753,
+  "seam_correction_frames": 12
+}

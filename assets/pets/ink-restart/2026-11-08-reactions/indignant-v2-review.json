@@ -1,0 +1,14 @@
+{
+  "job_id": "2c3e914c-19e0-4217-820f-a4b641fca98f",
+  "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3G8kH0X5EBsrvzkMS5MHEFTjHLh/hf_20261108_190035_2c3e914c-19e0-4217-820f-a4b641fca98f.mp4",
+  "account": "gamx81@proton.me",
+  "credits_spent": 9,
+  "balance_after": 494.05,
+  "source_file": "indignant-v2.mp4",
+  "source_review": "Rejected as-is: model added a small animated mouth despite explicit mouthless identity rules.",
+  "corrected_file": "indignant-mouthless.mp4",
+  "correction": "Local video retouch of the small lower-face mouth region in frames 39-120; original retained. Script and per-frame retouch bounds saved.",
+  "visual_review": "All 145 source face crops inspected. Corrected frames 30-119 inspected after retouch; unchanged beginning and ending checked in the source. No visible mouth remains; no subject clipping. 16 matted full-body samples inspected.",
+  "installed": false,
+  "status": "Corrected preview ready; sprite package integration is separate."
+}

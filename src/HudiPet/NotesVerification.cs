@@ -77,11 +77,11 @@ internal static class NotesVerification
         checks["compact_menu"]=menu.Width==270&&menu.ActualHeight<350;
         var notesButton=Children<Button>(menu.Body).Single(b=>System.Windows.Automation.AutomationProperties.GetName(b)=="Заметки");notesButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         var liveNotes=pet.OwnedWindows.OfType<NotesWindow>().Single(w=>w.IsVisible);checks["menu_opens_notes_without_closing_pet"]=pet.IsVisible&&liveNotes.IsVisible;liveNotes.Close();
-        pet.QueuePetClick(2);UiVerification.Advance((int)pet.ClickSequenceDelay.TotalMilliseconds+40);
+        pet.QueuePetClick(2,control:true);UiVerification.Advance((int)pet.ClickSequenceDelay.TotalMilliseconds+40);
         liveNotes=pet.OwnedWindows.OfType<NotesWindow>().Single(w=>w.IsVisible);
-        checks["double_click_opens_notes_without_chat"]=liveNotes.IsVisible&&pet.IsVisible&&!pet.OwnedWindows.OfType<ChatWindow>().Any(w=>w.IsVisible);
-        pet.QueuePetClick(2);UiVerification.Advance((int)pet.ClickSequenceDelay.TotalMilliseconds+40);
-        checks["double_click_reuses_open_notes"]=pet.OwnedWindows.OfType<NotesWindow>().Count(w=>w.IsVisible)==1&&ReferenceEquals(liveNotes,pet.OwnedWindows.OfType<NotesWindow>().Single(w=>w.IsVisible));
+        checks["ctrl_double_click_opens_notes_without_chat"]=liveNotes.IsVisible&&pet.IsVisible&&!pet.OwnedWindows.OfType<ChatWindow>().Any(w=>w.IsVisible);
+        pet.QueuePetClick(2,control:true);UiVerification.Advance((int)pet.ClickSequenceDelay.TotalMilliseconds+40);
+        checks["ctrl_double_click_reuses_open_notes"]=pet.OwnedWindows.OfType<NotesWindow>().Count(w=>w.IsVisible)==1&&ReferenceEquals(liveNotes,pet.OwnedWindows.OfType<NotesWindow>().Single(w=>w.IsVisible));
         liveNotes.Close();
         File.WriteAllText(Path.Combine(directory,"notes-checks.json"),JsonSerializer.Serialize(new{success=checks.Values.All(v=>v),checks},new JsonSerializerOptions{WriteIndented=true}));
         if(checks.Values.Any(v=>!v))throw new InvalidOperationException("Notes verification failed");

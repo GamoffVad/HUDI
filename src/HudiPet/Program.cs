@@ -21,6 +21,8 @@ internal static class Program
             if (args.Contains("--render-preview")) return PetVerification.ExportMotionPreview();
             if (args.Contains("--verify-chat")) return ChatVerification.Run().GetAwaiter().GetResult();
             if(args.Length==2&&args[0]=="--verify-pets")return PetCatalogVerification.Run(args[1]);
+            if(args.Length==2&&args[0]=="--verify-sites")return FavoriteSitesVerification.Run(args[1]);
+            if(args.Length==2&&args[0]=="--preview-sites")return FavoriteSitesVerification.Preview(args[1]);
             if(args.Length==3&&args[0]=="--verify-pet-package")return PetPackageCommands.Verify(args[1],args[2]);
             if(args.Length==3&&args[0]=="--import-pet")return PetPackageCommands.Import(args[1],args[2]);
             if(args.Length==2&&args[0]=="--render-ui")return UiVerification.Run(args[1]);
@@ -68,51 +70,46 @@ internal sealed partial class PetWindow : Window
     private int renderedFrames;
     private readonly DispatcherTimer clickSequence = new();
     private int pendingClicks,pressedClickCount;
+    private bool pendingControl,pressedControl;
     internal TimeSpan ClickSequenceDelay=>clickSequence.Interval;
+    internal object PointerGestureDiagnostics=>new
+    {
+        hasOrigin=dragOrigin is not null,dragging,pressedClickCount,pressedControl,pendingClicks,pendingControl,
+        clickTimerRunning=clickSequence.IsEnabled,captureOwned=ReferenceEquals(Mouse.Captured,character)
+    };
     [DllImport("user32.dll")] private static extern uint GetDoubleClickTime();
 
-    internal PetWindow(bool smokeTest, bool uiTest,PetCatalog? pets=null)
+    internal PetWindow(bool smokeTest, bool uiTest,PetCatalog? pets=null,FavoriteSitesStore? favoriteSites=null,ClickBindingsStore? clickBindings=null)
     {
         this.smokeTest = smokeTest;
         this.uiTest = uiTest;
+        WaterOrbFrames.WarmUp();
         InitializePet(pets);
         Title = PetName+" — живой питомец";
-        Height = 360; Width = Height * library.Width / library.Height;
+        Height = 360 * library.Height / library.DisplayBounds.Height; Width = Height * library.Width / library.Height;
         WindowStyle = WindowStyle.None; ResizeMode = ResizeMode.NoResize;
         AllowsTransparency = true; Background = Brushes.Transparent;
         Topmost = true; ShowInTaskbar = uiTest; ShowActivated = false;
         Content = character;
         InitializeChat();
+        InitializeFavoriteSites(favoriteSites);
+        InitializeClickBindings(clickBindings);
         clickSequence.Interval=TimeSpan.FromMilliseconds(GetDoubleClickTime()+20);
         clickSequence.Tick+=(_,_)=>CommitPetClicks();
         MouseRightButtonUp+=(_,e)=> { if(character.ContainsCharacter(e.GetPosition(character))) { CancelPetClicks();OpenMenu();e.Handled=true; } };
         MouseLeftButtonDown += (_, e) =>
         {
             if (!character.ContainsCharacter(e.GetPosition(character))) return;
-            clickSequence.Stop();pressedClickCount=Math.Min(e.ClickCount,3);
-            dragOrigin = e.GetPosition(this);
-            character.CaptureMouse();
+            BeginPointerGesture(e.GetPosition(this),e.ClickCount,(Keyboard.Modifiers&ModifierKeys.Control)!=0);
         };
-        MouseLeftButtonUp += (_, _) =>
-        {
-            int clicks=dragOrigin is not null&&!dragging?pressedClickCount:0;
-            dragOrigin = null;
-            pressedClickCount=0;
-            character.ReleaseMouseCapture();
-            if(clicks>0)QueuePetClick(clicks);
-        };
+        MouseLeftButtonUp += (_, _) =>EndPointerGesture();
+        LostMouseCapture+=(_,_)=>CancelPointerGesture();
         MouseMove += (_, e) =>
         {
-            if (dragOrigin is not { } start || e.LeftButton != MouseButtonState.Pressed) return;
-            var point = e.GetPosition(this);
-            if (Math.Abs(point.X - start.X) + Math.Abs(point.Y - start.Y) < 4) return;
-            dragOrigin = null; dragging = true;
-            CancelPetClicks();
-            character.ReleaseMouseCapture();
-            try { DragMove(); } finally { dragging = false; ClampToScreen(); SaveSettings(); }
+            if(MovePointerGesture(e.GetPosition(this),e.LeftButton==MouseButtonState.Pressed))e.Handled=true;
         };
         MouseWheel += (_, e) => { CancelPetClicks();ResizePet(Height * (e.Delta > 0 ? 1.08 : 1 / 1.08));e.Handled=true; };
-        KeyDown += (_, e) => { if (e.Key == Key.Escape) Close(); };
+        KeyDown += (_, e) => { if (e.Key == Key.Escape) {if(favoriteSitesOrbit is not null)favoriteSitesOrbit.Dismiss();else Close();e.Handled=true;} };
         Loaded += (_, _) =>
         {
             RestoreSettings();
@@ -120,6 +117,42 @@ internal sealed partial class PetWindow : Window
             CompositionTarget.Rendering += Render;
         };
         Closed += (_, _) => { CompositionTarget.Rendering -= Render;clickSequence.Stop();DisposeChat();SaveSettings();if(!selectedPet.BuiltIn)library.Dispose(); };
+    }
+
+    internal void BeginPointerGesture(Point point,int clickCount,bool control)
+    {
+        clickSequence.Stop();pressedClickCount=Math.Clamp(clickCount,1,3);pressedControl=control;
+        dragOrigin=point;dragging=false;
+        if(!character.CaptureMouse())CancelPointerGesture();
+    }
+    internal bool MovePointerGesture(Point point,bool leftPressed)
+    {
+        if(dragOrigin is not {} start||!leftPressed)return false;
+        if(!dragging)
+        {
+            if(Math.Abs(point.X-start.X)+Math.Abs(point.Y-start.Y)<4)return false;
+            dragging=true;CancelPetClicks();CloseFavoriteSites();
+        }
+        // Keep the grabbed body point under the pointer. Native DragMove
+        // moves the whole padded window and can constrain its empty edges.
+        Left+=point.X-start.X;Top+=point.Y-start.Y;ClampToScreen();return true;
+    }
+    internal void EndPointerGesture()
+    {
+        int clicks=dragOrigin is not null&&!dragging?pressedClickCount:0;
+        bool wasDragging=dragging,control=pressedControl;
+        dragging=false;dragOrigin=null;pressedClickCount=0;pressedControl=false;
+        // Clear gesture state before releasing capture: normal release must
+        // not cancel the click queued immediately below.
+        character.ReleaseMouseCapture();
+        if(wasDragging){ClampToScreen();SaveSettings();}
+        if(clicks>0)QueuePetClick(clicks,control);
+    }
+    private void CancelPointerGesture()
+    {
+        if(dragOrigin is null&&!dragging)return;
+        bool wasDragging=dragging;dragging=false;dragOrigin=null;CancelPetClicks();
+        if(wasDragging){ClampToScreen();SaveSettings();}
     }
 
     internal PetAction? TriggerRandomClickAction()
@@ -131,20 +164,24 @@ internal sealed partial class PetWindow : Window
 
     private void CancelPetClicks()
     {
-        clickSequence.Stop();pendingClicks=0;pressedClickCount=0;
+        clickSequence.Stop();pendingClicks=0;pressedClickCount=0;pendingControl=pressedControl=false;
     }
-    internal void QueuePetClick(int count)
+    internal void QueuePetClick(int count,bool control=false)
     {
-        clickSequence.Stop();pendingClicks=Math.Clamp(count,1,3);
-        if(pendingClicks==3)CommitPetClicks();
-        else clickSequence.Start();
+        clickSequence.Stop();pendingClicks=Math.Clamp(count,1,3);pendingControl=control;
+        if(ClickBindings.Get(pendingClicks,control)==PetClickAction.None)return;
+        if(ClickBindings.HasLaterAction(pendingClicks,control))clickSequence.Start();
+        else CommitPetClicks();
     }
     private void CommitPetClicks()
     {
-        int count=pendingClicks;CancelPetClicks();
-        if(count==3)OpenChat(true);
-        else if(count==2)OpenNotes();
-        else if(count==1)TriggerRandomClickAction();
+        int count=pendingClicks;bool control=pendingControl;CancelPetClicks();
+        switch(ClickBindings.Get(count,control))
+        {
+            case PetClickAction.Chat:OpenChat(true);break;
+            case PetClickAction.Notes:OpenNotes();break;
+            case PetClickAction.FavoriteSites:ToggleFavoriteSites();break;
+        }
     }
 
     private void Render(object? sender, EventArgs args)
@@ -199,18 +236,52 @@ internal sealed partial class PetWindow : Window
     internal void ResizePet(double height)
     {
         if (!double.IsFinite(height)) return;
-        height = Math.Clamp(height, 180, Math.Min(720, SystemParameters.VirtualScreenHeight));
-        double center = Left + Width / 2, bottom = Top + Height;
-        Height = height; Width = height * library.Width / library.Height;
-        Left = center - Width / 2; Top = bottom - Height;
+        CloseFavoriteSites();
+        double ratio=library.DisplayBounds.Height/library.Height;
+        double displayHeight=Math.Clamp(height*ratio,180,Math.Max(180,Math.Min(720,SystemParameters.VirtualScreenHeight)));
+        var display=DisplayedBounds;
+        SetWindowBounds(WindowForDisplay(new(display.X,display.Bottom-displayHeight,display.Width,displayHeight),new(library.Width,library.Height),library.DisplayBounds));
         ClampToScreen(); SaveSettings();
+    }
+
+    internal double DisplayHeight=>Height*library.DisplayBounds.Height/library.Height;
+    internal Rect DisplayedBounds
+    {
+        get
+        {
+            double scale=Height/library.Height;var bounds=library.DisplayBounds;
+            return new(Left+bounds.X*scale,Top+bounds.Y*scale,bounds.Width*scale,bounds.Height*scale);
+        }
+    }
+    private void SetWindowBounds(Rect bounds){Height=bounds.Height;Width=bounds.Width;Left=bounds.Left;Top=bounds.Top;}
+    internal static Rect WindowForDisplay(Rect display,Size canvas,Rect viewport)
+    {
+        double scale=display.Height/viewport.Height;
+        return new(display.Left+display.Width/2-(viewport.X+viewport.Width/2)*scale,
+            display.Bottom-viewport.Bottom*scale,canvas.Width*scale,canvas.Height*scale);
+    }
+    internal static Rect RestoreWindowBounds(Settings settings,bool builtIn,Size canvas,Rect viewport)
+    {
+        bool savedViewport=settings.CanvasWidth>0&&settings.CanvasHeight>0&&
+            double.IsFinite(settings.DisplayX)&&double.IsFinite(settings.DisplayY)&&double.IsFinite(settings.DisplayWidth)&&double.IsFinite(settings.DisplayHeight)&&
+            settings.DisplayX>=0&&settings.DisplayY>=0&&settings.DisplayWidth>0&&settings.DisplayHeight>0&&
+            settings.DisplayX+settings.DisplayWidth<=settings.CanvasWidth&&settings.DisplayY+settings.DisplayHeight<=settings.CanvasHeight;
+        // Settings without canvas metadata predate the padded built-in pack.
+        var previousCanvas=savedViewport?new Size(settings.CanvasWidth,settings.CanvasHeight):builtIn?new Size(384,500):canvas;
+        var previousViewport=savedViewport?new Rect(settings.DisplayX,settings.DisplayY,settings.DisplayWidth,settings.DisplayHeight):builtIn?new Rect(0,0,384,500):viewport;
+        double displayHeight=double.IsFinite(settings.Height)&&settings.Height>0?settings.Height*previousViewport.Height/previousCanvas.Height:360;
+        displayHeight=Math.Clamp(displayHeight,180,720);
+        double scale=displayHeight/previousViewport.Height;
+        var display=new Rect(settings.Left+previousViewport.X*scale,settings.Top+previousViewport.Y*scale,previousViewport.Width*scale,displayHeight);
+        return WindowForDisplay(display,canvas,viewport);
     }
 
     private void RestoreSettings()
     {
         restoring = true;
         var area = SystemParameters.WorkArea;
-        Left = area.Right - Width - 30; Top = area.Bottom - Height - 5;
+        double displayWidth=DisplayHeight*library.DisplayBounds.Width/library.DisplayBounds.Height;
+        SetWindowBounds(WindowForDisplay(new(area.Right-displayWidth-30,area.Bottom-DisplayHeight-5,displayWidth,DisplayHeight),new(library.Width,library.Height),library.DisplayBounds));
         if (!smokeTest && !uiTest && File.Exists(SettingsPath))
         {
             try
@@ -218,8 +289,7 @@ internal sealed partial class PetWindow : Window
                 var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllText(SettingsPath));
                 if (settings is not null && double.IsFinite(settings.Left) && double.IsFinite(settings.Top))
                 {
-                    Height = double.IsFinite(settings.Height) ? Math.Clamp(settings.Height, 180, 720) : 360; Width = Height * library.Width / library.Height;
-                    Left = settings.Left; Top = settings.Top;
+                    SetWindowBounds(RestoreWindowBounds(settings,selectedPet.BuiltIn,new(library.Width,library.Height),library.DisplayBounds));
                     speed = double.IsFinite(settings.Speed) ? Math.Clamp(settings.Speed, .5, 1.5) : 1;
                     Topmost = settings.Topmost;
                     DialogTransparency = NormalizeDialogTransparency(settings.DialogTransparency);
@@ -228,14 +298,25 @@ internal sealed partial class PetWindow : Window
             }
             catch (Exception error) when (error is IOException or JsonException or UnauthorizedAccessException) { }
         }
-        restoring = false; ClampToScreen();
+        restoring = false; ClampToScreen();SaveSettings();
     }
 
     private void ClampToScreen()
     {
-        double x = SystemParameters.VirtualScreenLeft, y = SystemParameters.VirtualScreenTop;
-        Left = Math.Clamp(Left, x, Math.Max(x, x + SystemParameters.VirtualScreenWidth - Width));
-        Top = Math.Clamp(Top, y, Math.Max(y, y + SystemParameters.VirtualScreenHeight - Height));
+        var screen=new Rect(SystemParameters.VirtualScreenLeft,SystemParameters.VirtualScreenTop,
+            SystemParameters.VirtualScreenWidth,SystemParameters.VirtualScreenHeight);
+        var bounds=ClampWindowToScreen(new(Left,Top,Width,Height),new(library.Width,library.Height),library.DisplayBounds,screen);
+        Left=bounds.Left;Top=bounds.Top;
+    }
+    internal static Rect ClampWindowToScreen(Rect window,Size canvas,Rect viewport,Rect screen)
+    {
+        double scale=window.Height/canvas.Height;
+        var display=new Rect(window.Left+viewport.Left*scale,window.Top+viewport.Top*scale,viewport.Width*scale,viewport.Height*scale);
+        double x=Math.Clamp(display.Left,screen.Left,Math.Max(screen.Left,screen.Right-display.Width));
+        double y=Math.Clamp(display.Top,screen.Top,Math.Max(screen.Top,screen.Bottom-display.Height));
+        // Only the body is constrained; the unchanged transparent canvas may
+        // extend beyond the virtual desktop on any side.
+        window.Offset(x-display.Left,y-display.Top);return window;
     }
 
     private void SaveSettings()
@@ -244,7 +325,8 @@ internal sealed partial class PetWindow : Window
         try
         {
             Directory.CreateDirectory(SettingsDirectory);
-            File.WriteAllText(SettingsPath, JsonSerializer.Serialize(new Settings { Left = Left, Top = Top, Height = Height, Speed = speed, Topmost = Topmost, DialogTransparency = DialogTransparency, MatteDialogs = MatteDialogs }));
+            File.WriteAllText(SettingsPath, JsonSerializer.Serialize(new Settings { Left = Left, Top = Top, Height = Height, Speed = speed, Topmost = Topmost, DialogTransparency = DialogTransparency, MatteDialogs = MatteDialogs,
+                PetId=selectedPet.Id,CanvasWidth=library.Width,CanvasHeight=library.Height,DisplayX=library.DisplayBounds.X,DisplayY=library.DisplayBounds.Y,DisplayWidth=library.DisplayBounds.Width,DisplayHeight=library.DisplayBounds.Height }));
         }
         catch (Exception error) when (error is IOException or UnauthorizedAccessException) { }
     }
@@ -272,5 +354,12 @@ internal sealed partial class PetWindow : Window
         public bool FollowMouse { get; set; } = false;
         public bool Topmost { get; set; } = true;
         public bool ReactToDesktop { get; set; } = false;
+        public string? PetId { get; set; }
+        public int CanvasWidth { get; set; }
+        public int CanvasHeight { get; set; }
+        public double DisplayX { get; set; }
+        public double DisplayY { get; set; }
+        public double DisplayWidth { get; set; }
+        public double DisplayHeight { get; set; }
     }
 }

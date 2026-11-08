@@ -1,6 +1,6 @@
 namespace HudiPet;
 
-internal enum PetAction { Wink, Think, Crouch, Stretch, Angry, Sad, Surprise, LookAround, Dance, Hood, Pockets, Combat }
+internal enum PetAction { Wink, Think, Crouch, Stretch, Angry, Sad, Surprise, LookAround, Dance, Hood, Pockets, Combat, Salute, March, Notebook, Fire, FireCalm, Dash, Jump, PaintMagic, ShadowMerge, SideStep, CutThroat, LookDown, LookLeft, LookRight, LookUp, Temple, Skeptical, Shrug, Indignation, FireTrick, Impatient }
 internal readonly record struct PetPose(string Frame = "neutral", string? BlendFrom = null,
     double Blend = 1, double Breath = 0, int TransitionId = 0);
 
@@ -10,7 +10,13 @@ internal sealed class PetBehavior
     internal static readonly PetAction[] AutomaticActions =
         [PetAction.Think, PetAction.Crouch, PetAction.Stretch, PetAction.Wink,
          PetAction.Angry, PetAction.Sad, PetAction.Surprise, PetAction.LookAround,
-         PetAction.Dance, PetAction.Hood, PetAction.Pockets];
+         PetAction.Dance, PetAction.Hood, PetAction.Pockets,
+         PetAction.Salute, PetAction.March, PetAction.Notebook, PetAction.Fire, PetAction.FireCalm,
+         PetAction.Dash, PetAction.Jump, PetAction.PaintMagic, PetAction.ShadowMerge,
+         PetAction.SideStep, PetAction.CutThroat,
+         PetAction.LookDown, PetAction.LookLeft, PetAction.LookRight, PetAction.LookUp,
+         PetAction.Temple, PetAction.Skeptical, PetAction.Shrug,
+         PetAction.Indignation, PetAction.FireTrick, PetAction.Impatient];
     private readonly SpriteLibrary library;
     private readonly Random random;
     private readonly Queue<PetAction> bag = new();

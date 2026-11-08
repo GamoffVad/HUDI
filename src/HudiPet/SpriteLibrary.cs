@@ -2,6 +2,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text.Json;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -17,6 +18,7 @@ internal sealed class SpriteLibrary : IDisposable
     private readonly bool alphaPrepared;
     internal int Width { get; }
     internal int Height { get; }
+    internal Rect DisplayBounds { get; }
     internal bool HorizontalMirrored { get; }
     internal string[] Left { get; }
     internal string[] Right { get; }
@@ -49,6 +51,13 @@ internal sealed class SpriteLibrary : IDisposable
         Width = root.GetProperty("frameSize")[0].GetInt32();
         Height = root.GetProperty("frameSize")[1].GetInt32();
         if(Width<1||Height<1||Width>2048||Height>2048||(long)Width*Height>1048576)throw new InvalidDataException("Размер кадров должен быть не больше 2048 по стороне и 1 мегапикселя.");
+        DisplayBounds=new Rect(0,0,Width,Height);
+        if(root.TryGetProperty("displayBounds",out var display))
+        {
+            var values=display.EnumerateArray().Select(x=>x.GetDouble()).ToArray();
+            if(values.Length!=4||values.Any(x=>!double.IsFinite(x))||values[0]<0||values[1]<0||values[2]<=0||values[3]<=0||values[0]+values[2]>Width||values[1]+values[3]>Height)throw new InvalidDataException("Некорректная область отображения питомца.");
+            DisplayBounds=new Rect(values[0],values[1],values[2],values[3]);
+        }
         DisplayName=root.TryGetProperty("name",out var name)?name.GetString()??"":"";
         BreathAmplitude=root.TryGetProperty("breathAmplitude",out var breathing)?breathing.GetDouble():builtIn?.002:0;
         if(!double.IsFinite(BreathAmplitude)||BreathAmplitude<0||BreathAmplitude>.01)throw new InvalidDataException("Амплитуда дыхания должна быть от 0 до 0,01.");

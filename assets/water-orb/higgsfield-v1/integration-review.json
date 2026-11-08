@@ -1,0 +1,25 @@
+{
+  "release": "7.2.7",
+  "source_approved_by_user": true,
+  "source_job_id": "8ad53a24-06e0-490c-80ee-bdc729b0310f",
+  "runtime_frames": 120,
+  "runtime_fps": 24,
+  "runtime_frame_size": 192,
+  "shared_decoded_bytes": 17694720,
+  "validation": {
+    "build": "tools/build.ps1 -SkipPublisher passed",
+    "favorite_sites_checks": 215,
+    "favorite_sites_failed": 0,
+    "matte_review": "Viewed on dark, light and purple backgrounds",
+    "wpf_render_review": "Viewed living-frames/070.png with site labels and circular icon",
+    "desktop_ui_automation": "HUDI tool window was not exposed by Computer Use; verified startup by installed process path and version instead"
+  },
+  "installation": {
+    "path": "C:/Users/gamx8/AppData/Local/Programs/HUDI/HUDI.exe",
+    "version": "7.2.7.0",
+    "process_id": 17324,
+    "installed_hash_matches_build": true,
+    "user_lists_unchanged": true,
+    "backup": "output/hudi-pet-v7/rollback-7.2.6-before-higgsfield-water"
+  }
+}

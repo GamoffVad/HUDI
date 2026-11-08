@@ -1,0 +1,13 @@
+Animate the EXACT small 3D robot in the supplied start and end image. Preserve its grey fabric hoodie and raised hood, black screen face with exactly two cyan LED eyes, original mechanical hands and finger count, dark trousers, pale blue sneakers and drawstrings. No mouth, no added facial features, no uniform, insignia, flags, weapons, accessories or extra limbs.
+
+One continuous, clear 10-second full-body action, fixed camera and scale:
+0.0-0.7 s: stand in the reference neutral pose, feet planted.
+0.7-2.3 s: smoothly raise the robot's right hand to the right temple/edge of the hood and give a neat military salute. Fingers together, hand naturally aligned with forearm. Briefly hold the salute without hiding the two eyes.
+2.3-3.6 s: naturally lower the saluting hand, then bring both hands behind the lower back into a relaxed at-ease stance. Show the actual arm movement; do not teleport or dissolve the hands.
+3.6-5.4 s: with both hands behind the back, calmly turn the head and upper torso a little to the robot's left and look to that side.
+5.4-7.4 s: smoothly look across to the robot's right. Keep both feet planted, no walking or spinning.
+7.4-10.0 s: look forward again, release the hands from behind the back, lower both arms naturally and return to the exact supplied ending neutral pose. Ease to rest without a snap or freeze-frame cut.
+
+The entire character including raised elbow, hood, fingers and shoes stays inside the frame with generous green margins. Locked frontal camera, framing, focal length, lighting and exposure; retain the reference's slight natural body angle. No zoom, pan, camera shake, scene cuts, morphing or added characters. Natural modest fabric and arm inertia, clean sharp frames without motion blur.
+
+Background AND floor must stay perfectly flat chroma green #00FF00 throughout, including spaces between arms and torso and between the legs. No room, horizon, texture, gradient, green spill, cast backdrop shadow, text or watermark. Silent video. The same reference is provided as the first and last frame so the result can join the existing desktop character animations.

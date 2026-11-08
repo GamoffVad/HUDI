@@ -1,0 +1,22 @@
+{
+  "quoted_credits": 12,
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 8,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Animate the EXACT reference Ink character: charcoal fabric hood, layered dark jacket, black gloves and boots, compact chibi proportions. His black face is a fixed smooth unbroken mask with ONLY two solid ivory painted eye shapes and their tiny drips. The lower face has no anatomical features at all: NO MOUTH, no mouth line, lips, teeth or jaw motion in any frame. Keep that surface visually static while the head turns. All emotion is silent body language and the existing eyes. Preserve reference materials and anatomy.\n\nEight-second impatient waiting pantomime. 0-2s: from neutral, cross both gloved arms firmly over the chest. 2-5s: keep arms crossed and tap ONLY the right boot on the spot three times with impatient rhythmic weight, left leg firmly supporting the body. 5-7s: in one clearly readable exasperated beat, slowly tip the head back and direct the existing ivory eye shapes UPWARD, hold a brief fed-up skyward stare, then tip the head level again. Evoke an eye-roll with head angle and movement of the existing SOLID eye shapes, keeping them solid ivory without adding pupils or irises. 7-8s: stop tapping, uncross arms and settle into the exact neutral reference pose. Compact, lively gestures with pauses and fabric follow-through. Keep the lower black face completely smooth and unchanged, no speech, no sighing, no mouth, no mouth line. No props, symbols, effects or stepping away.\n\nSingle continuous full-body shot on a perfectly uniform digital chroma green #00FF00 background and invisible floor, including gaps between limbs; no horizon, scene, gradient or background shadows. Neutral white subject lighting, no green bounce, green reflections or fringes. Opaque clothes and eyes remain opaque. Entire figure sharply focused EVERY frame, including fast gestures; crisp naturally antialiased silhouette, no motion blur or feathered edges. Camera, scale, exposure and white balance locked. Preserve the generous reference framing; ENTIRE hood, fingers, boots and any effects fully inside EVERY frame, at least 12% clear margin. No approaching camera, zoom, cuts or dissolves. Begin and end in the exact supplied neutral standing pose at the same scale and position, through real physical motion with gentle settling. Silent.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "9d32e954-cdca-41ca-8ec0-80fffc56376c"
+      },
+      {
+        "role": "end_image",
+        "value": "9d32e954-cdca-41ca-8ec0-80fffc56376c"
+      }
+    ]
+  }
+}

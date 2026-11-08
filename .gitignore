@@ -29,6 +29,10 @@ model-settings.json
 settings.json
 notes.json
 notes.json.bak
+favorite-sites.json
+favorite-sites.json.bak
+mouse-controls.json
+mouse-controls.json.bak
 installation.json
 
 # Retain only build inputs and the ready-to-use Codex pet, not old releases.
@@ -45,6 +49,9 @@ installation.json
 !/output/hudi-pet-v7/
 /output/hudi-pet-v7/*
 !/output/hudi-pet-v7/license-public.key
+!/output/hudi-pet-v7.3/
+/output/hudi-pet-v7.3/*
+!/output/hudi-pet-v7.3/sprites.zip
 !/output/codex-pet/
 /output/codex-pet/*
 !/output/codex-pet/pet.json

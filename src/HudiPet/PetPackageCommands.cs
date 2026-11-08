@@ -56,6 +56,34 @@ internal static class PetPackageCommands
                 actions.Add(new{action=action.ToString(),elapsed,ticks});
             }
             checks["at_least_one_supported_action"]=actions.Count>0;
+            var supportedAutomatic=PetBehavior.AutomaticActions.Where(new PetBehavior(0,library).Supports).ToArray();
+            PetAction[] directions=[PetAction.LookDown,PetAction.LookLeft,PetAction.LookRight,PetAction.LookUp];
+            var availableDirections=directions.Where(new PetBehavior(0,library).Supports).ToArray();
+            if(supportedAutomatic.Length>0)
+            {
+                double budget=2*supportedAutomatic.Sum(action=>library.Clips[PetBehavior.ClipName(action)].Sum(step=>step.Seconds)+70)+10;
+                var orders=new List<PetAction[]>();bool completed=true,noRepeats=true,uninterrupted=true;
+                foreach(int seed in new[]{7,23,39})
+                {
+                    var autonomous=new PetBehavior(seed,library);var order=new List<PetAction>();int previousStarts=0;
+                    for(double elapsed=0;elapsed<budget&&order.Count<supportedAutomatic.Length*2;elapsed+=.05)
+                    {
+                        autonomous.Update(.05);
+                        if(autonomous.ActionsStarted!=previousStarts&&autonomous.CurrentAction is {} started)
+                        {order.Add(started);previousStarts=autonomous.ActionsStarted;}
+                    }
+                    completed&=order.Count==supportedAutomatic.Length*2&&supportedAutomatic.All(action=>order.Count(played=>played==action)==2);
+                    noRepeats&=supportedAutomatic.Length<2||order.Zip(order.Skip(1),(a,b)=>a!=b).All(different=>different);
+                    uninterrupted&=autonomous.Interruptions==0;orders.Add(order.ToArray());
+                }
+                checks["every_package_emotion_plays_twice_in_autonomous_cycles"]=completed;
+                checks["automatic_actions_belong_to_selected_pet"]=orders.SelectMany(order=>order).All(new PetBehavior(0,library).Supports);
+                checks["all_available_emotions_have_menu_labels"]=Enum.GetValues<PetAction>().Where(new PetBehavior(0,library).Supports).All(action=>PetVerification.ActionLabels.Any(item=>item.action==action));
+                checks["autonomous_cycles_have_no_immediate_repeats"]=noRepeats;
+                checks["autonomous_looks_do_not_interrupt_clips"]=uninterrupted;
+                checks["direction_order_varies_with_random_seed"]=availableDirections.Length<2||orders.Select(order=>string.Join(",",order.Where(availableDirections.Contains))).Distinct().Count()>1;
+                Report(Path.Combine(directory,"automatic-directions.json"),new{budget,orders=orders.Select(order=>order.Select(action=>action.ToString()))});
+            }
             var thinking=new PetBehavior(11,library);thinking.BeginChatThinking();
             for(int i=0;i<500;i++)visual.Apply(thinking.Update(.05));
             thinking.EndChatThinking(true);

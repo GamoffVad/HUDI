@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>HUDI</AssemblyName>
     <RootNamespace>HudiPet</RootNamespace>
-    <Version>7.1.23</Version>
+    <Version>7.3.7</Version>
     <Description>HUDI — animated desktop companion</Description>
     <ApplicationIcon>../../output/hudi-pet-v3/HUDI.ico</ApplicationIcon>
     <PublishSingleFile>true</PublishSingleFile><EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
@@ -19,11 +19,12 @@
   <ItemGroup>
     <EmbeddedResource Include="../../output/hudi-pet-v7/native/Hudi.Backdrop.dll" LogicalName="HUDI.Backdrop.dll" />
     <Resource Include="Assets/thinking-dot.png" />
+    <EmbeddedResource Include="Assets/water-orb.zip" LogicalName="HUDI.water-orb.zip" />
     <Compile Include="../Shared/Licensing.cs" Link="Licensing.cs" />
     <Compile Include="../Shared/VisualPreview.cs" Link="VisualPreview.cs" />
     <Compile Include="../Shared/FrostedBackdrop.cs" Link="FrostedBackdrop.cs" />
     <EmbeddedResource Include="../../output/hudi-pet-v7/license-public.key" LogicalName="HUDI.license-public.key" />
-    <EmbeddedResource Include="../../output/hudi-pet-v6.3/sprites.zip" LogicalName="HudiPet.sprites.zip" />
+    <EmbeddedResource Include="../../output/hudi-pet-v7.3/sprites.zip" LogicalName="HudiPet.sprites.zip" />
     <Compile Remove="GazeFrame.cs;DesktopActivityMonitor.cs" />
   </ItemGroup>
   <Target Name="BuildNativeBackdrop" BeforeTargets="PrepareForBuild">

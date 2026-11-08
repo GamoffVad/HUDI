@@ -1,0 +1,62 @@
+{
+  "balance_before": 494.05,
+  "quoted_credits": 27,
+  "scenes": [
+    {
+      "name": "indignant-temple",
+      "duration": 8,
+      "action": "Eight-second silent pantomime. 0-2s: he straightens, puts his left hand on his hip and gives an indignant head tilt with raised shoulders. 2-5s: he raises the right gloved hand beside his RIGHT TEMPLE, extends only the index finger, and makes TWO distinct small circular rotations with the fingertip right beside the temple, the familiar incredulous 'crazy' gesture. The fingertip must actually trace little circles, not wave or just point. Keep the hand at the side of the head, never over the face. 5-6s: a short head shake and one compact palm-up gesture. 6-8s: lower both hands and settle into the starting pose. Clear anticipation, quick readable gestures and brief holds, natural hood and jacket follow-through. No speech, symbols, drawn circles, trails, magic, liquids or props."
+    },
+    {
+      "name": "snap-fire-innocent",
+      "duration": 10,
+      "action": "Ten-second playful pantomime, events strictly in this order. 0-2s: standing still, he lifts one gloved hand and visibly snaps thumb and middle finger ONCE. 2-4s: ONLY after the snap, a small orange flame appears on the invisible floor immediately in front of his right boot; it rises briefly to ankle height. He looks down, surprised, with a small shoulder recoil. 4-6s: he lifts that boot and stamps directly onto the flame twice, fully extinguishing it. No stamping before ignition. 6-9s: once the flame is completely gone, he plants both feet, hides both hands behind his back, raises his chin and looks UP with exaggerated innocent composure, holding the pose as if nothing happened. 9-10s: return calmly to the neutral reference pose. No lighter, matches, fuel, extra objects or scenery. Keep flame compact and fully within the frame; no smoke plume, residual embers or broad glow. No talking or whistling. Eye shapes stay ivory. The glow stays local to the flame without recolouring the green background."
+    }
+  ],
+  "requests": [
+    {
+      "index": 0,
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 8,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate the EXACT reference Ink character: charcoal fabric hood, layered dark jacket, black gloves and boots, compact chibi proportions. His black face is a fixed smooth unbroken mask with ONLY two solid ivory painted eye shapes and their tiny drips. The lower face has no anatomical features at all: NO MOUTH, no mouth line, lips, teeth or jaw motion in any frame. Keep that surface visually static while the head turns. All emotion is silent body language and the existing eyes. Preserve reference materials and anatomy.\n\nEight-second silent pantomime. 0-2s: he straightens, puts his left hand on his hip and gives an indignant head tilt with raised shoulders. 2-5s: he raises the right gloved hand beside his RIGHT TEMPLE, extends only the index finger, and makes TWO distinct small circular rotations with the fingertip right beside the temple, the familiar incredulous 'crazy' gesture. The fingertip must actually trace little circles, not wave or just point. Keep the hand at the side of the head, never over the face. 5-6s: a short head shake and one compact palm-up gesture. 6-8s: lower both hands and settle into the starting pose. Clear anticipation, quick readable gestures and brief holds, natural hood and jacket follow-through. No speech, symbols, drawn circles, trails, magic, liquids or props.\n\nSingle continuous full-body shot on a perfectly uniform digital chroma green #00FF00 background and invisible floor, including gaps between limbs; no horizon, scene, gradient or background shadows. Neutral white subject lighting, no green bounce, green reflections or fringes. Opaque clothes and eyes remain opaque. Entire figure sharply focused EVERY frame, including fast gestures; crisp naturally antialiased silhouette, no motion blur or feathered edges. Camera, scale, exposure and white balance locked. Preserve the generous reference framing; ENTIRE hood, fingers, boots and any effects fully inside EVERY frame, at least 12% clear margin. No approaching camera, zoom, cuts or dissolves. Begin and end in the exact supplied neutral standing pose at the same scale and position, through real physical motion with gentle settling. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "9d32e954-cdca-41ca-8ec0-80fffc56376c"
+          },
+          {
+            "role": "end_image",
+            "value": "9d32e954-cdca-41ca-8ec0-80fffc56376c"
+          }
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 10,
+        "aspect_ratio": "1:1",
+        "count": 1,
+        "prompt": "Animate the EXACT reference Ink character: charcoal fabric hood, layered dark jacket, black gloves and boots, compact chibi proportions. His black face is a fixed smooth unbroken mask with ONLY two solid ivory painted eye shapes and their tiny drips. The lower face has no anatomical features at all: NO MOUTH, no mouth line, lips, teeth or jaw motion in any frame. Keep that surface visually static while the head turns. All emotion is silent body language and the existing eyes. Preserve reference materials and anatomy.\n\nTen-second playful pantomime, events strictly in this order. 0-2s: standing still, he lifts one gloved hand and visibly snaps thumb and middle finger ONCE. 2-4s: ONLY after the snap, a small orange flame appears on the invisible floor immediately in front of his right boot; it rises briefly to ankle height. He looks down, surprised, with a small shoulder recoil. 4-6s: he lifts that boot and stamps directly onto the flame twice, fully extinguishing it. No stamping before ignition. 6-9s: once the flame is completely gone, he plants both feet, hides both hands behind his back, raises his chin and looks UP with exaggerated innocent composure, holding the pose as if nothing happened. 9-10s: return calmly to the neutral reference pose. No lighter, matches, fuel, extra objects or scenery. Keep flame compact and fully within the frame; no smoke plume, residual embers or broad glow. No talking or whistling. Eye shapes stay ivory. The glow stays local to the flame without recolouring the green background.\n\nSingle continuous full-body shot on a perfectly uniform digital chroma green #00FF00 background and invisible floor, including gaps between limbs; no horizon, scene, gradient or background shadows. Neutral white subject lighting, no green bounce, green reflections or fringes. Opaque clothes and eyes remain opaque. Entire figure sharply focused EVERY frame, including fast gestures; crisp naturally antialiased silhouette, no motion blur or feathered edges. Camera, scale, exposure and white balance locked. Preserve the generous reference framing; ENTIRE hood, fingers, boots and any effects fully inside EVERY frame, at least 12% clear margin. No approaching camera, zoom, cuts or dissolves. Begin and end in the exact supplied neutral standing pose at the same scale and position, through real physical motion with gentle settling. Silent.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "9d32e954-cdca-41ca-8ec0-80fffc56376c"
+          },
+          {
+            "role": "end_image",
+            "value": "9d32e954-cdca-41ca-8ec0-80fffc56376c"
+          }
+        ]
+      }
+    }
+  ]
+}

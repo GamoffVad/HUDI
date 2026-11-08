@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "e563a1a9-8585-4944-8610-95f46dc059ff",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3G8kH0X5EBsrvzkMS5MHEFTjHLh/hf_20261108_191800_e563a1a9-8585-4944-8610-95f46dc059ff.mp4"
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "completed": 1,
+    "failed": 0,
+    "active": 0,
+    "errors": 0
+  },
+  "all_terminal": true
+}

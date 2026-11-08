@@ -1,0 +1,46 @@
+{
+  "fire": {
+    "file": "hudi-fire-mishap.mp4",
+    "job_id": "19f310e9-1da7-496e-b653-6b932a99b523",
+    "selected_by_user": true,
+    "selection_date": "2026-11-08",
+    "version": 1,
+    "emotion_id": "fire_mishap",
+    "label": "Огонь — первая сцена",
+    "runtime_integrated": true
+  },
+  "fire_calm_start": {
+    "file": "hudi-fire-mishap-v2.mp4",
+    "job_id": "77fb4773-cee9-4cb6-a1d4-e25d99afc421",
+    "selected_by_user": true,
+    "selection_date": "2026-11-08",
+    "version": 2,
+    "emotion_id": "fire_mishap_calm_start",
+    "label": "Огонь — спокойное начало",
+    "runtime_integrated": true
+  },
+  "notebook": {
+    "file": "hudi-notebook-suspicious-finger-wag.mp4",
+    "job_id": "acfc75e7-a3d4-4dcf-aa34-87b279f0fce1",
+    "selected_by_user": true,
+    "selection_date": "2026-11-08",
+    "version": 1,
+    "emotion_id": "notebook_suspicious",
+    "label": "Блокнот — первая сцена",
+    "runtime_integrated": true
+  },
+  "salute": {
+    "file": "hudi-salute-hands-back-lookaround.mp4",
+    "job_id": "3464adba-9d98-4f7b-8118-d4cbcf22443f",
+    "selected_by_user": true,
+    "runtime_integrated": true,
+    "clip": "salute"
+  },
+  "march": {
+    "file": "hudi-march.mp4",
+    "job_id": "ff7ef686-cb93-4355-865b-0e68d5f8f2df",
+    "selected_by_user": true,
+    "runtime_integrated": true,
+    "clip": "march"
+  }
+}
