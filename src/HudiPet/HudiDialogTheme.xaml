@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- HUDI's graphite visor and cool blue edge; a quiet, translucent send arrow. -->
+  <LinearGradientBrush x:Key="HudiDialogGlass" StartPoint="0,0" EndPoint="0.35,1">
+    <GradientStop Color="#80232D38"/><GradientStop Color="#68151E28" Offset="0.48"/><GradientStop Color="#58101821" Offset="1"/>
+  </LinearGradientBrush>
+  <LinearGradientBrush x:Key="HudiDialogRim" StartPoint="0,0" EndPoint="0.7,1">
+    <GradientStop Color="#8293B1C5"/><GradientStop Color="#405D7A91" Offset="0.48"/><GradientStop Color="#244F6E8F" Offset="1"/>
+  </LinearGradientBrush>
+  <LinearGradientBrush x:Key="HudiDialogActiveRim" StartPoint="0,0" EndPoint="0.7,1">
+    <GradientStop Color="#B899D6EF"/><GradientStop Color="#707DAFC8" Offset="0.38"/><GradientStop Color="#486288A0" Offset="1"/>
+  </LinearGradientBrush>
+  <Style x:Key="HudiDialogSurface" TargetType="Border">
+    <Setter Property="Background" Value="{StaticResource HudiDialogGlass}"/><Setter Property="BorderBrush" Value="{StaticResource HudiDialogRim}"/>
+    <Style.Triggers><Trigger Property="IsKeyboardFocusWithin" Value="True"><Setter Property="BorderBrush" Value="{StaticResource HudiDialogActiveRim}"/></Trigger></Style.Triggers>
+  </Style>
+  <Style x:Key="HudiComposerSend" TargetType="Button">
+    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Setter Property="Width" Value="36"/><Setter Property="Height" Value="36"/><Setter Property="Padding" Value="0"/>
+    <Setter Property="Cursor" Value="Hand"/><Setter Property="Foreground" Value="#7598B0BC"/>
+    <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+      <Grid x:Name="Face" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      </Grid>
+      <ControlTemplate.Triggers>
+        <Trigger Property="IsMouseOver" Value="True"><Setter Property="Foreground" Value="#A6ADC8D6"/></Trigger>
+        <Trigger Property="IsPressed" Value="True"><Setter TargetName="Face" Property="RenderTransform"><Setter.Value><ScaleTransform ScaleX="0.94" ScaleY="0.94"/></Setter.Value></Setter></Trigger>
+        <Trigger Property="IsKeyboardFocused" Value="True"><Setter Property="Foreground" Value="#D0DCEFF8"/></Trigger>
+        <Trigger Property="IsEnabled" Value="False"><Setter TargetName="Face" Property="Opacity" Value="0.45"/></Trigger>
+      </ControlTemplate.Triggers>
+    </ControlTemplate></Setter.Value></Setter>
+  </Style>
+</ResourceDictionary>

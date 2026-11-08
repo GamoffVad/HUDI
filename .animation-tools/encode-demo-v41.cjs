@@ -1,0 +1,7 @@
+const fs=require('fs'),path=require('path'),{spawnSync}=require('child_process'),ffmpeg=require('ffmpeg-static');
+const root=path.resolve(__dirname,'../output/hudi-pet-v4.1'),dir=path.join(root,'demo-frames'),{fps,frames}=JSON.parse(fs.readFileSync(path.join(dir,'export.json'))),input=path.join(dir,'demo-%04d.png');
+function run(args){const r=spawnSync(ffmpeg,['-hide_banner','-loglevel','error','-y',...args],{encoding:'utf8'});if(r.status!==0)throw Error(r.stderr);}
+run(['-framerate',String(fps),'-i',input,'-frames:v',String(frames),'-c:v','libx264','-preset','slow','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',path.join(root,'HUDI-demo.mp4')]);
+run(['-framerate',String(fps),'-i',input,'-t','8','-filter_complex','[0:v]fps=30,scale=320:480:flags=lanczos,split[a][b];[a]palettegen=stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3','-loop','0',path.join(root,'HUDI-preview.gif')]);
+fs.writeFileSync(path.join(root,'preview.html'),'<!doctype html><html lang="ru"><meta charset="utf-8"><title>HUDI 4.1</title><style>body{margin:32px;background:#1c2028;color:#eee;font:16px system-ui}video{display:block;max-width:100%;height:80vh}</style><h1>HUDI 4.1</h1><p>Курсор двигает только глаза. Моргание не переключает позу тела.</p><video src="HUDI-demo.mp4" controls autoplay muted loop></video></html>');
+console.log(JSON.stringify({fps,frames,seconds:frames/fps,gifBytes:fs.statSync(path.join(root,'HUDI-preview.gif')).size,videoBytes:fs.statSync(path.join(root,'HUDI-demo.mp4')).size}));

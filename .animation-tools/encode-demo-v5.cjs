@@ -1,0 +1,11 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const { spawnSync } = require('node:child_process');
+const ffmpeg = require('ffmpeg-static');
+const root = path.resolve(__dirname, '../output/hudi-pet-v5');
+const dir = path.join(root, 'demo-frames');
+const { fps, frames } = JSON.parse(fs.readFileSync(path.join(dir, 'export.json'), 'utf8'));
+const output = path.join(root, 'HUDI-demo.mp4');
+const result = spawnSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-y', '-framerate', String(fps), '-i', path.join(dir, 'demo-%04d.png'), '-frames:v', String(frames), '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', output], { encoding: 'utf8' });
+if (result.status !== 0) throw new Error(result.stderr);
+console.log(JSON.stringify({ output, fps, frames, seconds: frames / fps, bytes: fs.statSync(output).size }));

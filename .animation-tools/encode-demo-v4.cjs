@@ -1,0 +1,18 @@
+const fs=require('fs'),path=require('path'),{spawnSync}=require('child_process'),ffmpeg=require('ffmpeg-static'),sharp=require('sharp');
+const root=path.resolve(__dirname,'../output/hudi-pet-v4');
+const exportDir=path.join(root,'demo-frames');
+function run(args){const r=spawnSync(ffmpeg,['-hide_banner','-loglevel','error','-y',...args],{encoding:'utf8'});if(r.status!==0)throw new Error(r.stderr||'ffmpeg failed');}
+async function main(){
+ const input=path.join(exportDir,'demo-%04d.png');
+ const {fps,frames}=JSON.parse(fs.readFileSync(path.join(exportDir,'export.json')));
+ run(['-framerate',String(fps),'-i',input,'-frames:v',String(frames),'-c:v','libx264','-preset','slow','-crf','19','-pix_fmt','yuv420p','-movflags','+faststart',path.join(root,'HUDI-demo.mp4')]);
+ run(['-framerate',String(fps),'-i',input,'-frames:v',String(Math.ceil(frames*30/fps)),'-filter_complex','[0:v]fps=30,split[a][b];[a]palettegen=stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=3','-loop','0',path.join(root,'HUDI-demo.gif')]);
+ const ids=['turn-left-heel-c-3','turn-right-heel-c-3','look-up-3','look-down-3','crouch-short-3','think-3','scratch-contact-1','cross-arms-clean-3'];
+ const tiles=[];for(let i=0;i<ids.length;i++)tiles.push({input:await sharp(path.join(root,'frames',ids[i]+'.png')).resize(240,360).png().toBuffer(),left:i%4*240,top:Math.floor(i/4)*360});
+ await sharp({create:{width:960,height:720,channels:4,background:'#eceef2'}}).composite(tiles).png().toFile(path.join(root,'HUDI-poses.png'));
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'frames/manifest.json')));
+ const html=`<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HUDI · Анимация</title><style>body{margin:0;background:#eceef2;color:#242830;font:16px system-ui}main{max-width:1100px;margin:auto;padding:32px}h1{font-weight:600}video{display:block;width:min(400px,100%);margin:auto;border-radius:20px}img{max-width:100%}.poses{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}.pose{background:#e4e6eb;border-radius:16px;padding:12px}.pose img{width:100%;height:260px;object-fit:contain}button{border:0;border-radius:8px;background:#282d37;color:white;padding:10px 16px;cursor:pointer}</style><main><h1>HUDI · Новые движения</h1><p>Целые кадры персонажа. Эмоции только глазами.</p><video autoplay muted loop controls src="HUDI-demo.mp4"></video><h2>Жесты</h2><div class="poses" id="poses"></div><script>const m=${JSON.stringify(manifest)};const names={think:'Задуматься',scratch:'Почесать затылок','cross-arms':'Скрестить руки',crouch:'Присесть','turn-left':'Поворот влево','turn-right':'Поворот вправо','look-up':'Вверх','look-down':'Вниз',smile:'Радость глазами',wink:'Подмигнуть',shrug:'Пожать плечами',tap:'Притопнуть'};for(const[key,name]of Object.entries(names)){const el=document.createElement('div');el.className='pose';el.innerHTML='<img src="frames/neutral.png" alt="'+name+'"><button>'+name+'</button>';document.querySelector('#poses').append(el);let timer;el.querySelector('button').onclick=()=>{clearTimeout(timer);let i=0;function step(){const s=m.clips[key][i++];if(!s){el.querySelector('img').src='frames/neutral.png';return;}el.querySelector('img').src='frames/'+s.frame+'.png';timer=setTimeout(step,s.seconds*1000);}step();};}</script></main>`;
+ fs.writeFileSync(path.join(root,'preview.html'),html);
+ console.log(JSON.stringify({gif:fs.statSync(path.join(root,'HUDI-demo.gif')).size,video:fs.statSync(path.join(root,'HUDI-demo.mp4')).size}));
+}
+main().catch(e=>{console.error(e);process.exitCode=1});

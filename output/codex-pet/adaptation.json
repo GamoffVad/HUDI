@@ -1,0 +1,136 @@
+{
+  "source": "approved v6.3",
+  "resizing": "shared 146x190, offset23,9",
+  "states": [
+    {
+      "state": "idle",
+      "source": "idle",
+      "indices": [
+        0,
+        4,
+        8,
+        12,
+        8,
+        4
+      ],
+      "mirrored": false,
+      "frames": 6
+    },
+    {
+      "state": "running-right",
+      "source": "dance",
+      "indices": [
+        36,
+        40,
+        44,
+        48,
+        52,
+        48,
+        44,
+        40
+      ],
+      "mirrored": true,
+      "frames": 8
+    },
+    {
+      "state": "running-left",
+      "source": "dance",
+      "indices": [
+        36,
+        40,
+        44,
+        48,
+        52,
+        48,
+        44,
+        40
+      ],
+      "mirrored": false,
+      "frames": 8
+    },
+    {
+      "state": "waving",
+      "source": "idle",
+      "indices": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "mirrored": false,
+      "frames": 4
+    },
+    {
+      "state": "jumping",
+      "source": "surprise",
+      "indices": [
+        12,
+        18,
+        24,
+        30,
+        36
+      ],
+      "mirrored": false,
+      "frames": 5
+    },
+    {
+      "state": "failed",
+      "source": "sad",
+      "indices": [
+        20,
+        26,
+        32,
+        38,
+        44,
+        38,
+        32,
+        26
+      ],
+      "mirrored": false,
+      "frames": 8
+    },
+    {
+      "state": "waiting",
+      "source": "pockets",
+      "indices": [
+        72,
+        77,
+        82,
+        86,
+        82,
+        77
+      ],
+      "mirrored": false,
+      "frames": 6
+    },
+    {
+      "state": "running",
+      "source": "think",
+      "indices": [
+        38,
+        42,
+        46,
+        48,
+        46,
+        42
+      ],
+      "mirrored": false,
+      "frames": 6
+    },
+    {
+      "state": "review",
+      "source": "lookaround",
+      "indices": [
+        35,
+        40,
+        45,
+        50,
+        45,
+        40
+      ],
+      "mirrored": false,
+      "frames": 6
+    }
+  ],
+  "note": "Local Codex v1 adaptation, not a newly generated v2 cloud pet."
+}
