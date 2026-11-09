@@ -18,6 +18,26 @@ internal static class ChatVerification
         string directory=Path.Combine(PetWindow.SettingsDirectory,"verification-v7");Directory.CreateDirectory(directory);
         try
         {
+            foreach(string address in new[]{"http://llm.corp:8080/api/v1","http://10.42.0.8:8000/v1","http://[fd00::12]:8080/v1"})
+            {
+                var network=new ModelSettings {Provider="compatible",BaseUrl=address,Model="corporate-model",Protocol="chat",Stream=false};
+                using var corporate=new HttpModelClient(new Handler((request,ct)=>
+                {
+                    bool list=request.Content is null;
+                    Check(request.RequestUri!.AbsoluteUri==address+(list?"/models":"/chat/completions"),"corporate HTTP route "+address);
+                    Check(request.Headers.Authorization?.Parameter=="corporate-fixture-key","corporate HTTP key");
+                    return Task.FromResult(Response(list?"{\"data\":[{\"id\":\"corporate-model\"}]}":"{\"choices\":[{\"message\":{\"content\":\"OK\"},\"finish_reason\":\"stop\"}]}"));
+                }));
+                Check((await corporate.ListModelsAsync(network,"corporate-fixture-key",default)).Single()=="corporate-model","corporate model discovery");
+                Check((await corporate.CompleteAsync(network,"corporate-fixture-key",[new("user","test")],null,default)).Text=="OK","corporate HTTP reply");
+                var corporateStore=new ModelSettingsStore(Path.Combine(directory,"corporate-http"));corporateStore.Save(network,"corporate-fixture-key");
+                Check(corporateStore.Load().Settings.BaseUrl==address&&corporateStore.Load().Key=="corporate-fixture-key","corporate HTTP settings roundtrip");
+            }
+            foreach(string invalid in new[]{"file:///C:/test","ftp://server/v1","http://user:pass@server/v1","http://server/v1?key=secret","http://server/v1#part"})
+            {
+                try{new ModelSettings{BaseUrl=invalid}.Endpoint("models");throw new Exception("invalid API URL accepted");}
+                catch(ModelException){passed.Add("invalid API URL rejected");}
+            }
             foreach(var preset in ProviderPresets.All.Where(p=>p.Id!="compatible"))
             {
                 var settings=preset.Defaults();settings.Stream=false;if(settings.Model.Length==0)settings.Model="installed-local-model";

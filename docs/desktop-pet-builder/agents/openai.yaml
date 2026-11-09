@@ -1,0 +1,6 @@
+interface:
+  display_name: "Питомцы рабочего стола"
+  short_description: "Любой персонаж как живой питомец Windows"
+  default_prompt: "Используй $desktop-pet-builder, чтобы создать питомца Windows из моего персонажа с плавными движениями и прозрачным фоном."
+policy:
+  allow_implicit_invocation: true

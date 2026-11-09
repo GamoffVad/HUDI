@@ -1,0 +1,43 @@
+{
+  "params": {
+    "model": "kling4_0",
+    "mode": "image-to-video",
+    "resolution": "1080p",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "use_unlim": false,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+      },
+      {
+        "role": "end_image",
+        "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+      }
+    ],
+    "prompt": "A SMALL, GROUNDED surprised reaction. Keep the girl's head and BOTH HAIR BUNS strictly at or BELOW their original height throughout. No jump, no upward bounce, no head lifting, no flying loose hairs. She uncrosses her arms, slightly BENDS the supporting knee so her head lowers, widens her eyes and forms a small surprised O mouth. She raises the other knee a little while the supporting leg stays bent, arms slightly apart, then plants that foot. Keep the entire upper silhouette including every hair below the original topmost hair pixel, with visible green above. She naturally straightens only to her original height and crosses her arms, restores initial side gaze and pout by 4.5 seconds. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+  },
+  "submission": {
+    "results": [
+      {
+        "id": "37fc915d-8f33-46ed-898d-2c0720eec83b",
+        "type": "video",
+        "status": "pending",
+        "model": "kling4_0",
+        "params": {
+          "prompt": "A SMALL, GROUNDED surprised reaction. Keep the girl's head and BOTH HAIR BUNS strictly at or BELOW their original height throughout. No jump, no upward bounce, no head lifting, no flying loose hairs. She uncrosses her arms, slightly BENDS the supporting knee so her head lowers, widens her eyes and forms a small surprised O mouth. She raises the other knee a little while the supporting leg stays bent, arms slightly apart, then plants that foot. Keep the entire upper silhouette including every hair below the original topmost hair pixel, with visible green above. She naturally straightens only to her original height and crosses her arms, restores initial side gaze and pout by 4.5 seconds. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. ",
+          "aspect_ratio": "1:1",
+          "duration": 5,
+          "reference_images": [
+            "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845",
+            "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+          ],
+          "mode": "image-to-video",
+          "resolution": "1080p"
+        }
+      }
+    ]
+  }
+}

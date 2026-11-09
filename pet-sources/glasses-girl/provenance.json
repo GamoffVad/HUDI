@@ -1,0 +1,38 @@
+[
+  {
+    "scene": "curious-stroll-v1",
+    "sourceSha256": "2ffb445a0adc35610d5d47cf9ff79c163dd0d530e0355af415aa860229feb5f3"
+  },
+  {
+    "scene": "surprise-v3-kling",
+    "sourceSha256": "3e6ec7a436bcd84585756c9ce2ddd4be535b5818ce87e102b9e6311464d4f6fd"
+  },
+  {
+    "scene": "glasses-hair-v1",
+    "sourceSha256": "52de6c44bd0acfaec20b7e3dc098d4b0537b2edb5c64b1f84e42196b1fcb881c"
+  },
+  {
+    "scene": "look-surprise-think-v1",
+    "sourceSha256": "16b6a2664e2c18935d530dc8acbfdbd16fa5ae8486deec8d30e5cc5f21b3ff9f"
+  },
+  {
+    "scene": "dynamic-dance-v1",
+    "sourceSha256": "bd908e4ffd94c656d183e3f229d17546e350ae5df11dd6f333c7f7e6fe10d890"
+  },
+  {
+    "scene": "expressive-anger-v1",
+    "sourceSha256": "58d42e954329deb5976a0574b8b2f1ff93e03e7734da614ccb57f180cb722963"
+  },
+  {
+    "scene": "funky-groove-v1",
+    "sourceSha256": "2545a97a8a3d94fd472c5a19d28818dd321fcfab7030d0c9f882569f8124fb97"
+  },
+  {
+    "scene": "ironic-temple-v1",
+    "sourceSha256": "71cc201f898e636ab273f50000a2a7de0f207a2c1117c30e021f0ee391edae25"
+  },
+  {
+    "scene": "surprise-v1",
+    "sourceSha256": "4ea69f849df19e914bd3b0bd946c1df9b5353243420e127228835826d7e0fce3"
+  }
+]

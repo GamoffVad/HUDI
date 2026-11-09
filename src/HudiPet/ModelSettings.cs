@@ -29,9 +29,9 @@ internal sealed class ModelSettings
     internal Uri Endpoint(string route)
     {
         if (!Uri.TryCreate(BaseUrl.Trim().TrimEnd('/') + "/", UriKind.Absolute, out var address)
-            || (address.Scheme != "https" && !(address.Scheme == "http" && address.IsLoopback))
+            || address.Scheme is not ("https" or "http")
             || !string.IsNullOrEmpty(address.UserInfo) || !string.IsNullOrEmpty(address.Query) || !string.IsNullOrEmpty(address.Fragment))
-            throw new ModelException("Укажите HTTPS-адрес API. Для локальной модели разрешён http://localhost.");
+            throw new ModelException("Укажите адрес API с http:// или https://, без логина, параметров запроса и фрагмента.");
         return new Uri(address, route);
     }
     internal string Origin => Endpoint("").GetLeftPart(UriPartial.Authority).ToLowerInvariant();

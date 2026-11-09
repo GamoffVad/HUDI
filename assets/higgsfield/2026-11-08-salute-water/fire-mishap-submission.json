@@ -1,0 +1,35 @@
+{
+  "account": "gamx81@gmail.com",
+  "quoted_credits": 22.5,
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 15,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Animate the EXACT small grey-hooded 3D robot in the supplied start and end reference in a playful 15-second cartoon mishap. Preserve its proportions, grey hoodie and raised hood, black face screen with exactly two cyan LED eyes, original mechanical hands, dark trousers, pale-blue sneakers and drawstrings. Emotion only through the two eyes, head and body: no mouth, eyebrows, nose, human skin or added costume.\n\nOne continuous full-body shot, all actions clear at desktop companion size:\n0.0-1.6s: from the reference pose, take two small sneaky steps sideways and retrieve a tiny plain pocket lighter with the right hand. Stay within the central frame.\n1.6-3.1s: bend knees and squat down naturally, both feet on the same invisible ground plane.\n3.1-4.7s: flick the lighter once and bring its little flame toward a single small stylized orange cartoon flame on the ground just beside the feet. The ground flame catches. Keep the lighter distinct from the flame; no duplicated hands.\n4.7-6.4s: put the lighter away. The small ground flame suddenly grows into a lively knee-high orange-yellow cartoon fire. Eyes open wide, head recoils and shoulders lift in startled alarm. The fire never engulfs or burns the character.\n6.4-9.7s: jump up from the squat and frantically extinguish the little fire with three quick stomps and downward shoe pats. Readable panicked comedy, compact fast movements. Each stomp visibly shrinks the fire until the LAST flame goes out completely. A tiny last curl of pale smoke vanishes.\n9.7-11.2s: freeze for a short guilty beat, check that the fire is completely out, then glance toward the viewer.\n11.2-13.8s: clasp BOTH EMPTY HANDS BEHIND THE LOWER BACK, straighten posture and tilt the head and eyes upward with exaggerated innocent 'nothing happened' body language. Hold this unmistakable innocent pose for at least one second. No whistling mouth; the screen still has exactly two eyes.\n13.8-15.0s: return naturally to the original position, lower both hands and settle into the exact supplied neutral ending pose.\n\nNo realistic injury, destruction, fuel containers, match piles, campfire equipment or extra props beyond one pocket lighter. The little isolated cartoon flame is the only fire. Its growth and full extinguishing must both be clearly shown, not cut away. No lingering embers, fire, smoke or debris at the end. Keep the same hood and shoes; no scorching or costume damage. Natural knee and arm anatomy, original finger count. Props move physically to and from the pocket. No teleportation or dissolves.\n\nLocked camera, framing, scale, exposure and character lighting; full body, flame and all movement always inside generous margins. No zoom, cuts or camera shake. Feet contact an invisible flat ground with NO visible floor or horizon. Clean sharp frames without motion blur. Smooth acting with quick, readable panicked stomps, followed by a slower guilty hold.\n\nBACKGROUND IS AN UNLIT DIGITAL CHROMA MATTE: exactly uniform solid pure #00FF00 over the entire background and floor, including gaps between limbs. The warm orange fire is a separate foreground effect and must NOT illuminate, recolour, darken or cast shadows onto the green background. No green gradients, vignettes, environment, background texture or light falloff. Maintain the same flat green in every frame. Silent video, no words, watermark or subtitles.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      },
+      {
+        "role": "end_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "index": 1,
+      "job_id": "19f310e9-1da7-496e-b653-6b932a99b523",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_150624_19f310e9-1da7-496e-b653-6b932a99b523.mp4"
+    }
+  ],
+  "review": "Sampled frames show crouch, lighter, growing fire, startled reaction, extinguishing and hands-behind-back pose. Fire casts a green/yellow ground glow; needs chroma cleanup. Full playback timing not verified.",
+  "selection_status": "selected_by_user"
+}

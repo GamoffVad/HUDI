@@ -81,6 +81,20 @@ internal static class PetCatalogVerification
         }
         finally{window.Close();}
         var reopened=new PetWindow(false,true,catalog);checks["runtime_remembers_selection"]=reopened.SelectedPetId==pet.Id;reopened.Close();
+        try{catalog.Remove(PetCatalog.Hudi);checks["builtin_delete_rejected"]=false;}catch(InvalidDataException){checks["builtin_delete_rejected"]=true;}
+        try{catalog.Remove(pet with {Package=valid});checks["outside_delete_rejected"]=false;}catch(InvalidDataException){checks["outside_delete_rejected"]=File.Exists(valid)&&catalog.List().Length==2;}
+        var deleting=new PetWindow(false,true,catalog);
+        try
+        {
+            await deleting.RemovePetAsync(pet);
+            checks["active_delete_restores_hudi"]=deleting.SelectedPetId=="hudi"&&catalog.Selected().Id=="hudi";
+            checks["deleted_pet_not_listed"]=catalog.List().Length==1&&!File.Exists(pet.Package);
+            checks["deleted_package_recoverable"]=Directory.GetFiles(Path.Combine(testRoot,"collection","removed"),"pet.zip",SearchOption.AllDirectories).Length==1&&File.Exists(valid);
+            var reimported=await catalog.ImportAsync(valid);
+            await deleting.RemovePetAsync(reimported);
+            checks["inactive_delete_keeps_selection"]=deleting.SelectedPetId=="hudi"&&catalog.List().Length==1;
+        }
+        finally{deleting.Close();}
         checks["activation_disabled"]=!Hudi.Licensing.LicenseCodec.ActivationRequired;
     }
 }

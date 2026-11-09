@@ -1,0 +1,278 @@
+[
+  {
+    "title": "Осмотреться",
+    "scene": "look-around",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\look-around\\final-preview.mp4",
+    "frames": 121,
+    "name": "look-around",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      0.0,
+      2.8630270907052475
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Топать и злиться",
+    "scene": "angry-stomp",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\angry-stomp\\final-preview.mp4",
+    "frames": 121,
+    "name": "angry-stomp",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.4170764991927465,
+      3.452173476797223
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Нетерпеливо ждать",
+    "scene": "impatient-wait",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\impatient-wait\\final-preview.mp4",
+    "frames": 121,
+    "name": "impatient-wait",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.6762241680213785,
+      3.2523466830520875
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Нахмуриться и наклониться",
+    "scene": "indignant-lean",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\indignant-lean\\final-preview.mp4",
+    "frames": 121,
+    "name": "indignant-lean",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.2148113720424356,
+      2.887818336199479
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Хитро посмеяться",
+    "scene": "mischievous-giggle",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\mischievous-giggle\\final-preview.mp4",
+    "frames": 121,
+    "name": "mischievous-giggle",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.3189454796312123,
+      2.826088397818223
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Удивиться",
+    "scene": "surprised-step-v2",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\surprised-step-v2\\final-preview.mp4",
+    "frames": 121,
+    "name": "surprised-step-v2",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.636817388071898,
+      3.513768429914151
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Укоризненно посмотреть",
+    "scene": "stern-reproach",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\stern-reproach\\final-preview.mp4",
+    "frames": 121,
+    "name": "stern-reproach",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.454619672908261,
+      3.046126114302289
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Крутить у виска",
+    "scene": "temple-circle",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\temple-circle\\final-preview.mp4",
+    "frames": 121,
+    "name": "temple-circle",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.356643028509143,
+      3.066210604227433
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Постучать по голове",
+    "scene": "head-tap",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\head-tap\\final-preview.mp4",
+    "frames": 121,
+    "name": "head-tap",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.34442153166293,
+      2.7783886909537197
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Потанцевать",
+    "scene": "playful-dance",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\playful-dance\\final-preview.mp4",
+    "frames": 121,
+    "name": "playful-dance",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.2730079803721717,
+      3.2726934250054187
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Обернуться по сторонам",
+    "scene": "peek-both-shoulders",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\peek-both-shoulders\\final-preview.mp4",
+    "frames": 121,
+    "name": "peek-both-shoulders",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.2570457119563883,
+      3.2634260745393155
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  },
+  {
+    "title": "Походить в разные стороны",
+    "scene": "walk-directions",
+    "video": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\walk-directions\\final-preview.mp4",
+    "frames": 121,
+    "name": "walk-directions",
+    "fps": 24.0,
+    "frameSize": [
+      1440,
+      1440
+    ],
+    "alpha": "straight RGBA",
+    "firstLastIdentical": true,
+    "commonNeutral": "look-around/frames/0000.png",
+    "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+    "sourceEndpointPremultipliedMae": [
+      2.539051348824556,
+      3.569438508454111
+    ],
+    "allInside": true,
+    "model": "kling4_0",
+    "quotedCredits": 16.25
+  }
+]

@@ -35,6 +35,28 @@ mouse-controls.json
 mouse-controls.json.bak
 installation.json
 
+# Generated animation caches; source videos, prompts and tooling are versioned.
+/pet-sources/**/animations/**/frames/
+/pet-sources/**/animations/**/transparent-frames/
+/pet-sources/**/animations/**/recut-v*/
+/pet-sources/**/animations/**/transparent-frames.zip
+/pet-sources/**/animations/**/loop-preview.webp
+/pet-sources/**/animations/**/final-loop.webp
+/pet-sources/**/animations/**/preview-light-dark.mp4
+/pet-sources/**/animations/**/final-preview.mp4
+/pet-sources/**/qa/
+/pet-sources/kitty-girl/animations/surprised-step/
+/assets/higgsfield/2026-11-08-hood-juggle/
+/assets/higgsfield/2026-11-08-salute-water/hudi-notebook-fist-v*.mp4
+/assets/higgsfield/2026-11-08-salute-water/hudi-notebook-fist-v*-contact.jpg
+/assets/pets/ink/
+/assets/water-orb/**/frames/
+/assets/water-orb/**/raw-frames/
+/assets/water-orb/**/*kit.zip
+/assets/water-orb/**/frames-alpha/
+/assets/water-orb/**/frames-green/
+/assets/water-orb/**/drafts/
+
 # Retain only build inputs and the ready-to-use Codex pet, not old releases.
 /output/*
 !/output/hudi-pet-v3/

@@ -1,0 +1,12 @@
+{
+  "account": "gamx81@gmail.com",
+  "credits_before": 455,
+  "credits_after": 387.5,
+  "charged_credits": 67.5,
+  "generations": 3,
+  "notebook_v2": "Rejected: pointing/open fingers and close-up crop.",
+  "notebook_v3": "Closed fist achieved; approach toward camera and clipped feet remain. Needs fixed framing before runtime use.",
+  "fire": "Requested action sequence visible in sampled frames; background glow and smoke require chroma cleanup.",
+  "validation": "Videos decoded at 960x960, 24 fps, 361 frames. Reviewed 12 sampled frames per clip; no claim of full playback or seamless transition validation.",
+  "installed": false
+}

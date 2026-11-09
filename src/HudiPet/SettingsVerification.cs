@@ -27,6 +27,12 @@ internal sealed partial class SettingsWindow
         var restored=new SettingsWindow(owner,new(){Provider="deepseek",BaseUrl="https://api.deepseek.com",Model="my-custom-model",Temperature=.2,TimeoutSeconds=97},"fixture-only",client,(_,_)=>{});
         checks["opening_preserves_saved_custom_values"]=restored.Read().Provider=="deepseek"&&restored.Read().Model=="my-custom-model"&&restored.Read().Temperature==.2&&restored.Read().TimeoutSeconds==97;
         restored.Close();
+        var corporate=new SettingsWindow(owner,new(){Provider="compatible",BaseUrl="http://llm.corp:8080/v1",Model="corporate",Protocol="chat"},"fixture-corporate",client,(_,_)=>{});
+        var corporateRead=corporate.Read();corporateRead.Validate("fixture-corporate");
+        checks["corporate_http_configured"]=corporateRead.Endpoint("models").AbsoluteUri=="http://llm.corp:8080/v1/models";
+        corporate.endpoint.Text="https://llm.corp:8080/v1";
+        try{corporate.Read();checks["http_https_origin_guard"]=false;}catch(ModelException){checks["http_https_origin_guard"]=true;}
+        corporate.Close();
         panel.Close();
         File.WriteAllText(Path.Combine(directory,"settings-controls.json"),JsonSerializer.Serialize(new{success=checks.Values.All(x=>x),checks},new JsonSerializerOptions{WriteIndented=true}));
         if(checks.Values.Any(x=>!x))throw new InvalidOperationException("Settings controls verification failed");

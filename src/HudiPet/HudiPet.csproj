@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>HUDI</AssemblyName>
     <RootNamespace>HudiPet</RootNamespace>
-    <Version>7.3.7</Version>
+    <Version>7.3.10</Version>
     <Description>HUDI — animated desktop companion</Description>
     <ApplicationIcon>../../output/hudi-pet-v3/HUDI.ico</ApplicationIcon>
     <PublishSingleFile>true</PublishSingleFile><EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>

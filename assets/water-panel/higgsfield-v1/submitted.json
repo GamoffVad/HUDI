@@ -1,0 +1,42 @@
+{
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 5,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Seamless 5-second loop of the exact pale icy-blue organic water panel in the supplied image. Approximately square silhouette, gently irregular soft liquid sides and asymmetrical corners. Locked front orthographic camera, fixed scale and center; the whole panel must always remain fully in frame with green safe margins. Gentle continuous water currents and visible rippling highlights only in a narrow PERIMETER BAND along all four sides. The large central 75 percent remains calm smooth almost uniform, with barely perceptible movement and NO bright crisscross waves, so text can later be placed there. Outer contour very subtly and slowly undulates like water, only small changes in shape, never turns into a circle. Smooth natural fluid motion, no jiggles or sudden pulses. Return naturally to the identical first state for a seamless loop. Pure uniform chroma green #00FF00 background throughout. Preserve icy blue color and partly translucent material. No objects, letters, text, camera motion, perspective, extruded glass block, large deformation, splashes or sound.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "9fd68064-2353-4b37-9f1f-fef5b9f491af"
+      },
+      {
+        "role": "end_image",
+        "value": "9fd68064-2353-4b37-9f1f-fef5b9f491af"
+      }
+    ]
+  },
+  "result": {
+    "results": [
+      {
+        "id": "5eaf6972-d4ba-4d3d-b220-2d11b994cd03",
+        "type": "video",
+        "status": "pending",
+        "model": "kling3_0",
+        "params": {
+          "prompt": "Seamless 5-second loop of the exact pale icy-blue organic water panel in the supplied image. Approximately square silhouette, gently irregular soft liquid sides and asymmetrical corners. Locked front orthographic camera, fixed scale and center; the whole panel must always remain fully in frame with green safe margins. Gentle continuous water currents and visible rippling highlights only in a narrow PERIMETER BAND along all four sides. The large central 75 percent remains calm smooth almost uniform, with barely perceptible movement and NO bright crisscross waves, so text can later be placed there. Outer contour very subtly and slowly undulates like water, only small changes in shape, never turns into a circle. Smooth natural fluid motion, no jiggles or sudden pulses. Return naturally to the identical first state for a seamless loop. Pure uniform chroma green #00FF00 background throughout. Preserve icy blue color and partly translucent material. No objects, letters, text, camera motion, perspective, extruded glass block, large deformation, splashes or sound.",
+          "aspect_ratio": "1:1",
+          "duration": 5,
+          "reference_images": [
+            "9fd68064-2353-4b37-9f1f-fef5b9f491af",
+            "9fd68064-2353-4b37-9f1f-fef5b9f491af"
+          ],
+          "mode": "std",
+          "sound": "off"
+        }
+      }
+    ]
+  }
+}

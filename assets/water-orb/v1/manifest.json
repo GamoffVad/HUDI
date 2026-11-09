@@ -1,0 +1,19 @@
+{
+  "generated_keyframes": 16,
+  "frames": 128,
+  "frame_size": [
+    256,
+    256
+  ],
+  "duration_ms": 4000,
+  "loop": "forward optical-flow interpolation, including frame 15 back to frame 0",
+  "gif": "green-screen loop and opaque dark-background preview; full partial alpha is in APNG and PNG frames",
+  "alpha_zero_pct": 64.95248079299927,
+  "partial_alpha_pct": 34.26142930984497,
+  "center_alpha_max": 0,
+  "edge_alpha_max": 0,
+  "seam_mean_difference": 0.002586537506431341,
+  "largest_adjacent_difference": 0.015081648714840412,
+  "seam_is_normal_step": true,
+  "success": true
+}

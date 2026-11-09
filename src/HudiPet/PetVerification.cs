@@ -9,7 +9,7 @@ internal static class PetVerification
     internal static readonly (PetAction action, string label)[] ActionLabels =
     [
         (PetAction.Think, "Задуматься"), (PetAction.Crouch, "Присесть"),
-        (PetAction.Stretch, "Потянуться"), (PetAction.Angry, "Разозлиться · молнии"),
+        (PetAction.Stretch, "Потянуться"), (PetAction.Angry, "Разозлиться"),
         (PetAction.Wink, "Подмигнуть"), (PetAction.Sad, "Загрустить"),
         (PetAction.Surprise, "Удивиться"), (PetAction.LookAround, "Осмотреться"),
         (PetAction.Dance, "Потанцевать"), (PetAction.Hood, "Поправить капюшон"),
@@ -26,7 +26,18 @@ internal static class PetVerification
         (PetAction.Shrug, "Пожать плечами"),
         (PetAction.Indignation, "Возмутиться · покрутить у виска"),
         (PetAction.FireTrick, "Щёлкнуть · затушить огонь"),
-        (PetAction.Impatient, "Нетерпеливо ждать")
+        (PetAction.Impatient, "Нетерпеливо ждать"),
+        (PetAction.Stroll, "Любопытная прогулка"),
+        (PetAction.AdjustGlasses, "Поправить очки и волосы"),
+        (PetAction.Groove, "Танцевать в ритме фанк"),
+        (PetAction.Ironic, "Ироничная реакция"),
+        (PetAction.SurpriseClassic, "Удивиться · первый вариант"),
+        (PetAction.IndignantLean, "Нахмуриться и наклониться"),
+        (PetAction.Giggle, "Хитро посмеяться"),
+        (PetAction.Reproach, "Укоризненно посмотреть"),
+        (PetAction.HeadTap, "Постучать по голове"),
+        (PetAction.PeekAround, "Обернуться по сторонам"),
+        (PetAction.WalkAround, "Походить в разные стороны")
     ];
     private static byte[] Pixels(BitmapSource image)
     {

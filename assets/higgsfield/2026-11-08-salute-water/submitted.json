@@ -1,0 +1,46 @@
+{
+  "account": "gamx81@gmail.com",
+  "model": "kling3_0",
+  "status": "completed",
+  "charged_credits": 45,
+  "remaining_credits": 455,
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "3464adba-9d98-4f7b-8118-d4cbcf22443f",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_145407_3464adba-9d98-4f7b-8118-d4cbcf22443f.mp4",
+      "name": "hudi-salute-hands-back-lookaround",
+      "local_file": "hudi-salute-hands-back-lookaround.mp4"
+    },
+    {
+      "index": 1,
+      "job_id": "8ad53a24-06e0-490c-80ee-bdc729b0310f",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_145410_8ad53a24-06e0-490c-80ee-bdc729b0310f.mp4",
+      "name": "blue-water-sphere-loop",
+      "local_file": "blue-water-sphere-loop.mp4"
+    },
+    {
+      "index": 2,
+      "job_id": "acfc75e7-a3d4-4dcf-aa34-87b279f0fce1",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_145412_acfc75e7-a3d4-4dcf-aa34-87b279f0fce1.mp4",
+      "name": "hudi-notebook-suspicious-finger-wag",
+      "local_file": "hudi-notebook-suspicious-finger-wag.mp4"
+    }
+  ],
+  "submitted_at": "2026-11-08",
+  "review": {
+    "method": "Decoded metadata and 12 sampled frames per clip; full playback smoothness not yet verified.",
+    "salute": "Salute and hands-behind-back turn sequence visible; eye shape varies.",
+    "sphere": "Nearly round and translucent; water reflections become darker mid-clip. Endpoint similarity alone does not establish a seamless motion loop.",
+    "notebook": "Notebook and writing visible; background gains a green gradient and finger-wag is not consistently a single extended index finger. Needs cleanup/review before runtime integration."
+  }
+}

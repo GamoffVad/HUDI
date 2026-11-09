@@ -44,10 +44,25 @@ internal sealed class PetCatalog
         Directory.CreateDirectory(root);string temporary=Path.Combine(root,"selected.pending");File.WriteAllText(temporary,pet.Id);File.Move(temporary,Path.Combine(root,"selected.txt"),true);
     }
     internal SpriteLibrary Open(LocalPet pet)=>pet.BuiltIn?SpriteLibrary.Shared.Value:SpriteLibrary.Open(pet.Package!);
+    internal void Remove(LocalPet pet)
+    {
+        if(pet.BuiltIn||!Guid.TryParseExact(pet.Id,"N",out _))throw new InvalidDataException("Встроенного HUDI удалить нельзя.");
+        var existing=List().SingleOrDefault(p=>p.Id==pet.Id)??throw new InvalidDataException("Питомец больше не найден в коллекции.");
+        string folder=Path.GetFullPath(Path.Combine(root,existing.Id));
+        if(!string.Equals(Path.GetDirectoryName(folder),root,StringComparison.OrdinalIgnoreCase)
+            || !string.Equals(Path.GetFullPath(pet.Package!),Path.Combine(folder,"pet.zip"),StringComparison.OrdinalIgnoreCase)
+            || (File.GetAttributes(folder)&FileAttributes.ReparsePoint)!=0)
+            throw new InvalidDataException("Недопустимый путь к пакету питомца.");
+        // Keep removed packages recoverable, outside the live GUID collection.
+        string archive=Path.Combine(root,"removed");
+        Directory.CreateDirectory(archive);
+        if((File.GetAttributes(archive)&FileAttributes.ReparsePoint)!=0)throw new InvalidDataException("Недопустимая папка удалённых питомцев.");
+        Directory.Move(folder,Path.Combine(archive,existing.Id+"-"+Guid.NewGuid().ToString("N")));
+    }
     internal Task<LocalPet> ImportAsync(string file)=>Task.Run(()=>Import(file));
     internal LocalPet Import(string file)
     {
-        if(new FileInfo(file).Length>512L*1024*1024)throw new InvalidDataException("Пакет должен быть не больше 512 МБ.");
+        if(new FileInfo(file).Length>1024L*1024*1024)throw new InvalidDataException("Пакет должен быть не больше 1 ГБ.");
         Directory.CreateDirectory(root);string id=Guid.NewGuid().ToString("N");string folder=Path.Combine(root,id);
         Directory.CreateDirectory(folder);string staged=Path.Combine(folder,"pet.pending");
         bool complete=false;

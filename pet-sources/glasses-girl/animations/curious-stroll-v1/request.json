@@ -1,0 +1,22 @@
+{
+  "sharedPrompt": "D:/PR/HUDI/docs/pet-generation-prompt.md",
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "duration": 8,
+    "sound": "off",
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Animate the EXACT supplied female doll as a lively, curious desktop companion in one continuous 8-second shot. Preserve her face, huge brown eyes, black glasses, small gold septum ring, articulated doll proportions, very long black hair, black top, trousers and ankle boots.\nBegin in the exact supplied ordinary neutral pose. She notices something to her left, eyes lead the head and shoulders, and takes two small graceful walking steps left, travelling no more than half her body width. Use convincing heel-to-toe contacts, alternating support legs, gentle hip and shoulder counter-rotation and relaxed arm swing. She pivots on her feet into a three-quarter back view, looks curiously over her shoulder, then turns right and takes two small steps back to the starting mark. She turns to face us, gives a subtle warm smile and settles into the EXACT original neutral stance and head tilt. Calmly hold the matching end-image pose for the last 0.6 seconds. The body turns with the feet; no sliding, moonwalking, rubber limbs, contortions, jumping or exaggerated poses.\nHer long hair is alive: it lags naturally behind walking and turns, swings in a flowing compact arc, then settles with gravity. Let the hands, legs, torso and hair move together naturally; avoid a frozen body with only facial animation. Keep the entire hair motion comfortably inside the spacious canvas.\nLocked full-body camera, focal length, apparent character scale, ground plane, exposure and white balance. Entire head, hands, fingers, all hair strands, boots and compact soft underfoot contact shadow stay fully visible in EVERY frame with generous margins. No camera movement, zoom, reframing, cuts, dissolves or body morphing. Full figure stays in sharp focus, with crisp naturally antialiased contours, no motion blur, soft-focus silhouette or artificial feathering. Preserve opaque hair mass and clothes.\nNeutral white light on the character independently of a perfectly uniform flat digital #00FF00 green background AND floor, including real gaps between limbs and hair. No green reflections, colored fringe, rim glow, gradient, scenery, horizon, texture or haze. Preserve only a compact soft neutral contact shadow directly below her feet, moving naturally with her. Silent.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      },
+      {
+        "role": "end_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      }
+    ]
+  }
+}

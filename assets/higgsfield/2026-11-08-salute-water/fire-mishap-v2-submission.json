@@ -1,0 +1,33 @@
+{
+  "account": "gamx81@gmail.com",
+  "quoted_credits": 22.5,
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 15,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Animate the exact grey-hooded little robot from the reference in one continuous 15-second full-body shot on flat chroma green. Preserve the original body proportions, grey hoodie, mechanical hands, black face screen with exactly two cyan eyes, blue drawstrings and pale-blue sneakers. Emotion is expressed only with the two eyes, head and body. Fixed camera, constant scale and framing.\n\nThe story must happen in this strict order: STAND STILL -> TAKE LIGHTER FROM POCKET -> SQUAT -> LIGHT FIRE ON THE GROUND -> FIRE GROWS -> STAND UP IN ALARM -> STAMP OUT FIRE WITH FEET -> INNOCENT HANDS-BEHIND-BACK POSE.\n\n0-1 seconds: stand quietly in the exact initial pose. BOTH FEET completely stationary and flat on the ground.\n1-2 seconds: while still standing, the RIGHT hand visibly reaches into the right pocket and takes out one small pocket lighter. Only the arm moves.\n2-4 seconds: slowly and smoothly bend both knees and lower into a balanced squat. BOTH SOLES stay planted in their original positions. Natural continuous knee and hip motion, no bounce or steps.\n4-6 seconds: while remaining in the squat, lower the lighter in the right hand all the way down to ground level just outside the right shoe. The lighter is close to the ground, NOT at chest height. Flick it once. A tiny orange ground flame catches exactly at the lighter tip. Show that the ground flame begins only after the lowered lighter ignites it. Then withdraw the hand and put the lighter away.\n6-7 seconds: the small orange ground fire grows to ankle-to-calf height. The squatting robot notices and widens its cyan eyes in alarm.\n7-8 seconds: smoothly stand up from the squat, transferring weight naturally; keep the feet in place until fully upright.\n8-11 seconds: ONLY NOW begin extinguishing. Support body weight on the left foot, lift the right shoe a short distance and press/stamp it onto the little fire twice; if needed add one final compact foot press. Clear foot contact, natural weight and balance. Each contact visibly shrinks the fire; after the last contact it is completely extinguished. Urgent but controlled movements, no airborne jumps, hopping, frantic flailing or whole-body shaking.\n11-14 seconds: with both feet back on the ground, pause in relief, then put both empty hands behind the lower back and turn head and eyes upward innocently, as though nothing happened. Hold the guilty innocent pose clearly.\n14-15 seconds: lower the arms naturally and settle back into the exact reference neutral pose.\n\nMOST IMPORTANT: before the fire grows, the legs only perform ONE SMOOTH SQUAT. There is NO walking, marching, stamping, tapping, kicking, dancing, hopping or stepping at the start. Stamping is exclusively the RESPONSE to the already-burning ground fire in the second half. Calm deliberate preparation contrasts with the alarmed extinguishing. Use smooth acceleration and deceleration, natural joint paths and stable body mass. No jitter, twitching, pose snapping or abrupt speed jumps.\n\nThe tiny fire is a stylized separate orange-yellow foreground effect. No injury, burns, added fuel, debris or extra equipment. Fire fully disappears before the innocent pose. Keep the original anatomy and clothing, no added mouth or eyebrows. Entire body, shoes and fire always remain inside the frame with generous margins. No closeup, zoom, camera motion, cuts, resizing or movement toward the camera.\n\nBackground and invisible floor are a uniform pure #00FF00 digital matte throughout, also in all body gaps. No horizon, gradient, studio background, cast shadow, vignette or backdrop illumination from the fire. Stable lighting, sharp frames, no motion blur. Silent, no text or watermark. First and last image are the same supplied reference.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      },
+      {
+        "role": "end_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "77fb4773-cee9-4cb6-a1d4-e25d99afc421",
+      "status": "completed",
+      "local_file": "hudi-fire-mishap-v2.mp4"
+    }
+  ],
+  "review": "Half-second samples confirm stationary feet before lighter retrieval and lowering, then ground fire followed by foot extinguishing and hands behind back. Background changes shade; ignition hand does not reach as low as requested. Full playback smoothness not verified.",
+  "selection_status": "selected_by_user_as_separate_emotion"
+}

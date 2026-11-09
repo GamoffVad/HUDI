@@ -1,0 +1,164 @@
+{
+  "id": "kitty-girl",
+  "platform": "windows",
+  "name": "Девочка в розовом",
+  "status": "assembled-imported-not-selected",
+  "referenceImages": [
+    "references/01-common-pose.png",
+    "references/02-angry-stomp.png",
+    "references/03-impatient.png",
+    "references/04-indignant.png",
+    "references/05-giggle.png",
+    "references/06-surprise.png",
+    "references/07-stern-reproach.png"
+  ],
+  "identity": {
+    "description": "Stylised expressive toddler girl, mischievous and stubborn but playful. Brown twin buns and flyaways; bunny and flower clip; cream kitty tee; pink kitty trousers; cream sneakers.",
+    "immutableFeatures": [
+      "reference face and toddler proportions",
+      "brown hair with two buns, bangs and fine flyaways",
+      "hair accessories",
+      "cream and pink clothing with kitty prints"
+    ],
+    "faceRules": "Natural facial expressions including mouth, matching references."
+  },
+  "generation": {
+    "provider": "Higgsfield",
+    "model": "kling4_0",
+    "resolution": "1080p",
+    "durationSeconds": 5,
+    "count": 12,
+    "costQuotePerClip": 16.25,
+    "estimatedTotalCredits": 211.25,
+    "chromaColor": "#00FF00",
+    "firstAndLastPose": "references/01-common-pose.png",
+    "productionReference": "references/common-pose-green.png",
+    "submittedJobs": [
+      {
+        "name": "look-around",
+        "id": "0131c429-66bc-4ed4-a164-9b8c2f450af8",
+        "quotedCredits": 16.25,
+        "status": "completed",
+        "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3G8kH0X5EBsrvzkMS5MHEFTjHLh/hf_20261109_203148_0131c429-66bc-4ed4-a164-9b8c2f450af8.mp4"
+      },
+      {
+        "name": "angry-stomp",
+        "id": "18c8f2fe-7df1-4440-afe3-739e9af2ace2",
+        "status": "pending",
+        "quotedCredits": 16.25
+      },
+      {
+        "name": "impatient-wait",
+        "id": "4d1d25c9-e0f5-467f-ae49-02b16b5c2a48",
+        "status": "pending",
+        "quotedCredits": 16.25
+      },
+      {
+        "name": "indignant-lean",
+        "id": "db4a6a57-ee45-4dd2-b12e-46287e2bbd0e",
+        "status": "pending",
+        "quotedCredits": 16.25
+      },
+      {
+        "name": "mischievous-giggle",
+        "id": "a753b7ac-6196-4e15-aaa6-3b808aed91d2",
+        "status": "pending",
+        "quotedCredits": 16.25
+      },
+      {
+        "name": "surprised-step",
+        "id": "ce983bcb-0cfe-4971-a9e6-3d76982bc4c1",
+        "status": "pending",
+        "quotedCredits": 16.25
+      },
+      {
+        "name": "stern-reproach",
+        "id": "eeb387d5-d6a0-4041-80b1-79013df48cd0",
+        "status": "pending",
+        "quotedCredits": 16.25
+      }
+    ],
+    "pilotActualSize": [
+      1440,
+      1440
+    ],
+    "pilotActualFps": 24,
+    "generationAttempts": 13,
+    "remainingCreditsChecked": 41.8,
+    "sourceFrameSize": [
+      1440,
+      1440
+    ],
+    "runtimeFrameSize": [
+      960,
+      960
+    ]
+  },
+  "behavior": {
+    "actions": [
+      "look-around",
+      "angry-stomp",
+      "impatient-wait",
+      "indignant-lean",
+      "mischievous-giggle",
+      "surprised-step",
+      "stern-reproach"
+    ],
+    "restPoses": [
+      "crossed arms, reference gaze and support position"
+    ],
+    "shadow": "small source contact shadow",
+    "loop": "same first and last image; physical return, no reversal or long dissolve"
+  },
+  "matting": {
+    "status": "base-image-pilot-inspected; waiting for video frames",
+    "requirements": [
+      "preserve warm brown flyaway hair",
+      "no green or magenta fringe",
+      "crisp opaque edges, fractional alpha on individual hairs",
+      "preserve cream clothing and shadow",
+      "review white black saturated backgrounds",
+      "full figure and shadow contained in every frame"
+    ],
+    "method": "warm-brown hair colour mixing, narrow coverage edge, native alpha and source shadow"
+  },
+  "installation": {
+    "requested": true,
+    "imported": true,
+    "selected": false,
+    "petId": "b400eb5250554dd2a15f39691ada8da3",
+    "package": "D:/PR/HUDI/output/kitty-girl-v1/kitty-girl.pet",
+    "applicationVersion": "7.3.10",
+    "runtimeVerification": "D:/PR/HUDI/output/kitty-girl-v1/qa-final/runtime-checks.json",
+    "sha256": "EF03E4EBC7700CD8F1522A7BE2AC5E9A12BB985C7CE4D9FC6B96E87F305BF28E",
+    "actions": 12
+  },
+  "additionalRequests": [
+    {
+      "name": "temple-circle",
+      "prompt": "She unfolds her right arm, extends her right index finger and raises it beside her right temple, staying clearly away from her eye. The fingertip traces TWO small complete circles beside the temple, rotating at the wrist, while she gives a comically skeptical side-eye and one raised eyebrow. The other hand rests on her hip. No waving or pointing-only substitute. She lowers her hand and restores crossed arms and the exact initial pout and stance. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    },
+    {
+      "name": "head-tap",
+      "prompt": "She unfolds one arm, looks upward thoughtfully, and gently taps her own upper forehead twice with the tips of her index and middle fingers, as if reminding herself to think. Each small tap has visible approach, light contact, and withdrawal. Her head tilts with a playful puzzled expression; no hard impact, head banging, pain, or injury. She has an aha expression, lowers her hand and restores the original crossed-arms pout and stance. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    },
+    {
+      "name": "playful-dance",
+      "prompt": "She unfolds her arms and performs a playful age-appropriate toddler dance: two bouncy side-to-side step touches, coordinated relaxed bent arms, a small shoulder shimmy and a brief quarter turn, then steps back to her starting support position. Her face briefly brightens into a mischievous smile. Her buns and loose hairs bounce naturally with inertia, baggy trousers sway. Clear planted feet between steps; no acrobatics or limb tangles. She finishes by crossing her arms, restoring the exact original pout, gaze and stance. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    },
+    {
+      "name": "peek-both-shoulders",
+      "prompt": "With lively curious eyes she looks left, lets her head and torso follow, and pivots slightly to peek over her left shoulder. She then looks right and turns the opposite way to peek over her right shoulder, including coordinated shoulders, hips and feet. This is two alternating over-the-shoulder peeks rather than a continuous spin. The hands briefly relax at her sides and her buns and flyaways sway naturally. She returns physically to her exact initial position, crosses her arms and restores the supplied initial gaze and pout. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    },
+    {
+      "name": "walk-directions",
+      "prompt": "She unfolds her arms and takes two small natural walking steps toward screen left, then turns her body and walks three small steps toward screen right, then turns back and takes a final small step to her original position. Keep all travel inside the central half of the canvas: no walking toward the camera, no exiting the frame. Show heel-to-toe grounded footfalls, coordinated arm swing, weight transfer and bouncing buns, not sliding or skating. She stops naturally, crosses her arms and restores the exact initial gaze, pout, foot positions and size. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    }
+  ],
+  "correctedSurprise": {
+    "rejectedJob": "ce983bcb-0cfe-4971-a9e6-3d76982bc4c1",
+    "reason": "Flyaway hair cropped at source top boundary",
+    "replacementJob": "37fc915d-8f33-46ed-898d-2c0720eec83b",
+    "source": "animations/surprised-step-v2/source.mp4"
+  }
+}

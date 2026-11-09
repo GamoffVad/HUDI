@@ -12,6 +12,20 @@
 
 Выбирай контрастный фон, которого нет на персонаже и в эффектах. Зелёный не подходит зелёному существу; синий может повредить синие глаза или одежду. При перекрывающихся цветах выбери другой фон, прозрачный рендер, отдельную маску или подходящий метод маттинга. Не меняй цвет персонажа ради удобства вырезания.
 
+## Живое движение и проверяемая эмоция
+
+Для запроса «как живой» выбирай связанное действие всего тела: взгляд ведёт голову и корпус, поворот поддерживается переносом веса, волосы и одежда запаздывают и затем успокаиваются. Движение должно соответствовать характеру и эмоции; не вставляй ходьбу, прыжки или взмахи во все сцены. Выразительная злость не обязательно означает махание руками. Предпочтения и анатомию конкретного питомца сохраняй в его проекте.
+
+Точные жесты описывай механически и проверяй на последовательных кадрах. «Постукивает носком при неподвижной пятке» означает опору пятки и движение передней части стопы, а не подъём всей ноги; общее слово «топает» неоднозначно. Покадрово проверь контакт и отсутствие скольжения. Для жестов у виска, волос или очков задай понятную траекторию и нужное расстояние от лица. Если контакт с аксессуаром нужен по сценарию, сохраняй его; не вводи общий запрет касания лица. При случайной деформации лица упрощай траекторию, а не объявляй её исправленной удалением фона.
+
+Быстрый танец проверяй также в середине движений: кисти, пальцы, пересечения рук, лицо за рукой, стопы и силуэт волос. Отдельно различай нормальное перекрытие частей тела, смаз исходника и изменение анатомии. Контактный лист с редкими кадрами не заменяет просмотр этих участков. Результат может выполнить эмоцию, но нарушить важное условие; такой дубль сохраняй с конкретной причиной отклонения, не включай автоматически в готовый набор.
+
+## Цикл с одной исходной позой
+
+Если пользователь требует одинаковое начало и конец, подавай один и тот же утверждённый нейтральный кадр в обе поддерживаемые роли. Эмоция находится внутри ролика. Оставляй время для физического возврата и затухания движения волос, а не только для неподвижного последнего кадра. Если задана промежуточная поза, проверь поддержку ключевых кадров: при двух ролях можно использовать реальные переходы «нейтральная → эмоция» и «эмоция → нейтральная» в пределах согласованного бюджета. Обычная ссылка-референс не гарантирует точную промежуточную позу.
+
+Проверяй совпадение позы и направления движения на стыке, даже если входные изображения одинаковы. При небольшом остаточном расхождении допустимо краткое сведение в premultiplied RGBA после просмотра. Большой скачок, несоответствующую позу или незавершённый жест так исправлять нельзя. Для требуемого точного цикла сравни первый и последний итоговые RGBA-кадры; одинаковые кадры сами по себе не доказывают плавность перехода.
+
 ## Исходник для чистого удаления фона
 
 Одной фразы «на зелёном фоне» недостаточно. Задавай подложку и освещение персонажа независимо:
@@ -52,17 +66,23 @@
 
 Не задавай автоматические бесконечные перегенерации. После неудачного образца определи конкретную причину и сделай ограниченную адресную коррекцию; при повторном неуспехе пересмотри модель/материалы или сообщи ограничение. Не переавторизуй расходы, уже разрешённые пользователем в текущем объёме.
 
+При параллельной работе учитывай стоимость каждого job отдельно: разница общего баланса до и после одного задания может включать другие генерации. Отмена сцены исключает её из доставки и прекращает новую обработку; уже отправленный job отменяй только подходящим инструментом. Не обещай остановку или возврат кредитов без подтверждения сервиса. Если пользователь просит не дублировать готовый ролик, сравни источник/job и существующий экспорт; другой дубль той же эмоции обозначь явно.
+
 ## Конструктор промпта
 
 Заполняй только применимые части. Личность, одно действие и требования фона описывай отдельными короткими предложениями.
 
 **Базовый кадр для проверки вырезания:**
 
-> Create a clean full-body production reference of [character], preserving [identity, proportions, anatomy, materials, palette and face rules], in [neutral entry pose]. Light the subject independently with neutral white light, preserving its natural material highlights without chroma-colored bounce, rim light, glow or spill. Composite it over a perfectly uniform solid [chroma color and hex] digital background and floor, including all actual gaps between body parts. The background has no gradient, texture, scenery, haze or cast shadows. Keep opaque subject materials opaque and silhouettes crisp with antialiased edges, without motion blur. Show the entire figure and props with generous empty margins for [planned motion envelope]; no cropping, close-up, text or watermark.
+> Create a clean full-body production reference of [character], preserving [identity, proportions, anatomy, materials, palette and face rules], in [neutral entry pose]. Light the subject independently with neutral white light, preserving its natural material highlights without chroma-colored bounce, rim light, glow or spill. Composite it over a perfectly uniform solid [chroma color and hex] digital background and floor, including all actual gaps between body parts. Outside any explicitly requested soft contact shadow, the background has no gradient, texture, scenery, haze or cast shadows. Keep opaque subject materials opaque and silhouettes crisp with antialiased edges, without motion blur. Show the entire figure and props with generous empty margins for [planned motion envelope]; no cropping, close-up, text or watermark.
 
 **Движение из проверенного базового кадра:**
 
-> Animate the exact supplied character performing [one clear action, including entry and natural exit]. Preserve [identity, anatomy, proportions, materials, palette and face rules]. Only the character and [explicit props] move; the solid [chroma color and hex] digital background and floor remain unchanged throughout. Maintain neutral white subject lighting, with no chroma-colored reflections, fringes, rim light or glow. Opaque subject materials stay opaque. Keep the entire figure in sharp focus in EVERY frame, including during fast gestures; crisp naturally antialiased silhouettes, no motion blur, soft-focus edges or artificial feathering of opaque surfaces. Locked full-body camera, scale, exposure and white balance. The ENTIRE character and every prop, including their complete motion paths, stay fully inside EVERY frame with generous empty margins. Never crop the head, headwear, hands, fingers, feet, footwear or other body parts. No zoom, camera movement, approach toward the camera, scene change or background transformation. Begin and end in [specified poses]. [Sound policy.]
+> Animate the exact supplied character performing [one clear action, including entry and natural exit]. Preserve [identity, anatomy, proportions, materials, palette and face rules]. Only the character and [explicit props/effects, including any requested contact shadow] move; the solid [chroma color and hex] digital background and floor remain unchanged throughout. Maintain neutral white subject lighting, with no chroma-colored reflections, fringes, rim light or glow. Opaque subject materials stay opaque. Keep the entire figure in sharp focus in EVERY frame, including during fast gestures; crisp naturally antialiased silhouettes, no motion blur, soft-focus edges or artificial feathering of opaque surfaces. Locked full-body camera, scale, exposure and white balance. The ENTIRE character and every prop, including their complete motion paths, stay fully inside EVERY frame with generous empty margins. Never crop the head, headwear, hands, fingers, feet, footwear or other body parts. No zoom, camera movement, approach toward the camera, scene change or background transformation. Begin and end in [specified poses]. [Sound policy.]
+
+Для требуемого цикла добавляй:
+
+> Use the supplied ordinary neutral pose as both the first and last frame. Perform [emotion/action] only between them. Move with motivated weight shifts and coordinated head, torso and limbs appropriate to this action; [hair/clothing] follows with natural inertia. Return physically to the same pose, expression and support position, allowing secondary motion to settle before the end. No cut, reverse playback or dissolve in place of the return movement.
 
 В промпт движения добавляй явное сохранение размера:
 

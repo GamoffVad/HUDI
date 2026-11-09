@@ -1,0 +1,34 @@
+{
+  "account": "gamx81@gmail.com",
+  "quoted_credits": 15,
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 10,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Animate the EXACT grey-hooded robot in the reference performing a crisp military-style march in place. Preserve original grey hoodie and hood, black display face with exactly two cyan eyes, mechanical hands, dark trousers, pale blue sneakers and drawstrings. Same proportions and materials. No added uniform, hat, insignia, equipment, weapon or facial features.\n\n10-second single full-body shot:\n0.0-0.8: stand upright and still in the supplied reference stance.\n0.8-1.5: straighten into an attentive marching posture and smoothly begin the first step.\n1.5-8.5: perform a steady disciplined marching-in-place cadence of alternating LEFT and RIGHT steps, about 100 steps per minute. Each lifted leg extends moderately forward with controlled knee extension; shoe rises only about 10-15 cm above the ground, then returns to a clear flat/heel-first ground contact. Transfer body weight to the supporting leg naturally. Alternate arms correctly: right arm swings forward as left leg advances, left arm swings forward as right leg advances. Hands relaxed and closed, arms mostly straight with slight natural elbow bend. Chest upright, chin level, eyes forward, shoulders stable. Small believable vertical body movement, no stiff sliding feet or frozen torso. Consistent timing and clear disciplined foot placement. Keep the exact same place on the ground and same size in frame.\n8.5-10.0: naturally finish the current marching step, bring both feet back to the exact reference stance, stop arm swing with a short natural settle and return to the supplied neutral ending pose.\n\nA proper clear marching cadence, not running, dancing, tiptoeing, shuffling, hopping, high-knee exercise or kicking high. No jumping with both feet off the floor. Each foot alternates support; never slide a planted shoe. Smooth continuous joints and consistent anatomy, restrained fabric inertia, no twitching or abrupt pose snaps. No salute or additional gestures.\n\nStationary locked camera, fixed scale, frontal view matching reference; whole character including shoes and arm swings always inside generous margins. No tracking, zoom, cuts, camera motion or movement toward camera. Sharp clean frames without motion blur. Uniform pure digital chroma green #00FF00 background AND invisible flat floor, including all body gaps. No horizon, gradient, shadows on backdrop, scenery, text or watermark. Stable lighting. Silent. Exact supplied reference as first and final frame.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      },
+      {
+        "role": "end_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "ff7ef686-cb93-4355-865b-0e68d5f8f2df",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_151717_ff7ef686-cb93-4355-865b-0e68d5f8f2df.mp4"
+    }
+  ],
+  "review": "Sampled frames show alternating marching steps and opposite arm swing, with full-body framing preserved. Source background changes shade and has a foot shadow; chroma cleanup required before integration."
+}

@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "source": "one generated base; continuous periodic internal texture displacement",
+  "reference": "pic/a7ce4524a4aaa4934e9289dba304499e.mp4",
+  "frames": 300,
+  "fps": 50,
+  "duration_ms": 6000,
+  "frame_size": [
+    256,
+    256
+  ],
+  "maximum_internal_displacement_px": 3.0,
+  "outer_rim_pixel_change": 0,
+  "exact_loop_closure_max_channel_delta": 0,
+  "max_adjacent_mean_rgb_delta": 0.00023279129527509212,
+  "seam_mean_rgb_delta": 0.00015719543443992734,
+  "partial_alpha_pct": 50.28231302897136,
+  "edge_alpha_max": 0,
+  "source_circle_axes": [
+    899.6285400390625,
+    904.66015625
+  ],
+  "source_axis_ratio": 1.0055929930932594,
+  "success": true
+}

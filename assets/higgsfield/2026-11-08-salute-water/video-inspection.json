@@ -1,0 +1,74 @@
+[
+  {
+    "file": "blue-water-sphere-loop.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 121,
+    "duration": 5.041666666666667,
+    "endpoint_mean_absolute_difference": 2.3270692274305556
+  },
+  {
+    "file": "hudi-fire-mishap-v2.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 361,
+    "duration": 15.041666666666666,
+    "endpoint_mean_absolute_difference": 1.6961820023148149
+  },
+  {
+    "file": "hudi-fire-mishap.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 361,
+    "duration": 15.041666666666666,
+    "endpoint_mean_absolute_difference": 1.7145001446759258
+  },
+  {
+    "file": "hudi-march.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 241,
+    "duration": 10.041666666666666,
+    "endpoint_mean_absolute_difference": 1.4361194299768518
+  },
+  {
+    "file": "hudi-notebook-fist-v2.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 361,
+    "duration": 15.041666666666666,
+    "endpoint_mean_absolute_difference": 2.633609302662037
+  },
+  {
+    "file": "hudi-notebook-fist-v3.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 361,
+    "duration": 15.041666666666666,
+    "endpoint_mean_absolute_difference": 1.5028982204861112
+  },
+  {
+    "file": "hudi-notebook-suspicious-finger-wag.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 361,
+    "duration": 15.041666666666666,
+    "endpoint_mean_absolute_difference": 1.2237098524305556
+  },
+  {
+    "file": "hudi-salute-hands-back-lookaround.mp4",
+    "width": 960,
+    "height": 960,
+    "fps": 24.0,
+    "frames": 241,
+    "duration": 10.041666666666666,
+    "endpoint_mean_absolute_difference": 1.6479853877314814
+  }
+]

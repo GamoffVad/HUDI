@@ -1,0 +1,13 @@
+{
+  "v2": {
+    "frame_count": 300,
+    "quarter_cycle_mean_change": 0.006248340476304293,
+    "quarter_cycle_p95_change": 0.03529411554336548
+  },
+  "v3": {
+    "frame_count": 250,
+    "quarter_cycle_mean_change": 0.0263194777071476,
+    "quarter_cycle_p95_change": 0.1411764919757843
+  },
+  "visible_motion_gain": 4.212234881719311
+}

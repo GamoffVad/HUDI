@@ -1,0 +1,35 @@
+{
+  "account": "gamx81@gmail.com",
+  "quoted_credits": 22.5,
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 15,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Animate the EXACT small grey-hooded 3D robot in the supplied start and end reference. Preserve its proportions, grey fabric hoodie and raised hood, black display with exactly two cyan LED eyes, original mechanical hands, dark trousers, pale blue sneakers and drawstrings. No mouth, nose, eyebrows, human skin or costume change.\n\nThe clear story is: a suspicious little inspector takes notes about the viewer, then sternly SHAKES A CLOSED FIST at the viewer. This is a readable cartoon warning gesture, with no attack or contact.\n\nOne continuous 15-second full-body performance:\n0.0-0.6: reference neutral pose, empty hands.\n0.6-2.4: the robot's anatomical LEFT hand reaches into its LEFT REAR pocket, retrieves one small plain notebook and opens it in the left hand.\n2.4-3.5: the anatomical RIGHT hand retrieves one pen from the RIGHT pocket.\n3.5-6.8: write short strokes with the right hand in the left-held notebook. Alternate a glance at the notes with a suspicious, narrowed-eye look directly at the viewer.\n6.8-7.7: put the pen back into the right pocket. Keep the notebook in the left hand.\n7.7-8.6: stop writing, look directly at the viewer with a stern lowered-head stare. Deliberately curl ALL right fingers tightly into a CLOSED FIST with thumb resting across the curled fingers. Raise this closed fist beside the shoulder, clearly separated from the face silhouette.\n8.6-11.4: HOLD THE FIST CLOSED THROUGHOUT. Lean slightly toward the viewer and shake the raised fist twice with two compact, emphatic forward-and-back warning motions from the bent elbow. The fist travels only about one fist-width and returns beside the shoulder between pulses. Show the knuckles to the viewer. A firm little head nod reinforces the warning. Keep the left hand and notebook lowered and still. The gesture must clearly read as 'I'll get you!' / 'You'd better behave!' from a stern cartoon character. No smiling or greeting.\n11.4-12.2: hold the clenched fist still for a beat and maintain eye contact, then naturally lower the arm and relax the fingers.\n12.2-15.0: close and put the notebook back in the left rear pocket, return both empty hands and eyes to the exact reference neutral stance.\n\nCRITICAL HAND ACTING: the warning hand is a compact CLOSED FIST, all fingers folded together, no extended index finger, no pointing, no finger wag, no open palm, no waving hello or goodbye, no flapping wrist, no punching, no hitting. The two small fist shakes are deliberate and stern, not a broad swinging arm. Preserve natural hand anatomy and original finger count. Props remain physically held until returned to their pockets; no disappearing or duplicated props.\n\nKeep feet planted, entire body and all gestures within generous green margins. Fixed camera, framing, scale, focus, exposure and character lighting; no camera motion or cuts. Smooth continuous body mechanics, sharp clean frames without motion blur. Return physically to the exact supplied ending pose.\n\nBACKGROUND IS A FLAT DIGITAL CHROMA MATTE: solid uniform pure #00FF00 across the entire image, floor and all gaps between arms, props and body. No studio floor, horizon, lighting falloff, vignette, gradient, glow, background shadows, texture or green spill. The background remains exactly the same uniform green throughout. Silent video; no text or watermark.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      },
+      {
+        "role": "end_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "4697f790-38ea-487c-9543-b36b3c2db4ce",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_150331_4697f790-38ea-487c-9543-b36b3c2db4ce.mp4"
+    }
+  ],
+  "review": "Rejected: model moved into close-up, cropped body and extended fingers; one corrective v3 submitted.",
+  "selection_status": "not_selected_first_notebook_chosen"
+}

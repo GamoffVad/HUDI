@@ -28,6 +28,12 @@ internal sealed partial class PetWindow
         petSettings=new(this);petSettings.Closed+=(_,_)=>{if(restore&&settingsWindow is {IsClosing:false}&&!shuttingDown){settingsWindow.Show();settingsWindow.Activate();}};
         petSettings.Show();
     }
+    internal async Task RemovePetAsync(LocalPet pet)
+    {
+        if(pet.BuiltIn)throw new InvalidDataException("Встроенного HUDI удалить нельзя.");
+        if(selectedPet.Id==pet.Id)await SelectPetAsync(PetCatalog.Hudi);
+        Pets.Remove(pet);
+    }
     internal async Task SelectPetAsync(LocalPet pet)
     {
         if(chat.Busy)throw new ModelException("Дождитесь ответа модели или отмените запрос перед сменой питомца.");

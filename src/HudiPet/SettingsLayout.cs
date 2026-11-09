@@ -44,7 +44,7 @@ internal sealed partial class SettingsWindow
         var scroll=new ScrollViewer {Content=fields,VerticalScrollBarVisibility=ScrollBarVisibility.Auto,HorizontalScrollBarVisibility=ScrollBarVisibility.Disabled,MaxHeight=Math.Max(180,ScreenPlacement.WorkArea(owner).Height-228)};
         Body.Children.Add(scroll);
         provider=Select(ProviderPresets.All.Select(p=>p.Label).ToArray(),ProviderPresets.Index(settings.Provider));provider.MaxDropDownHeight=330;Row(fields,"Провайдер",provider);
-        endpoint=Input(settings.BaseUrl,"Адрес сервера");endpoint.ToolTip="Базовый адрес API, обычно заканчивается на /v1";Row(fields,"Адрес сервера",endpoint);
+        endpoint=Input(settings.BaseUrl,"Адрес сервера");endpoint.ToolTip="Базовый адрес API: http:// или https://, обычно заканчивается на /v1";Row(fields,"Адрес сервера",endpoint);
 
         var keyRow=new Grid();hiddenKey=new PasswordBox {Password=key,Style=Style("SettingsPassword")};System.Windows.Automation.AutomationProperties.SetName(hiddenKey,"API-ключ");
         visibleKey=Input(key,"API-ключ, видимый текст");visibleKey.Padding=new Thickness(10,6,34,6);visibleKey.Visibility=Visibility.Collapsed;keyRow.Children.Add(hiddenKey);keyRow.Children.Add(visibleKey);

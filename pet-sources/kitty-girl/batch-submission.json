@@ -1,0 +1,36 @@
+{
+  "jobs": [
+    {
+      "index": 1,
+      "job_id": "18c8f2fe-7df1-4440-afe3-739e9af2ace2",
+      "status": "pending"
+    },
+    {
+      "index": 2,
+      "job_id": "4d1d25c9-e0f5-467f-ae49-02b16b5c2a48",
+      "status": "pending"
+    },
+    {
+      "index": 3,
+      "job_id": "db4a6a57-ee45-4dd2-b12e-46287e2bbd0e",
+      "status": "pending"
+    },
+    {
+      "index": 4,
+      "job_id": "a753b7ac-6196-4e15-aaa6-3b808aed91d2",
+      "status": "pending"
+    },
+    {
+      "index": 5,
+      "job_id": "ce983bcb-0cfe-4971-a9e6-3d76982bc4c1",
+      "status": "pending"
+    },
+    {
+      "index": 6,
+      "job_id": "eeb387d5-d6a0-4041-80b1-79013df48cd0",
+      "status": "pending"
+    }
+  ],
+  "submitted_count": 6,
+  "failed_count": 0
+}

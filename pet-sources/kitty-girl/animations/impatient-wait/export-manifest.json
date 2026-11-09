@@ -1,0 +1,20 @@
+{
+  "name": "impatient-wait",
+  "frames": 121,
+  "fps": 24.0,
+  "frameSize": [
+    1440,
+    1440
+  ],
+  "alpha": "straight RGBA",
+  "firstLastIdentical": true,
+  "commonNeutral": "look-around/frames/0000.png",
+  "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+  "sourceEndpointPremultipliedMae": [
+    2.6762241680213785,
+    3.2523466830520875
+  ],
+  "allInside": true,
+  "model": "kling4_0",
+  "quotedCredits": 16.25
+}

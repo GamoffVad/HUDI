@@ -1,0 +1,23 @@
+{
+  "sharedPrompt": "D:/PR/HUDI/docs/pet-generation-prompt.md",
+  "characterMotionPrompt": "D:/PR/HUD/character-motion-prompt.md",
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "duration": 8,
+    "sound": "off",
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "Animate the EXACT supplied female doll in one natural 8-second full-body continuous shot. Preserve her face, huge brown eyes, black glasses with both lenses and temples intact, small gold septum ring, articulated doll proportions, very long black hair, black top, trousers and ankle boots.\nBegin in the exact supplied relaxed ordinary pose. 0-2.5s: with a small weight shift and gentle head inclination, she raises her right hand and lightly nudges the OUTER RIGHT corner/temple of her glasses upward with her fingertips, then releases the frame. Glasses remain on her nose throughout, unchanged in shape; fingers make believable contact without passing through the lens or face.\n2.5-5.5s: her right hand relaxes back down while her left hand gently gathers a slender lock of her own hair near her left shoulder. She playfully rolls the lock once between her fingers, glances at it with a small amused smile and slight torso turn, then lets it slide free. The released strand falls and sways naturally back into her long hair.\n5.5-8s: she lowers both hands to their original relaxed positions, centers her weight and returns her head, eyes and expression to EXACTLY the supplied ordinary neutral end image. Hair follows with gentle inertia and settles. Hold the exact neutral pose during the last 0.6 seconds.\nLively whole-body acting: natural breathing, one soft knee bend, grounded weight transfer, coordinated shoulders/elbows/wrists and subtle foot pivot. Human-like anatomical motion despite doll styling. Eyes lead head and torso, hair follows with gravity. No exaggerated flirting, contortions, repetitive waving, hair pulling or enormous hair toss. Hands remain anatomically consistent; five fingers per hand, no extra limbs or props.\nLOCKED full-body camera, lens, apparent character size, ground plane, exposure and white balance. Entire head, hair, all fingers, boots and compact contact shadow remain fully inside EVERY frame with generous margins; no cropping, zoom or reframing. One physical shot without cuts, dissolves or morphs. Entire figure sharply focused, naturally antialiased contours, no motion blur, haze or artificially feathered silhouette. Opaque hair mass, clothes and skin.\nIndependent neutral white lighting on the character. Perfectly uniform flat digital #00FF00 background AND floor including all true gaps between limbs and hair; unchanged across all frames, no gradients, horizon, scenery, texture or green spill/reflections/fringe. Preserve only a small soft neutral contact shadow immediately beneath the feet. Silent.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      },
+      {
+        "role": "end_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      }
+    ]
+  }
+}

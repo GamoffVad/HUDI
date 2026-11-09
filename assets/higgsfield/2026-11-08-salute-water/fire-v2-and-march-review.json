@@ -1,0 +1,17 @@
+{
+  "account": "gamx81@gmail.com",
+  "charged_credits": 37.5,
+  "remaining_credits": 350,
+  "fire_v2": {
+    "job_id": "77fb4773-cee9-4cb6-a1d4-e25d99afc421",
+    "status": "completed",
+    "file": "hudi-fire-mishap-v2.mp4",
+    "review": "Half-second samples show no early stamping: standing, pocket retrieval, lowering, ignition then foot extinguishing and innocent pose. Lighter hand stays higher than requested; backdrop shade varies. Not installed."
+  },
+  "march": {
+    "job_id": "ff7ef686-cb93-4355-865b-0e68d5f8f2df",
+    "status": "completed",
+    "file": "hudi-march.mp4",
+    "review": "Alternating marching steps and opposite arms visible, full body remains in frame. Chroma shade and ground shadow need cleanup before integration. Not installed."
+  }
+}

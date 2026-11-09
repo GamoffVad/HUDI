@@ -1,0 +1,20 @@
+{
+  "name": "surprised-step-v2",
+  "frames": 121,
+  "fps": 24.0,
+  "frameSize": [
+    1440,
+    1440
+  ],
+  "alpha": "straight RGBA",
+  "firstLastIdentical": true,
+  "commonNeutral": "look-around/frames/0000.png",
+  "endpointCorrection": "Only 4 frames (0.125s) at each already-settled boundary; premultiplied blend. Actual return motion retained.",
+  "sourceEndpointPremultipliedMae": [
+    2.636817388071898,
+    3.513768429914151
+  ],
+  "allInside": true,
+  "model": "kling4_0",
+  "quotedCredits": 16.25
+}

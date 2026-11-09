@@ -1,0 +1,73 @@
+{
+  "provider": "Higgsfield",
+  "requested_account": "gamx81@gmail.com",
+  "status": "completed_outputs_saved_pending_runtime_asset_review",
+  "charged_credits": 45,
+  "job_ids": [
+    "3464adba-9d98-4f7b-8118-d4cbcf22443f",
+    "8ad53a24-06e0-490c-80ee-bdc729b0310f",
+    "acfc75e7-a3d4-4dcf-aa34-87b279f0fce1"
+  ],
+  "background": "uniform #00FF00 for all three videos, including gaps and transmitted sphere center",
+  "quotes": {
+    "checked_date": "2026-11-08",
+    "kling3_0_std_silent_10s": 15,
+    "kling3_0_std_silent_5s": 7.5,
+    "kling3_0_std_silent_15s": 22.5,
+    "total_credits": 45,
+    "note": "Rechecked on gamx81@gmail.com before submission; balance changed from 500 to 455."
+  },
+  "requests": [
+    {
+      "name": "hudi-salute-hands-back-lookaround",
+      "reference": "hudi-green-reference.png",
+      "roles_after_confirmed_upload": [
+        "start_image",
+        "end_image"
+      ],
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 10,
+        "aspect_ratio": "1:1",
+        "count": 1
+      },
+      "prompt_file": "hudi-prompt.txt"
+    },
+    {
+      "name": "blue-water-sphere-loop",
+      "reference": "water-blue-green-reference.png",
+      "roles_after_confirmed_upload": [
+        "start_image",
+        "end_image"
+      ],
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 5,
+        "aspect_ratio": "1:1",
+        "count": 1
+      },
+      "prompt_file": "water-prompt.txt"
+    },
+    {
+      "name": "hudi-notebook-suspicious-finger-wag",
+      "reference": "hudi-green-reference.png",
+      "roles_after_confirmed_upload": [
+        "start_image",
+        "end_image"
+      ],
+      "params": {
+        "model": "kling3_0",
+        "mode": "std",
+        "sound": "off",
+        "duration": 15,
+        "aspect_ratio": "1:1",
+        "count": 1
+      },
+      "prompt_file": "notebook-prompt.txt"
+    }
+  ]
+}

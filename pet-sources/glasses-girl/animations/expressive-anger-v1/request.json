@@ -1,0 +1,37 @@
+{
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 8,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      },
+      {
+        "role": "end_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      }
+    ],
+    "prompt": "Animate this exact doll in one continuous lively 8-second shot: neutral, unmistakable anger, then calm neutral. Preserve her identity, brown eyes, black glasses, gold septum ring, mouth, long black hair, black outfit and boots. 0-2s: her brows knit strongly, eyes narrow, lips press tensely; she makes a sharp motivated head turn to one side, eyes leading shoulders and torso. 2-4.5s: she turns her intense angry gaze forward and takes one small emphatic grounded step, with a convincing weight transfer, tense shoulders and restrained tense hands beside her hips. Anger is clearly readable in the whole body and expressive face. No broad arm waving, boxing or repetitive fist gestures. Hair swings naturally with the turn and settles under gravity. 4.5-7.4s: exhale visibly through relaxing shoulders, soften brow and lips, ease back to the exact original support position, lower all tension and settle into the supplied ordinary neutral pose. Hold exact neutral for the last 0.6 seconds. Natural coordinated acting, no wild jumps or contortions. Locked full-body camera, scale, distance and exposure, no approach toward camera. Entire hair, hands and boots including their full motion paths stay inside EVERY frame with generous margins. Perfectly uniform digital #00FF00 background AND floor including body gaps, neutral white subject lighting without green spill or fringes; only compact soft underfoot contact shadow. Opaque materials remain opaque; sharp naturally antialiased edges, no motion blur, cuts or zoom. Begin and end exactly like the same reference. Silent, no speech."
+  },
+  "balanceBefore": 313.05,
+  "quote": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Cost preflight for kling3_0: 12 credits (12 exact). No job submitted."
+      }
+    ],
+    "structuredContent": {
+      "cost": {
+        "credits": 12,
+        "credits_exact": 12
+      }
+    },
+    "isError": false
+  }
+}

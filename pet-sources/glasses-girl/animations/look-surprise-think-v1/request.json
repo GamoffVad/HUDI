@@ -1,0 +1,37 @@
+{
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 8,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      },
+      {
+        "role": "end_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      }
+    ],
+    "prompt": "Animate this exact doll in one continuous lively 8-second shot. Preserve brown eyes, black glasses, gold septum ring, mouth, long black hair, black outfit and boots, identity and proportions. 0-2.5s: curiously look left then right, eyes leading head and torso, coordinated foot pivots and one small natural side-step. 2.5-4s: notice something surprising, eyebrows and eyes widen, mouth parts, modestly lift both hands with a small weight shift. 4-6.4s: surprise softens into thought, one hand gently touches chin, slight head tilt and thoughtful upward glance. 6.4-8s: lower hand, step back to original support position, naturally settle into the exact supplied neutral pose and hold the last 0.6s. Relaxed coordinated whole-body acting; hair flows with turn inertia and gravity then settles. No wild jumps, flailing or contortions. Locked full-body camera, scale, distance and exposure. Entire hair, hands and boots remain fully inside EVERY frame with broad margins, never cropped. Uniform digital #00FF00 background AND floor remain unchanged, including body gaps; neutral white subject lighting, no green spill or fringe, only a compact soft underfoot contact shadow. Opaque materials stay opaque; sharp naturally antialiased edges throughout, no motion blur, artificial feathering, zoom or cuts. Begin and end exactly like the same reference."
+  },
+  "balanceBefore": 361.05,
+  "quote": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Cost preflight for kling3_0: 12 credits (12 exact). No job submitted."
+      }
+    ],
+    "structuredContent": {
+      "cost": {
+        "credits": 12,
+        "credits_exact": 12
+      }
+    },
+    "isError": false
+  }
+}

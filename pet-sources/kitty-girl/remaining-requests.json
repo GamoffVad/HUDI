@@ -1,0 +1,152 @@
+[
+  {
+    "index": 1,
+    "name": "angry-stomp",
+    "visualReference": "references/02-angry-stomp.png",
+    "params": {
+      "model": "kling4_0",
+      "mode": "image-to-video",
+      "resolution": "1080p",
+      "duration": 5,
+      "aspect_ratio": "1:1",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        },
+        {
+          "role": "end_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        }
+      ],
+      "prompt": "She unfolds her arms, clenches her fists low at her sides and leans slightly forward with knitted brows and a pout. She makes two emphatic alternating foot stamps, lifting each knee modestly, transferring weight to the standing foot and landing firmly. Her buns and trousers bounce naturally. Hold the indignant expression briefly, then relax the arms and physically return to the starting crossed-arms pose. Playful toddler indignation, no arm flailing. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    }
+  },
+  {
+    "index": 2,
+    "name": "impatient-wait",
+    "visualReference": "references/03-impatient.png",
+    "params": {
+      "model": "kling4_0",
+      "mode": "image-to-video",
+      "resolution": "1080p",
+      "duration": 5,
+      "aspect_ratio": "1:1",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        },
+        {
+          "role": "end_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        }
+      ],
+      "prompt": "She unfolds her arms and plants both hands on her hips with elbows out. Weight shifts onto the left leg; the right HEEL stays continuously planted on the floor while the forefoot raises slightly and taps down twice. She glances sideways then looks up impatiently, quietly waiting. The heel does not lift during tapping, no whole-leg stamp. Then she returns her hands to crossed arms and restores the exact initial stance. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    }
+  },
+  {
+    "index": 3,
+    "name": "indignant-lean",
+    "visualReference": "references/04-indignant.png",
+    "params": {
+      "model": "kling4_0",
+      "mode": "image-to-video",
+      "resolution": "1080p",
+      "duration": 5,
+      "aspect_ratio": "1:1",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        },
+        {
+          "role": "end_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        }
+      ],
+      "prompt": "She unfolds her arms, bends her knees a little and leans her torso forward at the hips. Both fists rest on her own upper thighs. She fixes the viewer with a comically stern knitted-brow pout, gives one small emphatic head bob, then straightens naturally and crosses her arms again in the exact initial stance. Feet remain grounded, no approach toward the camera. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    }
+  },
+  {
+    "index": 4,
+    "name": "mischievous-giggle",
+    "visualReference": "references/05-giggle.png",
+    "params": {
+      "model": "kling4_0",
+      "mode": "image-to-video",
+      "resolution": "1080p",
+      "duration": 5,
+      "aspect_ratio": "1:1",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        },
+        {
+          "role": "end_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        }
+      ],
+      "prompt": "Her stern face softens into a mischievous closed-mouth smile. She unfolds her arms, brings one open hand gently over her mouth and glances sideways as if hiding a small giggle. Her shoulders make two small lively laughter bounces, weight shifts onto one leg, hair tips sway. She lowers the hand and playfully resumes the original crossed-arms pout and exact initial stance. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    }
+  },
+  {
+    "index": 5,
+    "name": "surprised-step",
+    "visualReference": "references/06-surprise.png",
+    "params": {
+      "model": "kling4_0",
+      "mode": "image-to-video",
+      "resolution": "1080p",
+      "duration": 5,
+      "aspect_ratio": "1:1",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        },
+        {
+          "role": "end_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        }
+      ],
+      "prompt": "She notices something low in front of her, unfolds her arms, opens her eyes wide and makes a round surprised O mouth. She lifts one knee in a short startled step, balancing on the other foot with arms slightly away from the body, then puts the lifted foot down safely. She collects herself and naturally returns to the exact original crossed-arms stance and pout. No exaggerated jump, no backward fall. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    }
+  },
+  {
+    "index": 6,
+    "name": "stern-reproach",
+    "visualReference": "references/07-stern-reproach.png",
+    "params": {
+      "model": "kling4_0",
+      "mode": "image-to-video",
+      "resolution": "1080p",
+      "duration": 5,
+      "aspect_ratio": "1:1",
+      "count": 1,
+      "use_unlim": false,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        },
+        {
+          "role": "end_image",
+          "value": "be9ec6f9-3bef-4d8f-9358-85ffbb2a6845"
+        }
+      ],
+      "prompt": "She unfolds her arms and places her hands firmly on her hips. She cocks her head to one side, fixes the viewer with an unimpressed knitted-brow pout, shifts weight deliberately and slowly shakes her head once from side to side as if saying really? This is a stern questioning reaction, not foot tapping. She straightens her head and crosses her arms again, returning to the precise original stance and expression. Preserve the exact supplied stylized toddler girl: chubby toddler anatomy, brown double buns and flyaway hairs, bunny and flower hair clips, cream kitten-print shirt, pink kitten-print trousers and cream sneakers. One continuous grounded 5-second animation. SAME supplied crossed-arms pouty sideways-looking pose is both first and final keyframe. Perform the action only between them; physically return to the same folded arms, gaze, expression, foot positions, size and support plane by 4.6 seconds, then allow hair and fabric to settle. Natural coordinated weight shifts, expressive eyes and eyebrows, stable anatomy. Locked full-body square camera, neutral white illumination, no zoom or approach. Entire figure, every fine hair and both shoes stay inside EVERY frame with margins. Keep exactly uniform digital chroma green #00FF00 background and actual gaps, with only a compact soft neutral contact shadow below shoes. No chroma bounce, green reflections, rim light, motion blur, broad soft silhouette, text or added props. No reverse playback, teleport, cuts or dissolves. "
+    }
+  }
+]

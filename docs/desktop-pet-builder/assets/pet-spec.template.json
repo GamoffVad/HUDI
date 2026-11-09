@@ -1,0 +1,62 @@
+{
+  "id": "new-pet",
+  "platform": "windows",
+  "referenceImages": [],
+  "identity": {
+    "description": null,
+    "anatomy": null,
+    "immutableFeatures": [],
+    "palette": "as-reference",
+    "faceRules": "as-reference",
+    "allowedVisualChanges": []
+  },
+  "display": {
+    "targetHeightPx": 256,
+    "frameSize": null,
+    "groundAnchor": null,
+    "shadow": "match-reference",
+    "mirror": false
+  },
+  "generation": {
+    "provider": null,
+    "model": null,
+    "chromaColor": null,
+    "authorizedCreditBudget": null
+  },
+  "behavior": {
+    "actions": [],
+    "restPoses": [],
+    "holds": [],
+    "onClick": null,
+    "onHover": null,
+    "cursorGaze": null,
+    "desktopEvents": []
+  },
+  "chat": {
+    "enabled": null,
+    "onDoubleClick": "ask",
+    "onSingleClick": "show-last-answer",
+    "animationRoles": { "thinking": null, "success": null, "error": null, "idle": null },
+    "style": "approved-design",
+    "provider": null,
+    "protocol": null,
+    "credentialStorage": "os-user-encrypted"
+  },
+  "distribution": {
+    "installerRequested": false,
+    "singleFile": true,
+    "licenseRequired": false,
+    "productId": null,
+    "publicVerificationKeyFile": null,
+    "publisherProfileId": null,
+    "keyGenerator": "multi-character-profiles",
+    "activationMode": "offline-signed",
+    "autostartDefault": false
+  },
+  "codexCompanion": {
+    "requested": false,
+    "destination": null,
+    "spriteVersion": null,
+    "activate": false
+  }
+}

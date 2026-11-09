@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HUDI — анимация любимых сайтов</title>
+<style>
+:root{color-scheme:dark;font:15px/1.5 "Segoe UI",sans-serif;color:#b5dff0;background:#1b1e23}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 40%,#282e37 0,#1b1e23 70%);overflow-x:hidden}
+main{width:min(100%,920px);padding:24px 16px;text-align:center}
+h1{font-size:16px;font-weight:500;letter-spacing:.03em;margin:0 0 8px}
+p{margin:8px 0;color:#8eabb9;font-size:13px}
+.viewport{position:relative;width:100%;height:660px;overflow:hidden}
+.stage{position:absolute;width:860px;height:660px;left:50%;top:0;transform-origin:top center;transform:translateX(-50%) scale(var(--stage-scale,1))}
+.pet{position:absolute;z-index:3;left:247.5px;top:200px;width:365px;height:488px;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.pet img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;filter:drop-shadow(0 14px 12px #0003)}
+.pet:focus-visible{outline:1px solid #b1e6fa;outline-offset:5px}
+.orb{position:absolute;z-index:2;top:321px;left:387px;width:86px;height:86px;padding:0;border:0;border-radius:50%;background:none;opacity:0;transform:translate(0,0) scale(.18);pointer-events:none;cursor:pointer;will-change:transform,opacity;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.orb-face{position:absolute;inset:0;border-radius:50%;background-image:url("hudi-favorite-sites-single-click.png");background-size:1536px 1024px;box-shadow:0 8px 18px #0003;pointer-events:none;transition:transform 90ms ease-out,filter 90ms ease-out;will-change:transform}
+.orb:focus-visible{outline:2px solid #b1e6fa;outline-offset:5px}
+.orb.selected .orb-face{box-shadow:0 0 0 2px #aee7fa,0 0 22px #86d5f34d}
+.orb:active .orb-face{transform:scale(.86);filter:brightness(1.14)}
+.github .orb-face{background-position:-244px -238px}
+.youtube .orb-face{background-position:-352px -130px}
+.google .orb-face{background-position:-508px -77px}
+.wikipedia .orb-face{background-position:-663px -130px}
+.telegram .orb-face{background-position:-773px -238px}
+@media(prefers-reduced-motion:reduce){.orb-face{transition:none}.orb:active .orb-face{transform:none}}
+.label{border:1px solid #7098aa;padding:8px 18px;display:inline-block;color:#b5dff0;font-size:14px}
+#status{height:20px}
+.density{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:14px;color:#9bb9c8;font-size:13px}
+.density input{width:180px;accent-color:#a9ddef}
+.density output{font-variant-numeric:tabular-nums;min-width:90px;text-align:left}
+</style>
+</head>
+<body>
+<main>
+<h1>Любимые сайты</h1>
+<div class="viewport">
+<div class="stage">
+<button class="pet" aria-label="Показать любимые сайты" aria-expanded="false" aria-controls="sites">
+<img src="../../output/hudi-pet-v6.3/frames/neutral.png" alt="HUDI" draggable="false">
+</button>
+<div id="sites" role="group" aria-label="Любимые сайты" inert>
+<button class="orb github" aria-label="GitHub"></button>
+<button class="orb youtube" aria-label="YouTube"></button>
+<button class="orb google" aria-label="Google"></button>
+<button class="orb wikipedia" aria-label="Wikipedia"></button>
+<button class="orb telegram" aria-label="Telegram"></button>
+</div>
+</div>
+</div>
+<div class="label">Один клик ЛКМ по HUDI</div>
+<p>Повторный клик — свернуть</p>
+<div class="density"><label for="count">Количество сайтов</label><input id="count" type="range" min="1" max="20" value="5"><output for="count" id="count-value">5 · 64 px</output></div>
+<p id="status" aria-live="polite">Предпросмотр анимации</p>
+</main>
+<script>
+const stage=document.querySelector('.stage');
+const viewport=document.querySelector('.viewport');
+const pet=document.querySelector('.pet');
+const group=document.querySelector('#sites');
+let orbs=[...document.querySelectorAll('.orb')];
+const status=document.querySelector('#status');
+const countInput=document.querySelector('#count');
+const countValue=document.querySelector('#count-value');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+let opened=false;
+let targets=[];
+let sphereScale=64/86;
+const examples=[['github','GitHub'],['youtube','YouTube'],['google','Google'],['wikipedia','Wikipedia'],['telegram','Telegram']];
+function frame(x,y,scale,opacity){return {transform:`translate(${x}px,${y}px) scale(${scale*sphereScale})`,opacity}}
+function configure(count){
+ const chord=count>1?2*238*Math.sin(Math.PI/(2*(count-1))):Infinity;
+ const diameter=Math.min(64,chord-10);
+ sphereScale=diameter/86;
+ countValue.textContent=count+' · '+Math.round(diameter)+' px';
+ group.replaceChildren();
+ targets=Array.from({length:count},(_,i)=>{
+  const angle=count===1?Math.PI/2:Math.PI-i*Math.PI/(count-1);
+  return {x:238*Math.cos(angle),y:-78-238*Math.sin(angle)};
+ });
+ orbs=targets.map((target,i)=>{
+  const [className,name]=examples[i%examples.length];
+  const orb=document.createElement('button');
+  orb.className='orb '+className;
+  orb.setAttribute('aria-label',name+(i>=5?' '+(Math.floor(i/5)+1):''));
+  const face=document.createElement('span');
+  face.className='orb-face';
+  face.setAttribute('aria-hidden','true');
+  orb.append(face);
+  const final=opened?frame(target.x,target.y,1,1):frame(0,0,.18,0);
+  orb.style.transform=final.transform;
+  orb.style.opacity=final.opacity;
+  orb.style.pointerEvents=opened?'auto':'none';
+  orb.addEventListener('pointerdown',event=>{
+   if(event.button===0)face.getAnimations().forEach(animation=>animation.cancel());
+  });
+  orb.addEventListener('click',()=>{
+   orbs.forEach(item=>item.classList.toggle('selected',item===orb));
+   status.textContent=orb.getAttribute('aria-label')+' — выбран в макете';
+   face.getAnimations().forEach(animation=>animation.cancel());
+   if(!reduceMotion.matches)face.animate([
+    {transform:'scale(.86)',filter:'brightness(1.14)',offset:0},
+    {transform:'scale(1.09)',filter:'brightness(1.1)',offset:.52},
+    {transform:'scale(.98)',filter:'brightness(1.02)',offset:.8},
+    {transform:'scale(1)',filter:'brightness(1)',offset:1}
+   ],{duration:300,easing:'cubic-bezier(.2,.65,.3,1)'});
+  });
+  group.append(orb);
+  return orb;
+ });
+}
+function toggle(next=!opened){
+ if(next===opened)return;
+ opened=next;
+ pet.setAttribute('aria-expanded',String(opened));
+ pet.setAttribute('aria-label',opened?'Свернуть любимые сайты':'Показать любимые сайты');
+ group.inert=!opened;
+ status.textContent='Предпросмотр анимации';
+ document.body.dataset.previewState=opened?'open':'closed';
+ orbs.forEach((orb,i)=>{
+  const current={transform:getComputedStyle(orb).transform,opacity:getComputedStyle(orb).opacity};
+  orb.getAnimations({subtree:true}).forEach(a=>a.cancel());
+  orb.classList.remove('selected');
+  const {x,y}=targets[i];
+  const final=opened?frame(x,y,1,1):frame(0,0,.18,0);
+  orb.style.transform=final.transform;
+  orb.style.opacity=final.opacity;
+  orb.style.pointerEvents=opened?'auto':'none';
+  if(reduceMotion.matches)return;
+  const keyframes=opened?[
+   {...current,offset:0},
+   {...frame(x*.9,y*.9-8,.92,.32),offset:.38},
+   {...frame(x+Math.max(-10,Math.min(10,x*.075)),y+Math.max(-10,Math.min(10,y*.075)),1.14,.65),offset:.6},
+   {...frame(x-Math.max(-10,Math.min(10,x*.075))*.24,y-Math.max(-10,Math.min(10,y*.075))*.24,.966,.92),offset:.82},
+   {...final,offset:1}
+  ]:[
+   {...current,offset:0},
+   {...frame(x*.62,y*.65-12,.7,.55),offset:.48},
+   {...final,offset:1}
+  ];
+  const stagger=opened?Math.min(30,120/Math.max(1,orbs.length-1)):Math.min(20,80/Math.max(1,orbs.length-1));
+  orb.animate(keyframes,{duration:opened?380:230,delay:(opened?i:orbs.length-1-i)*stagger,easing:'cubic-bezier(.2,.72,.24,1)',fill:'backwards'});
+ });
+}
+pet.addEventListener('click',()=>toggle());
+countInput.addEventListener('input',()=>configure(Number(countInput.value)));
+document.addEventListener('pointerdown',event=>{
+ if(opened&&!event.target.closest('.pet,.orb,.density'))toggle(false);
+});
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'&&opened){toggle(false);pet.focus();}
+});
+function resize(){
+ const scale=Math.min(1,viewport.clientWidth/860);
+ stage.style.setProperty('--stage-scale',scale);
+ viewport.style.height=660*scale+'px';
+}
+new ResizeObserver(resize).observe(viewport);
+resize();
+const parameters=new URLSearchParams(location.search);
+const initialCount=Math.min(20,Math.max(1,Number(parameters.get('count'))||5));
+countInput.value=initialCount;
+configure(initialCount);
+const previewMode=parameters.get('preview');
+if(previewMode==='open')setTimeout(()=>toggle(true),150);
+if(previewMode==='still'){toggle(true);document.getAnimations().forEach(animation=>animation.finish());}
+document.body.dataset.previewReady='true';
+</script>
+</body>
+</html>

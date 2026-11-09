@@ -1,0 +1,37 @@
+{
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 8,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      },
+      {
+        "role": "end_image",
+        "value": "bf7c7f79-948e-49df-ab12-84c614025f94"
+      }
+    ],
+    "prompt": "Animate this exact doll in one continuous natural 8-second full-body shot. Preserve brown eyes, black glasses, gold septum ring, mouth, long black hair, black outfit, boots, identity and proportions. From neutral she shifts weight gently, tilts her chin slightly up and rolls her eyes upward normally with intact pupils, then forms an asymmetric knowing smirk. With a small motivated torso turn and tiny head shake, she raises one hand BESIDE her temple. One extended index finger makes two small clear slow circles in the air several centimeters OUTSIDE the temple silhouette; other fingers remain naturally folded. Keep the entire hand visibly separated from her hair, glasses, eyes and face; neither hand nor forearm passes in front of the face. Stable natural five-finger anatomy and crisp unhurried finger movement. Hair responds to the subtle body movement with natural inertia; she does not walk during the gesture. Then lower the hand and soften the expression, returning to the exact supplied ordinary neutral pose by 7.3 seconds and holding it to the end. Playful ironic acting, no distorted eyes, wild gestures or contortions. Locked camera, scale, distance and exposure. All hair, hands, fingers and boots fully inside EVERY frame with broad margins. Uniform digital #00FF00 background AND floor including body gaps; neutral white subject lighting with no green spill/fringe, only compact soft underfoot contact shadow. Opaque materials remain opaque; sharp naturally antialiased edges, no motion blur, artificial feathering, zoom or cuts. Begin and end exactly like the same reference. Silent."
+  },
+  "balanceBefore": 265.05,
+  "quote": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Cost preflight for kling3_0: 12 credits (12 exact). No job submitted."
+      }
+    ],
+    "structuredContent": {
+      "cost": {
+        "credits": 12,
+        "credits_exact": 12
+      }
+    },
+    "isError": false
+  }
+}

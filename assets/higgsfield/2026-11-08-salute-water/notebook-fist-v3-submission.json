@@ -1,0 +1,35 @@
+{
+  "account": "gamx81@gmail.com",
+  "quoted_credits": 22.5,
+  "params": {
+    "model": "kling3_0",
+    "mode": "std",
+    "sound": "off",
+    "duration": 15,
+    "aspect_ratio": "1:1",
+    "count": 1,
+    "prompt": "A single uninterrupted locked-off FULL BODY animation of the exact reference robot, on a uniform pure green #00FF00 digital background. Stationary orthographic camera. The robot stays the SAME SIZE as the reference, feet planted at exactly the same coordinates, head and shoes fully visible for every frame. Constant framing and lighting, generous empty green margin. The entire 15 seconds is the same wide full-body view.\n\nPreserve the exact grey hoodie robot, hood, mechanical hands, black display with two cyan eyes, blue shoes, proportions and clothing. Only the two eyes convey emotion, the rest of the face display is blank.\n\nACTING: The robot takes a little notebook from the left rear pocket with the LEFT hand and a pen from the right pocket with the RIGHT hand. It opens the notebook in the left hand, makes a few notes with the right-hand pen and gives the viewer a suspicious glance. It puts the pen back in its right pocket.\n\nTHE MAIN POSE: The right hand forms a TIGHT COMPACT FIST. All fingers curl fully into the palm, thumb folds across the outside of the curled fingers. The back of the hand and FOUR CURLED KNUCKLES face the camera. Raise this tightly closed fist beside the RIGHT SHOULDER, slightly OUTSIDE the body's silhouette, well away from the face. Hold the upper arm close to the body, elbow bent. The left hand keeps holding the notebook low at the hip. Narrow the cyan eyes into a stern stare.\n\nFor three seconds, shake the CLOSED FIST in TWO short deliberate UP-AND-DOWN motions next to the shoulder, each only five centimeters. This is the familiar cartoon 'shaking one's fist in annoyance' gesture. The fist stays tightly clenched with curled knuckles visible throughout. Arm stays beside the body; the robot stays planted. Briefly hold this angry clenched-fist pose.\n\nThen lower the right fist, relax the hand, return the notebook to the rear pocket and settle naturally into the exact initial pose.\n\nTiming: notebook and writing during first 6 seconds; put pen away and form fist during seconds 6-8; CLOSED-FIST warning during seconds 8-11; put notebook away and return to initial pose during seconds 11-15.\n\nKeep feet planted and body in place: no stepping toward camera, no leaning toward camera, no zoom, no closeup, no crop, no camera moves, no cuts. No pointing, extended fingers, open palm, waving, punching or thrusting toward the viewer. No extra props or fingers. The main gesture is tightly curled knuckles facing camera beside the shoulder, not a finger gesture. Small head tilt and narrowed eyes convey stern annoyance.\n\nSolid identical #00FF00 background AND invisible floor in all frames and body gaps, no gradients, studio light on backdrop, shadows, horizon, vignette or environment. Silent. No mouth, text, watermark, motion blur or dissolve. Exact same start and end reference.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      },
+      {
+        "role": "end_image",
+        "value": "dbe1e1c2-56a7-437c-b686-cadd676b1c7c"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "c30bddcc-fb4f-4924-b45d-bed52d899afb",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3FmCRpx2ft3ipwU3DmvB4oO0wwX/hf_20261108_150812_c30bddcc-fb4f-4924-b45d-bed52d899afb.mp4"
+    }
+  ],
+  "review": "Closed-fist warning is visible in sampled frames. Model still moves closer and crops feet in the middle despite locked framing instructions; not approved for runtime integration. No further paid retry submitted.",
+  "selection_status": "not_selected_first_notebook_chosen"
+}

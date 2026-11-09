@@ -12,7 +12,7 @@ internal sealed class PetSettingsWindow:GlassWindow
     private readonly ComboBox choices;
     private readonly Image preview;
     private readonly TextBlock details,status;
-    private readonly Button add,apply;
+    private readonly Button add,apply,remove;
     private readonly PetWindow owner;
     private bool busy,selectionValid;
     internal PetSettingsWindow(PetWindow owner):base(owner,"Питомцы",400,"\uE77B")
@@ -25,6 +25,7 @@ internal sealed class PetSettingsWindow:GlassWindow
         status=Ui.Text("",12,Ui.Error);status.Margin=new Thickness(0,12,0,0);status.Visibility=Visibility.Collapsed;Body.Children.Add(status);
         add=Ui.Button("+ Добавить питомца…",async()=>await Import());add.Style=(Style)FindResource("SettingsAction");add.Margin=new Thickness(0,20,0,10);Body.Children.Add(add);
         apply=Ui.Button("Выбрать питомца",async()=>await Choose(),true);apply.Style=(Style)FindResource("SettingsSave");Body.Children.Add(apply);
+        remove=Ui.Button("Удалить питомца",async()=>await Remove());remove.Style=(Style)FindResource("SettingsAction");remove.Margin=new Thickness(0,10,0,0);Body.Children.Add(remove);
         var note=Ui.Text("Добавление из пакета .pet или .zip с готовыми анимациями.",11,Ui.Muted);note.Margin=new Thickness(0,12,0,0);Body.Children.Add(note);
         choices.SelectionChanged+=(_,_)=>Preview();Refresh(owner.SelectedPetId);
     }
@@ -33,6 +34,7 @@ internal sealed class PetSettingsWindow:GlassWindow
     private void Preview()
     {
         if(choices.SelectedItem is not LocalPet pet)return;
+        remove.IsEnabled=!busy&&!pet.BuiltIn;
         try
         {
             var library=owner.Pets.Open(pet);
@@ -42,7 +44,16 @@ internal sealed class PetSettingsWindow:GlassWindow
         }
         catch(Exception ex) when(IsPackError(ex)){selectionValid=false;preview.Source=null;apply.IsEnabled=false;Message("Не удалось открыть пакет. Добавьте исправленную версию питомца.");}
     }
-    private void Busy(bool value){busy=value;choices.IsEnabled=add.IsEnabled=!value;apply.IsEnabled=!value&&selectionValid;}
+    private void Busy(bool value){busy=value;choices.IsEnabled=add.IsEnabled=!value;apply.IsEnabled=!value&&selectionValid;remove.IsEnabled=!value&&choices.SelectedItem is LocalPet {BuiltIn:false};}
+    private async Task Remove()
+    {
+        if(choices.SelectedItem is not LocalPet {BuiltIn:false} pet)return;
+        if(MessageBox.Show(this,$"Удалить «{pet.Name}» из коллекции?\nИсходный файл .pet останется на диске.","Удалить питомца",MessageBoxButton.YesNo,MessageBoxImage.Question,MessageBoxResult.No)!=MessageBoxResult.Yes)return;
+        Busy(true);
+        try{await owner.RemovePetAsync(pet);if(!IsClosing){Refresh(owner.SelectedPetId);Message("Питомец удалён из коллекции.");}}
+        catch(Exception ex) when(IsPackError(ex)||ex is ModelException){if(!IsClosing)Message(ex is ModelException?ex.Message:"Не удалось удалить питомца. Попробуйте ещё раз.");}
+        finally{if(!IsClosing)Busy(false);}
+    }
     private static bool IsPackError(Exception ex)=>ex is IOException or UnauthorizedAccessException or JsonException or InvalidOperationException or KeyNotFoundException or ArgumentException or NotSupportedException or FormatException;
     private async Task Import()
     {

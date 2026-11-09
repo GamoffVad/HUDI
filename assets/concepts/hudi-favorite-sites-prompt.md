@@ -1,0 +1,19 @@
+# HUDI favorite websites concept
+
+Generated with the built-in `image_gen` tool. This is a visual concept, not an implementation. Website icons are examples.
+
+Reference: `output/hudi-pet-v6.3/frames/neutral.png`.
+
+Output: `hudi-favorite-sites.png`.
+
+## Final prompt
+
+Use case: ui-mockup. Create one polished, believable desktop UI concept image for the HUDI Windows desktop companion. Landscape composition, approximately 1536 by 1024. The supplied image is the authoritative identity reference for the single HUDI character: preserve his grey fabric hooded sweatshirt, black rounded screen face with exactly two cyan upright luminous eyes, small robot hands, black trousers, white and pale blue sneakers, charming tactile 3D proportions. Show him full body, not an avatar portrait.
+
+Show two clearly separated demonstrations on one quiet dark charcoal desktop, with the main interaction occupying the left two thirds and a small settings explanation occupying the right third. This is a precise product mockup, not a science fiction poster. Restrained matte translucent dark panels, thin UNIFORM muted blue borders, pale blue text, absolutely SQUARE corners on all rectangular UI controls and menus. The website items are the intentional exception: genuinely round small 3D spherical buttons with subtle satin glass volume and crisp recognizable website icons on their front surface. Avoid exaggerated glow, garish neon, glass rainbows or decorative particles.
+
+MAIN VIEW: HUDI stands in the lower middle of the left area. Directly above him, show EXACTLY FIVE same-size website spheres arranged on a clean symmetric upper semicircle, with equal angular spacing, generous even gaps between spheres, no overlap with HUDI, and no visible connecting line or orbit. Center sphere highest, flanking pairs descend evenly toward the left and right endpoints, which sit close to the height of the top of the hood. Each sphere is approximately one quarter of the width of his head, a usable discrete clickable button, not a huge planet. Use example website icons GitHub, YouTube, Google, Wikipedia and Telegram, one per sphere, each sharply legible. Preserve the identity of these familiar icons, without adding words inside spheres. A tiny unobtrusive square-edged label below the pet reads exactly “Ctrl + двойной клик”. Main interaction must clearly convey that this gesture on the character reveals the arc of favorite website shortcuts. No pointer lines, no browser window, no full-screen app chrome, no toolbar, no giant headline.
+
+RIGHT AREA, clearly a secondary setup preview: two compact square-corner matte panels with crisp readable Russian UI typography. Upper small context menu with three rows “Заметки”, “Диалог”, “Любимые сайты…”; the last row is subtly highlighted blue and has a small link icon. Below it a settings card titled exactly “Любимые сайты”, tiny close X at the upper right. An existing compact website row has a GitHub icon, “GitHub”, a small edit pencil and a small delete cross. Below that an add/edit form shows label “Адрес сайта”, a one-line field containing “https://github.com”; then label “Значок”, a small square image preview with a GitHub icon and a flat bordered button “Выбрать файл”. At the card bottom show a single compact action button “Добавить”. These panels must be understated and realistically sized, with minimal padding and no instructional paragraph, no unnecessary comments, no rounded corners, no fake charts. It should be obvious that the user can specify BOTH the website URL AND a custom icon image.
+
+Overall: a coherent tangible preview of this requested favorite-sites launcher, consistent with HUDI's existing charcoal matte surface and pale cyan accents. All elements fully in frame, clean hierarchy, no watermark, no other characters, no extra websites, no giant marketing copy.
