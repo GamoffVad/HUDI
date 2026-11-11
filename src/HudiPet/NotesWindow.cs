@@ -115,7 +115,7 @@ internal sealed class NotesWindow:GlassWindow
         if(!Flush())return;
         current=note??new PetNote(Guid.NewGuid().ToString("N"),"",DateTimeOffset.Now,DateTimeOffset.Now);Heading.Text="Заметка";BeginPage(false);
         editor=Ui.Input(current.Text,"Текст заметки");editor.Style=(Style)FindResource("SettingsInput");editor.AcceptsReturn=true;editor.AcceptsTab=true;editor.TextWrapping=TextWrapping.Wrap;editor.VerticalContentAlignment=VerticalAlignment.Top;editor.MinHeight=24;editor.MaxHeight=220;editor.MaxLength=NotesStore.MaxTextLength;editor.VerticalScrollBarVisibility=ScrollBarVisibility.Auto;editor.HorizontalScrollBarVisibility=ScrollBarVisibility.Disabled;
-        editor.Padding=new Thickness(0,4,0,4);editor.FontSize=13;editor.BorderThickness=new Thickness(0);editor.Background=Brushes.Transparent;editor.Foreground=new SolidColorBrush(Color.FromRgb(184,216,239));editor.CaretBrush=editor.Foreground;
+        editor.Padding=new Thickness(0,4,0,4);editor.FontSize=13;editor.BorderThickness=new Thickness(0);editor.Background=Brushes.Transparent;editor.SetResourceReference(TextBox.ForegroundProperty,"TextBrush");editor.SetResourceReference(TextBox.CaretBrushProperty,"TextBrush");
         editor.TextChanged+=(_,_)=>{dirty=true;Message("");autosave.Stop();autosave.Start();};AddRow(editor,new GridLength(1,GridUnitType.Star));
         AddStatus();ShowEditorActions(IsMouseOver);
         Dispatcher.BeginInvoke(()=>editor?.Focus(),DispatcherPriority.Input);

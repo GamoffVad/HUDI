@@ -1,24 +1,18 @@
 using System.IO;
 using System.IO.Compression;
-using System.Reflection;
 using System.Text.Json;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace HudiPet;
 
-internal sealed class SpriteLibrary : IDisposable
+internal sealed partial class SpriteLibrary : IDisposable
 {
     internal static readonly Lazy<SpriteLibrary> Shared = new(() => new SpriteLibrary());
     private readonly Stream resource;
     private readonly ZipArchive archive;
-    private readonly Dictionary<string, (BitmapSource image, byte[] pixels, long used)> cache = new();
-    private long access;
     private readonly bool alphaPrepared;
     internal int Width { get; }
     internal int Height { get; }
-    internal Rect DisplayBounds { get; }
+    internal SpriteBounds DisplayBounds { get; }
     internal bool HorizontalMirrored { get; }
     internal string[] Left { get; }
     internal string[] Right { get; }
@@ -26,7 +20,6 @@ internal sealed class SpriteLibrary : IDisposable
     internal string[] Down { get; }
     internal Dictionary<string, SpriteStep[]> Clips { get; }
     internal string[] FrameIds { get; }
-    internal int CachedFrames => cache.Count;
     internal double OrientationFrameSeconds { get; }
     internal string NeutralFrame { get; }
     internal Dictionary<string,ClipHold> Holds { get; } = new(StringComparer.OrdinalIgnoreCase);
@@ -34,8 +27,6 @@ internal sealed class SpriteLibrary : IDisposable
     internal bool IsBuiltIn { get; }
     internal double BreathAmplitude { get; }
 
-    private SpriteLibrary() : this(Assembly.GetExecutingAssembly().GetManifestResourceStream("HudiPet.sprites.zip")
-        ?? throw new InvalidDataException("Missing whole-frame sprite library."),true) { }
     internal static SpriteLibrary Open(string path)=>new(File.OpenRead(path),false);
     private SpriteLibrary(Stream inputResource,bool builtIn)
     {
@@ -51,12 +42,12 @@ internal sealed class SpriteLibrary : IDisposable
         Width = root.GetProperty("frameSize")[0].GetInt32();
         Height = root.GetProperty("frameSize")[1].GetInt32();
         if(Width<1||Height<1||Width>2048||Height>2048||(long)Width*Height>1048576)throw new InvalidDataException("Размер кадров должен быть не больше 2048 по стороне и 1 мегапикселя.");
-        DisplayBounds=new Rect(0,0,Width,Height);
+        DisplayBounds=new SpriteBounds(0,0,Width,Height);
         if(root.TryGetProperty("displayBounds",out var display))
         {
             var values=display.EnumerateArray().Select(x=>x.GetDouble()).ToArray();
             if(values.Length!=4||values.Any(x=>!double.IsFinite(x))||values[0]<0||values[1]<0||values[2]<=0||values[3]<=0||values[0]+values[2]>Width||values[1]+values[3]>Height)throw new InvalidDataException("Некорректная область отображения питомца.");
-            DisplayBounds=new Rect(values[0],values[1],values[2],values[3]);
+            DisplayBounds=new SpriteBounds(values[0],values[1],values[2],values[3]);
         }
         DisplayName=root.TryGetProperty("name",out var name)?name.GetString()??"":"";
         BreathAmplitude=root.TryGetProperty("breathAmplitude",out var breathing)?breathing.GetDouble():builtIn?.002:0;
@@ -98,42 +89,10 @@ internal sealed class SpriteLibrary : IDisposable
         }
         Get(NeutralFrame);
     }
-    public void Dispose(){cache.Clear();archive.Dispose();resource.Dispose();}
-
-    internal BitmapSource Get(string id)
-    {
-        if (cache.TryGetValue(id, out var found))
-        {
-            cache[id] = (found.image, found.pixels, ++access);
-            return found.image;
-        }
-        using var encoded = new MemoryStream();
-        using (var input = (archive.GetEntry(id + ".png") ?? throw new InvalidDataException(id)).Open())
-        {byte[] buffer=new byte[65536];int count;while((count=input.Read(buffer))>0){if(encoded.Length+count>8*1024*1024)throw new InvalidDataException("Кадр слишком большой.");encoded.Write(buffer,0,count);}}
-        encoded.Position = 0;
-        var image = BitmapDecoder.Create(encoded, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad).Frames[0];
-        if(image.PixelWidth!=Width||image.PixelHeight!=Height)throw new InvalidDataException("Размер кадра не совпадает с описанием.");
-        var converted = new FormatConvertedBitmap(image, PixelFormats.Pbgra32, null, 0);
-        var pixels = new byte[image.PixelWidth * image.PixelHeight * 4];
-        converted.CopyPixels(pixels, image.PixelWidth * 4, 0);
-        // Generated cutouts sometimes include a broad, low-opacity studio haze.
-        // An alpha coverage threshold removes that haze while retaining a soft silhouette edge.
-        for (int p=0;!alphaPrepared&&p<pixels.Length;p+=4)
-        {
-            int oldAlpha=pixels[p+3];
-            double coverage=Math.Clamp((oldAlpha-150)/70d,0,1);
-            int alpha=(int)Math.Round(coverage*coverage*(3-2*coverage)*255);
-            if(oldAlpha>0)for(int c=0;c<3;c++)pixels[p+c]=(byte)Math.Clamp((int)Math.Round(pixels[p+c]*alpha/(double)oldAlpha),0,alpha);
-            pixels[p+3]=(byte)alpha;
-        }
-        var detached = BitmapSource.Create(image.PixelWidth, image.PixelHeight, 96, 96, PixelFormats.Pbgra32, null, pixels, image.PixelWidth * 4);
-        detached.Freeze();
-        if (cache.Count >= Math.Clamp(64*1024*1024/(Width*Height*4),2,64)) { var oldest=cache.MinBy(x => x.Value.used).Key;cache.Remove(oldest); }
-        cache[id] = (detached, pixels, ++access);
-        return detached;
-    }
-    internal byte[] Pixels(string id) { Get(id); return cache[id].pixels; }
+    public void Dispose(){DisposeFrames();archive.Dispose();resource.Dispose();}
 }
 
 internal readonly record struct SpriteStep(string Frame, double Seconds);
 internal readonly record struct ClipHold(int Start,int End,double Seconds);
+
+internal readonly partial record struct SpriteBounds(double X,double Y,double Width,double Height);

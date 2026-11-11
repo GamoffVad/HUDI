@@ -2,6 +2,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -21,13 +23,13 @@ internal static class PetCatalogVerification
         };
         return app.Run();
     }
-    private static void Package(string path,string neutral="neutral",int width=4,bool missing=false,bool badHold=false)
+    internal static void Package(string path,string neutral="neutral",int width=4,bool missing=false,bool badHold=false,string displayName="Тестовый персонаж")
     {
         using var zip=ZipFile.Open(path,ZipArchiveMode.Create);
         var steps=new[]{new{frame=neutral,seconds=.05},new{frame="second",seconds=.05}};
         var manifest=new
         {
-            version="pet-1",name="Тестовый персонаж",frameSize=new[]{width,4},alphaPrepared=true,neutral,frames=new[]{neutral,"second"},
+            version="pet-1",name=displayName,frameSize=new[]{width,4},alphaPrepared=true,neutral,frames=new[]{neutral,"second"},
             clips=new Dictionary<string,object>{{"rest",steps},{"ponder",steps},{"celebrate",steps}},
             roles=new{lookaround="rest",think="ponder",dance="celebrate"},
             holds=badHold?new Dictionary<string,object>{{"think",new{start=38,end=48,seconds=3.2}}}:new Dictionary<string,object>()
@@ -96,5 +98,81 @@ internal static class PetCatalogVerification
         }
         finally{deleting.Close();}
         checks["activation_disabled"]=!Hudi.Licensing.LicenseCodec.ActivationRequired;
+        // An externally imported pet must reach an already-created picker.
+        var pickerCatalog=new PetCatalog(Path.Combine(testRoot,"picker-collection"));
+        var pickerOwner=new PetWindow(false,true,pickerCatalog);
+        new System.Windows.Interop.WindowInteropHelper(pickerOwner).EnsureHandle();
+        var picker=new PetSettingsWindow(pickerOwner);
+        try
+        {
+            var combo=picker.Body.Children.OfType<ComboBox>().Single();
+            checks["picker_initial_catalog"]=combo.Items.Count==1;
+            LocalPet? last=null;
+            for(int i=0;i<7;i++)
+            {
+                string path=Path.Combine(testRoot,$"picker-{i}.pet");Package(path,neutral:$"neutral-{i}",displayName:$"Персонаж {i}");last=pickerCatalog.Import(path);
+            }
+            picker.RefreshAvailablePets();
+            checks["picker_refreshes_external_imports"]=combo.Items.Count==8&&combo.Items.Cast<LocalPet>().Any(p=>p.Id==last!.Id);
+            checks["picker_refresh_preserves_selection"]=combo.SelectedItem is LocalPet {Id:"hudi"}&&pickerCatalog.Selected().Id=="hudi";
+            combo.ApplyTemplate();
+            var popup=(Popup)combo.Template.FindName("PART_Popup",combo);
+            var border=(Border)popup.Child;var scroll=(ScrollViewer)border.Child;
+            checks["picker_popup_uses_configured_height"]=border.MaxHeight==420;
+            checks["picker_long_list_scrolls"]=scroll.VerticalScrollBarVisibility==ScrollBarVisibility.Auto&&scroll.CanContentScroll;
+            combo.SelectedItem=last;
+            picker.RefreshAvailablePets();
+            checks["picker_last_import_selectable"]=combo.SelectedItem is LocalPet p&&p.Id==last!.Id;
+        }
+        finally{picker.Close();pickerOwner.Close();}
+        await VerifyDuplicates(testRoot,checks);
+    }
+    private static async Task VerifyDuplicates(string testRoot,Dictionary<string,bool> checks)
+    {
+        string root=Path.Combine(testRoot,"dedup-collection");var catalog=new PetCatalog(root);
+        string first=Path.Combine(testRoot,"revision-first.pet"),second=Path.Combine(testRoot,"revision-second.pet");
+        Package(first,displayName:"Розовая девочка");Package(second,neutral:"updated",displayName:"  РОЗОВАЯ   ДЕВОЧКА  ");
+        var pet=catalog.Import(first);catalog.Select(pet);
+        using(var live=catalog.Open(pet))
+        {
+            var updated=catalog.Import(second);
+            using var version=catalog.Open(updated);
+            checks["same_name_update_keeps_id"]=updated.Id==pet.Id&&catalog.List().Length==2;
+            checks["active_package_update_is_atomic"]=version.NeutralFrame=="updated"&&live.NeutralFrame=="neutral"&&File.Exists(pet.Package);
+            checks["update_preserves_selection"]=catalog.Selected().Id==pet.Id;
+            checks["updated_package_reimport_reused"]=catalog.Import(second).Package==updated.Package;
+            pet=updated;
+        }
+        var window=new PetWindow(false,true,catalog);
+        try
+        {
+            var updatedAgain=catalog.Import(first);await window.SelectPetAsync(updatedAgain);
+            checks["active_same_id_revision_can_be_selected"]=window.SelectedPetId==pet.Id&&window.PetName=="Розовая девочка"&&catalog.Selected().Hash==updatedAgain.Hash;
+        }
+        finally{window.Close();}
+        pet=catalog.Selected();
+        string clone=Guid.NewGuid().ToString("N"),cloneFolder=Path.Combine(root,clone);Directory.CreateDirectory(cloneFolder);
+        File.Copy(pet.Package!,Path.Combine(cloneFolder,"pet.zip"));
+        File.WriteAllText(Path.Combine(cloneFolder,"pet.json"),JsonSerializer.Serialize(new{name=pet.Name,sha256=pet.Hash.ToLowerInvariant()}));
+        File.WriteAllText(Path.Combine(root,"selected.txt"),clone);
+        var repaired=new PetCatalog(root);
+        checks["legacy_duplicate_migration_preserves_selected_id"]=repaired.Selected().Id==clone&&repaired.List().Length==2;
+        checks["legacy_duplicates_archived_recoverably"]=Directory.Exists(Path.Combine(root,"duplicates"))&&!Directory.Exists(Path.Combine(root,pet.Id));
+        checks["repeated_migration_idempotent"]=new PetCatalog(root).List().Length==2;
+        repaired.Select(PetCatalog.Hudi);repaired.Remove(repaired.List().Single(p=>!p.BuiltIn));
+        checks["removed_duplicate_does_not_reappear"]=new PetCatalog(root).List().Length==1;
+        string concurrentRoot=Path.Combine(testRoot,"concurrent-collection");
+        var a=new PetCatalog(concurrentRoot);var b=new PetCatalog(concurrentRoot);
+        var imported=await Task.WhenAll(a.ImportAsync(first),b.ImportAsync(first));
+        checks["concurrent_duplicate_imports_serialize"]=imported[0].Id==imported[1].Id&&new PetCatalog(concurrentRoot).List().Length==2;
+        string reserved=Path.Combine(testRoot,"reserved.pet");Package(reserved,displayName:"hudi");
+        try{a.Import(reserved);checks["builtin_name_cannot_be_duplicated"]=false;}
+        catch(InvalidDataException){checks["builtin_name_cannot_be_duplicated"]=a.List().Length==2;}
+        string versionId=Guid.NewGuid().ToString("N"),versionFolder=Path.Combine(concurrentRoot,versionId);Directory.CreateDirectory(versionFolder);
+        File.Copy(second,Path.Combine(versionFolder,"pet.zip"));
+        File.SetLastWriteTimeUtc(Path.Combine(versionFolder,"pet.zip"),DateTime.UtcNow.AddMinutes(1));
+        File.WriteAllText(Path.Combine(versionFolder,"pet.json"),JsonSerializer.Serialize(new{name="Розовая девочка",sha256="different-version"}));
+        var latest=new PetCatalog(concurrentRoot);
+        checks["legacy_same_name_versions_keep_newest"]=latest.List().Length==2&&latest.List()[1].Id==versionId;
     }
 }

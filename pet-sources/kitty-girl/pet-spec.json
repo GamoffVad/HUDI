@@ -2,7 +2,7 @@
   "id": "kitty-girl",
   "platform": "windows",
   "name": "Девочка в розовом",
-  "status": "assembled-imported-not-selected",
+  "status": "Blender recut: all 12 existing animations rebuilt, verified and existing installed entries updated",
   "referenceImages": [
     "references/01-common-pose.png",
     "references/02-angry-stomp.png",
@@ -111,27 +111,45 @@
     "loop": "same first and last image; physical return, no reversal or long dissolve"
   },
   "matting": {
-    "status": "base-image-pilot-inspected; waiting for video frames",
-    "requirements": [
-      "preserve warm brown flyaway hair",
-      "no green or magenta fringe",
-      "crisp opaque edges, fractional alpha on individual hairs",
-      "preserve cream clothing and shadow",
-      "review white black saturated backgrounds",
-      "full figure and shadow contained in every frame"
+    "status": "completed-awaiting-user-visual-review",
+    "method": "Blender compositor via MCP only: gamma-space Keying and conditional average-channel Color Spill; no Python edge correction",
+    "recipe": "../../output/kitty-girl-blender-v2/recipe.json",
+    "nativeFrames": 1452,
+    "nativeFrameSize": [
+      1440,
+      1440
     ],
-    "method": "warm-brown hair colour mixing, narrow coverage edge, native alpha and source shadow"
+    "masterFormat": "16-bit PNG straight RGBA",
+    "runtimeFrameSize": [
+      960,
+      960
+    ],
+    "firstLastCommonNeutral": true,
+    "endpointAlignment": "Blender linear-premultiplied matching over existing settled four-frame boundaries; raw endpoints retained",
+    "garbageMaskSize": [
+      0.995,
+      0.995
+    ],
+    "sourceAudit": "../../output/kitty-girl-blender-v2/source-boundary-audit.json",
+    "verification": "../../output/kitty-girl-blender-v2/verification.json",
+    "preview": "../../output/kitty-girl-blender-v2/all-actions-black-white.mp4",
+    "creditsSpent": 0,
+    "limitations": "Original motion blur and generated hair highlights remain; successful numerical checks do not prove flawless edges."
   },
   "installation": {
     "requested": true,
     "imported": true,
     "selected": false,
     "petId": "b400eb5250554dd2a15f39691ada8da3",
-    "package": "D:/PR/HUDI/output/kitty-girl-v1/kitty-girl.pet",
+    "package": "D:\\PR\\HUDI\\output\\kitty-girl-blender-v2\\kitty-girl.pet",
     "applicationVersion": "7.3.10",
-    "runtimeVerification": "D:/PR/HUDI/output/kitty-girl-v1/qa-final/runtime-checks.json",
-    "sha256": "EF03E4EBC7700CD8F1522A7BE2AC5E9A12BB985C7CE4D9FC6B96E87F305BF28E",
-    "actions": 12
+    "runtimeVerification": "D:\\PR\\HUDI\\output\\kitty-girl-blender-v2\\qa-runtime\\runtime-checks.json",
+    "sha256": "0882338A29D0944D2B2A4B5EA581C23639430304CB8147D0333B61423851EA47",
+    "actions": 12,
+    "updatedExistingPetIds": [
+      "b400eb5250554dd2a15f39691ada8da3",
+      "93f657b3b8e24b448a36312449f1d85c"
+    ]
   },
   "additionalRequests": [
     {
@@ -160,5 +178,17 @@
     "reason": "Flyaway hair cropped at source top boundary",
     "replacementJob": "37fc915d-8f33-46ed-898d-2c0720eec83b",
     "source": "animations/surprised-step-v2/source.mp4"
+  },
+  "previousMatting": {
+    "status": "base-image-pilot-inspected; waiting for video frames",
+    "requirements": [
+      "preserve warm brown flyaway hair",
+      "no green or magenta fringe",
+      "crisp opaque edges, fractional alpha on individual hairs",
+      "preserve cream clothing and shadow",
+      "review white black saturated backgrounds",
+      "full figure and shadow contained in every frame"
+    ],
+    "method": "warm-brown hair colour mixing, narrow coverage edge, native alpha and source shadow"
   }
 }

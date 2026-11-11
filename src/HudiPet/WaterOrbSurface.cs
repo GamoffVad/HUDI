@@ -38,7 +38,7 @@ internal static class WaterOrbFrames
 // hiding labels behind a solid wash. The source water stays above the symbols.
 internal sealed class WaterOrbBacking:FrameworkElement
 {
-    private static readonly Brush fill=CreateFill();
+    private readonly Brush fill=PetAppearance.Current.Disc;
     private static Brush CreateFill()
     {
         var brush=new RadialGradientBrush
@@ -55,7 +55,7 @@ internal sealed class WaterOrbBacking:FrameworkElement
     }
     internal WaterOrbBacking(){IsHitTestVisible=false;}
     protected override void OnRender(DrawingContext context)=>context.DrawEllipse(fill,null,
-        new Point(ActualWidth/2,ActualHeight/2),ActualWidth*.48,ActualHeight*.48);
+        new Point(ActualWidth/2,ActualHeight/2),ActualWidth*.5,ActualHeight*.5);
 }
 
 internal sealed class WaterOrbSurface:FrameworkElement
@@ -74,9 +74,8 @@ internal sealed class WaterOrbSurface:FrameworkElement
     }
     internal WaterOrbSurface()
     {
-        WaterOrbFrames.WarmUp();RenderOptions.SetBitmapScalingMode(this,BitmapScalingMode.HighQuality);
+        RenderOptions.SetBitmapScalingMode(this,BitmapScalingMode.HighQuality);
         Unloaded+=(_,_)=>Stop();
-        Loaded+=(_,_)=>RefreshWhenReady();
     }
     private async void RefreshWhenReady()
     {
@@ -106,9 +105,12 @@ internal sealed class WaterOrbSurface:FrameworkElement
     }
     protected override void OnRender(DrawingContext context)
     {
-        var center=new Point(ActualWidth/2,ActualHeight/2);
-        if(WaterOrbFrames.Get(FrameIndex) is {} frame)context.DrawImage(frame,new Rect(0,0,ActualWidth,ActualHeight));
-        else context.DrawEllipse(fallback,null,center,ActualWidth/2,ActualHeight/2);
+        // Soft light on a shallow cartoon disc. The middle stays clear for icons.
+        double w=ActualWidth,h=ActualHeight;if(w<=0||h<=0)return;
+        var shine=new LinearGradientBrush(Color.FromArgb(60,255,255,255),Colors.Transparent,90);
+        var rim=new StreamGeometry();using(var path=rim.Open())
+        {path.BeginFigure(new Point(w*.2,h*.17),false,false);path.BezierTo(new Point(w*.36,h*.025),new Point(w*.64,h*.025),new Point(w*.8,h*.17),true,false);}
+        context.DrawGeometry(null,new Pen(shine,Math.Max(1,w*.035)){StartLineCap=PenLineCap.Round,EndLineCap=PenLineCap.Round},rim);
     }
     protected override HitTestResult? HitTestCore(PointHitTestParameters hit)
     {

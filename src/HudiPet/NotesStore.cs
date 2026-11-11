@@ -18,7 +18,7 @@ internal sealed class NotesStore
     private static readonly JsonSerializerOptions Json=new(){WriteIndented=true,Encoder=JavaScriptEncoder.Create(UnicodeRanges.All)};
     private readonly string path;
     internal bool RecoveredBackup {get;private set;}
-    internal NotesStore(string? directory=null)=>path=Path.Combine(directory??PetWindow.SettingsDirectory,"notes.json");
+    internal NotesStore(string? directory=null)=>path=Path.Combine(directory??AppStorage.Directory,"notes.json");
     private static PetNote[] ReadFile(string file)
     {
         if(new FileInfo(file).Length>50_000_000)throw new InvalidDataException("Файл заметок слишком большой.");

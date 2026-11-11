@@ -27,7 +27,7 @@ internal sealed class SiteOrb:Button
         Width=Height=diameter;Cursor=Cursors.Hand;FocusVisualStyle=null;Style=null;BorderThickness=new Thickness(0);Padding=new Thickness(0);Background=Brushes.Transparent;
         AutomationProperties.SetName(this,site.Name);
         var presenter=new FrameworkElementFactory(typeof(ContentPresenter));Template=new ControlTemplate(typeof(Button)){VisualTree=presenter};
-        var face=CreateFace(site.Icon,site.Text,diameter);face.RenderTransform=Press;face.RenderTransformOrigin=new Point(.5,.5);
+        var face=CreateFace(PetAppearance.Current.IconFor(site),site.Text,diameter);face.RenderTransform=Press;face.RenderTransformOrigin=new Point(.5,.5);
         // Only the watery material and rim breathe; labels stay sharp and still.
         var living=new TransformGroup();living.Children.Add(LivingShape);living.Children.Add(LivingTilt);
         Water=face.Children.OfType<WaterOrbSurface>().Single();Water.RenderTransform=living;Water.RenderTransformOrigin=new Point(.5,.5);
@@ -74,7 +74,7 @@ internal sealed class SiteOrb:Button
         if(!string.IsNullOrWhiteSpace(text))
         {
             // Fit the full label inside the sphere, including when a crowded arc shrinks it.
-            var label=new TextBlock{Text=text.Trim(),FontSize=diameter*.32,FontWeight=FontWeights.SemiBold,Foreground=new SolidColorBrush(Color.FromRgb(224,241,252)),TextAlignment=TextAlignment.Center,Effect=new System.Windows.Media.Effects.DropShadowEffect{Color=Color.FromRgb(10,28,44),BlurRadius=3,ShadowDepth=0,Opacity=.9}};
+            var label=new TextBlock{Text=text.Trim(),FontSize=diameter*.32,FontWeight=FontWeights.SemiBold,Foreground=PetAppearance.Current.Ink,TextAlignment=TextAlignment.Center};
             face.Children.Add(new Viewbox{Width=diameter*.76,Height=diameter*.5,Stretch=Stretch.Uniform,StretchDirection=StretchDirection.DownOnly,HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,Child=label});
         }
         else if(icon.Length>0)
@@ -104,6 +104,12 @@ internal sealed class SiteOrb:Button
         if(!SystemParameters.ClientAreaAnimation)return;
         var frames=SiteMotionCurve.Animation(300,0,[0,.52,.8,1],[.86,1.09,.98,1],.2,.65,.3,1);
         Press.BeginAnimation(ScaleTransform.ScaleXProperty,frames);Press.BeginAnimation(ScaleTransform.ScaleYProperty,frames);
+    }
+    internal void Follow(Point position)
+    {
+        Travel.BeginAnimation(TranslateTransform.XProperty,null);Travel.BeginAnimation(TranslateTransform.YProperty,null);
+        Growth.BeginAnimation(ScaleTransform.ScaleXProperty,null);Growth.BeginAnimation(ScaleTransform.ScaleYProperty,null);BeginAnimation(OpacityProperty,null);
+        Travel.X=position.X;Travel.Y=position.Y;Growth.ScaleX=Growth.ScaleY=1;Opacity=1;
     }
     internal void Move(Point from,Point to,bool opening,int index,int count)
     {
@@ -167,17 +173,26 @@ internal sealed class FavoriteSitesOrbit:Window
         KeyDown+=(_,e)=>{if(e.Key==Key.Escape){Dismiss();e.Handled=true;}};
     }
     private Point Local(Point screen)=>new(screen.X-Left-arc.Diameter/2,screen.Y-Top-arc.Diameter/2);
-    private void Place()
+    private void Place(bool following=false)
     {
+        double previousDiameter=arc?.Diameter??0;
         arc=SitesArc.Arrange(pet.DisplayedBounds,ScreenPlacement.WorkArea(pet),sites.Length,maximumSphereSize);
         var bounds=new Rect(arc.Origin,arc.Origin);foreach(var point in arc.Centers)bounds.Union(point);bounds.Inflate(arc.Diameter/2+24,arc.Diameter/2+24);
-        Left=bounds.Left;Top=bounds.Top;Width=bounds.Width;Height=bounds.Height;canvas.Children.Clear();orbs.Clear();
+        Left=bounds.Left;Top=bounds.Top;Width=bounds.Width;Height=bounds.Height;
+        if(orbs.Count==sites.Length&&Math.Abs(previousDiameter-arc.Diameter)<.001)
+        {
+            for(int i=0;i<orbs.Count;i++)orbs[i].Follow(Local(arc.Centers[i]));
+            return;
+        }
+        foreach(var old in orbs)old.StopLivingMotion();
+        canvas.Children.Clear();orbs.Clear();
         for(int i=0;i<sites.Length;i++)
         {
             var site=sites[i];var orb=new SiteOrb(site,arc.Diameter){Opacity=0};orb.Click+=(_,_)=>Launch(site,orb);canvas.Children.Add(orb);orbs.Add(orb);
+            if(following){orb.Move(Local(arc.Origin),Local(arc.Centers[i]),true,i,sites.Length);orb.Follow(Local(arc.Centers[i]));}
         }
     }
-    private void AnchorMoved(object? sender,EventArgs e){if(!closed)Close();}
+    private void AnchorMoved(object? sender,EventArgs e){if(!closed&&!IsDismissing){Place(true);KeepBehind();}}
     private void AnchorActivated(object? sender,EventArgs e){if(!closed)KeepBehind();}
     private void PollDismiss()
     {
@@ -186,14 +201,20 @@ internal sealed class FavoriteSitesOrbit:Window
         if(escape&&!lastEscapeDown)Dismiss();
         if(mouse&&!lastMouseDown&&GetCursorPos(out var cursor))
         {
-            var screen=new Point(cursor.X,cursor.Y);var onPet=pet.PointFromScreen(screen);
-            bool insidePet=new Rect(0,0,pet.ActualWidth,pet.ActualHeight).Contains(onPet);
-            bool insideSphere=orbs.Any(orb=>orb.ContainsPoint(orb.PointFromScreen(screen)));
-            if(!insidePet&&!insideSphere)Dismiss();
+            HandlePointerPress(new Point(cursor.X,cursor.Y));
         }
         lastMouseDown=mouse;lastEscapeDown=escape;
     }
-    private void AnchorSized(object sender,SizeChangedEventArgs e){if(!closed)Close();}
+    internal void HandlePointerPress(Point screen)
+    {
+        // Capture belongs to the gesture that began on the pet. A late polling
+        // tick must not interpret a moving pointer outside its silhouette as a new click.
+        if(closed||IsDismissing||pet.HasPointerGesture)return;
+        bool insidePet=pet.ContainsPetScreenPoint(screen);
+        bool insideSphere=orbs.Any(orb=>orb.ContainsPoint(orb.PointFromScreen(screen)));
+        if(!insidePet&&!insideSphere)Dismiss();
+    }
+    private void AnchorSized(object sender,SizeChangedEventArgs e)=>AnchorMoved(sender,e);
     private void KeepBehind(){if(closed)return;var handle=new WindowInteropHelper(this).Handle;var owner=new WindowInteropHelper(pet).Handle;if(handle!=IntPtr.Zero&&owner!=IntPtr.Zero)SetWindowPos(handle,owner,0,0,0,0,0x0013);}
     private IntPtr Hook(IntPtr hwnd,int message,IntPtr wParam,IntPtr lParam,ref bool handled)
     {

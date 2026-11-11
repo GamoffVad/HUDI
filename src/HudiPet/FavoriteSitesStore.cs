@@ -1,13 +1,12 @@
 using System.IO;
 using System.Diagnostics;
 using System.Text.Json;
-using System.Windows.Media.Imaging;
 
 namespace HudiPet;
 
-internal sealed record FavoriteSite(string Id,string Name,string Url,string Icon,string? Text=null,string Kind="site");
+internal sealed record FavoriteSite(string Id,string Name,string Url,string Icon,string? Text=null,string Kind="site",string? LibraryIcon=null);
 
-internal sealed class FavoriteSitesStore
+internal sealed partial class FavoriteSitesStore
 {
     private sealed record Document(int Version,FavoriteSite[] Sites,double? MaximumSphereSize=null);
     private readonly string path;
@@ -17,7 +16,7 @@ internal sealed class FavoriteSitesStore
     internal double? MaximumSphereSize {get;private set;}
     internal static double NormalizeSphereSize(double value)=>double.IsFinite(value)?Math.Round(Math.Clamp(value,MinimumSphereSize,MaximumAllowedSphereSize)):54;
     internal bool RecoveredBackup {get;private set;}
-    internal FavoriteSitesStore(string? directory=null)=>path=Path.Combine(directory??PetWindow.SettingsDirectory,"favorite-sites.json");
+    internal FavoriteSitesStore(string? directory=null)=>path=Path.Combine(directory??AppStorage.Directory,"favorite-sites.json");
     internal static string NormalizeUrl(string value)
     {
         value=value.Trim();
@@ -30,8 +29,11 @@ internal sealed class FavoriteSitesStore
     internal static string NormalizeProgramPath(string value)
     {
         value=value.Trim().Trim('"');
-        if(value.Length>4096||!Path.IsPathFullyQualified(value)||!(Path.GetExtension(value).Equals(".exe",StringComparison.OrdinalIgnoreCase)||Path.GetExtension(value).Equals(".lnk",StringComparison.OrdinalIgnoreCase)))
-            throw new InvalidDataException("Выберите программу .exe или ярлык .lnk.");
+        string extension=Path.GetExtension(Path.TrimEndingDirectorySeparator(value));
+        bool supported=OperatingSystem.IsMacOS()?extension.Equals(".app",StringComparison.OrdinalIgnoreCase)
+            :extension.Equals(".exe",StringComparison.OrdinalIgnoreCase)||extension.Equals(".lnk",StringComparison.OrdinalIgnoreCase);
+        if(value.Length>4096||!Path.IsPathFullyQualified(value)||!supported)
+            throw new InvalidDataException(OperatingSystem.IsMacOS()?"Выберите приложение .app.":"Выберите программу .exe или ярлык .lnk.");
         return Path.GetFullPath(value);
     }
     private static string NormalizeTarget(FavoriteSite site)=>site.Kind switch
@@ -43,26 +45,13 @@ internal sealed class FavoriteSitesStore
     internal static ProcessStartInfo CreateLaunchInfo(FavoriteSite site)
     {
         string target=NormalizeTarget(site);
+        if(OperatingSystem.IsMacOS()&&IsProgram(site))
+        {
+            if(!Directory.Exists(target))throw new DirectoryNotFoundException("Приложение не найдено. Обновите путь в избранном.");
+            return new ProcessStartInfo("/usr/bin/open"){ArgumentList={"--",target}};
+        }
         if(IsProgram(site)&&!File.Exists(target))throw new FileNotFoundException("Программа не найдена. Обновите путь в избранном.",target);
         return new ProcessStartInfo(target){UseShellExecute=true,WorkingDirectory=IsProgram(site)?Path.GetDirectoryName(target)!:string.Empty};
-    }
-    internal static string ImportIcon(string file)
-    {
-        if(new FileInfo(file).Length>10_000_000)throw new InvalidDataException("Выберите изображение меньше 10 МБ.");
-        using var stream=File.OpenRead(file);
-        var image=new BitmapImage();image.BeginInit();image.CacheOption=BitmapCacheOption.OnLoad;image.DecodePixelWidth=128;image.StreamSource=stream;image.EndInit();image.Freeze();
-        if(image.PixelHeight>4096)throw new InvalidDataException("Выберите квадратное изображение для значка.");
-        var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(image));using var output=new MemoryStream();encoder.Save(output);
-        if(output.Length>500_000)throw new InvalidDataException("Изображение слишком большое для значка.");
-        return Convert.ToBase64String(output.ToArray());
-    }
-    internal static BitmapSource DecodeIcon(string value)
-    {
-        if(value.Length>700_000)throw new InvalidDataException("Значок слишком большой.");
-        using var stream=new MemoryStream(Convert.FromBase64String(value));
-        var image=new BitmapImage();image.BeginInit();image.CacheOption=BitmapCacheOption.OnLoad;image.DecodePixelWidth=128;image.StreamSource=stream;image.EndInit();image.Freeze();
-        if(image.PixelHeight>4096)throw new InvalidDataException("Неподдерживаемый размер значка.");
-        return image;
     }
     private static void Validate(FavoriteSite[] sites)
     {

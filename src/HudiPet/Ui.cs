@@ -11,11 +11,22 @@ namespace HudiPet;
 
 internal static class Ui
 {
-    internal static readonly Brush Muted = new SolidColorBrush(Color.FromRgb(162,181,200));
-    internal static readonly Brush Accent = new SolidColorBrush(Color.FromRgb(157,232,255));
+    internal static Brush Muted => PetAppearance.Current.Muted;
+    internal static Brush Accent => PetAppearance.Current.Brush(PetAppearance.Current.Accent);
     internal static readonly Brush Error = new SolidColorBrush(Color.FromRgb(255,181,174));
-    internal static void Initialize() => Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("/HUDI;component/Theme.xaml", UriKind.Relative) });
-    internal static TextBlock Text(string value, double size = 14, Brush? color = null) => new() { Text = value, FontSize = size, Foreground = color ?? Brushes.White, TextWrapping = TextWrapping.Wrap };
+    internal static void Initialize()
+    {
+        Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("/HUDI;component/Theme.xaml", UriKind.Relative) });
+        PetAppearance.Current.Apply();
+    }
+    internal static TextBlock Text(string value, double size = 14, Brush? color = null)
+    {
+        var text=new TextBlock{Text=value,FontSize=size,TextWrapping=TextWrapping.Wrap};
+        if(color is null)text.SetResourceReference(TextBlock.ForegroundProperty,"TextBrush");
+        else if(color==Error)text.Foreground=color;
+        else text.SetResourceReference(TextBlock.ForegroundProperty,color is SolidColorBrush b&&b.Color==PetAppearance.Current.AccentColor?"AccentBrush":"MutedBrush");
+        return text;
+    }
     internal static Button Button(string text, Action action, bool primary = false, bool quiet = false)
     {
         var button = new Button { Content = text, Style = (Style)Application.Current.FindResource(primary ? "PrimaryButton" : quiet ? "QuietButton" : typeof(Button)) };
@@ -79,6 +90,7 @@ internal class GlassWindow : Window, IWindowClipProvider
         var content = new StackPanel { Margin = new Thickness(20,17,20,18) };
         Surface = new DialogSurface { CornerRadius=new CornerRadius(FrostedBackdrop.CornerRadius), BorderThickness=new Thickness(1), BorderBrush=FrostedBackdrop.Edge,
             Background=FrostedBackdrop.Tint, Child=content };
+        RefreshPetTheme();
         root.Children.Add(Surface);
         Surface.OutlineChanged+=()=>{if(!IsClosing)DialogBackdrop.Refresh(this);};
         var header = Header = new DockPanel { LastChildFill=true, Margin=new Thickness(0,0,0,14) };
@@ -103,6 +115,12 @@ internal class GlassWindow : Window, IWindowClipProvider
     }
     protected double SquareBodyHeight=>Height-DialogSurface.ContentInset*2-(Header.Visibility==Visibility.Visible?Header.Height+Header.Margin.Top+Header.Margin.Bottom:0);
     protected Grid SquareBody()=>new() {Height=SquareBodyHeight};
+    internal void RefreshPetTheme()
+    {
+        PetAppearance.Current.ApplyResources(Resources);
+        Surface.Background=PetAppearance.Current.Panel;Surface.BorderBrush=PetAppearance.Current.Edge;
+        originalTint=null;if(IsLoaded)RefreshTransparency();
+    }
     private void RefreshTransparency()
     {
         if(!IsLoaded||IsClosing||anchor is null)return;

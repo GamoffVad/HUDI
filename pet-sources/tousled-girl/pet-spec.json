@@ -1,0 +1,53 @@
+{
+  "name": "Кудряшка",
+  "status": "Blender green-fringe revision runtime verified and installed into the same HUDI pet entry on 2026-11-11; application restarted; awaiting user visual review",
+  "scope": "Reprocess the existing full animation through Blender MCP only and update the same pet",
+  "identity": "Exact supplied chibi girl, huge tousled dark wavy hair, charcoal tee and drawstring pants, hands in pockets, bare toes, cheeky resting smile",
+  "reference": "reference-original.png",
+  "generationReference": "reference-green.png",
+  "animation": "looks around, turns, gets surprised, physically returns to initial pose",
+  "model": "kling4_0",
+  "requestedResolution": "1080p",
+  "durationSeconds": 8,
+  "audio": false,
+  "estimatedCredits": 26,
+  "referenceMediaId": "4fa127f6-1b87-4bac-819b-b8cd136e9f07",
+  "loop": "Generated physical return and settling; final exported PNG is pixel-identical to first.",
+  "backgroundRemoval": "Blender MCP compositor: original alpha retained, gamma-space Keying despill disabled, average green Color Spill at 1 plus dark-hair guarded 0.75 pass; straight-alpha export.",
+  "generationSkill": "desktop-pet-builder/references/generation.md",
+  "jobId": "e03c22fb-bbf3-42a2-9945-771dd1583d1c",
+  "actualResolution": [
+    1440,
+    1440
+  ],
+  "actualFrames": 193,
+  "actualFps": 24,
+  "creditsSpent": 26,
+  "creditsRemainingAfter": 15.8,
+  "video": "animations/look-surprise-kling4/source.mp4",
+  "transparentFrames": "animations/look-surprise-kling4/blender-v2/rgba",
+  "preview": "animations/look-surprise-kling4/blender-v2/native-black.mp4",
+  "hairPreview": "animations/look-surprise-kling4/blender-v2/black-white.mp4",
+  "verification": "animations/look-surprise-kling4/blender-v2/verification.json",
+  "cutoutQuality": "All 193 native-resolution frames processed. Black/white sampled-pose previews reviewed and complete videos decoded. Original hair softness and some warm fine-strand edges remain; export checks do not establish flawless matting.",
+  "lightPreview": "animations/look-surprise-kling4/blender-v2/native-white.mp4",
+  "revisionCreditsSpent": 0,
+  "previousTransparentFrames": "animations/look-surprise-kling4/blender-v1/rgba",
+  "package": "../../output/tousled-girl-blender-v3/tousled-girl.pet",
+  "runtimeFrameSize": [
+    1000,
+    1000
+  ],
+  "installedPetId": "5352eeb3f1fb4475af38f52ed4c52bc2",
+  "selected": true,
+  "actions": [
+    "lookaround"
+  ],
+  "actionDescription": "Осматривается, удивляется и возвращается в исходную позу.",
+  "previous_cutoutApprovedOn": "2026-11-10",
+  "previous_approvedMattingRecipe": "approved-matting/recipe.json",
+  "mattingRecipe": "animations/look-surprise-kling4/blender-v2/recipe.json",
+  "compositorProject": "animations/look-surprise-kling4/blender-v2/kudryashka-key.blend",
+  "packageHash": "1F2F6F8375AD3897370D21616C68CF458127CD6D3554A6E7C570A6AB3DE06E72",
+  "importReport": "../../output/tousled-girl-blender-v3/import-result.json"
+}

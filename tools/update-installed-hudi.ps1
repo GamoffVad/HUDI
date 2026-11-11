@@ -63,7 +63,7 @@ if (Test-Path -LiteralPath $registry) {
     Set-ItemProperty -LiteralPath $registry -Name DisplayVersion -Value $Version
     Set-ItemProperty -LiteralPath $registry -Name EstimatedSize -Value ([int]((Get-Item -LiteralPath $installed).Length/1024))
 }
-$app=Start-Process -FilePath $installed -WorkingDirectory $installRoot -WindowStyle Normal -PassThru
+$app=Start-Process -FilePath $installed -WorkingDirectory $installRoot -WindowStyle Hidden -PassThru
 $unchanged=$true
 foreach ($name in $before.Keys) { $unchanged=$unchanged -and ((Get-FileHash -LiteralPath (Join-Path $env:LOCALAPPDATA "HUDI/$name") -Algorithm SHA256).Hash -eq $before[$name]) }
 [PSCustomObject]@{ProcessId=$app.Id;Version=(Get-Item -LiteralPath $installed).VersionInfo.FileVersion;InstalledHashMatches=((Get-FileHash -LiteralPath $installed -Algorithm SHA256).Hash -eq $expected);UserListsUnchanged=$unchanged;Backup=$backup} | ConvertTo-Json

@@ -146,6 +146,12 @@ internal static class FavoriteSitesVerification
         checks["editing_icon_selection_replaces_text_in_preview"]=textInput.Text.Length==0&&Children<Image>(settings).Any();
         ClickButton("Добавить");var iconSaved=new FavoriteSitesStore(fixture).Read().Single(s=>s.Id==first.Id);
         checks["editing_replaces_icon_without_duplicate"]=iconSaved.Icon==replacementIcon&&iconSaved.Text is null&&store.Read().Count(s=>s.Id==first.Id)==1;
+        ClickButton("Изменить example.com");settings.ApplyLibraryIcon("mail");ClickButton("Добавить");
+        var librarySaved=store.Read().Single(s=>s.Id==first.Id);
+        checks["editing_can_choose_pet_library_icon_without_duplicate"]=librarySaved.LibraryIcon=="mail"&&librarySaved.Icon==pet.Appearance.Icons.Single(i=>i.Id=="mail").Image&&store.Read().Count(s=>s.Id==first.Id)==1;
+        settings.OpenIconLibrary();var picker=pet.OwnedWindows.OfType<GlassWindow>().Single(w=>w.Title.StartsWith("Значки ·"));picker.UpdateLayout();
+        checks["library_picker_has_ten_icons"]=Children<Button>(picker).Count(b=>pet.Appearance.Icons.Any(i=>i.Name==System.Windows.Automation.AutomationProperties.GetName(b)))==10;
+        VisualPreview.Save(picker,Path.Combine(directory,"pet-icon-picker.png"));picker.Close();
         ClickButton("Изменить example.com");textInput.Text="Проверка";
         try{settings.ApplyIconFile(Path.Combine(fixture,"missing.png"));}catch(IOException){}
         checks["failed_icon_import_keeps_editor_text"]=textInput.Text=="Проверка";
@@ -180,13 +186,34 @@ internal static class FavoriteSitesVerification
         pet.OpenFavoriteSitesSettings();settings=pet.OwnedWindows.OfType<FavoriteSitesWindow>().Single();settings.UpdateLayout();checks["reopening_settings_keeps_size"]=Children<Slider>(settings).Single().Value==112;settings.Close();
         pet.ToggleFavoriteSites();checks["spheres_begin_fully_transparent"]=!SystemParameters.ClientAreaAnimation||pet.SitesOrbit!.Orbs.All(o=>o.Opacity<.01);UiVerification.Advance(50);
         var textOrb=pet.SitesOrbit!.Orbs.Last();checks["saved_text_renders_in_orbit_instead_of_icon"]=Children<TextBlock>(textOrb).Any(t=>t.Text=="ИИ")&&!Children<Image>(textOrb).Any();
-        pet.Top+=10;checks["moving_pet_dismisses_orbit"]=pet.SitesOrbit is null;
+        var following=pet.SitesOrbit!;var originBefore=following.Layout.Origin;
+        pet.Top+=10;
+        checks["moving_pet_keeps_same_orbit"]=ReferenceEquals(pet.SitesOrbit,following)&&following.IsVisible&&!following.IsDismissing;
+        checks["orbit_follows_pet_center"]=Math.Abs(following.Layout.Origin.Y-originBefore.Y-10)<.01;
+        pet.Activate();var grab=new Point(pet.ActualWidth/2,pet.ActualHeight/2);
+        pet.BeginPointerGesture(grab,1,false);
+        checks["drag_capture_started"]=pet.HasPointerGesture;
+        pet.MovePointerGesture(grab+new Vector(20,12),true);
+        following.HandlePointerPress(new Point(-100000,-100000));
+        checks["drag_does_not_close_orbit_even_when_pointer_leaves_body"]=ReferenceEquals(pet.SitesOrbit,following)&&!following.IsDismissing;
+        pet.EndPointerGesture();UiVerification.Advance((int)pet.ClickSequenceDelay.TotalMilliseconds+80);
+        checks["release_after_drag_keeps_orbit_without_click_action"]=ReferenceEquals(pet.SitesOrbit,following)&&!following.IsDismissing;
         var edgeWork=ScreenPlacement.WorkArea(pet);pet.Left=edgeWork.Right-pet.Width;pet.Top=edgeWork.Top+(edgeWork.Height-pet.Height)/2;
-        pet.ToggleFavoriteSites();UiVerification.Advance(620);var leftArc=pet.SitesOrbit!.Layout;
+        UiVerification.Advance(620);var leftArc=pet.SitesOrbit!.Layout;
         double livingRadius=leftArc.Diameter*SiteOrb.MaximumLivingScale/2;
         checks["live_right_edge_opens_arc_on_left"]=leftArc.Side==SitesArcSide.Left&&leftArc.Centers.All(p=>p.X<=leftArc.Origin.X+.001&&edgeWork.Contains(new Rect(p.X-livingRadius,p.Y-livingRadius,livingRadius*2,livingRadius*2))&&!pet.DisplayedBounds.IntersectsWith(new Rect(p.X-livingRadius,p.Y-livingRadius,livingRadius*2,livingRadius*2)));
-        pet.CloseFavoriteSites();
-        pet.ToggleFavoriteSites();pet.ResizePet(300);checks["resize_dismisses_orbit"]=pet.SitesOrbit is null;
+        checks["dragging_to_edge_keeps_same_orbit"]=ReferenceEquals(pet.SitesOrbit,following);
+        pet.ResizePet(300);UiVerification.Advance(100);
+        checks["resize_keeps_orbit_visible"]=ReferenceEquals(pet.SitesOrbit,following)&&following.Orbs.All(o=>o.Opacity>.99);
+        var bodyPoint=(from x in Enumerable.Range(1,19) from y in Enumerable.Range(1,19)
+            let point=pet.PointToScreen(new Point(pet.ActualWidth*x/20,pet.ActualHeight*y/20))
+            where pet.ContainsPetScreenPoint(point) select point).First();
+        following.HandlePointerPress(bodyPoint);checks["click_on_body_keeps_orbit"]=!following.IsDismissing;
+        var target=following.Orbs[0];following.HandlePointerPress(target.PointToScreen(new Point(target.Width/2,target.Height/2)));
+        checks["click_on_sphere_is_not_an_outside_click"]=!following.IsDismissing;
+        following.HandlePointerPress(new Point(-100000,-100000));
+        checks["outside_click_dismisses_orbit"]=following.IsDismissing;
+        UiVerification.Advance(400);checks["outside_click_closes_orbit_and_stops_water"]=pet.SitesOrbit is null&&WaterOrbSurface.ActiveCount==0;
         pet.ToggleFavoriteSites();var last=pet.SitesOrbit;pet.Close();checks["closing_pet_closes_independent_orbit"]=last is not null&&!last.IsVisible;
         File.WriteAllText(Path.Combine(directory,"favorite-sites.json"),JsonSerializer.Serialize(new{success=checks.Values.All(v=>v),checks,observations},new JsonSerializerOptions{WriteIndented=true}));
         return checks.Values.All(v=>v)?0:1;

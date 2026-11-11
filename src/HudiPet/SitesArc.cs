@@ -1,4 +1,8 @@
+#if HUDI_AVALONIA
+using Avalonia;
+#else
 using System.Windows;
+#endif
 
 namespace HudiPet;
 
@@ -7,7 +11,8 @@ internal enum SitesArcSide { Top, Left, Right, Bottom }
 internal sealed record SitesArc(Point Origin,Point[] Centers,double Diameter,SitesArcSide Side)
 {
     internal double SweepDegrees {get;init;}
-    internal double Radius=>Centers.Length>0?(Centers[0]-Origin).Length:0;
+    internal double Radius=>Centers.Length>0?new Vector(Centers[0].X-Origin.X,Centers[0].Y-Origin.Y).Length:0;
+    internal const double MaximumLivingScale=1/.99;
     internal static double DefaultMaximumSize(double petHeight)=>Math.Clamp(petHeight*.15,32,64);
     internal static SitesArc Arrange(Rect pet,Rect work,int count,double? maximumSphereSize=null)
     {
@@ -43,7 +48,11 @@ internal sealed record SitesArc(Point Origin,Point[] Centers,double Diameter,Sit
         SitesArcSide SideFor(double middle)
         {
             var direction=Direction(middle);
-            return sides.OrderByDescending(side=>Math.Round(Vector.Multiply(direction,Direction(Angle(side))),8)).First();
+            return sides.OrderByDescending(side=>
+            {
+                var other=Direction(Angle(side));
+                return Math.Round(direction.X*other.X+direction.Y*other.Y,8);
+            }).First();
         }
         var angles=sides.Select(Angle).Concat(new[]{45d,135,225,315}
             .OrderByDescending(a=>Room(SideFor(a)))).Distinct().ToArray();
@@ -51,7 +60,7 @@ internal sealed record SitesArc(Point Origin,Point[] Centers,double Diameter,Sit
         {
             if(count==2)sweep=Math.Min(sweep,90);
             var directions=Directions(middle,sweep);
-            double clearance=diameter*SiteOrb.MaximumLivingScale/2+12;
+            double clearance=diameter*MaximumLivingScale/2+12;
             double inset=diameter*.57+12;
             double minimum=0,maximum=double.PositiveInfinity;
             foreach(var direction in directions)

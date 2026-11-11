@@ -27,9 +27,11 @@ internal sealed class FavoriteSitesWindow:GlassWindow
     private bool sizeDirty,syncingSize;
     private string? editingId;
     private string icon="";
+    private string? libraryIcon;
+    private readonly PetAppearance appearance;
     internal FavoriteSitesWindow(PetWindow pet,FavoriteSitesStore store,Action changed):base(pet,"Сайты и программы",350,"\uE71B")
     {
-        this.store=store;this.changed=changed;SettingsAppearance.Apply(this);
+        this.store=store;this.changed=changed;appearance=pet.Appearance;SettingsAppearance.Apply(this);
         ((StackPanel)Surface.Child).Margin=new Thickness(14);Surface.CornerRadius=new CornerRadius(0);Heading.FontSize=15;Header.Margin=new Thickness(0,0,0,8);
         var sizeCaption=new DockPanel{Margin=new Thickness(0,3,0,0)};DockPanel.SetDock(sizeLabel,Dock.Right);sizeCaption.Children.Add(sizeLabel);sizeCaption.Children.Add(Ui.Text("Максимальный размер сферы",12,Ui.Muted));Body.Children.Add(sizeCaption);
         maximumSize=new Slider{Minimum=FavoriteSitesStore.MinimumSphereSize,Maximum=FavoriteSitesStore.MaximumAllowedSphereSize,Value=SitesArc.DefaultMaximumSize(pet.DisplayHeight),SmallChange=1,LargeChange=8,TickFrequency=1,IsSnapToTickEnabled=true,IsMoveToPointEnabled=true,Margin=new Thickness(0,8,0,14),Style=(Style)FindResource("PetSizeSlider")};
@@ -46,6 +48,7 @@ internal sealed class FavoriteSitesWindow:GlassWindow
         targetKind.SelectionChanged+=(_,_)=>{bool program=targetKind.SelectedIndex==1;addressLabel.Text=program?"Путь к программе или ярлыку":"Адрес сайта";System.Windows.Automation.AutomationProperties.SetName(address,addressLabel.Text);browseProgram.Visibility=program?Visibility.Visible:Visibility.Collapsed;};
         sphereText.Style=(Style)FindResource("SettingsInput");sphereText.MaxLength=FavoriteSitesStore.MaximumTextLength;sphereText.TextChanged+=(_,_)=>UpdatePreview();Ui.Field(Body,"Текст на сфере (вместо значка)",sphereText);
         var iconRow=new DockPanel();var choose=Ui.Button("Выбрать значок",ChooseIcon,quiet:true);choose.Margin=new Thickness(12,0,0,0);DockPanel.SetDock(iconPreview,Dock.Left);iconRow.Children.Add(iconPreview);iconRow.Children.Add(choose);Ui.Field(Body,"Предпросмотр",iconRow);UpdatePreview();
+        var library=Ui.Button("Значки питомца · 10",OpenIconLibrary,quiet:true);library.Margin=new Thickness(0,6,0,0);Body.Children.Add(library);
         save=Ui.Button("Добавить",Save,primary:true);var cancel=Ui.Button("+",()=>Edit(null),quiet:true);System.Windows.Automation.AutomationProperties.SetName(cancel,"Добавить в избранное");
         var actions=Ui.Row(save,cancel);actions.Margin=new Thickness(0,14,0,0);Body.Children.Add(actions);status.Margin=new Thickness(0,8,0,0);status.Visibility=Visibility.Collapsed;Body.Children.Add(status);Refresh();
     }
@@ -60,7 +63,7 @@ internal sealed class FavoriteSitesWindow:GlassWindow
             foreach(var site in sites)
             {
                 var row=new Grid{Margin=new Thickness(0,2,0,2)};row.ColumnDefinitions.Add(new());row.ColumnDefinitions.Add(new(){Width=GridLength.Auto});row.ColumnDefinitions.Add(new(){Width=GridLength.Auto});
-                var content=new DockPanel();var symbol=SiteOrb.CreateFace(site.Icon,site.Text,24);symbol.Margin=new Thickness(0,0,8,0);DockPanel.SetDock(symbol,Dock.Left);content.Children.Add(symbol);content.Children.Add(new TextBlock{Text=site.Name,Foreground=Ui.Accent,VerticalAlignment=VerticalAlignment.Center,TextTrimming=TextTrimming.CharacterEllipsis});
+                var content=new DockPanel();var symbol=SiteOrb.CreateFace(appearance.IconFor(site),site.Text,24);symbol.Margin=new Thickness(0,0,8,0);DockPanel.SetDock(symbol,Dock.Left);content.Children.Add(symbol);content.Children.Add(new TextBlock{Text=site.Name,Foreground=Ui.Accent,VerticalAlignment=VerticalAlignment.Center,TextTrimming=TextTrimming.CharacterEllipsis});
                 var edit=Ui.Button(site.Name,()=>Edit(site),quiet:true);edit.Content=content;edit.HorizontalContentAlignment=HorizontalAlignment.Stretch;edit.Padding=new Thickness(6);row.Children.Add(edit);
                 var pencil=Ui.Button("✎",()=>Edit(site),quiet:true);pencil.Padding=new Thickness(7);System.Windows.Automation.AutomationProperties.SetName(pencil,"Изменить "+site.Name);Grid.SetColumn(pencil,1);row.Children.Add(pencil);
                 var remove=Ui.Button("×",()=>Remove(site),quiet:true);remove.Padding=new Thickness(7);System.Windows.Automation.AutomationProperties.SetName(remove,"Удалить "+site.Name);Grid.SetColumn(remove,2);row.Children.Add(remove);list.Children.Add(row);
@@ -79,7 +82,7 @@ internal sealed class FavoriteSitesWindow:GlassWindow
     protected override void OnClosing(CancelEventArgs e){if(!SaveSize())e.Cancel=true;base.OnClosing(e);}
     private void Edit(FavoriteSite? site)
     {
-        editingId=site?.Id;targetKind.SelectedIndex=site is not null&&FavoriteSitesStore.IsProgram(site)?1:0;address.Text=site?.Url??"";icon=site?.Icon??"";sphereText.Text=site?.Text??"";UpdatePreview();save.Content=site is null?"Добавить":"Сохранить";status.Visibility=Visibility.Collapsed;address.Focus();
+        editingId=site?.Id;libraryIcon=site?.LibraryIcon;targetKind.SelectedIndex=site is not null&&FavoriteSitesStore.IsProgram(site)?1:0;address.Text=site?.Url??"";icon=site is null?"":appearance.IconFor(site);sphereText.Text=site?.Text??"";UpdatePreview();save.Content=site is null?"Добавить":"Сохранить";status.Visibility=Visibility.Collapsed;address.Focus();
     }
     private void ChooseProgram()
     {
@@ -100,7 +103,28 @@ internal sealed class FavoriteSitesWindow:GlassWindow
     {
         // Import first: a failed selection must preserve the current editor state.
         string selected=FavoriteSitesStore.ImportIcon(file);
-        icon=selected;sphereText.Text="";UpdatePreview();status.Visibility=Visibility.Collapsed;
+        icon=selected;libraryIcon=null;sphereText.Text="";UpdatePreview();status.Visibility=Visibility.Collapsed;
+    }
+    internal void ApplyLibraryIcon(string id)
+    {
+        var selected=appearance.Icons.Single(i=>i.Id==id);
+        icon=selected.Image;libraryIcon=selected.Id;sphereText.Text="";UpdatePreview();status.Visibility=Visibility.Collapsed;
+    }
+    internal void OpenIconLibrary()
+    {
+        var picker=new GlassWindow((PetWindow)Owner,"Значки · "+appearance.Name,340);SettingsAppearance.Apply(picker);
+        var grid=new System.Windows.Controls.Primitives.UniformGrid{Columns=5};
+        foreach(var item in appearance.Icons)
+        {
+            var tile=new StackPanel();tile.Children.Add(SiteOrb.CreateFace(item.Image,null,44));
+            var label=Ui.Text(item.Name,9);label.TextAlignment=TextAlignment.Center;label.Margin=new Thickness(0,5,0,0);tile.Children.Add(label);
+            var button=Ui.Button(item.Name,()=>{ApplyLibraryIcon(item.Id);picker.Close();Activate();},quiet:true);
+            button.Content=tile;button.Padding=new Thickness(4,7,4,7);grid.Children.Add(button);
+        }
+        picker.Body.Children.Add(grid);
+        Closed+=ClosePicker;picker.Closed+=(_,_)=>Closed-=ClosePicker;
+        void ClosePicker(object? sender,EventArgs e){if(!picker.IsClosing)picker.Close();}
+        picker.Show();
     }
     private void Save()
     {
@@ -112,7 +136,7 @@ internal sealed class FavoriteSitesWindow:GlassWindow
             if(program&&!File.Exists(url))throw new InvalidDataException("Программа не найдена. Проверьте путь.");
             if(icon.Length==0&&string.IsNullOrWhiteSpace(sphereText.Text))throw new InvalidDataException("Введите текст на сфере или выберите значок.");
             if(editingId is null&&store.Read().Length>=FavoriteSitesStore.MaximumSites)throw new InvalidDataException("В избранном уже 100 элементов.");
-            store.Put(new FavoriteSite(editingId??Guid.NewGuid().ToString("N"),program?Path.GetFileNameWithoutExtension(url):new Uri(url).Host,url,icon,sphereText.Text,program?"program":"site"));changed();Edit(null);Refresh();
+            store.Put(new FavoriteSite(editingId??Guid.NewGuid().ToString("N"),program?Path.GetFileNameWithoutExtension(url):new Uri(url).Host,url,icon,sphereText.Text,program?"program":"site",libraryIcon));changed();Edit(null);Refresh();
         }
         catch(Exception e) when(FavoriteSitesStore.IsDataError(e)){Error(e.Message);}
     }

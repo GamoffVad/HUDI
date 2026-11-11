@@ -1,0 +1,2502 @@
+{
+  "action": "lookaround",
+  "scene": "look-around",
+  "source": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\look-around\\source.mp4",
+  "nativeSize": [
+    1440,
+    1440
+  ],
+  "fps": 24,
+  "hardErrors": [],
+  "flags": [],
+  "frames": [
+    {
+      "alphaArea": 416579.37868314644,
+      "strongAlphaPixels": 434186,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370030,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999825954437256,
+      "coreBelow90Fraction": 7.837202388995486e-05,
+      "frame": 0,
+      "sha256": "f02ab22331c4a308679357209e6e3149901de3291fa1673e9ff80bcfe85be839",
+      "neutralComparison": {
+        "exactRGBAEqual": true,
+        "alphaMAE": 0.0,
+        "alphaMaxError": 0.0,
+        "premultipliedSRGBMAE": 0.0,
+        "premultipliedSRGBMaxError": 0.0
+      }
+    },
+    {
+      "alphaArea": 416584.2029907683,
+      "strongAlphaPixels": 434079,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370040,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999842643737793,
+      "coreBelow90Fraction": 7.566749540590207e-05,
+      "frame": 1,
+      "sha256": "310e4897957f791a0a7ae18f111472f7053726e5519e2f53a5d7f7f926e15fcc",
+      "alphaAreaRelativeChange": 1.1580764360238634e-05
+    },
+    {
+      "alphaArea": 416603.3230792706,
+      "strongAlphaPixels": 434293,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370080,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999815225601196,
+      "coreBelow90Fraction": 7.295719844357976e-05,
+      "frame": 2,
+      "sha256": "85c482d85ec9f3413f054a252d51cb6b75560b604da12c6d1228c824537253d8",
+      "alphaAreaRelativeChange": 4.5897296068912027e-05
+    },
+    {
+      "alphaArea": 416498.8455024033,
+      "strongAlphaPixels": 434249,
+      "strongAlphaBoundsXYWH": [
+        412,
+        64,
+        598,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369920,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999809265136719,
+      "coreBelow90Fraction": 8.109861591695501e-05,
+      "frame": 3,
+      "sha256": "70c4f3fa4340fb45dff3944b70df67136b18ff6a0db9ab47e16fbf2f833ae198",
+      "alphaAreaRelativeChange": 0.0002507843098684266
+    },
+    {
+      "alphaArea": 416423.81292439153,
+      "strongAlphaPixels": 434152,
+      "strongAlphaBoundsXYWH": [
+        412,
+        64,
+        598,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369957,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999683499336243,
+      "coreBelow90Fraction": 0.00012704179134331829,
+      "frame": 4,
+      "sha256": "129c9e109dae99b62730ca1340f98020858bc2b14a74ee228e1a4c1bfa702ba8",
+      "alphaAreaRelativeChange": 0.0001801507466875053
+    },
+    {
+      "alphaArea": 416352.0693522545,
+      "strongAlphaPixels": 434286,
+      "strongAlphaBoundsXYWH": [
+        412,
+        64,
+        598,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369909,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999825954437256,
+      "coreBelow90Fraction": 7.839765996501843e-05,
+      "frame": 5,
+      "sha256": "f2ac06c6772538d3e46ec80dd5af0474ad88d04cfd254191f1667234e752f8bf",
+      "alphaAreaRelativeChange": 0.00017228498925937676
+    },
+    {
+      "alphaArea": 416302.5936217288,
+      "strongAlphaPixels": 434292,
+      "strongAlphaBoundsXYWH": [
+        412,
+        64,
+        598,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369992,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999680519104004,
+      "coreBelow90Fraction": 0.00012973253475750826,
+      "frame": 6,
+      "sha256": "5b46a2af1903f406f6d5e807919d440b4377eceabb2db562b69c961f194cb758",
+      "alphaAreaRelativeChange": 0.00011883147501260534
+    },
+    {
+      "alphaArea": 416258.53754482337,
+      "strongAlphaPixels": 434293,
+      "strongAlphaBoundsXYWH": [
+        412,
+        64,
+        598,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369854,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999756813049316,
+      "coreBelow90Fraction": 8.652062705824461e-05,
+      "frame": 7,
+      "sha256": "0c3ff5ab6266e73a9421588a36c8225d86db325e2ce400edb5da170a16f5de4b",
+      "alphaAreaRelativeChange": 0.0001058270536394703
+    },
+    {
+      "alphaArea": 416261.8309452964,
+      "strongAlphaPixels": 434415,
+      "strongAlphaBoundsXYWH": [
+        412,
+        64,
+        598,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369836,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999682307243347,
+      "coreBelow90Fraction": 0.00011626775111130339,
+      "frame": 8,
+      "sha256": "e47aaa25cc65cc6c222776c5eaec2bd788ad0e63a65667ac2c1e5bf1033dc25b",
+      "alphaAreaRelativeChange": 7.911910930271155e-06
+    },
+    {
+      "alphaArea": 416327.8008392462,
+      "strongAlphaPixels": 434521,
+      "strongAlphaBoundsXYWH": [
+        412,
+        66,
+        598,
+        1250
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369786,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999716281890869,
+      "coreBelow90Fraction": 8.653653734862866e-05,
+      "frame": 9,
+      "sha256": "1831dcb779143cc72cdb718ec8bacb73176159e54fb01ea4c9839020df449315",
+      "alphaAreaRelativeChange": 0.0001584817272340167
+    },
+    {
+      "alphaArea": 416509.8904249638,
+      "strongAlphaPixels": 434887,
+      "strongAlphaBoundsXYWH": [
+        414,
+        66,
+        596,
+        1248
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370040,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999784827232361,
+      "coreBelow90Fraction": 0.00010809642200843153,
+      "frame": 10,
+      "sha256": "3b7b87ece146297433daaa147b5bd4614a4cf541c14ce4c7ba0db9e4ab515196",
+      "alphaAreaRelativeChange": 0.00043737070969205314
+    },
+    {
+      "alphaArea": 416782.5807888914,
+      "strongAlphaPixels": 435339,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1250
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370231,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999690055847168,
+      "coreBelow90Fraction": 0.0001161437048761449,
+      "frame": 11,
+      "sha256": "c2eec748787c81cc2ba5761c8e72d914b0c9b3b244db1892bd22303e6f4f5a20",
+      "alphaAreaRelativeChange": 0.0006547032140086824
+    },
+    {
+      "alphaArea": 417351.14718852524,
+      "strongAlphaPixels": 435985,
+      "strongAlphaBoundsXYWH": [
+        416,
+        62,
+        594,
+        1252
+      ],
+      "strongAlphaMarginPx": 62,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370853,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999971866607666,
+      "coreBelow90Fraction": 0.00010516296214403012,
+      "frame": 12,
+      "sha256": "d1496f96938f6820e7bce5f66e8524bbfacfead047229318ab86a9ab345fddb7",
+      "alphaAreaRelativeChange": 0.0013641798526167683
+    },
+    {
+      "alphaArea": 418629.0544289311,
+      "strongAlphaPixels": 437636,
+      "strongAlphaBoundsXYWH": [
+        418,
+        58,
+        592,
+        1256
+      ],
+      "strongAlphaMarginPx": 58,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372665,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998078942298889,
+      "coreBelow90Fraction": 0.0007271946654502033,
+      "frame": 13,
+      "sha256": "9501dc5ba3102790772e34ee77e799f22d02a99be4c206def5dc998a1655276d",
+      "alphaAreaRelativeChange": 0.0030619473530010427
+    },
+    {
+      "alphaArea": 420060.3532616159,
+      "strongAlphaPixels": 439086,
+      "strongAlphaBoundsXYWH": [
+        422,
+        54,
+        588,
+        1260
+      ],
+      "strongAlphaMarginPx": 54,
+      "borderMaxAlpha16": 0,
+      "corePixels": 373828,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998429417610168,
+      "coreBelow90Fraction": 0.0005617556737323047,
+      "frame": 14,
+      "sha256": "c1a30a1d1bafcee140a36c61f45d28bec585c91658b7421965bc699f9801ed17",
+      "alphaAreaRelativeChange": 0.0034190145608438633
+    },
+    {
+      "alphaArea": 421422.0998092622,
+      "strongAlphaPixels": 440730,
+      "strongAlphaBoundsXYWH": [
+        426,
+        50,
+        584,
+        1264
+      ],
+      "strongAlphaMarginPx": 50,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374808,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999814629554749,
+      "coreBelow90Fraction": 4.5356555889948985e-05,
+      "frame": 15,
+      "sha256": "162eaec6891814fecdd1a98c682ff7a87011926d36900e1f054e006ef2ae94c7",
+      "alphaAreaRelativeChange": 0.003241787845657963
+    },
+    {
+      "alphaArea": 422984.42629129475,
+      "strongAlphaPixels": 442362,
+      "strongAlphaBoundsXYWH": [
+        434,
+        46,
+        576,
+        1268
+      ],
+      "strongAlphaMarginPx": 46,
+      "borderMaxAlpha16": 0,
+      "corePixels": 376279,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999805688858032,
+      "coreBelow90Fraction": 5.315204941014513e-05,
+      "frame": 16,
+      "sha256": "f999ae792abae5ebfa5c980bc9dc0ee048cf5f8af678d422e393b491ea052948",
+      "alphaAreaRelativeChange": 0.003707272311394346
+    },
+    {
+      "alphaArea": 425567.60694285494,
+      "strongAlphaPixels": 445768,
+      "strongAlphaBoundsXYWH": [
+        440,
+        44,
+        570,
+        1270
+      ],
+      "strongAlphaMarginPx": 44,
+      "borderMaxAlpha16": 0,
+      "corePixels": 379181,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997372627258301,
+      "coreBelow90Fraction": 0.0009283165559455774,
+      "frame": 17,
+      "sha256": "6cc14df1318b5da577c122a23d8d12fb298096404dce9cacfaff058d5b252e09",
+      "alphaAreaRelativeChange": 0.006107034895372828
+    },
+    {
+      "alphaArea": 427194.49822232395,
+      "strongAlphaPixels": 447410,
+      "strongAlphaBoundsXYWH": [
+        448,
+        40,
+        562,
+        1274
+      ],
+      "strongAlphaMarginPx": 40,
+      "borderMaxAlpha16": 0,
+      "corePixels": 380454,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998015761375427,
+      "coreBelow90Fraction": 0.000741219700673406,
+      "frame": 18,
+      "sha256": "5b4c07440e7099d7d02a124b16121d3696de4af46965f85e5856adb10a0c8d3f",
+      "alphaAreaRelativeChange": 0.003822873858177532
+    },
+    {
+      "alphaArea": 428203.38393224997,
+      "strongAlphaPixels": 448771,
+      "strongAlphaBoundsXYWH": [
+        453,
+        35,
+        557,
+        1279
+      ],
+      "strongAlphaMarginPx": 35,
+      "borderMaxAlpha16": 0,
+      "corePixels": 381147,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999879777431488,
+      "coreBelow90Fraction": 0.0005037426504734394,
+      "frame": 19,
+      "sha256": "f4bc440c2c8eff6122ef055821b32165bd6f3b1bbc6f9028178e9df7f1707803",
+      "alphaAreaRelativeChange": 0.002361654267843515
+    },
+    {
+      "alphaArea": 428965.96896314947,
+      "strongAlphaPixels": 449417,
+      "strongAlphaBoundsXYWH": [
+        462,
+        34,
+        548,
+        1280
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 382097,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999903678894043,
+      "coreBelow90Fraction": 0.0003951876094290193,
+      "frame": 20,
+      "sha256": "d84cbc988a9ac05a02b0ddb2bfdc53309a69dfc97081cdc15947f397f6389bad",
+      "alphaAreaRelativeChange": 0.0017808944522964237
+    },
+    {
+      "alphaArea": 430748.0459143969,
+      "strongAlphaPixels": 452017,
+      "strongAlphaBoundsXYWH": [
+        468,
+        28,
+        542,
+        1286
+      ],
+      "strongAlphaMarginPx": 28,
+      "borderMaxAlpha16": 0,
+      "corePixels": 384044,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995006322860718,
+      "coreBelow90Fraction": 0.0017471956338336232,
+      "frame": 21,
+      "sha256": "1a7801ed886d08e0a254d51260457f176b7b2404e109291a550c50ba9c5b9e23",
+      "alphaAreaRelativeChange": 0.004154355077524803
+    },
+    {
+      "alphaArea": 431123.8517738613,
+      "strongAlphaPixels": 452253,
+      "strongAlphaBoundsXYWH": [
+        474,
+        26,
+        536,
+        1288
+      ],
+      "strongAlphaMarginPx": 26,
+      "borderMaxAlpha16": 0,
+      "corePixels": 384159,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999679684638977,
+      "coreBelow90Fraction": 0.001166183793689592,
+      "frame": 22,
+      "sha256": "8d9deecc010c6af68aba4f8b0118063622ea11bc1dc090b01e422a8d261ef580",
+      "alphaAreaRelativeChange": 0.0008724493657693335
+    },
+    {
+      "alphaArea": 431056.6129701686,
+      "strongAlphaPixels": 451909,
+      "strongAlphaBoundsXYWH": [
+        477,
+        28,
+        533,
+        1286
+      ],
+      "strongAlphaMarginPx": 28,
+      "borderMaxAlpha16": 0,
+      "corePixels": 384008,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999863862991333,
+      "coreBelow90Fraction": 0.0005442594945938627,
+      "frame": 23,
+      "sha256": "104e3970cf0aa5fa1588808b0ee0e9fec33f14fb4b50fef1cdb27810492c472a",
+      "alphaAreaRelativeChange": 0.00015596168807648084
+    },
+    {
+      "alphaArea": 430800.0722667277,
+      "strongAlphaPixels": 451566,
+      "strongAlphaBoundsXYWH": [
+        477,
+        28,
+        533,
+        1286
+      ],
+      "strongAlphaMarginPx": 28,
+      "borderMaxAlpha16": 0,
+      "corePixels": 383979,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997471570968628,
+      "coreBelow90Fraction": 0.0008229616723831251,
+      "frame": 24,
+      "sha256": "d814e23876992486a9a4f70c4222748ff1089a0bd3b2dbb243cc683da3ac7354",
+      "alphaAreaRelativeChange": 0.0005951438760519699
+    },
+    {
+      "alphaArea": 432039.18532082095,
+      "strongAlphaPixels": 453668,
+      "strongAlphaBoundsXYWH": [
+        478,
+        30,
+        532,
+        1284
+      ],
+      "strongAlphaMarginPx": 30,
+      "borderMaxAlpha16": 0,
+      "corePixels": 385969,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995511174201965,
+      "coreBelow90Fraction": 0.0016193010319481616,
+      "frame": 25,
+      "sha256": "eb43e2fb1e1be30509e2e1635591a9e3cea61cfa56b72eb1ffa5e69ca65eb91a",
+      "alphaAreaRelativeChange": 0.0028763065140018683
+    },
+    {
+      "alphaArea": 431995.0193636988,
+      "strongAlphaPixels": 454309,
+      "strongAlphaBoundsXYWH": [
+        478,
+        34,
+        532,
+        1280
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 385527,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997885227203369,
+      "coreBelow90Fraction": 0.0008819096976346663,
+      "frame": 26,
+      "sha256": "ec2c67feab9597db34118a746f6b6557e2895267a95384d96117907e8bdbb493",
+      "alphaAreaRelativeChange": 0.00010222673920045368
+    },
+    {
+      "alphaArea": 431109.8359197375,
+      "strongAlphaPixels": 453442,
+      "strongAlphaBoundsXYWH": [
+        477,
+        38,
+        543,
+        1276
+      ],
+      "strongAlphaMarginPx": 38,
+      "borderMaxAlpha16": 0,
+      "corePixels": 384814,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997896552085876,
+      "coreBelow90Fraction": 0.0008471625252719496,
+      "frame": 27,
+      "sha256": "b91b75a2ded4e006ed54bb982c4d9174dcc64c3182079724d5712d78e5636535",
+      "alphaAreaRelativeChange": 0.0020490593740295354
+    },
+    {
+      "alphaArea": 429818.33559166855,
+      "strongAlphaPixels": 451866,
+      "strongAlphaBoundsXYWH": [
+        477,
+        34,
+        553,
+        1280
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 383313,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997807145118713,
+      "coreBelow90Fraction": 0.000827000388716271,
+      "frame": 28,
+      "sha256": "40b616ee4471cd09d660b5b9e3b27fdc951868c7b8d33ac1db8e274f880c3e64",
+      "alphaAreaRelativeChange": 0.002995757044869228
+    },
+    {
+      "alphaArea": 430173.4658426795,
+      "strongAlphaPixels": 451711,
+      "strongAlphaBoundsXYWH": [
+        477,
+        28,
+        563,
+        1286
+      ],
+      "strongAlphaMarginPx": 28,
+      "borderMaxAlpha16": 0,
+      "corePixels": 385097,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9993848204612732,
+      "coreBelow90Fraction": 0.0023162995297288736,
+      "frame": 29,
+      "sha256": "4e771fb7b74ffc5ca1a732ce4b98ad7f244cb4ed10dfafd505af850111aac399",
+      "alphaAreaRelativeChange": 0.000826233367922943
+    },
+    {
+      "alphaArea": 428371.0936598764,
+      "strongAlphaPixels": 449319,
+      "strongAlphaBoundsXYWH": [
+        477,
+        24,
+        575,
+        1290
+      ],
+      "strongAlphaMarginPx": 24,
+      "borderMaxAlpha16": 0,
+      "corePixels": 383430,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998331069946289,
+      "coreBelow90Fraction": 0.000693738100826748,
+      "frame": 30,
+      "sha256": "6b2479df5952469d26af8ac2040eea88d56bdd40c8c1ab36f2cef489ebb5cbc3",
+      "alphaAreaRelativeChange": 0.004189872983616951
+    },
+    {
+      "alphaArea": 425874.98498512246,
+      "strongAlphaPixels": 445360,
+      "strongAlphaBoundsXYWH": [
+        476,
+        22,
+        592,
+        1292
+      ],
+      "strongAlphaMarginPx": 22,
+      "borderMaxAlpha16": 0,
+      "corePixels": 381057,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999025464057922,
+      "coreBelow90Fraction": 0.00038052049955780893,
+      "frame": 31,
+      "sha256": "c522bf4332536b79392767399448d4042ce856a6d4c5c50b081e0a5c8425d175",
+      "alphaAreaRelativeChange": 0.005826977384089823
+    },
+    {
+      "alphaArea": 423811.87447928585,
+      "strongAlphaPixels": 443344,
+      "strongAlphaBoundsXYWH": [
+        475,
+        20,
+        605,
+        1294
+      ],
+      "strongAlphaMarginPx": 20,
+      "borderMaxAlpha16": 0,
+      "corePixels": 379385,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999310374259949,
+      "coreBelow90Fraction": 0.0002873070891047353,
+      "frame": 32,
+      "sha256": "c7e97be0324296c4dd4c8ecb7243dbfcf3a19f01ce2d30fbcb0384324f37d533",
+      "alphaAreaRelativeChange": 0.004844404058878173
+    },
+    {
+      "alphaArea": 423356.5751430533,
+      "strongAlphaPixels": 444183,
+      "strongAlphaBoundsXYWH": [
+        476,
+        22,
+        616,
+        1292
+      ],
+      "strongAlphaMarginPx": 22,
+      "borderMaxAlpha16": 0,
+      "corePixels": 379960,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995743036270142,
+      "coreBelow90Fraction": 0.0014475207916622803,
+      "frame": 33,
+      "sha256": "a8164b8f72ffc689130df1f0400ca6d18037b31ad5ea01b6347cdf2871e3ed73",
+      "alphaAreaRelativeChange": 0.0010742958459857622
+    },
+    {
+      "alphaArea": 421330.6311131457,
+      "strongAlphaPixels": 441473,
+      "strongAlphaBoundsXYWH": [
+        476,
+        22,
+        626,
+        1292
+      ],
+      "strongAlphaMarginPx": 22,
+      "borderMaxAlpha16": 0,
+      "corePixels": 377099,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999421834945679,
+      "coreBelow90Fraction": 0.00021214588211583695,
+      "frame": 34,
+      "sha256": "9cef4e13c6196576b7ee1f839efeb3abee6ec3bc98ee76c4f48c26bf4dbb7e5d",
+      "alphaAreaRelativeChange": 0.0047854318294762895
+    },
+    {
+      "alphaArea": 419156.31824216066,
+      "strongAlphaPixels": 437856,
+      "strongAlphaBoundsXYWH": [
+        477,
+        26,
+        635,
+        1288
+      ],
+      "strongAlphaMarginPx": 26,
+      "borderMaxAlpha16": 0,
+      "corePixels": 375526,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999653697013855,
+      "coreBelow90Fraction": 0.00012782071015056214,
+      "frame": 35,
+      "sha256": "eca53df941fa34d72da3c55a5e7994f90fa842bdad39b84b62b4fbafce2dfb85",
+      "alphaAreaRelativeChange": 0.005160585797525638
+    },
+    {
+      "alphaArea": 417506.4647440299,
+      "strongAlphaPixels": 435570,
+      "strongAlphaBoundsXYWH": [
+        476,
+        28,
+        642,
+        1286
+      ],
+      "strongAlphaMarginPx": 28,
+      "borderMaxAlpha16": 0,
+      "corePixels": 375067,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.99985671043396,
+      "coreBelow90Fraction": 0.0005119085390076972,
+      "frame": 36,
+      "sha256": "4cfa052b24b5147424cd66a0c679aabe2001de37e86cdac425af4c03497f3eed",
+      "alphaAreaRelativeChange": 0.003936129377817395
+    },
+    {
+      "alphaArea": 416801.2114137484,
+      "strongAlphaPixels": 434021,
+      "strongAlphaBoundsXYWH": [
+        476,
+        32,
+        648,
+        1282
+      ],
+      "strongAlphaMarginPx": 32,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374689,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998517036437988,
+      "coreBelow90Fraction": 0.0005764780924980451,
+      "frame": 37,
+      "sha256": "eda995986fcc970afe664816bba2044ae5181fd8d381a16d48fd81a9ce327c28",
+      "alphaAreaRelativeChange": 0.0016892033772792326
+    },
+    {
+      "alphaArea": 415678.01649500267,
+      "strongAlphaPixels": 431986,
+      "strongAlphaBoundsXYWH": [
+        476,
+        36,
+        650,
+        1278
+      ],
+      "strongAlphaMarginPx": 36,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374181,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999200105667114,
+      "coreBelow90Fraction": 0.0003447529404218814,
+      "frame": 38,
+      "sha256": "842e6868b6cb8abc0dc73cb4d3c0e58645844f43593b06e43fa140b3e6c41780",
+      "alphaAreaRelativeChange": 0.00269479763491079
+    },
+    {
+      "alphaArea": 414933.62360570685,
+      "strongAlphaPixels": 431137,
+      "strongAlphaBoundsXYWH": [
+        475,
+        38,
+        653,
+        1276
+      ],
+      "strongAlphaMarginPx": 38,
+      "borderMaxAlpha16": 0,
+      "corePixels": 373640,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999494552612305,
+      "coreBelow90Fraction": 0.00021946258430574885,
+      "frame": 39,
+      "sha256": "c69e14dd15473753ecee3238c9f2306640dd7a0d86972c40d55778b1158f205a",
+      "alphaAreaRelativeChange": 0.0017907920548037215
+    },
+    {
+      "alphaArea": 414274.78234531166,
+      "strongAlphaPixels": 430175,
+      "strongAlphaBoundsXYWH": [
+        475,
+        42,
+        653,
+        1272
+      ],
+      "strongAlphaMarginPx": 42,
+      "borderMaxAlpha16": 0,
+      "corePixels": 373045,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999593496322632,
+      "coreBelow90Fraction": 0.00015011593775549867,
+      "frame": 40,
+      "sha256": "c681ab75feb3ba6af8067a3ae2e0b197adb49cbeca8a5a35f84e9dafba9e5bc1",
+      "alphaAreaRelativeChange": 0.0015878232635619216
+    },
+    {
+      "alphaArea": 414204.8650949874,
+      "strongAlphaPixels": 429932,
+      "strongAlphaBoundsXYWH": [
+        476,
+        42,
+        652,
+        1272
+      ],
+      "strongAlphaMarginPx": 42,
+      "borderMaxAlpha16": 0,
+      "corePixels": 373020,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999551773071289,
+      "coreBelow90Fraction": 0.00017157256983539755,
+      "frame": 41,
+      "sha256": "bb94117af5da3223337489b8994a7aacb5bbe49b8f615cbb5fdfca82c6a4af82",
+      "alphaAreaRelativeChange": 0.00016877023005951435
+    },
+    {
+      "alphaArea": 414112.4767833982,
+      "strongAlphaPixels": 429908,
+      "strongAlphaBoundsXYWH": [
+        476,
+        44,
+        652,
+        1270
+      ],
+      "strongAlphaMarginPx": 44,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372912,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999510049819946,
+      "coreBelow90Fraction": 0.0001716222594070451,
+      "frame": 42,
+      "sha256": "3bf600dddc1fcee79038a18087025079f6f0bbb1e377e67ae891dea68c593e20",
+      "alphaAreaRelativeChange": 0.00022304979823935194
+    },
+    {
+      "alphaArea": 413811.11245899135,
+      "strongAlphaPixels": 429707,
+      "strongAlphaBoundsXYWH": [
+        477,
+        44,
+        651,
+        1270
+      ],
+      "strongAlphaMarginPx": 44,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372698,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999465942382812,
+      "coreBelow90Fraction": 0.00021465100429838636,
+      "frame": 43,
+      "sha256": "8356699e7ea5f43caaf3ae4bd4822aca1bace69796b4b83cef0b29a52dfbf6b0",
+      "alphaAreaRelativeChange": 0.000727735437356711
+    },
+    {
+      "alphaArea": 413699.06144808116,
+      "strongAlphaPixels": 429575,
+      "strongAlphaBoundsXYWH": [
+        477,
+        46,
+        651,
+        1268
+      ],
+      "strongAlphaMarginPx": 46,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372438,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999566078186035,
+      "coreBelow90Fraction": 0.00017184068220750837,
+      "frame": 44,
+      "sha256": "bf0389f561add96004a4e9d187e0da29f3893793725bdc16c5fb7da3d4727937",
+      "alphaAreaRelativeChange": 0.0002707781582866338
+    },
+    {
+      "alphaArea": 413369.90574502177,
+      "strongAlphaPixels": 429065,
+      "strongAlphaBoundsXYWH": [
+        477,
+        46,
+        653,
+        1268
+      ],
+      "strongAlphaMarginPx": 46,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372251,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999427199363708,
+      "coreBelow90Fraction": 0.00023102691463555504,
+      "frame": 45,
+      "sha256": "98b9ea34ed60d79f6b4285d7a324d548a618082e8b98a6945b1c11fb88169df0",
+      "alphaAreaRelativeChange": 0.0007956404394712565
+    },
+    {
+      "alphaArea": 412971.1009994659,
+      "strongAlphaPixels": 428739,
+      "strongAlphaBoundsXYWH": [
+        478,
+        46,
+        652,
+        1268
+      ],
+      "strongAlphaMarginPx": 46,
+      "borderMaxAlpha16": 0,
+      "corePixels": 371918,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999479055404663,
+      "coreBelow90Fraction": 0.00022854500185524767,
+      "frame": 46,
+      "sha256": "40ea2311f1f0132bbf02d597f7471ef46c37478dfdf296ba4e9c5c2f99feaf5b",
+      "alphaAreaRelativeChange": 0.0009647648268857031
+    },
+    {
+      "alphaArea": 412382.7388113222,
+      "strongAlphaPixels": 427898,
+      "strongAlphaBoundsXYWH": [
+        477,
+        46,
+        653,
+        1268
+      ],
+      "strongAlphaMarginPx": 46,
+      "borderMaxAlpha16": 0,
+      "corePixels": 371538,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999509453773499,
+      "coreBelow90Fraction": 0.00018571451641554834,
+      "frame": 47,
+      "sha256": "a85da25da7edb4edebe13da0bbb5428fc8fef8ac64418158695018f04eb0490a",
+      "alphaAreaRelativeChange": 0.0014247054738691625
+    },
+    {
+      "alphaArea": 411685.7099565118,
+      "strongAlphaPixels": 427278,
+      "strongAlphaBoundsXYWH": [
+        477,
+        46,
+        655,
+        1268
+      ],
+      "strongAlphaMarginPx": 46,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370986,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999523162841797,
+      "coreBelow90Fraction": 0.00018059980700080327,
+      "frame": 48,
+      "sha256": "097480c02ee20b0adf1089f027eeddd76d97efe660e1293c7ec287ae852c9821",
+      "alphaAreaRelativeChange": 0.0016902474066192961
+    },
+    {
+      "alphaArea": 411152.2560311284,
+      "strongAlphaPixels": 426493,
+      "strongAlphaBoundsXYWH": [
+        480,
+        46,
+        652,
+        1268
+      ],
+      "strongAlphaMarginPx": 46,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370892,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999638795852661,
+      "coreBelow90Fraction": 0.00016177216008972964,
+      "frame": 49,
+      "sha256": "84eb6ac61911c883a8c542b3ea89033787495771a14fdbda6fd1023b75a13552",
+      "alphaAreaRelativeChange": 0.0012957795533873274
+    },
+    {
+      "alphaArea": 409828.7782101167,
+      "strongAlphaPixels": 425125,
+      "strongAlphaBoundsXYWH": [
+        484,
+        44,
+        648,
+        1272
+      ],
+      "strongAlphaMarginPx": 44,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370296,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998902678489685,
+      "coreBelow90Fraction": 0.0004185840516775769,
+      "frame": 50,
+      "sha256": "b7a40dbb3f70865f648ae26c07723bc86526e7e041becf10b3da805d59357b5a",
+      "alphaAreaRelativeChange": 0.003218948215892746
+    },
+    {
+      "alphaArea": 407964.490592813,
+      "strongAlphaPixels": 423462,
+      "strongAlphaBoundsXYWH": [
+        486,
+        42,
+        645,
+        1274
+      ],
+      "strongAlphaMarginPx": 42,
+      "borderMaxAlpha16": 0,
+      "corePixels": 368711,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998628497123718,
+      "coreBelow90Fraction": 0.0005532788552551999,
+      "frame": 51,
+      "sha256": "6389d972ea8bd47b9e4bfa380f8bd93cba5c217afb1e2bae2cf7c96c1abf1b68",
+      "alphaAreaRelativeChange": 0.004548942671731835
+    },
+    {
+      "alphaArea": 405499.003494316,
+      "strongAlphaPixels": 420399,
+      "strongAlphaBoundsXYWH": [
+        492,
+        40,
+        634,
+        1278
+      ],
+      "strongAlphaMarginPx": 40,
+      "borderMaxAlpha16": 0,
+      "corePixels": 366556,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998832941055298,
+      "coreBelow90Fraction": 0.000510153973744803,
+      "frame": 52,
+      "sha256": "c96f94ab9839c75c8b755c943a92f09ffc22320fb4053bd2023f36ccc1ced847",
+      "alphaAreaRelativeChange": 0.006043386508748326
+    },
+    {
+      "alphaArea": 402900.1495841917,
+      "strongAlphaPixels": 417253,
+      "strongAlphaBoundsXYWH": [
+        498,
+        38,
+        618,
+        1282
+      ],
+      "strongAlphaMarginPx": 38,
+      "borderMaxAlpha16": 0,
+      "corePixels": 366555,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9992009997367859,
+      "coreBelow90Fraction": 0.002807218562016614,
+      "frame": 53,
+      "sha256": "7e5ff88aad37b9223dd296065da8cee88eefcb83dc20b7c4850ad16660f5855b",
+      "alphaAreaRelativeChange": 0.0064090266257849525
+    },
+    {
+      "alphaArea": 398410.4326543069,
+      "strongAlphaPixels": 412034,
+      "strongAlphaBoundsXYWH": [
+        506,
+        36,
+        598,
+        1286
+      ],
+      "strongAlphaMarginPx": 36,
+      "borderMaxAlpha16": 0,
+      "corePixels": 363433,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999557137489319,
+      "coreBelow90Fraction": 0.00015683771149015087,
+      "frame": 54,
+      "sha256": "f9d799c39bce315c71aff62bad00c75d5696b5db28963e0087c61ef41ef80cbf",
+      "alphaAreaRelativeChange": 0.0111434977984455
+    },
+    {
+      "alphaArea": 391436.44573128864,
+      "strongAlphaPixels": 404009,
+      "strongAlphaBoundsXYWH": [
+        510,
+        34,
+        578,
+        1290
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 357255,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999085664749146,
+      "coreBelow90Fraction": 0.00036668486095366057,
+      "frame": 55,
+      "sha256": "c63e8d0eb18e0543c50e98f5a5a97a866a4888bb3a7b8440e981d4c29fb013cb",
+      "alphaAreaRelativeChange": 0.017504528876304385
+    },
+    {
+      "alphaArea": 384114.09559777216,
+      "strongAlphaPixels": 396529,
+      "strongAlphaBoundsXYWH": [
+        512,
+        34,
+        554,
+        1292
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 350959,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999758780002594,
+      "coreBelow90Fraction": 0.0008832940599899134,
+      "frame": 56,
+      "sha256": "1906f2d942007e5099547b5b1cada8424f474f5b219e50c8f08e517115d91d6b",
+      "alphaAreaRelativeChange": 0.01870635760509405
+    },
+    {
+      "alphaArea": 377108.6173800259,
+      "strongAlphaPixels": 389525,
+      "strongAlphaBoundsXYWH": [
+        516,
+        34,
+        522,
+        1292
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 344629,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997642636299133,
+      "coreBelow90Fraction": 0.0009256330720862144,
+      "frame": 57,
+      "sha256": "40fc891fb3e48a622fc4a500e91d7384b744b6cd686a4a9eb897be781906aeb8",
+      "alphaAreaRelativeChange": 0.018238013907935533
+    },
+    {
+      "alphaArea": 368297.86457618064,
+      "strongAlphaPixels": 379623,
+      "strongAlphaBoundsXYWH": [
+        520,
+        34,
+        488,
+        1294
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 336817,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998228549957275,
+      "coreBelow90Fraction": 0.0006680185382566794,
+      "frame": 58,
+      "sha256": "e9ed05fa52ceb619710c623ef1ddb97a4297910ac8a012934790950fb01f1dae",
+      "alphaAreaRelativeChange": 0.02336396570584427
+    },
+    {
+      "alphaArea": 358801.43730830855,
+      "strongAlphaPixels": 369587,
+      "strongAlphaBoundsXYWH": [
+        526,
+        38,
+        480,
+        1292
+      ],
+      "strongAlphaMarginPx": 38,
+      "borderMaxAlpha16": 0,
+      "corePixels": 327353,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998939633369446,
+      "coreBelow90Fraction": 0.00041545365400653115,
+      "frame": 59,
+      "sha256": "42490e7b2b0c36ca1767226e6a3198f51e54d55e79e18f7e8843f9a48659ce48",
+      "alphaAreaRelativeChange": 0.025784638417059837
+    },
+    {
+      "alphaArea": 352659.12124818796,
+      "strongAlphaPixels": 363474,
+      "strongAlphaBoundsXYWH": [
+        536,
+        42,
+        470,
+        1288
+      ],
+      "strongAlphaMarginPx": 42,
+      "borderMaxAlpha16": 0,
+      "corePixels": 322041,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998671412467957,
+      "coreBelow90Fraction": 0.000537198679671222,
+      "frame": 60,
+      "sha256": "b87cf6f75bfa01cd1484f0fe6e026d6efd5eb91f0b038370ee25a52446f84c70",
+      "alphaAreaRelativeChange": 0.017118983987911566
+    },
+    {
+      "alphaArea": 348574.21118486306,
+      "strongAlphaPixels": 359925,
+      "strongAlphaBoundsXYWH": [
+        546,
+        48,
+        462,
+        1284
+      ],
+      "strongAlphaMarginPx": 48,
+      "borderMaxAlpha16": 0,
+      "corePixels": 318541,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998130202293396,
+      "coreBelow90Fraction": 0.0008162214597179013,
+      "frame": 61,
+      "sha256": "219ff0ce9d80e2d66f526bf31b8ac2854199fbcb19bffc781afdf4b6719ed56d",
+      "alphaAreaRelativeChange": 0.011583168610149462
+    },
+    {
+      "alphaArea": 345054.38802166784,
+      "strongAlphaPixels": 357479,
+      "strongAlphaBoundsXYWH": [
+        558,
+        48,
+        466,
+        1284
+      ],
+      "strongAlphaMarginPx": 48,
+      "borderMaxAlpha16": 0,
+      "corePixels": 314476,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999753475189209,
+      "coreBelow90Fraction": 0.0010811635864104096,
+      "frame": 62,
+      "sha256": "687f05bb0de2b99fb9dadb893fb20fffc59de2dd82f65751504bd3a983e07e9a",
+      "alphaAreaRelativeChange": 0.010097772727450905
+    },
+    {
+      "alphaArea": 344330.26430151827,
+      "strongAlphaPixels": 357063,
+      "strongAlphaBoundsXYWH": [
+        560,
+        40,
+        485,
+        1292
+      ],
+      "strongAlphaMarginPx": 40,
+      "borderMaxAlpha16": 0,
+      "corePixels": 312705,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996989965438843,
+      "coreBelow90Fraction": 0.0013591084248732832,
+      "frame": 63,
+      "sha256": "3d6248c146c2975748ef150900d1029adac4194888d288014c0707132fa1e1c6",
+      "alphaAreaRelativeChange": 0.002098578500338028
+    },
+    {
+      "alphaArea": 344781.9431906615,
+      "strongAlphaPixels": 359683,
+      "strongAlphaBoundsXYWH": [
+        558,
+        34,
+        512,
+        1298
+      ],
+      "strongAlphaMarginPx": 34,
+      "borderMaxAlpha16": 0,
+      "corePixels": 311610,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999705970287323,
+      "coreBelow90Fraction": 0.0011713359648278297,
+      "frame": 64,
+      "sha256": "a51d2aff2c11b796f5e0a7aeb252cb97408b7de78882194825fc97a4ea919a79",
+      "alphaAreaRelativeChange": 0.0013117606436932384
+    },
+    {
+      "alphaArea": 352107.94030670635,
+      "strongAlphaPixels": 369127,
+      "strongAlphaBoundsXYWH": [
+        558,
+        32,
+        532,
+        1300
+      ],
+      "strongAlphaMarginPx": 32,
+      "borderMaxAlpha16": 0,
+      "corePixels": 318206,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996060132980347,
+      "coreBelow90Fraction": 0.001536740350590498,
+      "frame": 65,
+      "sha256": "5176e213a9fe721da2fcf359763f99e825ebcd05c1e60781c2fbde101568a223",
+      "alphaAreaRelativeChange": 0.021248204149698316
+    },
+    {
+      "alphaArea": 363869.1209887846,
+      "strongAlphaPixels": 382847,
+      "strongAlphaBoundsXYWH": [
+        560,
+        32,
+        556,
+        1298
+      ],
+      "strongAlphaMarginPx": 32,
+      "borderMaxAlpha16": 0,
+      "corePixels": 327550,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9988987445831299,
+      "coreBelow90Fraction": 0.003794840482369104,
+      "frame": 66,
+      "sha256": "e742c2216290f924f8e1144478086eb44dd353ba511fbdcb07a4622812c8cabd",
+      "alphaAreaRelativeChange": 0.03340220238099024
+    },
+    {
+      "alphaArea": 378181.0398870832,
+      "strongAlphaPixels": 397111,
+      "strongAlphaBoundsXYWH": [
+        560,
+        30,
+        576,
+        1300
+      ],
+      "strongAlphaMarginPx": 30,
+      "borderMaxAlpha16": 0,
+      "corePixels": 339372,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995793700218201,
+      "coreBelow90Fraction": 0.0014998290960951404,
+      "frame": 67,
+      "sha256": "f2922b346fe7184b629d46e5260933759c3edb3a600f765a7ebb65aa5c50daf1",
+      "alphaAreaRelativeChange": 0.039332600852216223
+    },
+    {
+      "alphaArea": 393579.7733119707,
+      "strongAlphaPixels": 413425,
+      "strongAlphaBoundsXYWH": [
+        537,
+        26,
+        613,
+        1302
+      ],
+      "strongAlphaMarginPx": 26,
+      "borderMaxAlpha16": 0,
+      "corePixels": 353439,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999643862247467,
+      "coreBelow90Fraction": 0.001397695217562295,
+      "frame": 68,
+      "sha256": "034703f1f35bf095991aefd1aa6e036236b637d9579aa71a07a9de2829f2b136",
+      "alphaAreaRelativeChange": 0.04071788852631322
+    },
+    {
+      "alphaArea": 407594.4375677119,
+      "strongAlphaPixels": 428075,
+      "strongAlphaBoundsXYWH": [
+        520,
+        24,
+        634,
+        1303
+      ],
+      "strongAlphaMarginPx": 24,
+      "borderMaxAlpha16": 0,
+      "corePixels": 366379,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998086094856262,
+      "coreBelow90Fraction": 0.0008706830904609708,
+      "frame": 69,
+      "sha256": "186bf837aae7a1c2f09d828b8d8e803b3d514968b648d9a110904f4499aa589e",
+      "alphaAreaRelativeChange": 0.03560819230573751
+    },
+    {
+      "alphaArea": 419224.1709315633,
+      "strongAlphaPixels": 439331,
+      "strongAlphaBoundsXYWH": [
+        504,
+        24,
+        652,
+        1300
+      ],
+      "strongAlphaMarginPx": 24,
+      "borderMaxAlpha16": 0,
+      "corePixels": 377458,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998607635498047,
+      "coreBelow90Fraction": 0.0005669504951544278,
+      "frame": 70,
+      "sha256": "dfbb0d2dd695c7d1763fb808706c389e95fcebd11b2da2fc8ddd285db14c08e3",
+      "alphaAreaRelativeChange": 0.028532610585293827
+    },
+    {
+      "alphaArea": 428978.56038757914,
+      "strongAlphaPixels": 449390,
+      "strongAlphaBoundsXYWH": [
+        492,
+        24,
+        658,
+        1300
+      ],
+      "strongAlphaMarginPx": 24,
+      "borderMaxAlpha16": 0,
+      "corePixels": 385824,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997335076332092,
+      "coreBelow90Fraction": 0.0010937629592767688,
+      "frame": 71,
+      "sha256": "b6a7b23219e07749a442ac5154e4be2c1e87f0808f738cfbe83c517dabdb31cc",
+      "alphaAreaRelativeChange": 0.023267717208052402
+    },
+    {
+      "alphaArea": 433658.05355916684,
+      "strongAlphaPixels": 455024,
+      "strongAlphaBoundsXYWH": [
+        481,
+        24,
+        655,
+        1298
+      ],
+      "strongAlphaMarginPx": 24,
+      "borderMaxAlpha16": 0,
+      "corePixels": 388971,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995756149291992,
+      "coreBelow90Fraction": 0.0015733820773271014,
+      "frame": 72,
+      "sha256": "1e9cd888c9ebeda967ebe957fead5157e88ce3ffd794100ba1fd992cb0dd828f",
+      "alphaAreaRelativeChange": 0.010908454649481349
+    },
+    {
+      "alphaArea": 435842.6248874647,
+      "strongAlphaPixels": 457719,
+      "strongAlphaBoundsXYWH": [
+        474,
+        26,
+        644,
+        1294
+      ],
+      "strongAlphaMarginPx": 26,
+      "borderMaxAlpha16": 0,
+      "corePixels": 392542,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.998911440372467,
+      "coreBelow90Fraction": 0.004223751853304869,
+      "frame": 73,
+      "sha256": "d69021601d9215a87db75ab4abc80c6e19d14cd5b09f59d785e600dfa95e41b7",
+      "alphaAreaRelativeChange": 0.0050375435446623935
+    },
+    {
+      "alphaArea": 434215.79211108567,
+      "strongAlphaPixels": 456212,
+      "strongAlphaBoundsXYWH": [
+        470,
+        32,
+        616,
+        1286
+      ],
+      "strongAlphaMarginPx": 32,
+      "borderMaxAlpha16": 0,
+      "corePixels": 393866,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9990336298942566,
+      "coreBelow90Fraction": 0.0038947256173419388,
+      "frame": 74,
+      "sha256": "a33e0855e95c2031ab58be407525f5ede2f02a58a26a19febad5ced08bf971d1",
+      "alphaAreaRelativeChange": 0.003732615130975466
+    },
+    {
+      "alphaArea": 428212.62046234834,
+      "strongAlphaPixels": 450073,
+      "strongAlphaBoundsXYWH": [
+        472,
+        36,
+        568,
+        1280
+      ],
+      "strongAlphaMarginPx": 36,
+      "borderMaxAlpha16": 0,
+      "corePixels": 386663,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9990626573562622,
+      "coreBelow90Fraction": 0.0031448574081305945,
+      "frame": 75,
+      "sha256": "c56ab5e91db72c39542431904897b9ebe986c168b02646e25ad3076f0be3a0b7",
+      "alphaAreaRelativeChange": 0.013825318557740386
+    },
+    {
+      "alphaArea": 417203.81014724955,
+      "strongAlphaPixels": 436660,
+      "strongAlphaBoundsXYWH": [
+        476,
+        40,
+        530,
+        1274
+      ],
+      "strongAlphaMarginPx": 40,
+      "borderMaxAlpha16": 0,
+      "corePixels": 379608,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9989123940467834,
+      "coreBelow90Fraction": 0.003782849676508398,
+      "frame": 76,
+      "sha256": "8fab257d4051bf4c138f31280de5f2131a9ed8c5edcacb20622bb60e74c6b5c3",
+      "alphaAreaRelativeChange": 0.02570874791876146
+    },
+    {
+      "alphaArea": 408780.08409246965,
+      "strongAlphaPixels": 424458,
+      "strongAlphaBoundsXYWH": [
+        456,
+        45,
+        552,
+        1267
+      ],
+      "strongAlphaMarginPx": 45,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372286,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995175004005432,
+      "coreBelow90Fraction": 0.0020226385091032164,
+      "frame": 77,
+      "sha256": "089b9e2662bdc88b506dd6339a1a2ca2357edc3ada015cc3374b0597feda2169",
+      "alphaAreaRelativeChange": 0.020190913529305476
+    },
+    {
+      "alphaArea": 402172.8644846265,
+      "strongAlphaPixels": 417871,
+      "strongAlphaBoundsXYWH": [
+        414,
+        48,
+        590,
+        1268
+      ],
+      "strongAlphaMarginPx": 48,
+      "borderMaxAlpha16": 0,
+      "corePixels": 366205,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999341368675232,
+      "coreBelow90Fraction": 0.0002648789612375582,
+      "frame": 78,
+      "sha256": "d95e897001727dfb53c1dbf9b3c8fabaf638faf0ac5416ca332cbc811c3c07ea",
+      "alphaAreaRelativeChange": 0.016163262020241997
+    },
+    {
+      "alphaArea": 395076.60424200806,
+      "strongAlphaPixels": 409020,
+      "strongAlphaBoundsXYWH": [
+        408,
+        53,
+        588,
+        1265
+      ],
+      "strongAlphaMarginPx": 53,
+      "borderMaxAlpha16": 0,
+      "corePixels": 359849,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999300837516785,
+      "coreBelow90Fraction": 0.00025010490511297796,
+      "frame": 79,
+      "sha256": "2592f20719d325c5bcc8f376db2c3d52d1652a80dacb4e5cee3ab07c41e54598",
+      "alphaAreaRelativeChange": 0.01764480120187151
+    },
+    {
+      "alphaArea": 391768.7946593423,
+      "strongAlphaPixels": 405777,
+      "strongAlphaBoundsXYWH": [
+        410,
+        56,
+        574,
+        1264
+      ],
+      "strongAlphaMarginPx": 56,
+      "borderMaxAlpha16": 0,
+      "corePixels": 358004,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998898506164551,
+      "coreBelow90Fraction": 0.00040502340755969206,
+      "frame": 80,
+      "sha256": "21dd184d0508ee5a495d1d366d7027072279954e0b84db9822b6a01e6a36300c",
+      "alphaAreaRelativeChange": 0.008372577740998062
+    },
+    {
+      "alphaArea": 393124.94705119403,
+      "strongAlphaPixels": 406862,
+      "strongAlphaBoundsXYWH": [
+        383,
+        62,
+        593,
+        1260
+      ],
+      "strongAlphaMarginPx": 62,
+      "borderMaxAlpha16": 0,
+      "corePixels": 360648,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998248219490051,
+      "coreBelow90Fraction": 0.000701515050686542,
+      "frame": 81,
+      "sha256": "e74b1e664aa51838438a7bc6979b744edbb113128bdbbcac9eebadd8621ece00",
+      "alphaAreaRelativeChange": 0.0034616141212342614
+    },
+    {
+      "alphaArea": 392922.6681315328,
+      "strongAlphaPixels": 408507,
+      "strongAlphaBoundsXYWH": [
+        346,
+        63,
+        628,
+        1261
+      ],
+      "strongAlphaMarginPx": 63,
+      "borderMaxAlpha16": 0,
+      "corePixels": 359007,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997308254241943,
+      "coreBelow90Fraction": 0.0010584751829351517,
+      "frame": 82,
+      "sha256": "b3d021e534048201a31e9c9d5d6ba628043a81bb8e95835b2d01efbba2d5122a",
+      "alphaAreaRelativeChange": 0.0005145410414132318
+    },
+    {
+      "alphaArea": 390188.7287861448,
+      "strongAlphaPixels": 405991,
+      "strongAlphaBoundsXYWH": [
+        328,
+        64,
+        640,
+        1264
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 354045,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995289444923401,
+      "coreBelow90Fraction": 0.0017088223248457118,
+      "frame": 83,
+      "sha256": "0f1f7868d19b7da2f12eeeeaf51aa1f1aedf879119577f3d7a1bc0356c3d9e98",
+      "alphaAreaRelativeChange": 0.006957957804747409
+    },
+    {
+      "alphaArea": 381384.9528191043,
+      "strongAlphaPixels": 400033,
+      "strongAlphaBoundsXYWH": [
+        322,
+        65,
+        638,
+        1263
+      ],
+      "strongAlphaMarginPx": 65,
+      "borderMaxAlpha16": 0,
+      "corePixels": 345029,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997726678848267,
+      "coreBelow90Fraction": 0.0008781870509435439,
+      "frame": 84,
+      "sha256": "007e746487c8c5d8bc4deb4733f8beeee743e2c4ffa58e12d7e10e6c03fa95cf",
+      "alphaAreaRelativeChange": 0.02256286590960369
+    },
+    {
+      "alphaArea": 370338.9564202335,
+      "strongAlphaPixels": 389975,
+      "strongAlphaBoundsXYWH": [
+        324,
+        67,
+        626,
+        1261
+      ],
+      "strongAlphaMarginPx": 67,
+      "borderMaxAlpha16": 0,
+      "corePixels": 334579,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996245503425598,
+      "coreBelow90Fraction": 0.0013629068172240338,
+      "frame": 85,
+      "sha256": "a5adbf2ecac77d98711373cf23958f4426179d5bd15aabee89e471a33f2193d7",
+      "alphaAreaRelativeChange": 0.028962853193922646
+    },
+    {
+      "alphaArea": 358760.5398794537,
+      "strongAlphaPixels": 379746,
+      "strongAlphaBoundsXYWH": [
+        336,
+        68,
+        600,
+        1264
+      ],
+      "strongAlphaMarginPx": 68,
+      "borderMaxAlpha16": 0,
+      "corePixels": 320212,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999642014503479,
+      "coreBelow90Fraction": 0.00154585087379611,
+      "frame": 86,
+      "sha256": "78bafe4f57063f43f17e999dde34ae71babcf8ef26718f8a069ec5c02418a3de",
+      "alphaAreaRelativeChange": 0.0312643764315235
+    },
+    {
+      "alphaArea": 348206.0250400549,
+      "strongAlphaPixels": 368408,
+      "strongAlphaBoundsXYWH": [
+        350,
+        68,
+        572,
+        1263
+      ],
+      "strongAlphaMarginPx": 68,
+      "borderMaxAlpha16": 0,
+      "corePixels": 309057,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9995021224021912,
+      "coreBelow90Fraction": 0.001941389452431105,
+      "frame": 87,
+      "sha256": "9027382329d15ff0fb84d52aea270cc5d03e22f9d51f142ad78452ecb2f25308",
+      "alphaAreaRelativeChange": 0.029419386097883533
+    },
+    {
+      "alphaArea": 342985.08596932935,
+      "strongAlphaPixels": 364403,
+      "strongAlphaBoundsXYWH": [
+        366,
+        68,
+        560,
+        1264
+      ],
+      "strongAlphaMarginPx": 68,
+      "borderMaxAlpha16": 0,
+      "corePixels": 303788,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999459445476532,
+      "coreBelow90Fraction": 0.0021100240957509842,
+      "frame": 88,
+      "sha256": "43b24170fe46a896224e36ce2b09e7b4937d12ab6c18ae8ea2413d43cffa7ba7",
+      "alphaAreaRelativeChange": 0.01499382174712515
+    },
+    {
+      "alphaArea": 347533.4351262684,
+      "strongAlphaPixels": 369290,
+      "strongAlphaBoundsXYWH": [
+        384,
+        68,
+        544,
+        1264
+      ],
+      "strongAlphaMarginPx": 68,
+      "borderMaxAlpha16": 0,
+      "corePixels": 309089,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999103307723999,
+      "coreBelow90Fraction": 0.0034261976323971413,
+      "frame": 89,
+      "sha256": "58cf549271fcb95bb9893629efc4d875776fafd4824870ca566c6b32e9b040c2",
+      "alphaAreaRelativeChange": 0.013261069775336531
+    },
+    {
+      "alphaArea": 357123.9438925765,
+      "strongAlphaPixels": 376705,
+      "strongAlphaBoundsXYWH": [
+        400,
+        68,
+        528,
+        1264
+      ],
+      "strongAlphaMarginPx": 68,
+      "borderMaxAlpha16": 0,
+      "corePixels": 317077,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996602535247803,
+      "coreBelow90Fraction": 0.0013119841552682787,
+      "frame": 90,
+      "sha256": "873eb4d86902a97f792837bf992d0adf07202d860baca33c845b2c67a0d18083",
+      "alphaAreaRelativeChange": 0.027595931202485834
+    },
+    {
+      "alphaArea": 366470.60784313723,
+      "strongAlphaPixels": 384738,
+      "strongAlphaBoundsXYWH": [
+        412,
+        66,
+        514,
+        1266
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 326352,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996032118797302,
+      "coreBelow90Fraction": 0.0014370985929303328,
+      "frame": 91,
+      "sha256": "1065ee65aa1e742571dcafb06fb9b37f4b259ab9c104fdf3d5d4484024362022",
+      "alphaAreaRelativeChange": 0.02617204505719791
+    },
+    {
+      "alphaArea": 376381.2114137484,
+      "strongAlphaPixels": 393570,
+      "strongAlphaBoundsXYWH": [
+        420,
+        64,
+        508,
+        1268
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 336242,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996182322502136,
+      "coreBelow90Fraction": 0.0014245692090815542,
+      "frame": 92,
+      "sha256": "c7d01820118b352d09107bc0b17d6759e5a0b5c23d9964508a14c0802356540f",
+      "alphaAreaRelativeChange": 0.027043379082813804
+    },
+    {
+      "alphaArea": 386546.94915693905,
+      "strongAlphaPixels": 404116,
+      "strongAlphaBoundsXYWH": [
+        422,
+        64,
+        524,
+        1268
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 346010,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997259974479675,
+      "coreBelow90Fraction": 0.001034652177682726,
+      "frame": 93,
+      "sha256": "0e1dd0af313308ffc02a347642d752faf2a82f4d1e6b3f8a7af257f7c5d2ce87",
+      "alphaAreaRelativeChange": 0.027009153047269596
+    },
+    {
+      "alphaArea": 395966.8838635844,
+      "strongAlphaPixels": 413520,
+      "strongAlphaBoundsXYWH": [
+        422,
+        64,
+        538,
+        1266
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 355022,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998003840446472,
+      "coreBelow90Fraction": 0.0008562849626220347,
+      "frame": 94,
+      "sha256": "fdad395bfd625f5ad583356eb757acabd576c49d3b2829b0d464e88db592fd60",
+      "alphaAreaRelativeChange": 0.024369445230883975
+    },
+    {
+      "alphaArea": 403639.596551461,
+      "strongAlphaPixels": 421953,
+      "strongAlphaBoundsXYWH": [
+        418,
+        64,
+        554,
+        1266
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 360888,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998377561569214,
+      "coreBelow90Fraction": 0.000640087783467447,
+      "frame": 95,
+      "sha256": "3d3a1583492ae4a372f09d1a075684af7ad161b882d8dfa5db1cd606dcff74b5",
+      "alphaAreaRelativeChange": 0.01937715753653784
+    },
+    {
+      "alphaArea": 410817.7213092241,
+      "strongAlphaPixels": 429807,
+      "strongAlphaBoundsXYWH": [
+        412,
+        64,
+        572,
+        1266
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 368042,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998154640197754,
+      "coreBelow90Fraction": 0.0007933877111851365,
+      "frame": 96,
+      "sha256": "587635b4fe536b2c1191f4dcbc68140fc497307ca6029cd55c839f86caab96f9",
+      "alphaAreaRelativeChange": 0.017783499981394665
+    },
+    {
+      "alphaArea": 416122.3459372854,
+      "strongAlphaPixels": 435734,
+      "strongAlphaBoundsXYWH": [
+        408,
+        64,
+        586,
+        1264
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372597,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996617436408997,
+      "coreBelow90Fraction": 0.001280203544311951,
+      "frame": 97,
+      "sha256": "a82d9428dbf938dca046482e1a78d3b913cae4aed7b8beb20e786230a3756078",
+      "alphaAreaRelativeChange": 0.012912355901191762
+    },
+    {
+      "alphaArea": 418291.51432059205,
+      "strongAlphaPixels": 438304,
+      "strongAlphaBoundsXYWH": [
+        400,
+        66,
+        600,
+        1260
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374546,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996392130851746,
+      "coreBelow90Fraction": 0.0013482990073315428,
+      "frame": 98,
+      "sha256": "27af6873572fe8e1b5195ac8eb2cd18c5965d796874fc8ead78db1f75f4f6db0",
+      "alphaAreaRelativeChange": 0.0052128139824376765
+    },
+    {
+      "alphaArea": 419240.6844434272,
+      "strongAlphaPixels": 438896,
+      "strongAlphaBoundsXYWH": [
+        394,
+        70,
+        612,
+        1256
+      ],
+      "strongAlphaMarginPx": 70,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374879,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999726414680481,
+      "coreBelow90Fraction": 0.00114703677720011,
+      "frame": 99,
+      "sha256": "00f3f359b015790bdeb92402c75b8ee44732e3724d67c7c6ed8861f3dd74c871",
+      "alphaAreaRelativeChange": 0.002269159402807465
+    },
+    {
+      "alphaArea": 419843.7743648432,
+      "strongAlphaPixels": 439071,
+      "strongAlphaBoundsXYWH": [
+        390,
+        72,
+        621,
+        1252
+      ],
+      "strongAlphaMarginPx": 72,
+      "borderMaxAlpha16": 0,
+      "corePixels": 375387,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9996686577796936,
+      "coreBelow90Fraction": 0.00129199998934433,
+      "frame": 100,
+      "sha256": "dd314724a6d460a0c0123011c68ee8d939a29477fa8d09a51d6870a39aaaf1d3",
+      "alphaAreaRelativeChange": 0.0014385290927016363
+    },
+    {
+      "alphaArea": 419516.8997634852,
+      "strongAlphaPixels": 438992,
+      "strongAlphaBoundsXYWH": [
+        386,
+        73,
+        626,
+        1249
+      ],
+      "strongAlphaMarginPx": 73,
+      "borderMaxAlpha16": 0,
+      "corePixels": 375168,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997422695159912,
+      "coreBelow90Fraction": 0.001031537871033777,
+      "frame": 101,
+      "sha256": "19193a00971856f59e294cb1f31e8c915c002de282d30bedcd757b1f7d2b8668",
+      "alphaAreaRelativeChange": 0.0007785624589825898
+    },
+    {
+      "alphaArea": 419172.66970321204,
+      "strongAlphaPixels": 438528,
+      "strongAlphaBoundsXYWH": [
+        384,
+        73,
+        630,
+        1249
+      ],
+      "strongAlphaMarginPx": 73,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374699,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997931718826294,
+      "coreBelow90Fraction": 0.0007872986050136242,
+      "frame": 102,
+      "sha256": "a9d1d0cb65f3abc479ccb4e065d79f64a32a352bcd567262bfaa87fa082cba87",
+      "alphaAreaRelativeChange": 0.0008205391975083979
+    },
+    {
+      "alphaArea": 418590.11316090636,
+      "strongAlphaPixels": 437545,
+      "strongAlphaBoundsXYWH": [
+        386,
+        76,
+        630,
+        1244
+      ],
+      "strongAlphaMarginPx": 76,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374259,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998114705085754,
+      "coreBelow90Fraction": 0.0007160816439952012,
+      "frame": 103,
+      "sha256": "71c53a8592a7d850f362c4379621d2e3128a23ea92e5306599600e7496983c93",
+      "alphaAreaRelativeChange": 0.0013897770165172084
+    },
+    {
+      "alphaArea": 418085.37050431065,
+      "strongAlphaPixels": 436947,
+      "strongAlphaBoundsXYWH": [
+        388,
+        76,
+        628,
+        1244
+      ],
+      "strongAlphaMarginPx": 76,
+      "borderMaxAlpha16": 0,
+      "corePixels": 374016,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998222589492798,
+      "coreBelow90Fraction": 0.0007085258384668036,
+      "frame": 104,
+      "sha256": "9fd934a4612a913ea99c517a0974b95f6a98f28a164d77c9a294fda60c5bb625",
+      "alphaAreaRelativeChange": 0.0012058160016829888
+    },
+    {
+      "alphaArea": 417955.3244525826,
+      "strongAlphaPixels": 437258,
+      "strongAlphaBoundsXYWH": [
+        390,
+        76,
+        624,
+        1242
+      ],
+      "strongAlphaMarginPx": 76,
+      "borderMaxAlpha16": 0,
+      "corePixels": 373737,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.999801516532898,
+      "coreBelow90Fraction": 0.0008214332538656863,
+      "frame": 105,
+      "sha256": "c2a68f0a6505904f86b5d35a1c1f7287f1cc99a80f2825cd9e544b3b1bc3f4f4",
+      "alphaAreaRelativeChange": 0.0003110514284946325
+    },
+    {
+      "alphaArea": 417359.61538109405,
+      "strongAlphaPixels": 436754,
+      "strongAlphaBoundsXYWH": [
+        394,
+        74,
+        620,
+        1242
+      ],
+      "strongAlphaMarginPx": 74,
+      "borderMaxAlpha16": 0,
+      "corePixels": 373022,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997791647911072,
+      "coreBelow90Fraction": 0.0008846663199489574,
+      "frame": 106,
+      "sha256": "f2d696dbc3e0a0d99c07d6232d4786f26b6269d314a62046f7c948a05f0e09a0",
+      "alphaAreaRelativeChange": 0.0014252936537386088
+    },
+    {
+      "alphaArea": 416953.3196002136,
+      "strongAlphaPixels": 436061,
+      "strongAlphaBoundsXYWH": [
+        398,
+        72,
+        614,
+        1244
+      ],
+      "strongAlphaMarginPx": 72,
+      "borderMaxAlpha16": 0,
+      "corePixels": 372658,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997199177742004,
+      "coreBelow90Fraction": 0.0010036011570930987,
+      "frame": 107,
+      "sha256": "6cc3866552da64730c8d8b462119660f816a10e7e9834950f75de0273f8a3c98",
+      "alphaAreaRelativeChange": 0.0009734908838974354
+    },
+    {
+      "alphaArea": 416754.3088731212,
+      "strongAlphaPixels": 435764,
+      "strongAlphaBoundsXYWH": [
+        402,
+        72,
+        608,
+        1244
+      ],
+      "strongAlphaMarginPx": 72,
+      "borderMaxAlpha16": 0,
+      "corePixels": 371960,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997926354408264,
+      "coreBelow90Fraction": 0.0008146037208301968,
+      "frame": 108,
+      "sha256": "2b1de926ad4cc2d0aeec8532df8697a82a6856a311a8c85c0b3698dd7c9dfa57",
+      "alphaAreaRelativeChange": 0.00047729738015566797
+    },
+    {
+      "alphaArea": 416437.5522545205,
+      "strongAlphaPixels": 435225,
+      "strongAlphaBoundsXYWH": [
+        406,
+        70,
+        604,
+        1246
+      ],
+      "strongAlphaMarginPx": 70,
+      "borderMaxAlpha16": 0,
+      "corePixels": 371444,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9997677803039551,
+      "coreBelow90Fraction": 0.000885732438806388,
+      "frame": 109,
+      "sha256": "12697ac31b007f4152c3f58c92ca972bb7bd86fc1ac3e229bcd60ed5db89a73d",
+      "alphaAreaRelativeChange": 0.0007600560134752707
+    },
+    {
+      "alphaArea": 416018.7718623636,
+      "strongAlphaPixels": 434609,
+      "strongAlphaBoundsXYWH": [
+        408,
+        68,
+        602,
+        1248
+      ],
+      "strongAlphaMarginPx": 68,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370568,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998745322227478,
+      "coreBelow90Fraction": 0.0004695494484143261,
+      "frame": 110,
+      "sha256": "3af5c0986cec6c4adf015c45b9d7641ebf0142aeb7daa79995ac46c207275101",
+      "alphaAreaRelativeChange": 0.001005625909310175
+    },
+    {
+      "alphaArea": 416019.7152513924,
+      "strongAlphaPixels": 434758,
+      "strongAlphaBoundsXYWH": [
+        410,
+        68,
+        600,
+        1246
+      ],
+      "strongAlphaMarginPx": 68,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370468,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998959302902222,
+      "coreBelow90Fraction": 0.00041029184706911257,
+      "frame": 111,
+      "sha256": "6a07cbe65e51c5af847b2695e8f0d4bc19aea67f72ece10d3e1fb7e584de48d2",
+      "alphaAreaRelativeChange": 2.2676597610084516e-06
+    },
+    {
+      "alphaArea": 416259.50687418936,
+      "strongAlphaPixels": 435261,
+      "strongAlphaBoundsXYWH": [
+        412,
+        66,
+        598,
+        1250
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370586,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998867511749268,
+      "coreBelow90Fraction": 0.0004398439228681062,
+      "frame": 112,
+      "sha256": "40b017d359c8bbdcee00d248622b6cc7afd23cbbc22088734ed202dd6bc35278",
+      "alphaAreaRelativeChange": 0.0005763948534315681
+    },
+    {
+      "alphaArea": 416398.90740825515,
+      "strongAlphaPixels": 434766,
+      "strongAlphaBoundsXYWH": [
+        412,
+        66,
+        598,
+        1250
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370328,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9998924732208252,
+      "coreBelow90Fraction": 0.00038614417489360784,
+      "frame": 113,
+      "sha256": "2503f8e400c5a33e9863e826b1115a77e4345f6d1659fe583fdfd2a6210d5d3e",
+      "alphaAreaRelativeChange": 0.0003348885293037213
+    },
+    {
+      "alphaArea": 416506.54387731745,
+      "strongAlphaPixels": 434758,
+      "strongAlphaBoundsXYWH": [
+        412,
+        66,
+        598,
+        1250
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369902,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999849796295166,
+      "coreBelow90Fraction": 5.947521235354229e-05,
+      "frame": 114,
+      "sha256": "b07503356c8f6f65e337df269eb5dcea69e8178d9d5c8927305f8787f36099eb",
+      "alphaAreaRelativeChange": 0.00025849363950604696
+    },
+    {
+      "alphaArea": 416316.65841153584,
+      "strongAlphaPixels": 434181,
+      "strongAlphaBoundsXYWH": [
+        412,
+        66,
+        598,
+        1248
+      ],
+      "strongAlphaMarginPx": 66,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370049,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999842643737793,
+      "coreBelow90Fraction": 6.215393096589911e-05,
+      "frame": 115,
+      "sha256": "169063af1a2ce91001ae2b24c23ab8e2bc3f84df7ee57f2b57be44496a3a9410",
+      "alphaAreaRelativeChange": 0.000455900317949249
+    },
+    {
+      "alphaArea": 416400.42275120167,
+      "strongAlphaPixels": 434328,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1250
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369966,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999827742576599,
+      "coreBelow90Fraction": 7.838558137774822e-05,
+      "frame": 116,
+      "sha256": "c7c89d8a0e8ce7c5de238d7d82b0794187d344e959bd4b0c26233218bb9bf317",
+      "alphaAreaRelativeChange": 0.0002012034300655384
+    },
+    {
+      "alphaArea": 416358.6317387656,
+      "strongAlphaPixels": 434089,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1250
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370007,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999842643737793,
+      "coreBelow90Fraction": 6.21609861435054e-05,
+      "frame": 117,
+      "sha256": "f317ae7ff8a537f8800525c0f7113210cd87ad7418786e22dc1e7636428f769c",
+      "alphaAreaRelativeChange": 0.00010036256005691745
+    },
+    {
+      "alphaArea": 416364.22929732205,
+      "strongAlphaPixels": 433879,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1250
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 369956,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999862909317017,
+      "coreBelow90Fraction": 4.865443458140968e-05,
+      "frame": 118,
+      "sha256": "b4481156e054b7da562f67c170bdc7457cd5ae857eb5a202d991b5732d96a84f",
+      "alphaAreaRelativeChange": 1.3444079526099199e-05
+    },
+    {
+      "alphaArea": 416493.8398718242,
+      "strongAlphaPixels": 433933,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1250
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370060,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999834299087524,
+      "coreBelow90Fraction": 6.485434794357671e-05,
+      "frame": 119,
+      "sha256": "e8de3eb55ea35317fa09a57854014736fb7de9e387d4a83c46a8baf44ec651d3",
+      "alphaAreaRelativeChange": 0.0003112913295190757
+    },
+    {
+      "alphaArea": 416579.37868314644,
+      "strongAlphaPixels": 434186,
+      "strongAlphaBoundsXYWH": [
+        414,
+        64,
+        596,
+        1252
+      ],
+      "strongAlphaMarginPx": 64,
+      "borderMaxAlpha16": 0,
+      "corePixels": 370030,
+      "coreAlphaP01": 1.0,
+      "coreAlphaMean": 0.9999825954437256,
+      "coreBelow90Fraction": 7.837202388995486e-05,
+      "frame": 120,
+      "sha256": "f02ab22331c4a308679357209e6e3149901de3291fa1673e9ff80bcfe85be839",
+      "alphaAreaRelativeChange": 0.00020537833488381953,
+      "neutralComparison": {
+        "exactRGBAEqual": true,
+        "alphaMAE": 0.0,
+        "alphaMaxError": 0.0,
+        "premultipliedSRGBMAE": 0.0,
+        "premultipliedSRGBMaxError": 0.0
+      }
+    }
+  ],
+  "rawEndpointsComparedWithNeutral": {
+    "0000.png": {
+      "exactRGBAEqual": true,
+      "alphaMAE": 0.0,
+      "alphaMaxError": 0.0,
+      "premultipliedSRGBMAE": 0.0,
+      "premultipliedSRGBMaxError": 0.0
+    },
+    "0001.png": {
+      "exactRGBAEqual": false,
+      "alphaMAE": 0.0003159944317303598,
+      "alphaMaxError": 0.2383306324481964,
+      "premultipliedSRGBMAE": 0.0005147565389052033,
+      "premultipliedSRGBMaxError": 0.18039214611053467
+    },
+    "0002.png": {
+      "exactRGBAEqual": false,
+      "alphaMAE": 0.0007897610776126385,
+      "alphaMaxError": 0.4466163218021393,
+      "premultipliedSRGBMAE": 0.0012018806301057339,
+      "premultipliedSRGBMaxError": 0.3987651467323303
+    },
+    "0118.png": {
+      "exactRGBAEqual": false,
+      "alphaMAE": 0.0012732124887406826,
+      "alphaMaxError": 0.5502555966377258,
+      "premultipliedSRGBMAE": 0.003056403947994113,
+      "premultipliedSRGBMaxError": 0.6353093981742859
+    },
+    "0119.png": {
+      "exactRGBAEqual": false,
+      "alphaMAE": 0.0009535017306916416,
+      "alphaMaxError": 0.4569771885871887,
+      "premultipliedSRGBMAE": 0.0024900331627577543,
+      "premultipliedSRGBMaxError": 0.43137258291244507
+    },
+    "0120.png": {
+      "exactRGBAEqual": false,
+      "alphaMAE": 0.0008407957502640784,
+      "alphaMaxError": 0.3221942186355591,
+      "premultipliedSRGBMAE": 0.0022763055749237537,
+      "premultipliedSRGBMaxError": 0.2744945287704468
+    }
+  },
+  "limitations": [
+    "Numerical QA does not certify perfect cutting or reconstruct clipped source motion.",
+    "Core opacity is measured inside the observed alpha silhouette; hidden holes need visual review."
+  ],
+  "sourceSha256": "5b0df73e1039f369623cfc591119924a7ee461696c967b6d7a38353f65b33936",
+  "runtimeFrameSha256": {
+    "lookaround-0001": "bd6f403423ecccc0d72af12278fc3a855deb2b0ebcc37d6f4d3d457310c5d13d",
+    "lookaround-0002": "aadbde7ae7ec0d5e6759847e4e87ae127d06d8b48298a2d88453fcd85c224b85",
+    "lookaround-0003": "9a70a80e392ed0577ecf2b10417e37c86ee233132194820815f1d0d0ebae3ecd",
+    "lookaround-0004": "91dc316be090e47f3451ca378718ee4c06c86c6f43ec401fa6a00b2aa6c6ae5d",
+    "lookaround-0005": "7fa33a6883be75cb5a1036e575e00f8df5acad2b85dccb86eb54d3dfde76c0fe",
+    "lookaround-0006": "a2cbb512f7d82a0ccc0a74bc259578071b0d3e45fef79d2614a660bf69c53c22",
+    "lookaround-0007": "b887783fa448b844ee6fefacf26b4d7e482c7d7bd335852d1a71f4860fcd758b",
+    "lookaround-0008": "703e7c28b71ec556da989eb15541630b450984b636b31e890e9bfe434f036129",
+    "lookaround-0009": "04c04d8864c28e44bade08caa9c9e68e50a10ae29840bb1af7ecf6aa3e046194",
+    "lookaround-0010": "1806fba01e4787001524d9635a0da87c4852ffe7d41e4b3ba77ad9d93a089404",
+    "lookaround-0011": "d0532fad5ecabc26d43dd4c0d4647929a5846ab98a6a791ccb2d519d30b4f45e",
+    "lookaround-0012": "f3894df3c4d80421fb62ad61c8a60244d3205bacdeeba87c48af03fb35c3a43d",
+    "lookaround-0013": "214748918d35d518da838e615cc75e4d39ad9819758f4d35ebe01ece95c46d93",
+    "lookaround-0014": "32dfbfeff72ade683a9e94e7a137176f25c70262d3ab7f93e3a30d9a183509e2",
+    "lookaround-0015": "45df9202a2788f01d6beba2ea87ab5fe19aaf784a0febfa217467b4f44bcd428",
+    "lookaround-0016": "84886d51dd7904f6d1a4fc0bbf930f7c821020a268363a45a6b94cc269e63986",
+    "lookaround-0017": "7aa2acfb7173bed476bc9b3f9d036cf29a480fee6a05d4d315244f49a26713af",
+    "lookaround-0018": "c470157067f1a244e09060c8cf97a32f719b018d75c27836ed75b0ed8eb65b02",
+    "lookaround-0019": "a1cb5e31c668afed6b8b8eba21452cb0106d2a0e43e1991f86c6dd70aa93a148",
+    "lookaround-0020": "d8afac829956f515f107e66f3298b69f56155e887f1edf313ac14bb2db5b600c",
+    "lookaround-0021": "24c0a51a1f5c7c773ab31e74dd8ff7ef735bb411f633af92bc7232302cb537b3",
+    "lookaround-0022": "f30805e7671e1eb6d473f3b30a28bade634f70bcb6c16f1c43ec3f0fe3761072",
+    "lookaround-0023": "248e6c266c252a479f190a23a76ddabaf489d535055002c4eff1d51cde0a3faa",
+    "lookaround-0024": "0c64f5405096b1877b4dac06dd0bdbe34abf29a9c1a34481986f18cddc34306b",
+    "lookaround-0025": "d67e366eb2587cb5c55c6fc4292c7ea217527f86dc01ab58714eed31387a38a5",
+    "lookaround-0026": "0e04d6129ab34bee48593f8574f2e97a2c7cd8163941f3af96ba67fa74aef424",
+    "lookaround-0027": "3ea8a610a5b4c44ddddb244578f18a8cd0907b23485369be08e55101c10405f6",
+    "lookaround-0028": "92bee2d4c112c7c05775fd419de650736babe2168d4f1e460474a99e2435b407",
+    "lookaround-0029": "9b60ab3f152de769a42c58ed30e57958978382945d198f0c03b7cdc411c29d7c",
+    "lookaround-0030": "6f2be36360af68aafc4718c5ecbe21ad7adff0f586524ee911639d00a70a7e30",
+    "lookaround-0031": "6e8efb6d2f196a61ba51ccebb50b2fe45a25ef4e509a9bf99b8b9c1a742fd324",
+    "lookaround-0032": "736b91f2267af02d3599b59a78779f913166e604ba0aefcb2af09e2b2d85e20f",
+    "lookaround-0033": "85830e8f661c4f4e0ee8e8a4f907316a6382fcc172248bf8e786f93cc3c5da46",
+    "lookaround-0034": "e35470c2413fef0619b7f01034ddca82f0758eed6348db046fe5713d83457a3a",
+    "lookaround-0035": "704dcc3a5bd32673e891be8644b969953de1ec9f02622292fd58ae51a371e9d5",
+    "lookaround-0036": "ac9d9d4911cc59b861480c3827edd46a46f47550d0e8fcd80b3608b0d32e4282",
+    "lookaround-0037": "aae5c41e030da73995170028540920f0e9c7de90503c727e4e860b0918886d08",
+    "lookaround-0038": "3a0ade1c77cf13ecd58fae10e6461897537120a588008f1de7a9752e37a35a34",
+    "lookaround-0039": "12bba33ff802f4a5cf54ff9fa336f91d08c0cd65c7dd35abc8c6b8855fbb463d",
+    "lookaround-0040": "0838b4093f280a92a8b2e0b5dccb1eeec051c2db2c3127e5e94018333b223561",
+    "lookaround-0041": "64e6a965439e6b810d19b00c27fd9cd5a9dced0276cace9fd5adac1a5a09a54a",
+    "lookaround-0042": "94a3c330ec1b931dc73306eb870b8577a7f97d5e318ad2242b60177b92880544",
+    "lookaround-0043": "6c8c060b6ce1409e772c91d2a5d7b59a5c260716c15e3355f0f5290f89fee810",
+    "lookaround-0044": "c9006a735598551ebb3140f3382666641fc7a302a9db1bf3e15ae005ff467fe6",
+    "lookaround-0045": "6775234321e2e3dd933322f42c634685e62a4935cdc7dd96e2a87df6ec368a46",
+    "lookaround-0046": "ce311d4a32f925592aaa78a08c053f2e387fee00b6d5592a8bb8b8b89a121994",
+    "lookaround-0047": "1c1ccc08bf201d3717e81b6583d4f03ad92057957ee7f3cb04633454a463c81f",
+    "lookaround-0048": "e7416ef978294eb0c99461bec42ca84cc63096dc14ba8f03e0e59ea4ba356b47",
+    "lookaround-0049": "9c81d76b8cea8ea0598ecf49bc754f156eeea286c1b19502643d1473ec5fd210",
+    "lookaround-0050": "1fcc515125ba6099bca9d52ca15d142f9293043ef9ffd25e6c448b808ef6d382",
+    "lookaround-0051": "fcc965c83966805cb03f033df905ee4c00fb51856efe9da15d5c54486b2f14e9",
+    "lookaround-0052": "a7cbd6168e6bade6e7439ac5f677e2228804be4703542c06caa762ebbf5c999d",
+    "lookaround-0053": "7c4ec4d75736396b2e1463c69b5723986691af117d87fc39702f24d5631c3d17",
+    "lookaround-0054": "0959cd56b86899160fafa4a6e6b5051ba63bccdb3ee602eaedf0513a9b114429",
+    "lookaround-0055": "6603ac1eb315751aab2bab74bacd779bd04afbb52e9ca3f3c959625af426e80e",
+    "lookaround-0056": "9b728e68545c00a45368a971b077c4b19255565626a83ad66f6ccc915521645d",
+    "lookaround-0057": "76bd452285c5dcd5a94e7d2ef6dbda3b01628765a883e5a9ca30668347be1dcc",
+    "lookaround-0058": "4482786886d389e3f162f37d8c33a7093d81e820d40168079fb734332f95a900",
+    "lookaround-0059": "20dc06a915f557e0c404bc261030da90ec85d942b2172db1738847deff9a40b8",
+    "lookaround-0060": "1d4a5531dbe6e78370f4b6f77d6c49fa7f7a80f265e038bc29c80e7259d6af69",
+    "lookaround-0061": "dc74748d0cf90c98ebc7ec845878ab771393142b2057f9d8dbc44208c1bb9eab",
+    "lookaround-0062": "6599fce9e588cdff0bc7e6d54b77dd14a7c5b956a13406bfe183ff0eefb32480",
+    "lookaround-0063": "2de95c9b70b7171367863474dceb9cce771989dde6f6233e20eedc328c0852e6",
+    "lookaround-0064": "67ba7e39236c42104eac72711b80275980ed2f6bafe71841262188fe4830ecd7",
+    "lookaround-0065": "008b5ca7ee0a7f160fb5e4530d9ef2940de38651a34f64697ab2d9b28446b9c4",
+    "lookaround-0066": "b12832c01af565fbc82f256d1cfcab52f105e325f1531da88f3c13c4fcbaf134",
+    "lookaround-0067": "479676360319d85649f32c12450f3501e37937be4df5fe731f8d03618a690735",
+    "lookaround-0068": "de1d86393c9b459f1293e39f5ac74b5f1aee21053e7c23aee97f470bc6196eb3",
+    "lookaround-0069": "a20cef9d8d84df58fbe06bf60c21dc2901ae963ec6f8101eb1bdcc1589d3af17",
+    "lookaround-0070": "98af75b0ec0829fae40feb8e5339730f4f7ca75941c0f0837e977f395b396f3e",
+    "lookaround-0071": "3f8af93eea6b128b5be19c5c3502aa47ebefe4938d01b2a8239ed23c062bd16c",
+    "lookaround-0072": "1b6bbf60a8a4e60bf309b01c670108db8f6377d801547e6f5375026308f4ed2d",
+    "lookaround-0073": "5bfc02691e2c641e2f72cb677e9ab93042e39c6b90e5df5624015153248889a8",
+    "lookaround-0074": "95e8f0d97b635cafd4c0cc95cecee3d6300ee769e4e95e8edd11ba441e027002",
+    "lookaround-0075": "22f355a15c45fe23071d8c3d8897f70ff247ea6fac3c04fd6d50e5358f7c6cff",
+    "lookaround-0076": "314e9b5588cd816ef48085b9c21e633ccefb92963b7aa42dac23bdc73ad7df78",
+    "lookaround-0077": "617464553bcec156f3873eec3b5fc49e6600246cab9f8ba1a013f40eb4a6d814",
+    "lookaround-0078": "b44431874f6f4f6c2c93b53d45afe7218bc9ab8b177b68050396bc23dbcfbedd",
+    "lookaround-0079": "d698fd91a2409fdd8e8cf33b83ea7edf442352f6e78296fa1789fd06be62db4f",
+    "lookaround-0080": "0a5b5ad97a7e682dbed7503abe7f614fc3f0a9207d893b8906a552c90ffad5c1",
+    "lookaround-0081": "dddb22e3c2980251b4e1eb2998472d7843e1bc222eed2be770dbba9381f03ba6",
+    "lookaround-0082": "4d7fa6dfdd6cdaaaf37dd4ae1b8ff83b084a12268cc89a28d1a3e15cc8825176",
+    "lookaround-0083": "21a1f1b00ac669bee3e0d3fb956b8b0b2e79a0d627373fc0146dbd00de1137b7",
+    "lookaround-0084": "be78a42295b1d639e1616b350f71b7ea896dd90ea5b52a23d6dbde20b760b00b",
+    "lookaround-0085": "88d755049f078ed566281c83b8d58cc4c08deda0de4e2f0cc65795c46fdac79a",
+    "lookaround-0086": "08c94499cfda65aff3a8a72f198628f48f5bfae48a362f75319ea9417f76fe3d",
+    "lookaround-0087": "d2e4d69338a28362b86862387db20da21c88b27da90d482cc8b3154ede1fc4c9",
+    "lookaround-0088": "7c0e4f681cedf6702cf52a6821166a8ddbe4f87ab7550f59079664881abaa4b9",
+    "lookaround-0089": "bf555278add98b53be7baeba9b7a6fd21c62c1655a96183b56280150343de888",
+    "lookaround-0090": "ace74aa9ae815b453ecbfa6d034b59aa8e8e2fb01e2401dd3e09a2811d499894",
+    "lookaround-0091": "5679a610c60bb501ce7ba6347c14530b267e2ffcedb17531e94a3d286fed7379",
+    "lookaround-0092": "1f6c27a74821a8766f334f1aa4a80d33a953a9ff41fe689b95742666d2ff525b",
+    "lookaround-0093": "1bc5d0f0f3d3e5765aaa0f5827a01698ffda6f9d57a6dc9155f598f2388e6f65",
+    "lookaround-0094": "cab447ff34b25f899dace1a949d6ef5a166c4aba0ceef4b73bf8e455012cd75b",
+    "lookaround-0095": "0a721c744e581a0bee5f8d5562c4b29fc01c32373b289ac0d025aff7238d2cfd",
+    "lookaround-0096": "a03e5538b1ffa9d88be22a603767c90490eb4a421fa3a6c8c6926c72731422eb",
+    "lookaround-0097": "e497d65b89eb23c3318587535669f67f1ac9bc13ce2a90554d6bde40a527fd23",
+    "lookaround-0098": "290c32c85c708dcdc421a1c45bb6374f0a7cf48f9f01345afed5b3d42e8091b0",
+    "lookaround-0099": "ddc013b6a1390f44fa8a0278c7c1d7055da88eae4f51ce1bf3d11c841e5bfaff",
+    "lookaround-0100": "cbdbd6d4ed7a43693d2f34739140fe1b900dd78e93551dac19415e6f54d01258",
+    "lookaround-0101": "bf493e15c70964739d410bed579bab64e44cf88731dcff01e843b1c882b694d3",
+    "lookaround-0102": "14be7d4732646b2166daf8b23be1c8cb502d6094e732429fcaddbd6b95eccfaf",
+    "lookaround-0103": "f4ff1d0c52329805956093bd21c8b1ec91d0b6074a2bbb5db185d5f43157ce3d",
+    "lookaround-0104": "283ddc6bba59814e4a914c7fd9076454a00ac080ab0cccfc98b2d9460b7dcb01",
+    "lookaround-0105": "040a122d3ac2a775f9af6440d9a4bd094b48cbbcbc60118a88513c1caa1a4bc4",
+    "lookaround-0106": "ea05a3bb74155a544a9dd58365d03bcd9d0acdc95e3efab49635ccb0200e6b3e",
+    "lookaround-0107": "41f74bd4590eceab56ff247d4381b98fc0bcac921ddde56451ce8aec1c788430",
+    "lookaround-0108": "49b71138d8fbf51d82462ec55b1ea2ec9500b6b24df9d78df62e1ff6e43c4a6e",
+    "lookaround-0109": "eaa58bc7a37b3b07127e8904c6b83f6224c716b522d093687639793206b4b26d",
+    "lookaround-0110": "ede11ce12169cf9149eed452c21c4108e2f637a5248b9a2b93924a061cb59f58",
+    "lookaround-0111": "12782fa36bdf93c05f67147920c6ceba46103d87a3df33a26a00957391aa1eb4",
+    "lookaround-0112": "3dbfa9492a1cbd294ee23f5705c327964078f990217432496901a663305bc958",
+    "lookaround-0113": "98613c39859fb6ce6e0769397b14bce45b88e6c17fd87aeddbf3ec82ec27e26a",
+    "lookaround-0114": "cc529b279ef4ceb5c12cb73de6605bfe9140ec33a7882c8f33fd8679edd3d600",
+    "lookaround-0115": "affea80aaeeaef68001426afacd605822dd08a4d21e9dd7f6c1bb50d4fb082d6",
+    "lookaround-0116": "89c1e8377caf31a55c6e88ef45c582d1c1ce461b8eafcf6e5fbe87a7417ff5c5",
+    "lookaround-0117": "08be2b481467df912be06345c0aa99cf7cf472fb19985df34a057523aa12a80a",
+    "lookaround-0118": "23e339a30d3f1b54b6aeae3954b613ecc261a5679a5412fb8547b26c7c86ce7d",
+    "lookaround-0119": "5b0112f8546e29014aea438943c64cf0afbf0c8f37693dae5fb072b0b8900a1b"
+  },
+  "preview": "D:\\PR\\HUDI\\pet-sources\\kitty-girl\\animations\\look-around\\blender-v1\\preview-black-white.mp4",
+  "rawEndpointsAvailable": true,
+  "minimumStrongAlphaMarginPx": 20,
+  "maximumRelativeAlphaAreaChange": 0.04071788852631322,
+  "minimumCoreAlphaP01": 1.0,
+  "valid": true
+}

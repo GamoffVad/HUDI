@@ -22,6 +22,9 @@ internal static class Program
             if (args.Contains("--verify-chat")) return ChatVerification.Run().GetAwaiter().GetResult();
             if(args.Length==2&&args[0]=="--verify-pets")return PetCatalogVerification.Run(args[1]);
             if(args.Length==2&&args[0]=="--verify-sites")return FavoriteSitesVerification.Run(args[1]);
+            if(args.Length==2&&args[0]=="--verify-appearance")return PetAppearanceVerification.Run(args[1]);
+            if(args.Length==2&&args[0]=="--verify-conversation")return ConversationVerification.Run(args[1]);
+            if(args.Length==2&&args[0]=="--verify-desktop-reactions")return DesktopReactionsVerification.Run(args[1]);
             if(args.Length==2&&args[0]=="--preview-sites")return FavoriteSitesVerification.Preview(args[1]);
             if(args.Length==3&&args[0]=="--verify-pet-package")return PetPackageCommands.Verify(args[1],args[2]);
             if(args.Length==3&&args[0]=="--import-pet")return PetPackageCommands.Import(args[1],args[2]);
@@ -113,14 +116,16 @@ internal sealed partial class PetWindow : Window
         Loaded += (_, _) =>
         {
             RestoreSettings();
+            RefreshDesktopReactions();
             previousTime = clock.Elapsed.TotalSeconds;
             CompositionTarget.Rendering += Render;
         };
-        Closed += (_, _) => { CompositionTarget.Rendering -= Render;clickSequence.Stop();DisposeChat();SaveSettings();if(!selectedPet.BuiltIn)library.Dispose(); };
+        Closed += (_, _) => { CompositionTarget.Rendering -= Render;clickSequence.Stop();DisposeDesktopReactions();DisposeChat();SaveSettings();if(!selectedPet.BuiltIn)library.Dispose(); };
     }
 
     internal void BeginPointerGesture(Point point,int clickCount,bool control)
     {
+        desktopReactions.Clear();
         clickSequence.Stop();pressedClickCount=Math.Clamp(clickCount,1,3);pressedControl=control;
         dragOrigin=point;dragging=false;
         if(!character.CaptureMouse())CancelPointerGesture();
@@ -131,7 +136,7 @@ internal sealed partial class PetWindow : Window
         if(!dragging)
         {
             if(Math.Abs(point.X-start.X)+Math.Abs(point.Y-start.Y)<4)return false;
-            dragging=true;CancelPetClicks();CloseFavoriteSites();
+            dragging=true;CancelPetClicks();
         }
         // Keep the grabbed body point under the pointer. Native DragMove
         // moves the whole padded window and can constrain its empty edges.
@@ -168,8 +173,10 @@ internal sealed partial class PetWindow : Window
     }
     internal void QueuePetClick(int count,bool control=false)
     {
-        clickSequence.Stop();pendingClicks=Math.Clamp(count,1,3);pendingControl=control;
-        if(ClickBindings.Get(pendingClicks,control)==PetClickAction.None)return;
+        CancelPetClicks();
+        int clicks=Math.Clamp(count,1,3);
+        if(ClickBindings.Get(clicks,control)==PetClickAction.None)return;
+        pendingClicks=clicks;pendingControl=control;
         if(ClickBindings.HasLaterAction(pendingClicks,control))clickSequence.Start();
         else CommitPetClicks();
     }
@@ -199,9 +206,10 @@ internal sealed partial class PetWindow : Window
         }
         if (dt < 1d / 100) return;
         previousTime = now;
+        UpdateDesktopReactions();
         if (!paused)
         {
-            character.Apply(behavior.Update(dt * speed));
+            character.Apply(behavior.Update(dt * speed, autonomous: !UserActionsOnly));
             renderedFrames++;
         }
         if (uiTest && now - lastDiagnostics > .25)
@@ -236,7 +244,6 @@ internal sealed partial class PetWindow : Window
     internal void ResizePet(double height)
     {
         if (!double.IsFinite(height)) return;
-        CloseFavoriteSites();
         double ratio=library.DisplayBounds.Height/library.Height;
         double displayHeight=Math.Clamp(height*ratio,180,Math.Max(180,Math.Min(720,SystemParameters.VirtualScreenHeight)));
         var display=DisplayedBounds;

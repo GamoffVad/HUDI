@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>HUDI</AssemblyName>
+    <Version>7.3.19</Version>
+    <DefineConstants>$(DefineConstants);HUDI_AVALONIA</DefineConstants>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <HudiSprites Condition="'$(HudiSprites)' == ''">../../output/hudi-blender-v1/sprites.zip</HudiSprites>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.23" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.23" />
+    <Compile Include="../HudiPet/AppStorage.cs;../HudiPet/SpriteLibrary.cs;../HudiPet/PetBehavior.cs;../HudiPet/PetCatalog.cs;../HudiPet/PetMotionPreference.cs;../HudiPet/PetAppearance.cs;../HudiPet/PetIconLibrary.cs;../HudiPet/ClickBindings.cs;../HudiPet/NotesStore.cs;../HudiPet/FavoriteSitesStore.cs;../HudiPet/ModelSettings.cs;../HudiPet/ModelClient.cs;../HudiPet/ChatSession.cs" LinkBase="Shared" />
+    <None Include="$(HudiSprites)" Link="sprites.zip" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Compile Include="../HudiPet/SitesArc.cs" Link="Shared/SitesArc.cs" />
+    <Compile Include="../HudiPet/DesktopReactionPolicy.cs;../HudiPet/ActivityDetectors.cs" LinkBase="Shared" />
+  </ItemGroup>
+</Project>

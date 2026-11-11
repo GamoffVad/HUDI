@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>HUDI</AssemblyName>
     <RootNamespace>HudiPet</RootNamespace>
-    <Version>7.3.10</Version>
+    <Version>7.3.19</Version>
     <Description>HUDI — animated desktop companion</Description>
     <ApplicationIcon>../../output/hudi-pet-v3/HUDI.ico</ApplicationIcon>
     <PublishSingleFile>true</PublishSingleFile><EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
@@ -24,8 +24,8 @@
     <Compile Include="../Shared/VisualPreview.cs" Link="VisualPreview.cs" />
     <Compile Include="../Shared/FrostedBackdrop.cs" Link="FrostedBackdrop.cs" />
     <EmbeddedResource Include="../../output/hudi-pet-v7/license-public.key" LogicalName="HUDI.license-public.key" />
-    <EmbeddedResource Include="../../output/hudi-pet-v7.3/sprites.zip" LogicalName="HudiPet.sprites.zip" />
-    <Compile Remove="GazeFrame.cs;DesktopActivityMonitor.cs" />
+    <EmbeddedResource Include="../../output/hudi-blender-v1/sprites.zip" LogicalName="HudiPet.sprites.zip" />
+    <Compile Remove="GazeFrame.cs" />
   </ItemGroup>
   <Target Name="BuildNativeBackdrop" BeforeTargets="PrepareForBuild">
     <Exec Command="powershell.exe -NoProfile -File &quot;$(MSBuildProjectDirectory)/../../tools/build-native-backdrop.ps1&quot;" />

@@ -1,0 +1,384 @@
+{
+  "tool": "Blender",
+  "transport": "MCP for Blender",
+  "version": "5.2.2 LTS",
+  "nodes": [
+    {
+      "name": "Group Output",
+      "type": "NodeGroupOutput",
+      "inputs": {
+        "Socket_0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Image",
+      "type": "CompositorNodeImage",
+      "inputs": {}
+    },
+    {
+      "name": "Keying",
+      "type": "CompositorNodeKeying",
+      "inputs": {
+        "Image": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "Key Color": [
+          0.09803921729326248,
+          1.0,
+          0.0470588244497776,
+          1.0
+        ],
+        "Preprocess Blur Size": 0,
+        "Key Balance": 1.0,
+        "Black Level": 0.03500000014901161,
+        "White Level": 0.9800000190734863,
+        "Edge Search Size": 3,
+        "Edge Tolerance": 0.10000000149011612,
+        "Garbage Matte": 0.0,
+        "Core Matte": 0.0,
+        "Postprocess Blur Size": 0,
+        "Postprocess Dilate Size": 0,
+        "Postprocess Feather Size": 0,
+        "Feather Falloff": "Smooth",
+        "Despill Strength": 0.0,
+        "Despill Balance": 1.0
+      }
+    },
+    {
+      "name": "Color Spill",
+      "type": "CompositorNodeColorSpill",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Fac": 1.0,
+        "Spill Channel": "G",
+        "Limit Method": "Average",
+        "Limit Channel": "R",
+        "Limit Strength": 1.0,
+        "Use Spill Strength": false,
+        "Spill Strength": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Convert Colorspace",
+      "type": "CompositorNodeConvertColorSpace",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "fromColorSpace": "Linear Rec.709",
+      "toColorSpace": "sRGB"
+    },
+    {
+      "name": "Alpha Convert",
+      "type": "CompositorNodePremulKey",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Type": "To Straight"
+      }
+    },
+    {
+      "name": "Convert Colorspace.001",
+      "type": "CompositorNodeConvertColorSpace",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "fromColorSpace": "sRGB",
+      "toColorSpace": "Linear Rec.709"
+    },
+    {
+      "name": "Alpha Convert.001",
+      "type": "CompositorNodePremulKey",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Type": "To Premultiplied"
+      }
+    },
+    {
+      "name": "Separate Color",
+      "type": "CompositorNodeSeparateColor",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Separate Color.001",
+      "type": "CompositorNodeSeparateColor",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Math",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "GREATER_THAN"
+    },
+    {
+      "name": "Safe full-motion envelope",
+      "type": "CompositorNodeBoxMask",
+      "inputs": {
+        "Operation": "Add",
+        "Mask": 0.0,
+        "Value": 1.0,
+        "Position": [
+          0.5,
+          0.5
+        ],
+        "Size": [
+          0.9950000047683716,
+          0.9950000047683716
+        ],
+        "Rotation": 0.0
+      }
+    },
+    {
+      "name": "Math.001",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 1.0,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "SUBTRACT"
+    },
+    {
+      "name": "Separate Color.002",
+      "type": "CompositorNodeSeparateColor",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Math.002",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "ADD"
+    },
+    {
+      "name": "Math.003",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Math.004",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "GREATER_THAN"
+    },
+    {
+      "name": "Math.005",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 1.0,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "SUBTRACT"
+    }
+  ],
+  "links": [
+    [
+      "Keying",
+      "Image",
+      "Color Spill",
+      "Image"
+    ],
+    [
+      "Image",
+      "Image",
+      "Convert Colorspace",
+      "Image"
+    ],
+    [
+      "Convert Colorspace",
+      "Image",
+      "Keying",
+      "Image"
+    ],
+    [
+      "Color Spill",
+      "Image",
+      "Alpha Convert",
+      "Image"
+    ],
+    [
+      "Alpha Convert",
+      "Image",
+      "Convert Colorspace.001",
+      "Image"
+    ],
+    [
+      "Convert Colorspace.001",
+      "Image",
+      "Alpha Convert.001",
+      "Image"
+    ],
+    [
+      "Alpha Convert.001",
+      "Image",
+      "Group Output",
+      "Socket_0"
+    ],
+    [
+      "Convert Colorspace",
+      "Image",
+      "Separate Color.001",
+      "Image"
+    ],
+    [
+      "Separate Color.001",
+      "Green",
+      "Math",
+      "Value"
+    ],
+    [
+      "Separate Color.001",
+      "Red",
+      "Math",
+      "Value_001"
+    ],
+    [
+      "Safe full-motion envelope",
+      "Mask",
+      "Math.001",
+      "Value_001"
+    ],
+    [
+      "Convert Colorspace",
+      "Image",
+      "Separate Color.002",
+      "Image"
+    ],
+    [
+      "Separate Color.002",
+      "Red",
+      "Math.002",
+      "Value"
+    ],
+    [
+      "Separate Color.002",
+      "Blue",
+      "Math.002",
+      "Value_001"
+    ],
+    [
+      "Math.002",
+      "Value",
+      "Math.003",
+      "Value"
+    ],
+    [
+      "Separate Color.002",
+      "Green",
+      "Math.004",
+      "Value"
+    ],
+    [
+      "Math.003",
+      "Value",
+      "Math.004",
+      "Value_001"
+    ],
+    [
+      "Math.004",
+      "Value",
+      "Color Spill",
+      "Fac"
+    ],
+    [
+      "Safe full-motion envelope",
+      "Mask",
+      "Math.005",
+      "Value_001"
+    ],
+    [
+      "Math.005",
+      "Value",
+      "Keying",
+      "Garbage Matte"
+    ]
+  ],
+  "nativeResolution": [
+    1440,
+    1440
+  ],
+  "format": "16-bit straight-alpha sRGB PNG",
+  "noSilhouetteErosion": true,
+  "noPostKeyAlphaBlur": true,
+  "shadow": "Native contact shadow retained by keying",
+  "creditsSpent": 0,
+  "sourceAudit": "source-boundary-audit.json",
+  "maskReason": "Faint source flyaway tips reach y=10px; safe outer mask inset only3.6px",
+  "selectedProfile": "Keying Despill Strength 0; independent conditional average RGB Color Spill strength1",
+  "rejectedProbe": "Source-background unmix produced a blue fringe; not used in delivered frames",
+  "limitations": "Source motion softness and warm hair highlights remain; no claim of perfect edges"
+}

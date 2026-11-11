@@ -45,6 +45,16 @@ installation.json
 /pet-sources/**/animations/**/preview-light-dark.mp4
 /pet-sources/**/animations/**/final-preview.mp4
 /pet-sources/**/qa/
+/pet-sources/**/animations/**/blender-v*/input/
+/pet-sources/**/animations/**/blender-v*/rgba/
+/pet-sources/**/animations/**/blender-v*/neutral-plate/
+/pet-sources/tousled-girl/corridorkey-reference-test/
+/pet-sources/tousled-girl/resolve/
+/pet-sources/tousled-girl/animations/look-surprise-kling4/cutout/
+/pet-sources/tousled-girl/animations/look-surprise-kling4/edge-review/
+/pet-sources/tousled-girl/animations/look-surprise-kling4/final/
+/pet-sources/tousled-girl/animations/look-surprise-kling4/finish-pilot/
+/pet-sources/tousled-girl/animations/look-surprise-kling4/revised-v*/
 /pet-sources/kitty-girl/animations/surprised-step/
 /assets/higgsfield/2026-11-08-hood-juggle/
 /assets/higgsfield/2026-11-08-salute-water/hudi-notebook-fist-v*.mp4

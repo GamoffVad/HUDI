@@ -41,7 +41,7 @@ internal sealed class ClickBindingsStore
     private static readonly JsonSerializerOptions Options=new(){WriteIndented=true,Converters={new JsonStringEnumConverter<PetClickAction>(allowIntegerValues:false)}};
     private readonly string path;
     private bool recovered;
-    internal ClickBindingsStore(string? directory=null)=>path=Path.Combine(directory??PetWindow.SettingsDirectory,"mouse-controls.json");
+    internal ClickBindingsStore(string? directory=null)=>path=Path.Combine(directory??AppStorage.Directory,"mouse-controls.json");
     internal static bool IsDataError(Exception error)=>error is IOException or InvalidDataException or UnauthorizedAccessException or JsonException or NotSupportedException or ArgumentException;
     private static void Validate(ClickBindings bindings)
     {

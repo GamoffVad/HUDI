@@ -9,6 +9,8 @@ internal sealed partial class PetWindow
     private FavoriteSitesOrbit? favoriteSitesOrbit;
     internal FavoriteSitesOrbit? SitesOrbit=>favoriteSitesOrbit;
     internal bool IgnoreGlobalSitesInput=>uiTest||smokeTest;
+    internal bool HasPointerGesture=>dragOrigin is not null;
+    internal bool ContainsPetScreenPoint(System.Windows.Point point)=>character.ContainsCharacter(character.PointFromScreen(point));
     private void InitializeFavoriteSites(FavoriteSitesStore? store)
     {
         favoriteSitesStore=store??new FavoriteSitesStore(uiTest||smokeTest?Path.Combine(SettingsDirectory,"ui-test"):null);

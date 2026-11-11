@@ -39,7 +39,7 @@ internal sealed partial class PetWindow
             if(chat.State==ChatState.Thinking){ShowThinking();return;}
             thinkingWindow?.Close();thinkingWindow=null;
             if(chat.State==ChatState.Error)EnsureChat(false,window=>window.ShowError());
-            else if(chat.State==ChatState.Canceled)EnsureChat(false,window=>window.ShowInput(chat.LastQuestion));
+            else if(chat.State==ChatState.Canceled)EnsureChat(false,window=>{if(window.View==ChatView.Answer)window.ShowAnswer();else window.ShowInput(chat.LastQuestion);});
             else if(chat.State==ChatState.Answered)EnsureChat(false,window=>window.ShowAnswer());
         };
     }
@@ -62,6 +62,7 @@ internal sealed partial class PetWindow
     }
     private void ShowThinking()
     {
+        if(chatWindow is {IsClosing:false,IsVisible:true}){chatWindow.ShowAnswer();return;}
         chatWindow?.Close();chatWindow=null;
         if(thinkingWindow is not null)return;
         thinkingWindow=new ThinkingWindow(this);thinkingWindow.Show();
@@ -73,7 +74,7 @@ internal sealed partial class PetWindow
         if(chat.Busy){ShowThinking();return;}
         EnsureChat(true,window=>
         {
-            if(question || string.IsNullOrEmpty(chat.Answer))window.ShowInput();
+            if(string.IsNullOrEmpty(chat.Answer))window.ShowInput();
             else window.ShowAnswer();
         });
     }

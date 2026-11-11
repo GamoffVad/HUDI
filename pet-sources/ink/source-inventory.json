@@ -1,0 +1,112 @@
+[
+  {
+    "name": "hood",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-loop\\ink-loop.mp4",
+    "sha256": "c91b340e4a580d1ad67038c1336ff281b53c3ef09f18e2e8c56c26aa9f0eaba2",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\hood",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\hood\\input"
+  },
+  {
+    "name": "lookaround",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-six\\look-around.mp4",
+    "sha256": "770c18af4382fef13d31a18cefb03a57bcd217f0e4a8f3bffd6586e01e2ccb02",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\lookaround",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\lookaround\\input"
+  },
+  {
+    "name": "surprise",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-six\\surprise-v2.mp4",
+    "sha256": "6a8dedf965e23f0867b272f89d85861cd1a378c976e67a6ae49c11fdb2c9ff2f",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\surprise",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\surprise\\input"
+  },
+  {
+    "name": "temple",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-six\\temple-v2.mp4",
+    "sha256": "d1c6fe538363101fa00edaf591d54d9a74ba6e3326a60e71ccec2c56246d0231",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\temple",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\temple\\input"
+  },
+  {
+    "name": "skeptical",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-six\\skeptical.mp4",
+    "sha256": "fc1bdeb1e588343153b2de1bf4f6544be3280021cc8863db6756b0b7d216540c",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\skeptical",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\skeptical\\input"
+  },
+  {
+    "name": "shrug",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-six\\shrug.mp4",
+    "sha256": "ad736ac3747a5772b98448bf68e04fc2d28af59bec9f80ecc9a72ccd750dd7c1",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\shrug",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\shrug\\input"
+  },
+  {
+    "name": "dance",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-six\\dance.mp4",
+    "sha256": "784030e31c5aa02febb855574bbef8c25cf78873575a58ddb3607b0c6b4d2bd4",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\dance",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\dance\\input"
+  },
+  {
+    "name": "indignation",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-extra-reactions\\indignant-temple.mp4",
+    "sha256": "2fd8758c68947a50bfab6c8f777969ac62952a085328b6ff1380aa0f1eece40c",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\indignation",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\indignation\\input"
+  },
+  {
+    "name": "firetrick",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-fire-wide\\fire-wide.mp4",
+    "sha256": "a07c471348950d48bcabaf16861078b8892ff3c4eafbf5ae1d8e23eabb0b07c0",
+    "width": 960,
+    "height": 960,
+    "frames": 241,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\firetrick",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\firetrick\\input"
+  },
+  {
+    "name": "impatient",
+    "source": "D:\\PR\\HUDI\\assets\\pets\\ink-restart\\2026-11-08-extra-reactions\\impatient.mp4",
+    "sha256": "9894281bff3acdfcd77d786d0976786efbf64eb657ecc83b8338cd98022ae1bd",
+    "width": 960,
+    "height": 960,
+    "frames": 193,
+    "fps": 24.0,
+    "root": "D:\\PR\\HUDI\\output\\ink-blender-v2\\clips\\impatient",
+    "inputRoot": "D:\\PR\\HUDI\\output\\ink-blender-v1\\clips\\impatient\\input"
+  }
+]

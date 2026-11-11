@@ -1,0 +1,16 @@
+{
+  "tool": "Blender compositor via MCP",
+  "workingSpace": "linear premultiplied RGBA",
+  "commonNeutral": "D:\\PR\\HUDI\\output\\kitty-girl-blender-v2\\neutral.png",
+  "modifiedFrames": [
+    0,
+    1,
+    2,
+    118,
+    119,
+    120
+  ],
+  "durationEachBoundarySeconds": 0.125,
+  "purpose": "Match already-settled generated return to common neutral; no reverse or long dissolve",
+  "rawEndpointsSaved": true
+}

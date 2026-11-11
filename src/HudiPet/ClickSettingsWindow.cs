@@ -31,6 +31,36 @@ internal sealed class ClickSettingsWindow:GlassWindow
                 };
             }
         }
+        Body.Children.Add(Ui.Separator());
+        var userActions=Ui.Toggle("Только при действиях пользователя",pet.UserActionsOnly);
+        AutomationProperties.SetName(userActions,"Только при действиях пользователя");
+        userActions.Margin=new Thickness(0,8,0,4);
+        userActions.Click+=(_,_)=>
+        {
+            try{pet.SetUserActionsOnly(userActions.IsChecked==true);status.Visibility=Visibility.Collapsed;}
+            catch(Exception error) when(error is System.IO.IOException or UnauthorizedAccessException)
+            {
+                userActions.IsChecked=pet.UserActionsOnly;
+                status.Text="Не удалось сохранить режим анимации.";status.Visibility=Visibility.Visible;
+            }
+        };
+        Body.Children.Add(userActions);
+        if(pet.DesktopReactionsAvailable)
+        {
+            var reactions=Ui.Toggle("Реагировать на мои действия",pet.DesktopReactionsEnabled);
+            reactions.Margin=new Thickness(0,8,0,4);AutomationProperties.SetName(reactions,"Реагировать на мои действия");
+            bool syncing=false;
+            reactions.Click+=(_,_)=>
+            {
+                if(syncing)return;
+                try{pet.SetDesktopReactions(reactions.IsChecked==true);status.Visibility=Visibility.Collapsed;}
+                catch(Exception error) when(error is System.IO.IOException or UnauthorizedAccessException)
+                {syncing=true;reactions.IsChecked=pet.DesktopReactionsEnabled;syncing=false;status.Text="Не удалось сохранить настройку реакций.";status.Visibility=Visibility.Visible;}
+            };
+            Body.Children.Add(reactions);
+            var hint=Ui.Text(pet.DesktopReactionsStatus,11,Ui.Muted);hint.Margin=new Thickness(0,0,0,4);Body.Children.Add(hint);
+            reactions.Click+=(_,_)=>hint.Text=pet.DesktopReactionsStatus;
+        }
         Body.Children.Add(status);
     }
 }

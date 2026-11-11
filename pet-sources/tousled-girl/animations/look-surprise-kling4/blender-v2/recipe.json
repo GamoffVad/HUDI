@@ -1,0 +1,606 @@
+{
+  "tool": "Blender",
+  "transport": "MCP for Blender",
+  "version": "5.2.2 LTS",
+  "frameSize": [
+    1440,
+    1440
+  ],
+  "frames": 193,
+  "fps": 24,
+  "format": "16-bit straight-alpha sRGB PNG",
+  "nodes": [
+    {
+      "name": "Group Output",
+      "type": "NodeGroupOutput",
+      "inputs": {
+        "Socket_0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Image",
+      "type": "CompositorNodeImage",
+      "inputs": {}
+    },
+    {
+      "name": "Keying",
+      "type": "CompositorNodeKeying",
+      "inputs": {
+        "Image": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1.0
+        ],
+        "Key Color": [
+          0.09803921729326248,
+          1.0,
+          0.05098039284348488,
+          1.0
+        ],
+        "Preprocess Blur Size": 0,
+        "Key Balance": 1.0,
+        "Black Level": 0.02500000037252903,
+        "White Level": 0.9800000190734863,
+        "Edge Search Size": 3,
+        "Edge Tolerance": 0.10000000149011612,
+        "Garbage Matte": 0.0,
+        "Core Matte": 0.0,
+        "Postprocess Blur Size": 0,
+        "Postprocess Dilate Size": 0,
+        "Postprocess Feather Size": 0,
+        "Feather Falloff": "Smooth",
+        "Despill Strength": 0.0,
+        "Despill Balance": 1.0
+      }
+    },
+    {
+      "name": "Color Spill",
+      "type": "CompositorNodeColorSpill",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Fac": 1.0,
+        "Spill Channel": "G",
+        "Limit Method": "Average",
+        "Limit Channel": "R",
+        "Limit Strength": 1.0,
+        "Use Spill Strength": false,
+        "Spill Strength": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Convert Colorspace",
+      "type": "CompositorNodeConvertColorSpace",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "fromColorSpace": "Linear Rec.709",
+      "toColorSpace": "sRGB"
+    },
+    {
+      "name": "Alpha Convert",
+      "type": "CompositorNodePremulKey",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Type": "To Straight"
+      }
+    },
+    {
+      "name": "Convert Colorspace.001",
+      "type": "CompositorNodeConvertColorSpace",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "fromColorSpace": "sRGB",
+      "toColorSpace": "Linear Rec.709"
+    },
+    {
+      "name": "Alpha Convert.001",
+      "type": "CompositorNodePremulKey",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Type": "To Premultiplied"
+      }
+    },
+    {
+      "name": "Separate Color",
+      "type": "CompositorNodeSeparateColor",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Separate Color.001",
+      "type": "CompositorNodeSeparateColor",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Math",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "GREATER_THAN"
+    },
+    {
+      "name": "Safe full-motion envelope",
+      "type": "CompositorNodeBoxMask",
+      "inputs": {
+        "Operation": "Add",
+        "Mask": 0.0,
+        "Value": 1.0,
+        "Position": [
+          0.5,
+          0.5
+        ],
+        "Size": [
+          0.8799999952316284,
+          0.9800000190734863
+        ],
+        "Rotation": 0.0
+      }
+    },
+    {
+      "name": "Math.001",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 1.0,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "SUBTRACT"
+    },
+    {
+      "name": "Separate Color.002",
+      "type": "CompositorNodeSeparateColor",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Math.002",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "ADD"
+    },
+    {
+      "name": "Math.003",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Math.004",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "GREATER_THAN"
+    },
+    {
+      "name": "Math.005",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "SUBTRACT"
+    },
+    {
+      "name": "Math.006",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.009999999776482582,
+        "Value_002": 0.5
+      },
+      "operation": "SUBTRACT"
+    },
+    {
+      "name": "Math.007",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 12.0,
+        "Value_002": 0.5
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Math.008",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 1.0,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "SUBTRACT"
+    },
+    {
+      "name": "Math.009",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 4.0,
+        "Value_002": 0.5
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Math.010",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "MULTIPLY"
+    },
+    {
+      "name": "Dark hair spill; protect skin and eye whites",
+      "type": "CompositorNodeColorSpill",
+      "inputs": {
+        "Image": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "Fac": 1.0,
+        "Spill Channel": "G",
+        "Limit Method": "Average",
+        "Limit Channel": "R",
+        "Limit Strength": 0.75,
+        "Use Spill Strength": false,
+        "Spill Strength": [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "Math.011",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.014999999664723873,
+        "Value_002": 0.5
+      },
+      "operation": "ADD"
+    },
+    {
+      "name": "Math.012",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "GREATER_THAN"
+    },
+    {
+      "name": "Math.013",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "MAXIMUM"
+    },
+    {
+      "name": "Math.014",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.550000011920929,
+        "Value_002": 0.5
+      },
+      "operation": "LESS_THAN"
+    },
+    {
+      "name": "Math.015",
+      "type": "ShaderNodeMath",
+      "inputs": {
+        "Value": 0.5,
+        "Value_001": 0.5,
+        "Value_002": 0.5
+      },
+      "operation": "MULTIPLY"
+    }
+  ],
+  "links": [
+    [
+      "Keying",
+      "Image",
+      "Color Spill",
+      "Image"
+    ],
+    [
+      "Image",
+      "Image",
+      "Convert Colorspace",
+      "Image"
+    ],
+    [
+      "Convert Colorspace",
+      "Image",
+      "Keying",
+      "Image"
+    ],
+    [
+      "Alpha Convert",
+      "Image",
+      "Convert Colorspace.001",
+      "Image"
+    ],
+    [
+      "Convert Colorspace.001",
+      "Image",
+      "Alpha Convert.001",
+      "Image"
+    ],
+    [
+      "Alpha Convert.001",
+      "Image",
+      "Group Output",
+      "Socket_0"
+    ],
+    [
+      "Convert Colorspace",
+      "Image",
+      "Separate Color.001",
+      "Image"
+    ],
+    [
+      "Separate Color.001",
+      "Green",
+      "Math",
+      "Value"
+    ],
+    [
+      "Separate Color.001",
+      "Red",
+      "Math",
+      "Value_001"
+    ],
+    [
+      "Safe full-motion envelope",
+      "Mask",
+      "Math.001",
+      "Value_001"
+    ],
+    [
+      "Math.001",
+      "Value",
+      "Keying",
+      "Garbage Matte"
+    ],
+    [
+      "Convert Colorspace",
+      "Image",
+      "Separate Color.002",
+      "Image"
+    ],
+    [
+      "Separate Color.002",
+      "Red",
+      "Math.002",
+      "Value"
+    ],
+    [
+      "Separate Color.002",
+      "Blue",
+      "Math.002",
+      "Value_001"
+    ],
+    [
+      "Math.002",
+      "Value",
+      "Math.003",
+      "Value"
+    ],
+    [
+      "Separate Color.002",
+      "Green",
+      "Math.004",
+      "Value"
+    ],
+    [
+      "Math.003",
+      "Value",
+      "Math.004",
+      "Value_001"
+    ],
+    [
+      "Separate Color.002",
+      "Green",
+      "Math.005",
+      "Value"
+    ],
+    [
+      "Math.003",
+      "Value",
+      "Math.005",
+      "Value_001"
+    ],
+    [
+      "Math.005",
+      "Value",
+      "Math.006",
+      "Value"
+    ],
+    [
+      "Math.006",
+      "Value",
+      "Math.007",
+      "Value"
+    ],
+    [
+      "Keying",
+      "Matte",
+      "Math.008",
+      "Value_001"
+    ],
+    [
+      "Math.008",
+      "Value",
+      "Math.009",
+      "Value"
+    ],
+    [
+      "Math.009",
+      "Value",
+      "Math.010",
+      "Value"
+    ],
+    [
+      "Color Spill",
+      "Image",
+      "Dark hair spill; protect skin and eye whites",
+      "Image"
+    ],
+    [
+      "Dark hair spill; protect skin and eye whites",
+      "Image",
+      "Alpha Convert",
+      "Image"
+    ],
+    [
+      "Math.004",
+      "Value",
+      "Color Spill",
+      "Fac"
+    ],
+    [
+      "Math.004",
+      "Value",
+      "Math.010",
+      "Value_001"
+    ],
+    [
+      "Math.003",
+      "Value",
+      "Math.011",
+      "Value"
+    ],
+    [
+      "Separate Color.002",
+      "Green",
+      "Math.012",
+      "Value"
+    ],
+    [
+      "Math.011",
+      "Value",
+      "Math.012",
+      "Value_001"
+    ],
+    [
+      "Separate Color.002",
+      "Red",
+      "Math.013",
+      "Value"
+    ],
+    [
+      "Separate Color.002",
+      "Blue",
+      "Math.013",
+      "Value_001"
+    ],
+    [
+      "Math.013",
+      "Value",
+      "Math.014",
+      "Value"
+    ],
+    [
+      "Math.012",
+      "Value",
+      "Math.015",
+      "Value"
+    ],
+    [
+      "Math.014",
+      "Value",
+      "Math.015",
+      "Value_001"
+    ],
+    [
+      "Math.015",
+      "Value",
+      "Dark hair spill; protect skin and eye whites",
+      "Fac"
+    ]
+  ],
+  "change": "RGB-only residual green suppression; original matte retained",
+  "despill": "Average green cap; stronger .75 limit restricted to dark source R/B below .55 with green excess>.015",
+  "creditsSpent": 0
+}

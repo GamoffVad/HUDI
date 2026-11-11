@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $releaseRoot = Join-Path $projectRoot 'output/hudi-pet-v7'
 Set-Location -LiteralPath $projectRoot
-if (-not (Test-Path -LiteralPath 'output/hudi-pet-v7.3/sprites.zip')) { throw 'Missing approved v7.3 animation pack. Run tools/prepare-hudi-emotions.py first.' }
+if (-not (Test-Path -LiteralPath 'output/hudi-blender-v1/sprites.zip')) { throw 'Missing the HUDI sprite archive. Run python tools/fetch-hudi-sprites.py first.' }
 New-Item -ItemType Directory -Force $releaseRoot | Out-Null
 function Run-Dotnet([string[]]$Arguments) { & dotnet @Arguments; if ($LASTEXITCODE -ne 0) { throw ('dotnet failed: '+($Arguments -join ' ')) } }
 function Run-Check([string]$Exe,[string[]]$Arguments) {

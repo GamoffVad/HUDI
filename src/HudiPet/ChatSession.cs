@@ -6,6 +6,7 @@ internal sealed class ChatSession : IDisposable
 {
     private readonly IModelClient client;
     private readonly List<ChatMessage> history = [];
+    internal IReadOnlyList<ChatMessage> Messages=>history.AsReadOnly();
     private CancellationTokenSource? request;
     private int generation;
     internal ChatState State { get; private set; }
@@ -19,7 +20,7 @@ internal sealed class ChatSession : IDisposable
     internal event Action? Started;
     internal event Action<bool>? Finished;
     internal ChatSession(IModelClient client) => this.client = client;
-    internal void ClearHistory() { if (!Busy) { history.Clear(); Answer = PartialAnswer = LastQuestion = ""; State = ChatState.Idle; Changed?.Invoke(); } }
+    internal void ClearHistory() { if (!Busy) { history.Clear(); Answer = PartialAnswer = LastQuestion = Error = ""; Truncated=false; State = ChatState.Idle; Changed?.Invoke(); } }
     internal void Cancel() => request?.Cancel();
     internal async Task SendAsync(string question, ModelSettings settings, string key)
     {

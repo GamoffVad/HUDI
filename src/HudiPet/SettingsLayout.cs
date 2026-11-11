@@ -11,6 +11,7 @@ internal static class SettingsAppearance
     internal static void Apply(GlassWindow window)
     {
         window.Resources.MergedDictionaries.Add(new ResourceDictionary { Source=new Uri("/HUDI;component/SettingsTheme.xaml",UriKind.Relative) });
+        window.RefreshPetTheme();
         window.Surface.Background=(Brush)window.FindResource("SettingsGlass");
         window.Surface.BorderBrush=(Brush)window.FindResource("SettingsEdge");
         ((StackPanel)window.Surface.Child).Margin=new Thickness(22,18,22,22);
