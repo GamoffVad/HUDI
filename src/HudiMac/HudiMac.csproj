@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>HUDI</AssemblyName>
-    <Version>7.3.19</Version>
+    <Version>7.3.25</Version>
     <DefineConstants>$(DefineConstants);HUDI_AVALONIA</DefineConstants>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <HudiSprites Condition="'$(HudiSprites)' == ''">../../output/hudi-blender-v1/sprites.zip</HudiSprites>
@@ -17,5 +17,7 @@
     <None Include="$(HudiSprites)" Link="sprites.zip" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Compile Include="../HudiPet/SitesArc.cs" Link="Shared/SitesArc.cs" />
     <Compile Include="../HudiPet/DesktopReactionPolicy.cs;../HudiPet/ActivityDetectors.cs" LinkBase="Shared" />
+    <Compile Include="../HudiPet/DesktopEdgeCue.cs" Link="Shared/DesktopEdgeCue.cs" />
+    <Compile Include="../HudiPet/ProviderPresets.cs" Link="Shared/ProviderPresets.cs" />
   </ItemGroup>
 </Project>

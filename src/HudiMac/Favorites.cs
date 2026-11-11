@@ -79,7 +79,7 @@ internal sealed partial class MacPetWindow
         if (orbit.Count == 0) return;
         var screen = Screens.ScreenFromWindow(this) ?? Screens.Primary;
         if (screen is null) return;
-        double scale = RenderScaling;
+        double scale = DesktopUnitScale;
         var display = library.DisplayBounds;
         double spriteScale = Height / library.Height;
         var body = new Rect(Position.X / scale + display.X * spriteScale,

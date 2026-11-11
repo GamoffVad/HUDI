@@ -23,7 +23,9 @@ internal sealed partial class SpriteLibrary : IDisposable
     internal double OrientationFrameSeconds { get; }
     internal string NeutralFrame { get; }
     internal Dictionary<string,ClipHold> Holds { get; } = new(StringComparer.OrdinalIgnoreCase);
+    internal Dictionary<string,DesktopEdgeCue> DesktopEdges { get; } = new(StringComparer.OrdinalIgnoreCase);
     internal string DisplayName { get; }
+    internal string? PetVersion { get; }
     internal bool IsBuiltIn { get; }
     internal double BreathAmplitude { get; }
 
@@ -50,6 +52,13 @@ internal sealed partial class SpriteLibrary : IDisposable
             DisplayBounds=new SpriteBounds(values[0],values[1],values[2],values[3]);
         }
         DisplayName=root.TryGetProperty("name",out var name)?name.GetString()??"":"";
+        if(root.TryGetProperty("petVersion",out var revision))
+        {
+            if(revision.ValueKind!=JsonValueKind.String||revision.GetString() is not {Length:>0 and <=32} version||
+                !Version.TryParse(version,out var parsed)||parsed.Build<0||parsed.Revision!=-1||parsed.ToString(3)!=version)
+                throw new InvalidDataException("Версия питомца должна быть записана в формате 1.2.3.");
+            PetVersion=version;
+        }
         BreathAmplitude=root.TryGetProperty("breathAmplitude",out var breathing)?breathing.GetDouble():builtIn?.002:0;
         if(!double.IsFinite(BreathAmplitude)||BreathAmplitude<0||BreathAmplitude>.01)throw new InvalidDataException("Амплитуда дыхания должна быть от 0 до 0,01.");
         HorizontalMirrored = root.TryGetProperty("horizontalMirrored", out var mirrored) && mirrored.GetBoolean();
@@ -66,6 +75,10 @@ internal sealed partial class SpriteLibrary : IDisposable
         if(root.TryGetProperty("roles",out var roles))foreach(var role in roles.EnumerateObject())
         {if(!Clips.TryGetValue(role.Value.GetString()??"",out var steps))throw new InvalidDataException("Не найдена анимация для роли "+role.Name);Clips[role.Name]=steps;}
         if(!Clips.ContainsKey("lookaround")&&Clips.TryGetValue("idle",out var idle))Clips["lookaround"]=idle;
+        if(root.TryGetProperty("desktopEdge",out var desktopEdge)&&desktopEdge.ValueKind==JsonValueKind.Object)
+            foreach(var entry in desktopEdge.EnumerateObject())
+                if(Clips.TryGetValue(entry.Name,out var motion)&&DesktopEdgeCue.TryRead(entry.Value,Width,Height,motion.Length,out var cue))
+                    DesktopEdges[entry.Name]=cue;
         var known=FrameIds.ToHashSet(StringComparer.Ordinal);
         if(Clips.Values.Any(steps=>steps.Length is <1 or >20000||steps.Any(s=>!known.Contains(s.Frame)||!double.IsFinite(s.Seconds)||s.Seconds<.01||s.Seconds>60)))throw new InvalidDataException("Некорректные кадры или длительности анимации.");
         if(builtIn){Holds["think"]=new(38,48,3.2);Holds["pockets"]=new(72,86,3.2);}

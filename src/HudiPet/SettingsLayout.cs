@@ -42,6 +42,7 @@ internal sealed partial class SettingsWindow
         var pets=Ui.Button("Питомцы ›",owner.OpenPetSettings,quiet:true);pets.FontSize=11;pets.Padding=new Thickness(3,4,3,4);pets.Margin=new Thickness(4,0,4,0);pets.ToolTip="Выбрать или добавить питомца";DockPanel.SetDock(pets,Dock.Right);Header.Children.Insert(1,pets);
         Body.Children.Add(new Border {Height=1,Background=new SolidColorBrush(Color.FromArgb(65,155,179,199)),Margin=new Thickness(0,0,0,12)});
         var fields=new StackPanel();
+        var release=Ui.Text($"Версия HUDI: {AppRelease.Version}",12,Ui.Muted);release.Margin=new Thickness(0,0,0,12);fields.Children.Add(release);
         var scroll=new ScrollViewer {Content=fields,VerticalScrollBarVisibility=ScrollBarVisibility.Auto,HorizontalScrollBarVisibility=ScrollBarVisibility.Disabled,MaxHeight=Math.Max(180,ScreenPlacement.WorkArea(owner).Height-228)};
         Body.Children.Add(scroll);
         provider=Select(ProviderPresets.All.Select(p=>p.Label).ToArray(),ProviderPresets.Index(settings.Provider));provider.MaxDropDownHeight=330;Row(fields,"Провайдер",provider);

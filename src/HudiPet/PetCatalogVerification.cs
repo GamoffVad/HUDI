@@ -23,18 +23,22 @@ internal static class PetCatalogVerification
         };
         return app.Run();
     }
-    internal static void Package(string path,string neutral="neutral",int width=4,bool missing=false,bool badHold=false,string displayName="Тестовый персонаж")
+    internal static void Package(string path,string neutral="neutral",int width=4,bool missing=false,bool badHold=false,string displayName="Тестовый персонаж",string? petVersion=null,bool desktopEdges=false)
     {
         using var zip=ZipFile.Open(path,ZipArchiveMode.Create);
         var steps=new[]{new{frame=neutral,seconds=.05},new{frame="second",seconds=.05}};
+        var clips=new Dictionary<string,object>{{"rest",steps},{"ponder",steps},{"celebrate",steps}};
+        var edge=new{side="right",contactX=3,minX=0,maxX=3,minY=0,maxY=3,contactStart=0,contactEnd=1};
+        if(desktopEdges){clips["edgelean"]=steps;clips["edgepeek"]=steps;}
         var manifest=new
         {
-            version="pet-1",name=displayName,frameSize=new[]{width,4},alphaPrepared=true,neutral,frames=new[]{neutral,"second"},
-            clips=new Dictionary<string,object>{{"rest",steps},{"ponder",steps},{"celebrate",steps}},
+            version="pet-1",petVersion,name=displayName,frameSize=new[]{width,4},alphaPrepared=true,neutral,frames=new[]{neutral,"second"},
+            clips,displayBounds=desktopEdges?new[]{0,0,4,3}:null,
+            desktopEdge=desktopEdges?new{edgelean=edge,edgepeek=edge}:null,
             roles=new{lookaround="rest",think="ponder",dance="celebrate"},
             holds=badHold?new Dictionary<string,object>{{"think",new{start=38,end=48,seconds=3.2}}}:new Dictionary<string,object>()
         };
-        using(var writer=new StreamWriter(zip.CreateEntry("manifest.json").Open()))writer.Write(JsonSerializer.Serialize(manifest));
+        using(var writer=new StreamWriter(zip.CreateEntry("manifest.json").Open()))writer.Write(JsonSerializer.Serialize(manifest,new JsonSerializerOptions{DefaultIgnoreCondition=System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull}));
         foreach(string id in missing?new[]{neutral}:new[]{neutral,"second"})
         {
             byte[] pixels=new byte[4*4*4];for(int i=0;i<pixels.Length;i+=4){pixels[i]=(byte)(id==neutral?150:90);pixels[i+1]=160;pixels[i+2]=220;pixels[i+3]=255;}
@@ -50,6 +54,7 @@ internal static class PetCatalogVerification
         catalog.Select(pet);checks["selection_persists"]=new PetCatalog(Path.Combine(testRoot,"collection")).Selected().Id==pet.Id;
         using(var library=catalog.Open(pet))
         {
+            checks["legacy_package_displays_its_fingerprint"]=library.PetVersion is null&&pet.VersionLabel(library)=="сборка "+pet.Hash[..8].ToLowerInvariant();
             foreach(var check in RandomActionVerification.Run(library))checks["imported_"+check.Key]=check.Value;
             var engine=new PetBehavior(3,library);var visual=new PetVisual(library);
             for(int i=0;i<500;i++)visual.Apply(engine.Update(.05));
@@ -131,7 +136,7 @@ internal static class PetCatalogVerification
     {
         string root=Path.Combine(testRoot,"dedup-collection");var catalog=new PetCatalog(root);
         string first=Path.Combine(testRoot,"revision-first.pet"),second=Path.Combine(testRoot,"revision-second.pet");
-        Package(first,displayName:"Розовая девочка");Package(second,neutral:"updated",displayName:"  РОЗОВАЯ   ДЕВОЧКА  ");
+        Package(first,displayName:"Розовая девочка",petVersion:"1.0.0");Package(second,neutral:"updated",displayName:"  РОЗОВАЯ   ДЕВОЧКА  ",petVersion:"1.1.0");
         var pet=catalog.Import(first);catalog.Select(pet);
         using(var live=catalog.Open(pet))
         {
@@ -139,6 +144,7 @@ internal static class PetCatalogVerification
             using var version=catalog.Open(updated);
             checks["same_name_update_keeps_id"]=updated.Id==pet.Id&&catalog.List().Length==2;
             checks["active_package_update_is_atomic"]=version.NeutralFrame=="updated"&&live.NeutralFrame=="neutral"&&File.Exists(pet.Package);
+            checks["pet_version_changes_independently"]=pet.VersionLabel(live)=="1.0.0"&&updated.VersionLabel(version)=="1.1.0"&&Version.TryParse(AppRelease.Version,out _);
             checks["update_preserves_selection"]=catalog.Selected().Id==pet.Id;
             checks["updated_package_reimport_reused"]=catalog.Import(second).Package==updated.Package;
             pet=updated;
@@ -146,8 +152,11 @@ internal static class PetCatalogVerification
         var window=new PetWindow(false,true,catalog);
         try
         {
-            var updatedAgain=catalog.Import(first);await window.SelectPetAsync(updatedAgain);
+            var updatedAgain=catalog.Import(first);
+            checks["active_and_installed_revisions_are_distinguished"]=window.HasPetUpdate(updatedAgain)&&window.ActivePetVersion=="1.1.0";
+            await window.SelectPetAsync(updatedAgain);
             checks["active_same_id_revision_can_be_selected"]=window.SelectedPetId==pet.Id&&window.PetName=="Розовая девочка"&&catalog.Selected().Hash==updatedAgain.Hash;
+            checks["active_version_updates_without_changing_identity"]=!window.HasPetUpdate(updatedAgain)&&window.ActivePetVersion=="1.0.0";
         }
         finally{window.Close();}
         pet=catalog.Selected();

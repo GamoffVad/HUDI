@@ -8,13 +8,14 @@ internal sealed class MacDesktopActivity
     private const string CoreGraphics = "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics";
     private const int Session = 0;
     private const uint KeyDown = 10, AnyInput = uint.MaxValue;
+    private const uint MouseMoved = 5, LeftMouseDragged = 6, RightMouseDragged = 7, OtherMouseDragged = 27;
     private static readonly HashSet<string> Editors = new(StringComparer.OrdinalIgnoreCase)
     {
         "com.apple.TextEdit", "com.apple.Preview", "com.apple.iWork.Pages", "com.apple.iWork.Numbers",
         "com.apple.iWork.Keynote", "com.microsoft.Word", "com.microsoft.Excel", "com.microsoft.Powerpoint",
         "org.libreoffice.script", "com.adobe.Acrobat.Pro"
     };
-    private readonly TypingBurstDetector typing = new();
+    private readonly InputBurstDetector typing = new(), pointer = new();
     private readonly IdleActivityDetector idle = new();
     private readonly IntPtr workspace = Send(objc_getClass("NSWorkspace"), sel_registerName("sharedWorkspace"));
     private readonly IntPtr frontmost = sel_registerName("frontmostApplication");
@@ -25,6 +26,7 @@ internal sealed class MacDesktopActivity
     private readonly IntPtr create = sel_registerName("new");
     private readonly IntPtr drain = sel_registerName("drain");
     private uint previousKeys = CGEventSourceCounterForEventType(Session, KeyDown);
+    private uint previousPointer = PointerEvents();
     private int previousProcess;
 
     internal void Poll(Action<DesktopActivity> notify)
@@ -38,24 +40,30 @@ internal sealed class MacDesktopActivity
             bool eligible = pid > 0 && pid != Environment.ProcessId;
             long now = Environment.TickCount64;
             uint keys = CGEventSourceCounterForEventType(Session, KeyDown);
-            uint delta = unchecked(keys - previousKeys);
-            if (pid != previousProcess || !eligible)
+            if (pid != previousProcess && eligible && previousProcess != 0)
+                notify(name is not null && Editors.Contains(name) ? DesktopActivity.DocumentActivated : DesktopActivity.AppSwitched);
+            if (eligible)
             {
-                typing.Reset();
-                if (eligible && previousProcess != 0)
-                    notify(name is not null && Editors.Contains(name) ? DesktopActivity.DocumentActivated : DesktopActivity.AppSwitched);
+                if (keys != previousKeys) typing.Observe(now);
+                if (typing.Take()) notify(DesktopActivity.TypingStarted);
             }
-            else
-            {
-                for (int i = 0; i < Math.Min(delta, 3u); i++) typing.KeyDown(now);
-                if (typing.Poll(now)) notify(DesktopActivity.TypingStarted);
-            }
+            else typing.Reset();
             previousProcess = pid;
             previousKeys = keys;
+            uint pointerEvents = PointerEvents();
+            if (pointerEvents != previousPointer) pointer.Observe(now);
+            previousPointer = pointerEvents;
+            if (pointer.Take()) notify(DesktopActivity.PointerMoved);
             if (idle.Observe(CGEventSourceSecondsSinceLastEventType(Session, AnyInput)) is { } activity) notify(activity);
         }
         finally { SendVoid(pool, drain); }
     }
+
+    private static uint PointerEvents() => unchecked(
+        CGEventSourceCounterForEventType(Session, MouseMoved) +
+        CGEventSourceCounterForEventType(Session, LeftMouseDragged) +
+        CGEventSourceCounterForEventType(Session, RightMouseDragged) +
+        CGEventSourceCounterForEventType(Session, OtherMouseDragged));
 
     [DllImport(ObjC)] private static extern IntPtr objc_getClass(string name);
     [DllImport(ObjC)] private static extern IntPtr sel_registerName(string name);

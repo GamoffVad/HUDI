@@ -21,7 +21,7 @@ internal sealed class PetSettingsWindow:GlassWindow
         var intro=Ui.Text("Ваши персонажи — в одной коллекции. Выберите питомца или добавьте нового.",13,Ui.Muted);intro.Margin=new Thickness(0,0,0,16);Body.Children.Add(intro);
         choices=new ComboBox {Style=(Style)FindResource("SettingsSelect"),MaxDropDownHeight=420};System.Windows.Automation.AutomationProperties.SetName(choices,"Выбор питомца");Body.Children.Add(choices);
         preview=new Image {Height=182,Margin=new Thickness(0,18,0,12),Stretch=Stretch.Uniform};Body.Children.Add(preview);
-        details=Ui.Text("",12,Ui.Muted);details.HorizontalAlignment=HorizontalAlignment.Center;Body.Children.Add(details);
+        details=Ui.Text("",12,Ui.Muted);details.HorizontalAlignment=HorizontalAlignment.Center;details.TextAlignment=TextAlignment.Center;details.TextWrapping=TextWrapping.Wrap;Body.Children.Add(details);
         status=Ui.Text("",12,Ui.Error);status.Margin=new Thickness(0,12,0,0);status.Visibility=Visibility.Collapsed;Body.Children.Add(status);
         add=Ui.Button("+ Добавить питомца…",async()=>await Import());add.Style=(Style)FindResource("SettingsAction");add.Margin=new Thickness(0,20,0,10);Body.Children.Add(add);
         apply=Ui.Button("Выбрать питомца",async()=>await Choose(),true);apply.Style=(Style)FindResource("SettingsSave");Body.Children.Add(apply);
@@ -46,14 +46,15 @@ internal sealed class PetSettingsWindow:GlassWindow
     {
         if(choices.SelectedItem is not LocalPet pet)return;
         remove.IsEnabled=!busy&&!pet.BuiltIn;
+        bool update=owner.HasPetUpdate(pet);apply.Content=update?"Применить обновление":"Выбрать питомца";
         try
         {
             var library=owner.Pets.Open(pet);
-            try{preview.Source=library.Get(library.NeutralFrame);int count=PetBehavior.AutomaticActions.Count(a=>library.Clips.ContainsKey(PetBehavior.ClipName(a)));details.Text=pet.Name+(count>0?$" · движений: {count}":" · спокойная поза");}
+            try{preview.Source=library.Get(library.NeutralFrame);int count=PetBehavior.AutomaticActions.Count(a=>library.Clips.ContainsKey(PetBehavior.ClipName(a)));details.Text=pet.Name+(count>0?$" · движений: {count}":" · спокойная поза")+$"\nВерсия питомца: {pet.VersionLabel(library)}"+(update?$"\nСейчас запущена: {owner.ActivePetVersion}":"");}
             finally{if(!pet.BuiltIn)library.Dispose();}
             selectionValid=true;apply.IsEnabled=!busy;Message("");
         }
-        catch(Exception ex) when(IsPackError(ex)){selectionValid=false;preview.Source=null;apply.IsEnabled=false;Message("Не удалось открыть пакет. Добавьте исправленную версию питомца.");}
+        catch(Exception ex) when(IsPackError(ex)){selectionValid=false;preview.Source=null;details.Text="";apply.IsEnabled=false;Message("Не удалось открыть пакет. Добавьте исправленную версию питомца.");}
     }
     private void Busy(bool value){busy=value;choices.IsEnabled=add.IsEnabled=!value;apply.IsEnabled=!value&&selectionValid;remove.IsEnabled=!value&&choices.SelectedItem is LocalPet {BuiltIn:false};}
     private async Task Remove()
@@ -70,7 +71,7 @@ internal sealed class PetSettingsWindow:GlassWindow
     {
         var file=new OpenFileDialog {Title="Добавить питомца",Filter="Пакет питомца (*.pet;*.zip)|*.pet;*.zip"};if(file.ShowDialog(this)!=true)return;
         Busy(true);Message("Проверяю пакет питомца…");
-        try{var pet=await owner.Pets.ImportAsync(file.FileName);if(!IsClosing){Refresh(pet.Id);Message("Пакет готов. Нажмите «Выбрать питомца», чтобы применить его.");}}
+        try{var pet=await owner.Pets.ImportAsync(file.FileName);if(!IsClosing){Refresh(pet.Id);Message($"Пакет готов. Нажмите «{apply.Content}».");}}
         catch(Exception ex) when(IsPackError(ex)){if(!IsClosing)Message(ex is InvalidDataException?ex.Message:"Не удалось добавить пакет. Нужен архив с manifest.json и PNG-кадрами.");}
         finally{if(!IsClosing)Busy(false);}
     }

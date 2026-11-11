@@ -15,29 +15,68 @@ internal sealed partial class MacPetWindow
     private readonly ModelSettingsStore modelSettings = new();
     private Window? notesWindow, chatWindow;
 
-    private ContextMenu BuildMenu()
-    {
-        var menu = new ContextMenu();
-        menu.Items.Add(Menu("Питомцы", OpenCollection));
-        menu.Items.Add(Menu("Настройки", OpenSettings));
-        menu.Items.Add(Menu("Заметки", OpenNotes));
-        menu.Items.Add(Menu("Чат с моделью", OpenChat));
-        menu.Items.Add(Menu("Сайты и программы", OpenFavorites));
-        var actions = new MenuItem { Header = "Движения" };
-        actions.Items.Add(Menu("Случайное движение", () => behavior.TriggerRandomAction()));
-        foreach (var action in Enum.GetValues<PetAction>().Where(behavior.Supports))
-            actions.Items.Add(Menu(ActionLabels.GetValueOrDefault(action, action.ToString()), () => behavior.Trigger(action)));
-        menu.Items.Add(actions);
-        menu.Items.Add(new Separator());
-        menu.Items.Add(Menu("Выйти", Close));
-        return menu;
-    }
+    private Window? menuWindow;
+    private readonly List<MacPanel> interactivePanels = [];
 
-    private static MenuItem Menu(string title, Action run)
+    private void OpenMenu()
     {
-        var item = new MenuItem { Header = title };
-        item.Click += (_, _) => run();
-        return item;
+        if (menuWindow is { IsVisible: true }) { menuWindow.Close(); return; }
+        var body = Column();
+        body.Spacing = 3;
+        var menu = Panel(selected.Name, Scroll(body), 270, 355, preferAbove: true);
+        menuWindow = menu;
+        void Add(string label, Action action, bool enabled = true)
+        {
+            var button = ButtonFor(label, action);
+            button.HorizontalAlignment = HorizontalAlignment.Stretch;
+            button.HorizontalContentAlignment = HorizontalAlignment.Left;
+            button.Background = Brushes.Transparent;
+            button.BorderThickness = new Thickness(0);
+            button.Padding = new Thickness(8, 5);
+            button.IsEnabled = enabled;
+            body.Children.Add(button);
+        }
+        void Run(Action action) { menu.Close(); action(); }
+        void Main()
+        {
+            menu.Title = selected.Name;
+            body.Children.Clear();
+            Add("Открыть чат", () => Run(() => OpenChat()));
+            if (!string.IsNullOrWhiteSpace(chat.Answer)) Add("Последний ответ", () => Run(() => OpenChat(focus: false)));
+            Add("Заметки", () => Run(OpenNotes));
+            Add("Сайты и программы…", () => Run(OpenFavorites));
+            if (chat.Busy) Add("Отменить запрос", () => Run(chat.Cancel));
+            Add("Движения  ›", Movements);
+            Add("Модель и API", () => Run(OpenModelSettings));
+            Add("Управление", () => Run(OpenSettings));
+            Add("Питомцы", () => Run(OpenCollection));
+            Add("Внешний вид", () => Run(OpenAppearance));
+            body.Children.Add(new Separator());
+            Add("Закрыть питомца", () => Run(Close));
+        }
+        void Movements()
+        {
+            menu.Title = "Движения";
+            body.Children.Clear();
+            Add("‹  Назад", Main);
+            Add("Случайное движение", () => Run(() => behavior.TriggerRandomAction()), !chat.Busy);
+            foreach (var action in Enum.GetValues<PetAction>().Where(behavior.Supports))
+            {
+                bool edge = PetBehavior.IsEdgeAction(action);
+                Add(ActionLabels.GetValueOrDefault(action, action.ToString()), () => Run(() =>
+                {
+                    if (edge) PlayDesktopEdge(action);
+                    else behavior.Trigger(action);
+                }), !chat.Busy && (!edge || !behavior.IsPlaying && CanPlaceDesktopEdge(action, out _)));
+            }
+        }
+        menu.Closed += (_, _) => menuWindow = null;
+        menu.Deactivated += (_, _) => Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+        {
+            if (menu.IsVisible && !menu.IsActive) menu.Close();
+        });
+        Main();
+        menu.Show(this);
     }
 
     private static readonly Dictionary<PetAction, string> ActionLabels = new()
@@ -58,23 +97,126 @@ internal sealed partial class MacPetWindow
         [PetAction.Ironic] = "Ухмыльнуться", [PetAction.Giggle] = "Хихикнуть",
         [PetAction.HeadTap] = "Постучать по голове", [PetAction.PeekAround] = "Обернуться",
         [PetAction.WalkAround] = "Пройтись по сторонам", [PetAction.Reproach] = "Поругаться",
-        [PetAction.IndignantLean] = "Наклониться с возмущением", [PetAction.SurpriseClassic] = "Удивление"
+        [PetAction.IndignantLean] = "Наклониться с возмущением", [PetAction.SurpriseClassic] = "Удивление",
+        [PetAction.QuietIdle] = "Тихо ждать", [PetAction.HairBrush] = "Убрать прядь с лица",
+        [PetAction.Doze] = "Клевать носом", [PetAction.Cheer] = "Тихо радоваться",
+        [PetAction.EdgeLean] = "Опереться на край", [PetAction.EdgePeek] = "Выглянуть из-за края",
+        [PetAction.Gymnastics] = "Сделать гимнастику", [PetAction.Peek] = "Подглядеть"
     };
 
-    private Window Panel(string title, Control body, double width = 400, double height = 460)
+    private MacPanel Panel(string title, Control body, double width = 400, double height = 460, bool preferAbove = false)
     {
         CloseOrbit();
-        return new Window
+        var screen = Screens.ScreenFromPoint(BodyBottomCenter()) ?? Screens.ScreenFromWindow(this) ?? Screens.Primary;
+        var panel = new MacPanel(title, body, width, height) { Topmost = preferTopmost };
+        panel.ApplyTheme(appearance, dialogTransparency, matteDialogs);
+        panel.Opened += (_, _) =>
         {
-            Title = title, Width = width, Height = height,
-            MinWidth = 300, MinHeight = 170, WindowStartupLocation = WindowStartupLocation.CenterOwner,
-            Background = Brush.Parse(appearance.Surface), Foreground = Brush.Parse(appearance.Text),
-            Content = new Border { Padding = new Thickness(16), Child = body }
+            interactivePanels.Add(panel);
+            RefreshPetLayer();
+            Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+            {
+                if (panel.ShowActivated && panel.IsVisible && interactivePanels.LastOrDefault() == panel) panel.Activate();
+            }, Avalonia.Threading.DispatcherPriority.Input);
         };
+        panel.Closed += (_, _) =>
+        {
+            interactivePanels.Remove(panel);
+            RefreshPetLayer();
+        };
+        if (screen is null)
+        {
+            panel.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            return panel;
+        }
+
+        var work = screen.WorkingArea;
+        var scale = OperatingSystem.IsMacOS() ? 1 : screen.Scaling;
+        panel.Width = Math.Min(width, work.Width / scale);
+        panel.Height = Math.Min(height, work.Height / scale);
+        var petBounds = new PixelRect(Position,
+            new PixelSize((int)Math.Ceiling(Width * DesktopUnitScale), (int)Math.Ceiling(Height * DesktopUnitScale)));
+        var panelSize = new PixelSize(Math.Min(work.Width, (int)Math.Ceiling(panel.Width * scale)),
+            Math.Min(work.Height, (int)Math.Ceiling(panel.Height * scale)));
+        panel.Position = PlacePanel(work, petBounds, panelSize, (int)Math.Ceiling(12 * scale), preferAbove);
+        return panel;
+    }
+
+    private void RefreshPetLayer()
+    {
+        if (closed) return;
+        Topmost = preferTopmost && interactivePanels.Count == 0;
+        foreach (var panel in interactivePanels) panel.Topmost = preferTopmost;
+    }
+
+    private void RefreshPanelTheme()
+    {
+        foreach (var panel in interactivePanels) panel.ApplyTheme(appearance, dialogTransparency, matteDialogs);
+        foreach (var update in noteThemeUpdates) update();
+    }
+
+    private void OpenAppearance()
+    {
+        var size = new Slider { Minimum = 100, Maximum = 720, Value = BodyHeight };
+        size.ValueChanged += (_, _) =>
+        {
+            var feet = BodyBottomCenter();
+            ResizeBody(size.Value);
+            AlignFeet(feet);
+            ClampToScreen();
+            SavePlacement();
+        };
+        var transparency = new Slider { Minimum = 0, Maximum = 90, Value = dialogTransparency };
+        transparency.ValueChanged += (_, _) =>
+        {
+            dialogTransparency = transparency.Value;
+            RefreshPanelTheme();
+            SavePlacement();
+        };
+        var matte = new CheckBox { Content = "Матовый фон", IsChecked = matteDialogs };
+        matte.Click += (_, _) => { matteDialogs = matte.IsChecked == true; RefreshPanelTheme(); SavePlacement(); };
+        var top = new CheckBox { Content = "Поверх окон", IsChecked = preferTopmost };
+        top.Click += (_, _) => { preferTopmost = top.IsChecked == true; RefreshPetLayer(); SavePlacement(); };
+        var pace = new ComboBox { ItemsSource = new[] { "Спокойный", "Обычный", "Бодрый" },
+            SelectedIndex = playbackSpeed < 1 ? 0 : playbackSpeed > 1 ? 2 : 1 };
+        pace.SelectionChanged += (_, _) =>
+        {
+            playbackSpeed = pace.SelectedIndex switch { 0 => .75, 2 => 1.3, _ => 1 };
+            SavePlacement();
+        };
+        Panel("Внешний вид", Column(Field("Размер питомца", size), Field("Прозрачность", transparency), matte,
+            new Separator(), Field("Темп движения", pace), top), 350, 264).Show(this);
+    }
+
+    internal static PixelPoint PlacePanel(PixelRect work, PixelRect pet, PixelSize size, int gap, bool preferAbove = false)
+    {
+        int centerX = pet.X + (pet.Width - size.Width) / 2;
+        int centerY = pet.Y + (pet.Height - size.Height) / 2;
+        int x = Math.Clamp(centerX, work.X, Math.Max(work.X, work.Right - size.Width));
+        int y = Math.Clamp(centerY, work.Y, Math.Max(work.Y, work.Bottom - size.Height));
+
+        if (preferAbove && pet.Y - gap - size.Height >= work.Y) return new(x, Math.Min(work.Bottom - size.Height, pet.Y - gap - size.Height));
+        if (pet.Right + gap + size.Width <= work.Right) return new(Math.Max(work.X, pet.Right + gap), y);
+        if (pet.X - gap - size.Width >= work.X) return new(Math.Min(work.Right - size.Width, pet.X - gap - size.Width), y);
+        if (pet.Y - gap - size.Height >= work.Y) return new(x, Math.Min(work.Bottom - size.Height, pet.Y - gap - size.Height));
+        if (pet.Bottom + gap + size.Height <= work.Bottom) return new(x, Math.Max(work.Y, pet.Bottom + gap));
+        return new(work.X + Math.Max(0, work.Width - size.Width) / 2,
+            work.Y + Math.Max(0, work.Height - size.Height) / 2);
     }
 
     private static StackPanel Column(params Control[] children) =>
         new StackPanel { Spacing = 8 }.WithChildren(children);
+
+    private static Grid Field(string label, Control control)
+    {
+        var row = new Grid { ColumnDefinitions = new ColumnDefinitions("*,164") };
+        row.Children.Add(new TextBlock { Text = label, TextWrapping = TextWrapping.Wrap, VerticalAlignment = VerticalAlignment.Center,
+            Margin = new Thickness(0, 0, 8, 0) });
+        control.HorizontalAlignment = HorizontalAlignment.Stretch;
+        Grid.SetColumn(control, 1);
+        row.Children.Add(control);
+        return row;
+    }
 
     private static Button ButtonFor(string title, Action action)
     {
@@ -98,7 +240,9 @@ internal sealed partial class MacPetWindow
 
     private async void OpenCollection()
     {
-        var list = new ListBox { ItemsSource = pets.List(), SelectedItem = selected, Height = 185 };
+        var entries = pets.List();
+        var list = new ListBox { ItemsSource = entries, SelectedItem = entries.FirstOrDefault(p => p.Id == selected.Id), Height = 185 };
+        var version = Text("");
         var status = Text("");
         Window? dialog = null;
         var use = ButtonFor("Выбрать", async () =>
@@ -108,6 +252,24 @@ internal sealed partial class MacPetWindow
             dialog!.Close();
             await SelectPet(pet);
         });
+        void ShowRevision()
+        {
+            version.Text = "";
+            if (list.SelectedItem is not LocalPet pet) return;
+            bool update = pet.Id == selected.Id && !pet.SameRevision(selected);
+            use.Content = update ? "Применить обновление" : "Выбрать";
+            try
+            {
+                var current = pet.SameRevision(selected);
+                var sprites = current ? library : pets.Open(pet);
+                try { version.Text = $"Версия питомца: {pet.VersionLabel(sprites)}" + (update ? $"\nСейчас запущена: {selected.VersionLabel(library)}" : ""); }
+                finally { if (!current && !pet.BuiltIn) sprites.Dispose(); }
+            }
+            catch (Exception error) when (error is IOException or UnauthorizedAccessException or System.Text.Json.JsonException)
+            { version.Text = "Не удалось прочитать версию пакета."; }
+        }
+        list.SelectionChanged += (_, _) => ShowRevision();
+        ShowRevision();
         var import = ButtonFor("Добавить…", async () =>
         {
             if (chat.Busy) { status.Text = "Дождитесь ответа модели."; return; }
@@ -159,7 +321,7 @@ internal sealed partial class MacPetWindow
             }
             catch (Exception error) { status.Text = error.Message; }
         });
-        dialog = Panel("Питомцы", Column(list, Row(use, import, remove), export, status), height: 375);
+        dialog = Panel("Питомцы", Column(list, version, Row(use, import, remove), export, status), height: 420);
         await dialog.ShowDialog(this);
     }
 
@@ -177,18 +339,7 @@ internal sealed partial class MacPetWindow
             }
             catch (Exception error) { activity.IsChecked = userActionsOnly; status.Text = error.Message; }
         };
-        var topmost = new CheckBox { Content = "Поверх окон", IsChecked = Topmost };
-        topmost.Click += (_, _) => { Topmost = topmost.IsChecked == true; SavePlacement(); };
-        var size = new Slider { Minimum = 100, Maximum = 720, Value = BodyHeight };
-        size.ValueChanged += (_, _) =>
-        {
-            var feet = BodyBottomCenter();
-            ResizeBody(size.Value);
-            AlignFeet(feet);
-            ClampToScreen();
-            SavePlacement();
-        };
-        var body = Column(activity, topmost, Text("Размер питомца"), size, new Separator());
+        var body = Column(activity);
         if (OperatingSystem.IsMacOS() && PetCatalog.SupportsDesktopReactions(selected))
         {
             var desktop = new CheckBox { Content = "Реагировать на мои действия", IsChecked = pets.DesktopReactionsEnabled(selected) };
@@ -219,97 +370,106 @@ internal sealed partial class MacPetWindow
                 }
                 catch (Exception error) { status.Text = error.Message; }
             };
-            body.Children.Add(Text((command ? "⌘ + " : "") + (count switch
+            var label = (command ? "⌘ + " : "") + (count switch
             {
                 1 => "один клик", 2 => "двойной клик", _ => "тройной клик"
-            })));
-            body.Children.Add(selector);
+            });
+            body.Children.Add(Field(label, selector));
         }
         body.Children.Add(ButtonFor("Модель API…", OpenModelSettings));
         body.Children.Add(status);
-        await Panel("Настройки", Scroll(body), height: 540).ShowDialog(this);
+        await Panel("Управление кликами", Scroll(body), width: 380, height: 380).ShowDialog(this);
     }
 
     private async void OpenModelSettings()
     {
         var (settings, key) = modelSettings.Load();
+        var provider = new ComboBox { ItemsSource = ProviderPresets.All.Select(preset => preset.Label).ToArray(),
+            SelectedIndex = ProviderPresets.Index(settings.Provider) };
         var url = new TextBox { Text = settings.BaseUrl };
         var model = new TextBox { Text = settings.Model };
         var protocol = new ComboBox { ItemsSource = new[] { "Responses API", "Chat Completions" }, SelectedIndex = settings.Protocol == "chat" ? 1 : 0 };
         var secret = new TextBox { Text = key, PasswordChar = '●' };
         var useKey = new CheckBox { Content = "Использовать API-ключ", IsChecked = settings.UseApiKey };
+        var stream = new CheckBox { Content = "Потоковый ответ", IsChecked = settings.Stream };
+        var keepHistory = new CheckBox { Content = "Помнить диалог до закрытия", IsChecked = settings.KeepHistory };
+        var instructions = new TextBox { Text = settings.SystemPrompt, AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, Height = 64 };
+        var limit = new NumericUpDown { Value = settings.MaxOutputTokens, Minimum = 128, Maximum = 32768, Increment = 128 };
+        var timeout = new NumericUpDown { Value = settings.TimeoutSeconds, Minimum = 10, Maximum = 1800, Increment = 10 };
         var status = Text(modelSettings.LoadNotice ?? "");
         Window? window = null;
-        var save = ButtonFor("Сохранить", () =>
+        using var lifetime = new CancellationTokenSource();
+        string originalOrigin;
+        try { originalOrigin = settings.Origin; } catch (ModelException) { originalOrigin = ""; }
+        void ReadForm()
         {
             settings.BaseUrl = url.Text?.Trim() ?? "";
             settings.Model = model.Text?.Trim() ?? "";
             settings.Protocol = protocol.SelectedIndex == 1 ? "chat" : "responses";
             settings.UseApiKey = useKey.IsChecked == true;
-            try { modelSettings.Save(settings, settings.UseApiKey ? secret.Text ?? "" : ""); window!.Close(); }
+            settings.Stream = stream.IsChecked == true;
+            settings.KeepHistory = keepHistory.IsChecked == true;
+            settings.SystemPrompt = instructions.Text ?? "";
+            settings.MaxOutputTokens = (int)(limit.Value ?? 2048);
+            settings.TimeoutSeconds = (int)(timeout.Value ?? 120);
+        }
+        string KeyForCurrentServer()
+        {
+            if (!settings.UseApiKey) return "";
+            string current = secret.Text ?? "";
+            if (current.Length > 0 && current == key && settings.Origin != originalOrigin)
+                throw new ModelException("Введите ключ для нового адреса сервера.");
+            return current;
+        }
+        var save = ButtonFor("Сохранить", () =>
+        {
+            try { ReadForm(); modelSettings.Save(settings, KeyForCurrentServer()); window!.Close(); }
             catch (Exception error) { status.Text = error.Message; }
         });
-        window = Panel("Модель API", Column(Text("Адрес API"), url, Text("Модель"), model,
-            Text("Протокол"), protocol, useKey, secret, save, status), height: 410);
-        var owner = OwnedWindows.LastOrDefault(candidate => candidate.IsVisible) ?? this;
+        provider.SelectionChanged += (_, _) =>
+        {
+            if (provider.SelectedIndex < 0) return;
+            var chosen = ProviderPresets.All[provider.SelectedIndex];
+            settings.Provider = chosen.Id;
+            if (chosen.Id == "compatible") return;
+            url.Text = chosen.BaseUrl;
+            model.Text = chosen.Model;
+            protocol.SelectedIndex = chosen.Protocol == "chat" ? 1 : 0;
+            useKey.IsChecked = chosen.UseApiKey;
+            settings.SendTemperature = chosen.SendTemperature;
+            settings.Temperature = chosen.Temperature;
+            settings.ChatTokenParameter = chosen.TokenParameter;
+            limit.Value = chosen.Limit;
+            timeout.Value = chosen.Timeout;
+            secret.Text = "";
+        };
+        var available = new ComboBox { IsVisible = false };
+        available.SelectionChanged += (_, _) => { if (available.SelectedItem is string choice) model.Text = choice; };
+        var test = ButtonFor("Проверить связь", async () =>
+        {
+            try
+            {
+                ReadForm();
+                var models = await modelClient.ListModelsAsync(settings.Copy(), KeyForCurrentServer(), lifetime.Token);
+                if (!window!.IsVisible) return;
+                available.ItemsSource = models;
+                available.IsVisible = models.Length > 0;
+                status.Text = models.Length > 0 ? $"Доступно моделей: {models.Length}" : "Сервер не вернул список моделей.";
+            }
+            catch (OperationCanceledException) { }
+            catch (Exception error) { status.Text = error.Message; }
+        });
+        var form = Column(Text($"Версия HUDI: {AppRelease.Version}"), Field("Провайдер", provider), Field("Адрес сервера", url),
+            Field("Модель", model), available, Field("Формат API", protocol), Field("API-ключ", secret), useKey, stream,
+            keepHistory, Field("Лимит ответа", limit), Field("Тайм-аут, с", timeout), Text("Системная инструкция"),
+            instructions, Row(test, save), status);
+        window = Panel("Модель и API", Scroll(form), height: 550);
+        window.Closed += (_, _) => lifetime.Cancel();
+        var owner = (Window?)interactivePanels.LastOrDefault(candidate => candidate.IsVisible && candidate.IsActive) ?? this;
         await window.ShowDialog(owner);
     }
 
-    private void OpenNotes()
-    {
-        if (notesWindow is { IsVisible: true }) { notesWindow.Activate(); return; }
-        var list = new ListBox { Height = 130 };
-        var edit = new TextBox { AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, Height = 155, MaxLength = NotesStore.MaxTextLength };
-        var status = Text("");
-        PetNote? current = null;
-        bool loading = false;
-        void Refresh(string? id = null)
-        {
-            var entries = notes.Read();
-            list.ItemsSource = entries.Select(note => new NoteItem(note)).ToArray();
-            list.SelectedItem = list.ItemsSource.Cast<NoteItem>().FirstOrDefault(item => item.Note.Id == id);
-        }
-        list.SelectionChanged += (_, _) =>
-        {
-            loading = true;
-            current = (list.SelectedItem as NoteItem)?.Note;
-            edit.Text = current?.Text ?? "";
-            edit.IsEnabled = current is not null;
-            loading = false;
-        };
-        edit.TextChanged += (_, _) =>
-        {
-            if (loading || current is not { } note || note.Text == edit.Text) return;
-            try { current = note with { Text = edit.Text ?? "", Updated = DateTimeOffset.UtcNow }; notes.Put(current); status.Text = ""; }
-            catch (Exception error) { status.Text = error.Message; }
-        };
-        var add = ButtonFor("+", () =>
-        {
-            var now = DateTimeOffset.UtcNow;
-            var note = new PetNote(Guid.NewGuid().ToString("N"), "", now, now);
-            try { notes.Put(note); Refresh(note.Id); edit.Focus(); }
-            catch (Exception error) { status.Text = error.Message; }
-        });
-        var remove = ButtonFor("Удалить", () =>
-        {
-            if (current is not { } note) return;
-            try { notes.Delete(note.Id); Refresh(); }
-            catch (Exception error) { status.Text = error.Message; }
-        });
-        try { Refresh(); }
-        catch (Exception error) { status.Text = error.Message; }
-        edit.IsEnabled = current is not null;
-        notesWindow = Panel("Заметки", Column(Row(add, remove), list, edit, status), height: 405);
-        notesWindow.Closed += (_, _) => notesWindow = null;
-        notesWindow.Show(this);
-    }
-
-    private sealed record NoteItem(PetNote Note)
-    {
-        public override string ToString() => Note.Title;
-    }
-
-    private void OpenChat()
+    private void OpenChat(bool focus = true)
     {
         if (chatWindow is { IsVisible: true }) { chatWindow.Activate(); return; }
         var transcript = Column();
@@ -372,10 +532,11 @@ internal sealed partial class MacPetWindow
         var settingsButton = ButtonFor("Модель API…", OpenModelSettings);
         Grid.SetRow(settingsButton, 3);
         layout.Children.Add(settingsButton);
-        chatWindow = Panel("Чат с моделью", layout, height: 510);
+        chatWindow = Panel("Чат с моделью", layout, height: 405, preferAbove: true);
         chatWindow.Closed += (_, _) => { chat.Changed -= Refresh; chatWindow = null; };
         Refresh();
         chatWindow.Show(this);
+        if (focus) input.Focus();
     }
 }
 

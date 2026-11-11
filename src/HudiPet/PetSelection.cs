@@ -11,6 +11,8 @@ internal sealed partial class PetWindow
     private PetSettingsWindow? petSettings;
     internal string PetName=>selectedPet.Name;
     internal string SelectedPetId=>selectedPet.Id;
+    internal string ActivePetVersion=>selectedPet.VersionLabel(library);
+    internal bool HasPetUpdate(LocalPet pet)=>pet.Id==selectedPet.Id&&!pet.SameRevision(selectedPet);
     internal PetAppearance Appearance {get;private set;}=PetAppearance.Current;
     private void InitializePet(PetCatalog? pets=null)
     {
@@ -40,7 +42,8 @@ internal sealed partial class PetWindow
     internal async Task SelectPetAsync(LocalPet pet)
     {
         if(chat.Busy)throw new ModelException("Дождитесь ответа модели или отмените запрос перед сменой питомца.");
-        if(pet.Id==selectedPet.Id&&pet.Hash==selectedPet.Hash&&pet.Package==selectedPet.Package)return;
+        if(pet.SameRevision(selectedPet))return;
+        bool samePet=pet.Id==selectedPet.Id;
         var next=await Task.Run(()=>{var pack=Pets.Open(pet);try{pack.Get(pack.NeutralFrame);return pack;}catch{if(!pet.BuiltIn)pack.Dispose();throw;}});
         if(shuttingDown){if(!pet.BuiltIn)next.Dispose();return;}
         try
@@ -57,7 +60,10 @@ internal sealed partial class PetWindow
             Appearance=appearance;Appearance.Apply();
             foreach(var window in OwnedWindows.OfType<GlassWindow>().ToArray())window.RefreshPetTheme();
             SetWindowBounds(WindowForDisplay(displayed,new(library.Width,library.Height),library.DisplayBounds));
-            Title=PetName+" — живой питомец";chatWindow?.Close();chatWindow=null;chatDraft="";chat.ClearHistory();paused=false;previousTime=clock.Elapsed.TotalSeconds;
+            edgePlayback=null;edgeDragPet=null;
+            Title=PetName+" — живой питомец";
+            if(!samePet){chatWindow?.Close();chatWindow=null;chatDraft="";chat.ClearHistory();}
+            paused=false;previousTime=clock.Elapsed.TotalSeconds;
             RefreshDesktopReactions();
             ClampToScreen();SaveSettings();if(dispose)previous.Dispose();
         }

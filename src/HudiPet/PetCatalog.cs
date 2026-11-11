@@ -8,7 +8,15 @@ namespace HudiPet;
 internal sealed record LocalPet(string Id,string Name,string? Package,string Hash="")
 {
     internal bool BuiltIn=>Package is null;
+    internal string VersionLabel(SpriteLibrary library)=>library.PetVersion??
+        (BuiltIn?"1.0.0":Hash.Length>=8?$"сборка {Hash[..8].ToLowerInvariant()}":"не указана");
+    internal bool SameRevision(LocalPet other)=>Id==other.Id&&Hash==other.Hash&&Package==other.Package;
     public override string ToString()=>Name;
+}
+
+internal static class AppRelease
+{
+    internal static string Version {get;}=typeof(AppRelease).Assembly.GetName().Version?.ToString(3)??"не указана";
 }
 
 internal sealed partial class PetCatalog

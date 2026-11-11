@@ -37,7 +37,11 @@ internal static class PetVerification
         (PetAction.Reproach, "Укоризненно посмотреть"),
         (PetAction.HeadTap, "Постучать по голове"),
         (PetAction.PeekAround, "Обернуться по сторонам"),
-        (PetAction.WalkAround, "Походить в разные стороны")
+        (PetAction.WalkAround, "Походить в разные стороны"),
+        (PetAction.QuietIdle, "Тихо ждать"), (PetAction.HairBrush, "Убрать прядь с лица"),
+        (PetAction.Doze, "Клевать носом"), (PetAction.Cheer, "Тихо радоваться"),
+        (PetAction.EdgeLean, "Опереться на край"), (PetAction.EdgePeek, "Выглянуть из-за края"),
+        (PetAction.Gymnastics, "Сделать гимнастику"), (PetAction.Peek, "Подглядеть")
     ];
     private static byte[] Pixels(BitmapSource image)
     {

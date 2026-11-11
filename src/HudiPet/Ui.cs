@@ -119,8 +119,14 @@ internal class GlassWindow : Window, IWindowClipProvider
     {
         PetAppearance.Current.ApplyResources(Resources);
         Surface.Background=PetAppearance.Current.Panel;Surface.BorderBrush=PetAppearance.Current.Edge;
-        originalTint=null;if(IsLoaded)RefreshTransparency();
+        originalTint=null;
+        if(IsLoaded)
+        {
+            RefreshTransparency();
+            OnPetThemeRefreshed();
+        }
     }
+    protected virtual void OnPetThemeRefreshed() { }
     private void RefreshTransparency()
     {
         if(!IsLoaded||IsClosing||anchor is null)return;

@@ -1,6 +1,6 @@
 namespace HudiPet;
 
-internal enum PetAction { Wink, Think, Crouch, Stretch, Angry, Sad, Surprise, LookAround, Dance, Hood, Pockets, Combat, Salute, March, Notebook, Fire, FireCalm, Dash, Jump, PaintMagic, ShadowMerge, SideStep, CutThroat, LookDown, LookLeft, LookRight, LookUp, Temple, Skeptical, Shrug, Indignation, FireTrick, Impatient, Stroll, AdjustGlasses, Groove, Ironic, SurpriseClassic, IndignantLean, Giggle, Reproach, HeadTap, PeekAround, WalkAround }
+internal enum PetAction { Wink, Think, Crouch, Stretch, Angry, Sad, Surprise, LookAround, Dance, Hood, Pockets, Combat, Salute, March, Notebook, Fire, FireCalm, Dash, Jump, PaintMagic, ShadowMerge, SideStep, CutThroat, LookDown, LookLeft, LookRight, LookUp, Temple, Skeptical, Shrug, Indignation, FireTrick, Impatient, Stroll, AdjustGlasses, Groove, Ironic, SurpriseClassic, IndignantLean, Giggle, Reproach, HeadTap, PeekAround, WalkAround, QuietIdle, HairBrush, Doze, Cheer, EdgeLean, EdgePeek, Gymnastics, Peek }
 internal readonly record struct PetPose(string Frame = "neutral", string? BlendFrom = null,
     double Blend = 1, double Breath = 0, int TransitionId = 0);
 
@@ -18,7 +18,8 @@ internal sealed class PetBehavior
          PetAction.Temple, PetAction.Skeptical, PetAction.Shrug,
          PetAction.Indignation, PetAction.FireTrick, PetAction.Impatient,
          PetAction.Stroll, PetAction.AdjustGlasses, PetAction.Groove, PetAction.Ironic, PetAction.SurpriseClassic,
-         PetAction.IndignantLean, PetAction.Giggle, PetAction.Reproach, PetAction.HeadTap, PetAction.PeekAround, PetAction.WalkAround];
+         PetAction.IndignantLean, PetAction.Giggle, PetAction.Reproach, PetAction.HeadTap, PetAction.PeekAround, PetAction.WalkAround,
+         PetAction.QuietIdle, PetAction.HairBrush, PetAction.Doze, PetAction.Cheer, PetAction.Gymnastics, PetAction.Peek];
     private readonly SpriteLibrary library;
     private readonly Random random;
     private readonly Queue<PetAction> bag = new();
@@ -55,6 +56,7 @@ internal sealed class PetBehavior
     internal int Interruptions { get; private set; }
     internal int BreathingUpdates { get; private set; }
     internal PetAction? CurrentAction { get; private set; }
+    internal int CurrentStepIndex => active is null ? -1 : clipIndex;
     internal bool HoldingPockets => holdingPockets;
     internal double PocketHoldDuration => pocketHoldDuration;
     internal HashSet<PetAction> SeenActions { get; } = [];
@@ -72,7 +74,7 @@ internal sealed class PetBehavior
 
     internal PetAction? TriggerRandomAction()
     {
-        var available=Enum.GetValues<PetAction>().Where(Supports).ToArray();
+        var available=Enum.GetValues<PetAction>().Where(action=>!IsEdgeAction(action)&&Supports(action)).ToArray();
         if(available.Length==0)return null;
         var choices=available.Where(a=>a!=lastRandom&&a!=CurrentAction).ToArray();
         if(choices.Length==0)choices=available.Where(a=>a!=lastRandom).ToArray();
@@ -84,6 +86,8 @@ internal sealed class PetBehavior
         else if(CurrentAction==PetAction.Pockets)pocketHoldDuration=0;
         return requestedRandom;
     }
+
+    internal static bool IsEdgeAction(PetAction action)=>action is PetAction.EdgeLean or PetAction.EdgePeek;
 
     private void Rest() => actionTimer = 2 + random.NextDouble() * 3;
     private static double Ease(double t) => t * t * t * (t * (t * 6 - 15) + 10);

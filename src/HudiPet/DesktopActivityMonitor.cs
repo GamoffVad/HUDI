@@ -13,10 +13,11 @@ internal sealed class DesktopActivityMonitor : IDisposable
     private readonly Action<DesktopActivity> onActivity;
     private readonly DispatcherTimer timer;
     private readonly Native.KeyboardCallback keyboardCallback;
-    private readonly TypingBurstDetector typing=new();
+    private readonly InputBurstDetector typing=new(), pointer=new();
     private readonly IdleActivityDetector idle=new();
     private IntPtr keyboardHook,previousWindow;
-    private uint previousPid,clipboardSequence;
+    private uint clipboardSequence;
+    private Native.CursorPoint? previousPointer;
     private bool disposed,initialized;
     internal bool ClipboardAttached {get;private set;}
     internal bool KeyboardAttached=>keyboardHook!=IntPtr.Zero;
@@ -32,13 +33,14 @@ internal sealed class DesktopActivityMonitor : IDisposable
         ClipboardAttached=Native.AddClipboardFormatListener(source.Handle);
         keyboardCallback=KeyboardEvent;
         keyboardHook=Native.SetWindowsHookEx(13,keyboardCallback,Native.GetModuleHandle(null),0);
-        timer=new DispatcherTimer(DispatcherPriority.Background){Interval=TimeSpan.FromMilliseconds(500)};
+        if(Native.GetCursorPos(out var initialPointer))previousPointer=initialPointer;
+        timer=new DispatcherTimer(DispatcherPriority.Background){Interval=TimeSpan.FromMilliseconds(150)};
         timer.Tick+=Tick;timer.Start();
     }
     private IntPtr KeyboardEvent(int code,IntPtr message,IntPtr payload)
     {
         // Count key-down notifications; never marshal/read the key structure.
-        if(code>=0&&!disposed&&(message==(IntPtr)0x100||message==(IntPtr)0x104))typing.KeyDown(Environment.TickCount64);
+        if(code>=0&&!disposed&&(message==(IntPtr)0x100||message==(IntPtr)0x104))typing.Observe(Environment.TickCount64);
         return Native.CallNextHookEx(keyboardHook,code,message,payload);
     }
     private bool EligibleForeground(out IntPtr window,out uint pid,out string processName,bool allowExplorer=false)
@@ -69,18 +71,25 @@ internal sealed class DesktopActivityMonitor : IDisposable
     private void Tick(object? sender,EventArgs args)
     {
         if(disposed)return;
-        bool eligible=EligibleForeground(out var window,out uint pid,out string name);
+        long now=Environment.TickCount64;
+        bool eligible=EligibleForeground(out var window,out _,out string name,allowExplorer:true)
+            && window!=Native.GetShellWindow();
         if(initialized&&eligible&&window!=previousWindow)
         {
             // Editor activation is not proof of a file-open/save operation.
             if(DocumentProcesses.Contains(name))onActivity(DesktopActivity.DocumentActivated);
-            else if(pid!=previousPid)onActivity(DesktopActivity.AppSwitched);
+            else onActivity(DesktopActivity.AppSwitched);
         }
-        if(window!=previousWindow)typing.Reset();
-        previousWindow=window;previousPid=pid;initialized=true;
-        if(idle.Observe(IdleSeconds()) is {} activity)onActivity(activity);
-        if(eligible&&typing.Poll(Environment.TickCount64))onActivity(DesktopActivity.TypingStarted);
+        previousWindow=window;initialized=true;
+        if(eligible&&typing.Take())onActivity(DesktopActivity.TypingStarted);
         else if(!eligible)typing.Reset();
+        if(Native.GetCursorPos(out var position))
+        {
+            if(previousPointer is {} old&&(position.X!=old.X||position.Y!=old.Y))pointer.Observe(now);
+            previousPointer=position;
+            if(pointer.Take())onActivity(DesktopActivity.PointerMoved);
+        }
+        if(idle.Observe(IdleSeconds()) is {} activity)onActivity(activity);
     }
     private static double IdleSeconds()
     {
@@ -98,7 +107,10 @@ internal sealed class DesktopActivityMonitor : IDisposable
     {
         internal delegate IntPtr KeyboardCallback(int code,IntPtr message,IntPtr payload);
         [StructLayout(LayoutKind.Sequential)] internal struct LastInput {internal uint Size,Time;}
+        [StructLayout(LayoutKind.Sequential)] internal struct CursorPoint {internal int X,Y;}
+        [DllImport("user32.dll")] [return:MarshalAs(UnmanagedType.Bool)] internal static extern bool GetCursorPos(out CursorPoint point);
         [DllImport("user32.dll")] internal static extern IntPtr GetForegroundWindow();
+        [DllImport("user32.dll")] internal static extern IntPtr GetShellWindow();
         [DllImport("user32.dll")] internal static extern uint GetWindowThreadProcessId(IntPtr window,out uint pid);
         [DllImport("user32.dll")] [return:MarshalAs(UnmanagedType.Bool)] internal static extern bool AddClipboardFormatListener(IntPtr window);
         [DllImport("user32.dll")] [return:MarshalAs(UnmanagedType.Bool)] internal static extern bool RemoveClipboardFormatListener(IntPtr window);

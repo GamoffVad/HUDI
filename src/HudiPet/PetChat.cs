@@ -125,8 +125,16 @@ internal sealed partial class PetWindow
                 foreach(var(action,label) in PetVerification.ActionLabels)
                 {
                     if(!behavior.Supports(action))continue;
-                    var row=Row("\uE734",label,()=> { paused=false;behavior.Trigger(action);menu.Close(); });
-                    row.IsEnabled=!chat.Busy;movements.Children.Add(row);
+                    bool edge=PetBehavior.IsEdgeAction(action);
+                    var row=Row("\uE734",label,()=>
+                    {
+                        menu.Close();
+                        if(edge)PlayDesktopEdge(action);
+                        else{paused=false;behavior.Trigger(action);}
+                    });
+                    row.IsEnabled=!chat.Busy&&(!edge||!behavior.IsPlaying&&CanPlaceDesktopEdge(action,out _));
+                    if(edge)row.ToolTip="Подвиньте питомца к правому краю экрана.";
+                    movements.Children.Add(row);
                 }
                 body.Children.Add(scroll);
             }),"›"));
@@ -151,7 +159,7 @@ internal sealed partial class PetWindow
     {
         CloseFavoriteSites();
         menuWindow?.Close();menuWindow=null;
-        if(notesWindow is {IsClosing:false}){notesWindow.Activate();return;}
+        if(notesWindow is {IsClosing:false}){notesWindow.ShowAll();return;}
         notesWindow=new NotesWindow(this,new NotesStore(uiTest?System.IO.Path.Combine(SettingsDirectory,"ui-test"):null));notesWindow.Show();
     }
     internal FrameworkElement CreateSizeControl(GlassWindow menu)

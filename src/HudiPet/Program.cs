@@ -23,6 +23,7 @@ internal static class Program
             if(args.Length==2&&args[0]=="--verify-pets")return PetCatalogVerification.Run(args[1]);
             if(args.Length==2&&args[0]=="--verify-sites")return FavoriteSitesVerification.Run(args[1]);
             if(args.Length==2&&args[0]=="--verify-appearance")return PetAppearanceVerification.Run(args[1]);
+            if(args.Length==2&&args[0]=="--verify-notes")return NotesVerification.Run(args[1]);
             if(args.Length==2&&args[0]=="--verify-conversation")return ConversationVerification.Run(args[1]);
             if(args.Length==2&&args[0]=="--verify-desktop-reactions")return DesktopReactionsVerification.Run(args[1]);
             if(args.Length==2&&args[0]=="--preview-sites")return FavoriteSitesVerification.Preview(args[1]);
@@ -125,6 +126,8 @@ internal sealed partial class PetWindow : Window
 
     internal void BeginPointerGesture(Point point,int clickCount,bool control)
     {
+        edgeDragPet=null;
+        edgePlayback=null;
         desktopReactions.Clear();
         clickSequence.Stop();pressedClickCount=Math.Clamp(clickCount,1,3);pressedControl=control;
         dragOrigin=point;dragging=false;
@@ -150,7 +153,7 @@ internal sealed partial class PetWindow : Window
         // Clear gesture state before releasing capture: normal release must
         // not cancel the click queued immediately below.
         character.ReleaseMouseCapture();
-        if(wasDragging){ClampToScreen();SaveSettings();}
+        if(wasDragging){ClampToScreen();SaveSettings();QueueDesktopEdgeAfterDrag();}
         if(clicks>0)QueuePetClick(clicks,control);
     }
     private void CancelPointerGesture()
@@ -206,10 +209,12 @@ internal sealed partial class PetWindow : Window
         }
         if (dt < 1d / 100) return;
         previousTime = now;
+        UpdateDesktopEdge();
         UpdateDesktopReactions();
         if (!paused)
         {
             character.Apply(behavior.Update(dt * speed, autonomous: !UserActionsOnly));
+            ApplyDesktopEdgePadding();
             renderedFrames++;
         }
         if (uiTest && now - lastDiagnostics > .25)
@@ -244,6 +249,7 @@ internal sealed partial class PetWindow : Window
     internal void ResizePet(double height)
     {
         if (!double.IsFinite(height)) return;
+        edgePlayback=null;
         double ratio=library.DisplayBounds.Height/library.Height;
         double displayHeight=Math.Clamp(height*ratio,180,Math.Max(180,Math.Min(720,SystemParameters.VirtualScreenHeight)));
         var display=DisplayedBounds;

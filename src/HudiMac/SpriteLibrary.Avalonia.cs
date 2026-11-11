@@ -1,4 +1,6 @@
+using Avalonia;
 using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using SkiaSharp;
 
 namespace HudiPet;
@@ -19,32 +21,40 @@ internal sealed partial class SpriteLibrary
             cache[id] = (frame.Image, ++access);
             return frame.Image;
         }
-        using var data = new MemoryStream();
-        using var entry = (archive.GetEntry(id + ".png") ?? throw new InvalidDataException(id)).Open();
-        entry.CopyTo(data);
-        data.Position = 0;
-        using var codec = SKCodec.Create(data) ?? throw new InvalidDataException("Не удалось прочитать кадр " + id);
+        using var input = (archive.GetEntry(id + ".png") ?? throw new InvalidDataException(id)).Open();
+        using var codec = SKCodec.Create(input) ?? throw new InvalidDataException("Не удалось прочитать кадр " + id);
         if (codec.Info.Width != Width || codec.Info.Height != Height)
             throw new InvalidDataException("Размер кадра не совпадает с описанием.");
-        Bitmap image;
-        if (alphaPrepared)
+        var image = new WriteableBitmap(new PixelSize(Width, Height), new Vector(96, 96), PixelFormat.Bgra8888, AlphaFormat.Premul);
+        try
         {
-            using var input = new MemoryStream(data.ToArray(), writable: false);
-            image = new Bitmap(input);
-        }
-        else
-        {
-            using var decoded = SKBitmap.Decode(codec) ?? throw new InvalidDataException("Не удалось прочитать кадр " + id);
-            var pixels = decoded.Pixels;
-            for (int i = 0; i < pixels.Length; i++)
+            using var pixels = image.Lock();
+            var format = new SKImageInfo(Width, Height, SKColorType.Bgra8888, SKAlphaType.Premul);
+            if (alphaPrepared)
             {
-                double coverage = Math.Clamp((pixels[i].Alpha - 150) / 70d, 0, 1);
-                pixels[i] = pixels[i].WithAlpha((byte)Math.Round(coverage * coverage * (3 - 2 * coverage) * 255));
+                if (codec.GetPixels(format, pixels.Address, pixels.RowBytes, SKCodecOptions.Default) != SKCodecResult.Success)
+                    throw new InvalidDataException("Не удалось декодировать кадр " + id);
             }
-            decoded.Pixels = pixels;
-            using var png = decoded.Encode(SKEncodedImageFormat.Png, 100);
-            using var input = png.AsStream();
-            image = new Bitmap(input);
+            else
+            {
+                using var decoded = SKBitmap.Decode(codec, format.WithAlphaType(SKAlphaType.Unpremul))
+                    ?? throw new InvalidDataException("Не удалось декодировать кадр " + id);
+                var colors = decoded.Pixels;
+                for (int i = 0; i < colors.Length; i++)
+                {
+                    double coverage = Math.Clamp((colors[i].Alpha - 150) / 70d, 0, 1);
+                    colors[i] = colors[i].WithAlpha((byte)Math.Round(coverage * coverage * (3 - 2 * coverage) * 255));
+                }
+                decoded.Pixels = colors;
+                using var source = decoded.PeekPixels();
+                if (!source.ReadPixels(format, pixels.Address, pixels.RowBytes, 0, 0))
+                    throw new InvalidDataException("Не удалось скопировать кадр " + id);
+            }
+        }
+        catch
+        {
+            image.Dispose();
+            throw;
         }
         if (cache.Count >= Math.Clamp(64 * 1024 * 1024 / (Width * Height * 4), 4, 64))
         {

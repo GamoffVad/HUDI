@@ -16,7 +16,7 @@ internal sealed partial class PetWindow
         ?"Windows не подключила обработчик клавиатуры: реакция на набор пока недоступна. Остальные события работают."
         :desktopMonitor is {ClipboardAttached:false}
         ?"Windows не подключила обработчик буфера: реакция на копирование пока недоступна. Остальные события работают."
-        :"Документы, набор текста, копирование и паузы. Содержимое текста не читается.";
+        :"Мышь, открытие программ и документов, набор текста, копирование и паузы. Содержимое текста не читается.";
     internal void SetDesktopReactions(bool enabled)
     {
         Pets.SetDesktopReactions(selectedPet,enabled);RefreshDesktopReactions();
@@ -34,21 +34,24 @@ internal sealed partial class PetWindow
         DesktopReactionsEnabled=Pets.DesktopReactionsEnabled(selectedPet);
         if(!DesktopReactionsEnabled||uiTest||smokeTest||!IsLoaded)return;
         if(PresentationSource.FromVisual(this) is HwndSource source)
-            desktopMonitor=new(source,activity=>ObserveDesktopActivity(activity));
+            desktopMonitor=new(source,ObserveDesktopActivity);
     }
-    internal void ObserveDesktopActivity(DesktopActivity activity,long? time=null)
+    internal void ObserveDesktopActivity(DesktopActivity activity)
     {
         if(!DesktopReactionsEnabled||shuttingDown||DesktopInteractionBlocked)return;
         if(UserActionsOnly&&activity==DesktopActivity.IdleWaiting)return;
-        desktopReactions.Offer(activity,time??Environment.TickCount64);
+        desktopReactions.Offer(activity);
     }
     private bool DesktopInteractionBlocked=>paused||dragging||dragOrigin is not null||pendingClicks>0||chat.Busy||shuttingDown
         ||favoriteSitesOrbit is not null||OwnedWindows.Cast<Window>().Any(w=>w.IsVisible);
-    internal void UpdateDesktopReactions(long? time=null)
+    internal void UpdateDesktopReactions()
     {
         if(!DesktopReactionsEnabled)return;
         if(DesktopInteractionBlocked){desktopReactions.Clear();return;}
-        if(desktopReactions.Take(time??Environment.TickCount64,behavior.IsPlaying||behavior.ChatThinking,behavior.Supports) is {} action)behavior.Trigger(action);
+        if(desktopReactions.Take(behavior.IsPlaying||behavior.ChatThinking,action=>behavior.Supports(action)
+            && (!PetBehavior.IsEdgeAction(action)||CanPlaceDesktopEdge(action,out _))) is not {} reaction)return;
+        if(PetBehavior.IsEdgeAction(reaction))PlayDesktopEdge(reaction);
+        else behavior.Trigger(reaction);
     }
     private void DisposeDesktopReactions(){desktopMonitor?.Dispose();desktopMonitor=null;desktopReactions.Clear();}
 }

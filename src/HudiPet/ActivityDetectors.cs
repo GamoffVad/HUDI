@@ -1,22 +1,25 @@
 namespace HudiPet;
 
-internal sealed class TypingBurstDetector
+internal sealed class InputBurstDetector
 {
-    private long first,last;
-    private int count;
-    private bool emitted;
-    internal void KeyDown(long now)
+    private const long QuietPeriod = 700;
+    private long? last;
+    private bool pending;
+
+    internal void Observe(long now)
     {
-        if(count==0||now-last>4000){first=now;count=0;emitted=false;}
-        last=now;count++;
+        if (last is null || now - last.Value >= QuietPeriod) pending = true;
+        last = now;
     }
-    internal bool Poll(long now)
+
+    internal bool Take()
     {
-        if(emitted||count<3||now-last>1600)return false;
-        if(last-first>1600){count=1;first=last;return false;}
-        emitted=true;return true;
+        bool result = pending;
+        pending = false;
+        return result;
     }
-    internal void Reset(){first=last=0;count=0;emitted=false;}
+
+    internal void Reset() { last = null; pending = false; }
 }
 
 internal sealed class IdleActivityDetector

@@ -16,15 +16,15 @@
   · <a href="#сборка">Сборка</a>
 </p>
 
-## Скачать HUDI 7.3.19
+## Скачать HUDI 7.3.25
 
 | Система | Сборка |
 | --- | --- |
-| Windows x64 | [Установщик HUDI](https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/HUDI.Setup.exe) |
-| macOS 14+ · Apple Silicon | [Архив HUDI.app](https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/HUDI-7.3.19-macOS-arm64.zip) |
-| macOS 14+ · Intel | [Архив HUDI.app](https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/HUDI-7.3.19-macOS-x64.zip) |
+| Windows x64 | [Установщик HUDI](https://github.com/GamoffVad/HUDI/releases/download/v7.3.25/HUDI.Setup.exe) |
+| macOS 14+ · Apple Silicon | [Архив HUDI.app](https://github.com/GamoffVad/HUDI/releases/download/v7.3.25/HUDI-7.3.25-macOS-arm64.zip) |
+| macOS 14+ · Intel | [Архив HUDI.app](https://github.com/GamoffVad/HUDI/releases/download/v7.3.25/HUDI-7.3.25-macOS-x64.zip) |
 
-Сборки macOS предназначены для тестирования. Архивы проверены, запуск на Mac и нотариализация Apple ещё впереди. Панели и сферы в первом порте оформлены проще, реакция на копирование пока доступна в Windows. [Подробности по macOS](docs/macos.md).
+Сборки macOS предназначены для тестирования. Архивы проверены, запуск на Mac и нотариализация Apple ещё впереди. Реакция на копирование пока доступна в Windows. [Подробности по macOS](docs/macos.md).
 
 ## Питомцы
 
@@ -34,7 +34,7 @@
     <td align="center" width="20%"><img src="docs/images/pink.webp" width="132" alt="Девочка в розовом"><br><strong>Девочка в розовом</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/Kitty-Girl.pet">Пакет</a></td>
     <td align="center" width="20%"><img src="docs/images/glasses.webp" width="132" alt="Девушка в очках"><br><strong>Девушка в очках</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.10/Glasses-Girl-3.pet">Пакет</a></td>
     <td align="center" width="20%"><img src="docs/images/ink.webp" width="132" alt="Инк"><br><strong>Инк</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/Ink.pet">Пакет</a></td>
-    <td align="center" width="20%"><img src="docs/images/curly.webp" width="132" alt="Кудряшка"><br><strong>Кудряшка</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/Kudryashka.pet">Пакет</a></td>
+    <td align="center" width="20%"><img src="docs/images/curly.webp" width="132" alt="Кудряшка"><br><strong>Кудряшка</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/Kudryashka-8.pet">Пакет</a></td>
   </tr>
 </table>
 
