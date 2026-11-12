@@ -34,7 +34,7 @@
     <td align="center" width="20%"><img src="docs/images/pink.webp" width="132" alt="Девочка в розовом"><br><strong>Девочка в розовом</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/Kitty-Girl.pet">Пакет</a></td>
     <td align="center" width="20%"><img src="docs/images/glasses.webp" width="132" alt="Девушка в очках"><br><strong>Девушка в очках</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.10/Glasses-Girl-3.pet">Пакет</a></td>
     <td align="center" width="20%"><img src="docs/images/ink.webp" width="132" alt="Инк"><br><strong>Инк</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/Ink.pet">Пакет</a></td>
-    <td align="center" width="20%"><img src="docs/images/curly.webp" width="132" alt="Кудряшка"><br><strong>Кудряшка</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/v7.3.19/Kudryashka-8.pet">Пакет</a></td>
+    <td align="center" width="20%"><img src="docs/images/curly.webp" width="132" alt="Кудряшка"><br><strong>Кудряшка</strong><br><a href="https://github.com/GamoffVad/HUDI/releases/download/kudryashka-v1.3.0/Kudryashka-1.3.0.pet">Пакет</a></td>
   </tr>
 </table>
 
